@@ -60,7 +60,7 @@ public class GUI extends javax.swing.JFrame {
         scrollCasePanel.setLayout(scrollCasePanelLayout);
         scrollCasePanelLayout.setHorizontalGroup(
             scrollCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 248, Short.MAX_VALUE)
+            .addGap(0, 303, Short.MAX_VALUE)
         );
         scrollCasePanelLayout.setVerticalGroup(
             scrollCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,8 +89,8 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)))
                     .addComponent(caseSearchButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                .addComponent(scroller, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(scroller)
                 .addContainerGap())
         );
         caseHandlingPanelLayout.setVerticalGroup(
