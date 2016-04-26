@@ -68,6 +68,11 @@ public class CaseHandler {
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt3);
     }
 
+    /*CustomerHandler og ArticlerHandler der kalder en saveCustomer(Customer customer) 
+    og saveArticles(ArrayList<Article> articles) inde i saveCase(Case c). En getter henter customerid fra
+    det Customer objekt, som Case objektet indeholder, da kunden sagtens kan optræde 2 gange og ikke
+    må have 2 forskellige customer id'er, hvorimod articles skal gemmes tilsvarende Case objektets primary key
+    */
     public void saveCase(Case c) throws SQLException {
         String statement;
         //Husk ArrayListen af articles
