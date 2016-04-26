@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package control;
+package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,7 +20,7 @@ public class DBHandler {
     private String url = "jdbc:mysql://localhost:3306";
     private String user = "root";
     private String pswrd = "root";
-    private String schema = "/bankProjekt";
+    private String schema = "/BevaringSjaelland";
     private String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     Connection conn;
     

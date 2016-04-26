@@ -116,7 +116,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jLabel4))
                         .addGap(20, 20, 20)
                         .addComponent(caseSearchButton)
-                        .addContainerGap(240, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(scroller)))
         );
 
