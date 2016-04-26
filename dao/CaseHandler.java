@@ -25,26 +25,30 @@ public class CaseHandler {
         String statement;
         statement = "SELECT * FROM cases;";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
-        int i = 0;
         while (rs.next()) {
-            //Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("object"), rs.getDate("createdAt"));
-            //cases.add(c);
-            i++;
+            Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), /*rs.getString("object"),*/
+                    rs.getDate("lastUpdated"), rs.getDate("createdAt"));
+            cases.add(c);
         }
         return cases;
     }
-
+    
+    /*Lav en overordnet metode, der kalder individuelle søge metoder efter hinanden, som hver returnerer en
+    ArrayList, som bliver tilføjet til den overordende ArrayList searchResults, hvis en af felterne for
+    Søgekritierne er tomme, vil metoden tjekke for det, og dermed ikke blive kaldt
+    Fx: if (!(konsNmb == null)) {
+    doSearch(konsNmb);
+    }
+    */
     public ArrayList<Case> searchCases(int konsNmb) throws SQLException {
         ArrayList<Case> cases = new ArrayList<>();
         String statement;
         statement = "SELECT * FROM cases WHERE konsNr = '" + konsNmb + "';";
-
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
-        int i = 0;
         while (rs.next()) {
-            //Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("object"), rs.getDate("createdAt"));
-            //cases.add(c);
-            i++;
+            Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), /*rs.getString("object"),*/
+                    rs.getDate("lastUpdated"), rs.getDate("createdAt"));
+            cases.add(c);
         }
         return cases;
 
@@ -56,22 +60,25 @@ public class CaseHandler {
         String stmt2;
         String stmt3;
         stmt1 = "begin;";
-        //stmt2 = "update cases set caseName = '" + c.getCaseName() + "' where konsNr = " + c.getCaseNmb() + ";";
+        stmt2 = "update cases set caseName = '" + c.getCaseName() + "' where konsNr = " + c.getKonsNmb() + ";";
         stmt3 = "commit;";
-       // System.out.println(stmt1 + "\n" + stmt2 + "\n" + stmt3);
+        System.out.println(stmt1 + "\n" + stmt2 + "\n" + stmt3);
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt1);
-        //DBHandler.getInstance().conn.createStatement().executeUpdate(stmt2);
+        DBHandler.getInstance().conn.createStatement().executeUpdate(stmt2);
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt3);
     }
 
-//    public void saveCase(Case c) throws SQLException {
-//        String statement;
-//        statement = "INSERT INTO cases (konsNr, caseName, object, createdAt)"
-//                + " VALUES ( '" + c.getCaseNmb()
-//                + "','" + c.getCaseName() + "','" + "Udskiftes med ArrayList af objekter" + "','"
-//                + c.getCreatedAt() + "')";
-//        DBHandler.getInstance().conn.createStatement().executeUpdate(statement);
-//    }
+    public void saveCase(Case c) throws SQLException {
+        String statement;
+        //Husk ArrayListen af articles
+        //ArticleHandler måske?
+        //Customer id samt customer objekt?
+        statement = "INSERT INTO cases (konsNr, caseName, lastUpdated, createdAt)"
+                + " VALUES ( '" + c.getKonsNmb()
+                + "','" + c.getCaseName() + "','" + c.getLastUpdated() + "','"
+                + c.getCreatedAt() + "')";
+        DBHandler.getInstance().conn.createStatement().executeUpdate(statement);
+    }
 
     public static CaseHandler getInstance() {
         return CaseHandlerHolder.INSTANCE;

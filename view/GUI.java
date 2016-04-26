@@ -5,17 +5,65 @@
  */
 package view;
 
+import dao.CaseHandler;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+import model.Case;
+
 /**
  *
  * @author Simon
  */
 public class GUI extends javax.swing.JFrame {
-
+    ArrayList<Case> cases;
+    ArrayList<CasePanel> casePanels;
+    Case c;
+    Calendar cal;
+    CardLayout cl;
+    DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY HH:mm:ss");
     /**
      * Creates new form GUI
      */
     public GUI() {
         initComponents();
+        cal = Calendar.getInstance();
+        //c = new Case(5, "Sag", "Objekt", cal.getTime());
+        cl = (CardLayout) cardPanel.getLayout();
+        //cl.addLayoutComponent(newCasePanel, "New case");
+        try {
+            cases = CaseHandler.getInstance().getCases();
+            for (int i = 0; i < cases.size(); i++) {
+                CasePanel cp = new CasePanel(cases.get(i), this);
+                cp.setBounds(0, 104 * i, 300, 100);
+                cp.setBorder(BorderFactory.createLineBorder(Color.black));
+                scrollCasePanel.add(cp);
+            }
+            repaint();
+            revalidate();
+        } catch (SQLException ex) {
+            //Det bliver formentlig efter en login skærm
+        }
+
+    }
+    
+    
+     public CardLayout getCl() {
+        return cl;
+    }
+
+    public JPanel getCardPanel() {
+        return cardPanel;
+    }
+
+    public void setC(Case c) {
+        this.c = c;
     }
 
     /**
@@ -53,6 +101,11 @@ public class GUI extends javax.swing.JFrame {
         jLabel3.setText("Ejer");
 
         caseSearchButton.setText("Søg");
+        caseSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseSearchButtonActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Genstandstype");
 
@@ -137,6 +190,23 @@ public class GUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void caseSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caseSearchButtonActionPerformed
+        try {
+            scrollCasePanel.removeAll();
+            cases = CaseHandler.getInstance().searchCases(Integer.parseInt(caseNmbSField.getText()));
+            for (int i = 0; i < cases.size(); i++) {
+                CasePanel cp = new CasePanel(cases.get(i), this);
+                cp.setBounds(0, 104 * i, 300, 100);
+                scrollCasePanel.add(cp);
+            }
+            repaint();
+            revalidate();
+        } catch (SQLException ex) {
+            //JOptionPane.showMessageDialog(rootPane, ex, title, HEIGHT);
+            //Eller label med rød tekst
+        }
+    }//GEN-LAST:event_caseSearchButtonActionPerformed
 
     /**
      * @param args the command line arguments

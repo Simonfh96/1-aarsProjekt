@@ -1,7 +1,9 @@
 package view;
 
-
 import java.awt.CardLayout;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import model.Case;
 
@@ -10,32 +12,37 @@ import model.Case;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author pdysted
  */
 public class CasePanel extends javax.swing.JPanel {
+    private DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY HH:mm:ss");
     private GUI gui;
     private CardLayout cl;
     private Case c;
+    private Calendar cal;
+
     /**
      * Creates new form CasePanel
-     * @param caseNmb the number the case is given
-     * @param caseName name of the case
-     * @param object name of the object
-     * @param createdAt point in time the case was created, this is used for searching too
+     *
+     * 
+     * @param c the case object which's getter methods is used to set the labels with info
+     * @param gui a reference to the gui, which allows the Panel to navigate through the cardlayout
      */
     public CasePanel(Case c, GUI gui) {
         initComponents();
+        cal = Calendar.getInstance();
         this.c = c;
-//        caseNameLabel.setText(c.getCaseName());
-//        konsNrLabel.setText(""+c.getCaseNmb());
-//        //objectLabel.setText();
-//        createdAtLabel.setText(""+c.getCreatedAt());
-//        cl = gui.getCl();
-//        this.gui = gui;
+        caseNameLabel.setText(c.getCaseName());
+        konsNrLabel.setText("" + c.getKonsNmb());
+        //objectLabel.setText(c.);
+        createdAtLabel.setText(dateFormat.format(c.getCreatedAt()));
+        cl = gui.getCl();
+        this.gui = gui;
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,7 +59,7 @@ public class CasePanel extends javax.swing.JPanel {
         objectLabel = new javax.swing.JLabel();
         createdAtLabel = new javax.swing.JLabel();
         casePanelEditButton = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        ownerLabel = new javax.swing.JLabel();
 
         caseNameLabel.setText("Case name:");
 
@@ -71,7 +78,7 @@ public class CasePanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setText("Owner:");
+        ownerLabel.setText("Owner:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -90,7 +97,7 @@ public class CasePanel extends javax.swing.JPanel {
                         .addComponent(createdAtLabel)
                         .addGap(170, 170, 170)
                         .addComponent(casePanelEditButton))
-                    .addComponent(jLabel2)
+                    .addComponent(ownerLabel)
                     .addComponent(objectLabel))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
@@ -103,7 +110,7 @@ public class CasePanel extends javax.swing.JPanel {
                         .addComponent(jLabel1)
                         .addComponent(konsNrLabel)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(ownerLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(objectLabel)
                 .addGap(16, 16, 16)
@@ -114,8 +121,8 @@ public class CasePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void casePanelEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casePanelEditButtonActionPerformed
-//        cl.next(gui.getCardPanel());
-//        gui.setC(c);
+        cl.next(gui.getCardPanel());
+        gui.setC(c);
     }//GEN-LAST:event_casePanelEditButtonActionPerformed
 
 
@@ -124,8 +131,8 @@ public class CasePanel extends javax.swing.JPanel {
     private javax.swing.JButton casePanelEditButton;
     private javax.swing.JLabel createdAtLabel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel konsNrLabel;
     private javax.swing.JLabel objectLabel;
+    private javax.swing.JLabel ownerLabel;
     // End of variables declaration//GEN-END:variables
 }
