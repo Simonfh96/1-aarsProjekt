@@ -27,17 +27,112 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        cardPanel = new javax.swing.JPanel();
+        tabbedPane = new javax.swing.JTabbedPane();
+        caseHandlingPanel = new javax.swing.JPanel();
+        caseNmbSField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        caseNameSField = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        ownerSField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        caseSearchButton = new javax.swing.JButton();
+        objectTypeSField = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        scroller = new javax.swing.JScrollPane();
+        scrollCasePanel = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        cardPanel.setLayout(new java.awt.CardLayout());
+
+        jLabel1.setText("Kons nr");
+
+        jLabel2.setText("Sagsnavn");
+
+        jLabel3.setText("Ejer");
+
+        caseSearchButton.setText("Søg");
+
+        jLabel4.setText("Genstandstype");
+
+        javax.swing.GroupLayout scrollCasePanelLayout = new javax.swing.GroupLayout(scrollCasePanel);
+        scrollCasePanel.setLayout(scrollCasePanelLayout);
+        scrollCasePanelLayout.setHorizontalGroup(
+            scrollCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 248, Short.MAX_VALUE)
+        );
+        scrollCasePanelLayout.setVerticalGroup(
+            scrollCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 379, Short.MAX_VALUE)
+        );
+
+        scroller.setViewportView(scrollCasePanel);
+
+        javax.swing.GroupLayout caseHandlingPanelLayout = new javax.swing.GroupLayout(caseHandlingPanel);
+        caseHandlingPanel.setLayout(caseHandlingPanelLayout);
+        caseHandlingPanelLayout.setHorizontalGroup(
+            caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(caseHandlingPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(caseHandlingPanelLayout.createSequentialGroup()
+                        .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(objectTypeSField, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                            .addComponent(ownerSField)
+                            .addComponent(caseNameSField)
+                            .addComponent(caseNmbSField))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)))
+                    .addComponent(caseSearchButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addComponent(scroller, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        caseHandlingPanelLayout.setVerticalGroup(
+            caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(caseHandlingPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(caseHandlingPanelLayout.createSequentialGroup()
+                        .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(caseNmbSField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(caseNameSField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ownerSField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(objectTypeSField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(20, 20, 20)
+                        .addComponent(caseSearchButton)
+                        .addContainerGap(240, Short.MAX_VALUE))
+                    .addComponent(scroller)))
+        );
+
+        tabbedPane.addTab("Sagsliste", caseHandlingPanel);
+
+        cardPanel.add(tabbedPane, "card2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(cardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(cardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -79,5 +174,19 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel cardPanel;
+    private javax.swing.JPanel caseHandlingPanel;
+    private javax.swing.JTextField caseNameSField;
+    private javax.swing.JTextField caseNmbSField;
+    private javax.swing.JButton caseSearchButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField objectTypeSField;
+    private javax.swing.JTextField ownerSField;
+    private javax.swing.JPanel scrollCasePanel;
+    private javax.swing.JScrollPane scroller;
+    private javax.swing.JTabbedPane tabbedPane;
     // End of variables declaration//GEN-END:variables
 }
