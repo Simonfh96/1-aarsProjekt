@@ -20,15 +20,15 @@ public class Case {
     // og kaldes som en parameter i constructor'en
     private Date lastUpdated;
     private Date createdAt;
-    //private Customer customer;
+    private Customer customer;
 
-    public Case(int konsNmb, String caseName, /*ArrayList<Article> articles,*/ Date lastUpdated, Date createdAt/*, Customer customer*/) {
+    public Case(int konsNmb, String caseName, /*ArrayList<Article> articles,*/ Date lastUpdated, Date createdAt, Customer customer) {
         this.konsNmb = konsNmb;
         this.caseName = caseName;
         //this.articles = articles;
         this.lastUpdated = lastUpdated;
         this.createdAt = createdAt;
-        //this.customer = customer;
+        this.customer = customer;
     }
 
     public int getKonsNmb() {
@@ -51,10 +51,10 @@ public class Case {
         return createdAt;
     }
 
-//    public Customer getCustomer() {
-//        return customer;
-//    }
-//    
-//    
+    public Customer getCustomer() {
+        return customer;
+    }
+    
+    
     
 }

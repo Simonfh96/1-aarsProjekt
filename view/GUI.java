@@ -195,7 +195,9 @@ public class GUI extends javax.swing.JFrame {
     private void caseSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caseSearchButtonActionPerformed
         try {
             scrollCasePanel.removeAll();
+            System.out.println("1");
             cases = CaseHandler.getInstance().searchCases(Integer.parseInt(caseNmbSField.getText()));
+            System.out.println("2");
             for (int i = 0; i < cases.size(); i++) {
                 CasePanel cp = new CasePanel(cases.get(i), this);
                 cp.setBounds(0, 111 * i, 303, 110);

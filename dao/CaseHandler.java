@@ -9,6 +9,7 @@ import model.Case;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import model.Customer;
 
 /**
  *
@@ -23,11 +24,13 @@ public class CaseHandler {
     public ArrayList<Case> getCases() throws SQLException {
         ArrayList<Case> cases = new ArrayList<>();
         String statement;
-        statement = "SELECT * FROM cases;";
+        statement = "SELECT * FROM cases LEFT JOIN costumer on cases.costumer_id = costumer.costumer_id;";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
+            Customer customer = new Customer(rs.getString("costumerName"), rs.getString("museumAcro"),
+                    rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"));
             Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), /*rs.getString("object"),*/
-                    rs.getDate("lastUpdated"), rs.getDate("createdAt"));
+                    rs.getDate("lastUpdated"), rs.getDate("createdAt"), customer);
             cases.add(c);
         }
         return cases;
@@ -43,11 +46,13 @@ public class CaseHandler {
     public ArrayList<Case> searchCases(int konsNmb) throws SQLException {
         ArrayList<Case> cases = new ArrayList<>();
         String statement;
-        statement = "SELECT * FROM cases WHERE konsNr = '" + konsNmb + "';";
+        statement = "SELECT * FROM cases LEFT JOIN costumer on cases.costumer_id = costumer.costumer_id WHERE konsNr = '" + konsNmb + "';";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
+            Customer customer = new Customer(rs.getString("costumerName"), rs.getString("museumAcro"),
+            rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"));
             Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), /*rs.getString("object"),*/
-                    rs.getDate("lastUpdated"), rs.getDate("createdAt"));
+                    rs.getDate("lastUpdated"), rs.getDate("createdAt"), customer);
             cases.add(c);
         }
         return cases;
@@ -82,6 +87,11 @@ public class CaseHandler {
                 + " VALUES ( '" + c.getKonsNmb()
                 + "','" + c.getCaseName() + "','" + c.getLastUpdated() + "','"
                 + c.getCreatedAt() + "')";
+        DBHandler.getInstance().conn.createStatement().executeUpdate(statement);
+        statement = "INSERT INTO customer (costumerName,  museumAcro, museumNmb, phone, email)"
+                + " VALUES ( '" + c.getCustomer().getCostumerName()
+                + "','" + c.getCustomer().getmAcro() + "','" + c.getCustomer().getmNumb() + "','"
+                + c.getCustomer().getPhone() + "','" + c.getCustomer().getEmail() + "')";
         DBHandler.getInstance().conn.createStatement().executeUpdate(statement);
     }
 

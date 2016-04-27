@@ -37,6 +37,7 @@ public class CasePanel extends javax.swing.JPanel {
         konsNrLabel.setText("" + c.getKonsNmb());
         //objectLabel.setText(c.);
         createdAtLabel.setText(dateFormat.format(c.getCreatedAt()));
+        ownerLabel.setText(c.getCustomer().getCostumerName());
         cl = gui.getCl();
         this.gui = gui;
     }
