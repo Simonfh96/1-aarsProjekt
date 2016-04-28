@@ -43,10 +43,11 @@ public class CaseHandler {
     doSearch(konsNmb);
     }
     */
-    public ArrayList<Case> searchCases(int konsNmb) throws SQLException {
+    public ArrayList<Case> searchCases(int konsNmb, String caseName) throws SQLException {
         ArrayList<Case> cases = new ArrayList<>();
         String statement;
-        statement = "SELECT * FROM cases LEFT JOIN costumer on cases.costumer_id = costumer.costumer_id WHERE konsNr = '" + konsNmb + "';";
+        statement = "SELECT * FROM cases LEFT JOIN costumer on cases.costumer_id = costumer.costumer_id WHERE konsNr = '"
+                + konsNmb + "' OR caseName = '" + caseName + "';";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Customer customer = new Customer(rs.getString("costumerName"), rs.getString("museumAcro"),
