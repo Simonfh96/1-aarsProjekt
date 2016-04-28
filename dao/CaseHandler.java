@@ -16,7 +16,8 @@ import model.Costumer;
  * @author pdyst
  */
 public class CaseHandler {
-
+    private static CaseHandler instance;
+    
     private CaseHandler() {
 
     }
@@ -27,7 +28,7 @@ public class CaseHandler {
         statement = "SELECT * FROM cases;";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
-            Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("cases.costumer_id"));
+            Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
             Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), /*rs.getString("object"),*/
                     rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);
@@ -95,11 +96,9 @@ public class CaseHandler {
     }
 
     public static CaseHandler getInstance() {
-        return CaseHandlerHolder.INSTANCE;
-    }
-
-    private static class CaseHandlerHolder {
-
-        private static final CaseHandler INSTANCE = new CaseHandler();
+        if (instance == null) {
+            instance = new CaseHandler();
+        }
+        return instance;
     }
 }

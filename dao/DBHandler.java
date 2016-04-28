@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  * @author Simon
  */
 public class DBHandler {
-    
+    private static DBHandler instance;
     private String url = "jdbc:mysql://localhost:3306";
     private String user = "root";
     private String pswrd = "root";
@@ -34,15 +34,6 @@ public class DBHandler {
         }
     }
 
-    public static DBHandler getInstance() {
-        return DBHandlerHolder.INSTANCE;
-    }
-
-    private static class DBHandlerHolder {
-
-        private static final DBHandler INSTANCE = new DBHandler();
-    }
-
     public void connect() throws ClassNotFoundException, SQLException {
         Class.forName(JDBC_DRIVER);
         conn = DriverManager.getConnection(url + schema, user, pswrd);
@@ -50,6 +41,13 @@ public class DBHandler {
 
     public Connection getConn() {
         return conn;
+    }
+    
+    public static DBHandler getInstance() {
+        if (instance == null) {
+            instance = new DBHandler();
+        }
+        return instance; 
     }
 
     public void closeConnection() {

@@ -14,10 +14,11 @@ import model.Costumer;
  * @author pdyst
  */
 public class CostumerHandler {
+    private static CostumerHandler instance;
     
     private CostumerHandler() {
     }
-    
+
     public Costumer getCostumer(int costumerID) throws SQLException {
         Costumer costumer = null;
         String statement;
@@ -28,14 +29,13 @@ public class CostumerHandler {
                     rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"), rs.getInt("costumer_id"));
         }
         return costumer;
-    }
+    } 
     
     public static CostumerHandler getInstance() {
-        return CostumerHandlerHolder.INSTANCE;
+        if (instance == null) {
+            instance = new CostumerHandler();
+        }
+        return instance;
     }
-    
-    private static class CostumerHandlerHolder {
 
-        private static final CostumerHandler INSTANCE = new CostumerHandler();
-    }
 }
