@@ -24,11 +24,10 @@ public class CaseHandler {
     public ArrayList<Case> getCases() throws SQLException {
         ArrayList<Case> cases = new ArrayList<>();
         String statement;
-        statement = "SELECT * FROM cases LEFT JOIN costumer on cases.costumer_id = costumer.costumer_id;";
+        statement = "SELECT * FROM cases;";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("cases.costumer_id"));
-            
             Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), /*rs.getString("object"),*/
                     rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);
