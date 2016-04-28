@@ -23,15 +23,14 @@ public class CaseHandler {
 
     public ArrayList<Case> getCases() throws SQLException {
         ArrayList<Case> cases = new ArrayList<>();
-        Costumer customer = null;
         String statement;
         statement = "SELECT * FROM cases LEFT JOIN costumer on cases.costumer_id = costumer.costumer_id;";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
-            customer = CostumerHandler.getInstance().getCostumer();
+            Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("cases.costumer_id"));
             
             Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), /*rs.getString("object"),*/
-                    rs.getDate("lastUpdated"), rs.getDate("createdAt"), customer);
+                    rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);
         }
         return cases;
@@ -51,11 +50,10 @@ public class CaseHandler {
                 + konsNmb + "' OR caseName = '" + caseName + "';";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
-            Costumer customer = new Costumer(rs.getString("costumerName"), rs.getString("museumAcro"),
-            rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"));
-            Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), /*rs.getString("object"),*/
-                    rs.getDate("lastUpdated"), rs.getDate("createdAt"), customer);
-            cases.add(c);
+//            Costumer costumer = CostumerHandler.getInstance().getCostumer();
+//            Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), /*rs.getString("object"),*/
+//                    rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
+//            cases.add(c);
         }
         return cases;
 

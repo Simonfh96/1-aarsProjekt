@@ -18,14 +18,14 @@ public class CostumerHandler {
     private CostumerHandler() {
     }
     
-    public Costumer getCostumer() throws SQLException {
+    public Costumer getCostumer(int costumerID) throws SQLException {
         Costumer costumer = null;
         String statement;
-        statement = "SELECT * FROM cases LEFT JOIN costumer on cases.costumer_id = costumer.costumer_id;";
+        statement = "SELECT * FROM cases LEFT JOIN costumer on cases.costumer_id = costumer.costumer_id WHERE cases.costumer_id = '" + costumerID + "';";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             costumer = new Costumer(rs.getString("costumerName"), rs.getString("museumAcro"),
-                    rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"));
+                    rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"), rs.getInt("costumer.costumer_id"));
         }
         return costumer;
     }

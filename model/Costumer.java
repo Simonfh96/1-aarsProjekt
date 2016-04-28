@@ -15,13 +15,15 @@ public class Costumer {
     private int mNumb;
     private int phone;
     private String email;
+    private int costumerID;
 
-    public Costumer(String costumerName, String mAcro, int mNumb, int phone, String email) {
+    public Costumer(String costumerName, String mAcro, int mNumb, int phone, String email, int costumerID) {
         this.costumerName = costumerName;
         this.mAcro = mAcro;
         this.mNumb = mNumb;
         this.phone = phone;
         this.email = email;
+        this.costumerID = costumerID;
     }
 
     public String getCostumerName() {
@@ -62,6 +64,10 @@ public class Costumer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getCostumerID() {
+        return costumerID;
     }
     
     
