@@ -20,7 +20,7 @@ public class CostumerHandler {
     }
 
     public Costumer getCostumer(int costumerID) throws SQLException {
-        Costumer costumer = null;
+        Costumer costumer = null;   
         String statement;
         statement = "SELECT * FROM costumer WHERE costumer_id = '" + costumerID + "';";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
