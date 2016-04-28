@@ -9,14 +9,14 @@ package model;
  *
  * @author Tanja
  */
-public class Customer {
+public class Costumer {
     private String costumerName;
     private String mAcro;
     private int mNumb;
     private int phone;
     private String email;
 
-    public Customer(String costumerName, String mAcro, int mNumb, int phone, String email) {
+    public Costumer(String costumerName, String mAcro, int mNumb, int phone, String email) {
         this.costumerName = costumerName;
         this.mAcro = mAcro;
         this.mNumb = mNumb;

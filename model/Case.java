@@ -20,9 +20,9 @@ public class Case {
     // og kaldes som en parameter i constructor'en
     private Date lastUpdated;
     private Date createdAt;
-    private Customer customer;
+    private Costumer customer;
 
-    public Case(int konsNmb, String caseName, /*ArrayList<Article> articles,*/ Date lastUpdated, Date createdAt, Customer customer) {
+    public Case(int konsNmb, String caseName, /*ArrayList<Article> articles,*/ Date lastUpdated, Date createdAt, Costumer customer) {
         this.konsNmb = konsNmb;
         this.caseName = caseName;
         //this.articles = articles;
@@ -51,7 +51,7 @@ public class Case {
         return createdAt;
     }
 
-    public Customer getCustomer() {
+    public Costumer getCustomer() {
         return customer;
     }
     

@@ -9,7 +9,7 @@ import model.Case;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import model.Customer;
+import model.Costumer;
 
 /**
  *
@@ -23,12 +23,13 @@ public class CaseHandler {
 
     public ArrayList<Case> getCases() throws SQLException {
         ArrayList<Case> cases = new ArrayList<>();
+        Costumer customer = null;
         String statement;
         statement = "SELECT * FROM cases LEFT JOIN costumer on cases.costumer_id = costumer.costumer_id;";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
-            Customer customer = new Customer(rs.getString("costumerName"), rs.getString("museumAcro"),
-                    rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"));
+            customer = CostumerHandler.getInstance().getCostumer();
+            
             Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), /*rs.getString("object"),*/
                     rs.getDate("lastUpdated"), rs.getDate("createdAt"), customer);
             cases.add(c);
@@ -50,7 +51,7 @@ public class CaseHandler {
                 + konsNmb + "' OR caseName = '" + caseName + "';";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
-            Customer customer = new Customer(rs.getString("costumerName"), rs.getString("museumAcro"),
+            Costumer customer = new Costumer(rs.getString("costumerName"), rs.getString("museumAcro"),
             rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"));
             Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), /*rs.getString("object"),*/
                     rs.getDate("lastUpdated"), rs.getDate("createdAt"), customer);
@@ -74,9 +75,9 @@ public class CaseHandler {
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt3);
     }
 
-    /*CustomerHandler og ArticlerHandler der kalder en saveCustomer(Customer customer) 
+    /*CustomerHandler og ArticlerHandler der kalder en saveCustomer(Costumer customer) 
     og saveArticles(ArrayList<Article> articles) inde i saveCase(Case c). En getter henter customerid fra
-    det Customer objekt, som Case objektet indeholder, da kunden sagtens kan optræde 2 gange og ikke
+    det Costumer objekt, som Case objektet indeholder, da kunden sagtens kan optræde 2 gange og ikke
     må have 2 forskellige customer id'er, hvorimod articles skal gemmes tilsvarende Case objektets primary key
     */
     public void saveCase(Case c) throws SQLException {
