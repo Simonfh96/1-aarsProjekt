@@ -8,6 +8,8 @@ package view;
 import dao.CaseHandler;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -33,6 +35,9 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setSize(screenSize.width, screenSize.height);
+        
         cal = Calendar.getInstance();
         //c = new Case(5, "Sag", "Objekt", cal.getTime());
         cl = (CardLayout) cardPanel.getLayout();

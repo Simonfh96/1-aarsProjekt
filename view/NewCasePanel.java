@@ -5,6 +5,7 @@ package view;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import java.awt.Dimension;
 import java.awt.Toolkit;
 /**
  *
@@ -16,17 +17,10 @@ public class NewCasePanel extends javax.swing.JFrame {
      * Creates new form newCase
      */
     public NewCasePanel() {
-        this.setUndecorated(true);
-        this.setVisible(true);
-        
         initComponents();
         
-        Toolkit tk = Toolkit.getDefaultToolkit();
-        
-        int xsize = (int) tk.getScreenSize().getWidth();
-        int ysize = (int) tk.getScreenSize().getHeight();
-        
-        this.setSize(ysize, ysize);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setSize(screenSize.width, screenSize.height);
     }
 
     /**
