@@ -36,7 +36,6 @@ public class DBHandler {
 
     private DBHandler() {
         try {
-            setConfig();
             loadConfig();
             connect();
         } catch (ClassNotFoundException ex) {
@@ -47,16 +46,18 @@ public class DBHandler {
 
     }
 
-    public void setConfig() {
+    public void setConfig(String url, String user, String password) {
         try {
             output = new FileOutputStream("config.properties");
-            // set the properties value
-            //Skift dem til det, som bliver hentet fra fields
-            prop.setProperty("database", "jdbc:mysql://localhost:3306");
-            prop.setProperty("dbuser", "root");
-            prop.setProperty("dbpassword", "root");
+            //jdbc:mysql://localhost:3306
+            //root
+            //root
+            prop.setProperty("database", url);
+            prop.setProperty("dbuser", user);
+            prop.setProperty("dbpassword", password);
 
             // save properties to project root folder
+            //Den gemmer den i root mappen, men loader fra /build/classes
             prop.store(output, null);
 
         } catch (IOException io) {

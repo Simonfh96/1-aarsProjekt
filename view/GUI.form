@@ -549,13 +549,16 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="dbInfoCheckBox">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Ja, jeg ved at jeg &#xe6;ndre i databasens oplysninger"/>
+                    <Property name="text" type="java.lang.String" value="Ja, jeg ved, at jeg &#xe6;ndrer i databasens oplysninger"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="changeDbButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#xc6;ndre Databasen"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changeDbButtonActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

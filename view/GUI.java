@@ -6,6 +6,7 @@
 package view;
 
 import dao.CaseHandler;
+import dao.DBHandler;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -363,9 +364,14 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel15.setText("URL");
 
-        dbInfoCheckBox.setText("Ja, jeg ved at jeg ændre i databasens oplysninger");
+        dbInfoCheckBox.setText("Ja, jeg ved, at jeg ændrer i databasens oplysninger");
 
         changeDbButton.setText("Ændre Databasen");
+        changeDbButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changeDbButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout adminPanelLayout = new javax.swing.GroupLayout(adminPanel);
         adminPanel.setLayout(adminPanelLayout);
@@ -464,6 +470,10 @@ public class GUI extends javax.swing.JFrame {
             //Eller label med rød tekst
         }
     }//GEN-LAST:event_caseSearchButtonActionPerformed
+
+    private void changeDbButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeDbButtonActionPerformed
+        DBHandler.getInstance().setConfig(dbUrlField.getText(), dbUserField.getText(), dbPasswordField.getText());
+    }//GEN-LAST:event_changeDbButtonActionPerformed
 
     /**
      * @param args the command line arguments
