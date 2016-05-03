@@ -36,6 +36,9 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
+        //Få den til at returner den rigtige værdi eller beholde fastsat tab tal?
+        int n = jTabbedPane1.indexOfTab("adminPanel");
+        tabbedPane.setEnabledAt(2, false);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.setSize(screenSize.width, screenSize.height);
         
