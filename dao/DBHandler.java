@@ -5,32 +5,105 @@
  */
 package dao;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 
 /**
  *
  * @author Simon
  */
 public class DBHandler {
+
     private static DBHandler instance;
-    private String url = "jdbc:mysql://localhost:3306";
-    private String user = "root";
-    private String pswrd = "root";
+    private String url;
+    private String user;
+    private String pswrd;
     private String schema = "/BevaringSjaelland";
     private String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    Properties prop = new Properties();
+    OutputStream output = null;
+    InputStream input = null;
     Connection conn;
-    
+
     private DBHandler() {
         try {
+            setConfig();
+            loadConfig();
             connect();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void setConfig() {
+        try {
+            output = new FileOutputStream("config.properties");
+            // set the properties value
+            //Skift dem til det, som bliver hentet fra fields
+            prop.setProperty("database", "jdbc:mysql://localhost:3306");
+            prop.setProperty("dbuser", "root");
+            prop.setProperty("dbpassword", "root");
+
+            // save properties to project root folder
+            prop.store(output, null);
+
+        } catch (IOException io) {
+            io.printStackTrace();
+        } finally {
+            if (output != null) {
+                try {
+                    output.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+    }
+
+    public void loadConfig() {
+        try {
+
+            String filename = "config.properties";
+            input = DBHandler.class.getClassLoader().getResourceAsStream(filename);
+            if (input == null) {
+                System.out.println("Sorry, unable to find " + filename);
+                return;
+            }
+
+            //load a properties file from class path, inside static method
+            prop.load(input);
+
+            //get the property value and print it out
+            url = prop.getProperty("database");
+            pswrd = prop.getProperty("dbpassword");
+            user = prop.getProperty("dbuser");
+            System.out.println(prop.getProperty("database"));
+            System.out.println(prop.getProperty("dbuser"));
+            System.out.println(prop.getProperty("dbpassword"));
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (input != null) {
+                try {
+                    input.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
@@ -42,12 +115,12 @@ public class DBHandler {
     public Connection getConn() {
         return conn;
     }
-    
+
     public static DBHandler getInstance() {
         if (instance == null) {
             instance = new DBHandler();
         }
-        return instance; 
+        return instance;
     }
 
     public void closeConnection() {
@@ -60,5 +133,4 @@ public class DBHandler {
 
     }
 
-    
 }
