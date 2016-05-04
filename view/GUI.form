@@ -396,7 +396,11 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="findCostumerField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Find kunde her..."/>
+                  </Properties>
                   <Events>
+                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="findCostumerFieldMousePressed"/>
                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="findCostumerFieldKeyReleased"/>
                   </Events>
                 </Component>

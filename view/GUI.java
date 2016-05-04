@@ -253,6 +253,12 @@ public class GUI extends javax.swing.JFrame {
 
         existingCostumerCheckBox.setText("Eksisterende kunde");
 
+        findCostumerField.setText("Find kunde her...");
+        findCostumerField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                findCostumerFieldMousePressed(evt);
+            }
+        });
         findCostumerField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 findCostumerFieldKeyReleased(evt);
@@ -515,6 +521,10 @@ public class GUI extends javax.swing.JFrame {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_findCostumerFieldKeyReleased
+
+    private void findCostumerFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_findCostumerFieldMousePressed
+        findCostumerField.setText("");
+    }//GEN-LAST:event_findCostumerFieldMousePressed
 
     /**
      * @param args the command line arguments
