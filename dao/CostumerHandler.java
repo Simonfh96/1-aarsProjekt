@@ -7,6 +7,7 @@ package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import model.Costumer;
 
 /**
@@ -20,19 +21,19 @@ public class CostumerHandler {
     private CostumerHandler() {
     }
 
-    public Costumer searchCostumerName(String name) throws SQLException {
-        Costumer costumer = null;
+    public ArrayList<Costumer> searchCostumerName(String name) throws SQLException {
+        ArrayList<Costumer> costumers = new ArrayList<>();
         String statement;
         statement = "SELECT * FROM costumer WHERE costumerName LIKE '" + name + "%';";
         //statement = "SELECT * FROM costumer WHERE costumerName LIKE 'Fr%';";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
-            costumer = new Costumer(rs.getString("costumerName"), rs.getString("museumAcro"),
+            Costumer costumer = new Costumer(rs.getString("costumerName"), rs.getString("museumAcro"),
                     rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"), rs.getInt("costumer_id"));
-            System.out.println(costumer.getCostumerName());
+            costumers.add(costumer);
         }
 
-        return costumer;
+        return costumers;
     }
 
     public Costumer getCostumer(int costumerID) throws SQLException {

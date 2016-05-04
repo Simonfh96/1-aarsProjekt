@@ -44,6 +44,7 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
         initComponents();
         //Hvis det ikke er admin brug de 2 linjer
+        findCostumerSuggestArea.setVisible(false);
         int n = tabbedPane.indexOfTab("Admin");
         tabbedPane.setEnabledAt(2, false);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -129,6 +130,8 @@ public class GUI extends javax.swing.JFrame {
         newObjectButton = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         objectAmountField = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        findCostumerSuggestArea = new javax.swing.JTextArea();
         adminPanel = new javax.swing.JPanel();
         createEmployeeButton = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
@@ -262,6 +265,11 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel18.setText("Antal genstande:");
 
+        findCostumerSuggestArea.setEditable(false);
+        findCostumerSuggestArea.setColumns(20);
+        findCostumerSuggestArea.setRows(5);
+        jScrollPane1.setViewportView(findCostumerSuggestArea);
+
         javax.swing.GroupLayout newCasePanelLayout = new javax.swing.GroupLayout(newCasePanel);
         newCasePanel.setLayout(newCasePanelLayout);
         newCasePanelLayout.setHorizontalGroup(
@@ -307,11 +315,13 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(objectTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(newCasePanelLayout.createSequentialGroup()
-                        .addComponent(findCostumerField, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(findCostumerField, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1))
                         .addGap(445, 445, 445)
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(objectAmountField, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)))
+                        .addComponent(objectAmountField, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         newCasePanelLayout.setVerticalGroup(
@@ -353,13 +363,15 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(newCasePanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(findCostumerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(findCostumerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(newCasePanelLayout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(objectAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel18))))
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Opret sag", newCasePanel);
@@ -488,12 +500,15 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_changeDbButtonActionPerformed
 
     private void findCostumerFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_findCostumerFieldKeyReleased
-        Costumer costumer = null;
         name = findCostumerField.getText();
+        findCostumerSuggestArea.setVisible(true);
         try {
-            costumer = CostumerHandler.getInstance().searchCostumerName(name);
+            ArrayList<Costumer> costumers = CostumerHandler.getInstance().searchCostumerName(name);
+            for (Costumer c : costumers) {
+                findCostumerSuggestArea.append(c.getCostumerName() + "\n");
+            }  
             if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-             findCostumerField.setText(costumer.getCostumerName());
+//             findCostumerField.setText(c.getCostumerName());
             }
         } catch (SQLException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -551,6 +566,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField dbUserField;
     private javax.swing.JCheckBox existingCostumerCheckBox;
     private javax.swing.JTextField findCostumerField;
+    private javax.swing.JTextArea findCostumerSuggestArea;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -569,6 +585,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
