@@ -8,7 +8,10 @@ package dao;
 import model.Case;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import model.Costumer;
 
 /**
@@ -17,9 +20,10 @@ import model.Costumer;
  */
 public class CaseHandler {
     private static CaseHandler instance;
-    
+    Calendar cal;
+    DateFormat dateFormat = new SimpleDateFormat("YYYY/MM/dd HH:mm:ss");
     private CaseHandler() {
-
+        cal = Calendar.getInstance();
     }
 
     public ArrayList<Case> getCases() throws SQLException {
@@ -58,7 +62,8 @@ public class CaseHandler {
         String stmt2;
         String stmt3;
         stmt1 = "begin;";
-        stmt2 = "update cases set caseName = '" + c.getCaseName() + "' where konsNr = " + c.getKonsNmb() + ";";
+        stmt2 = "update cases set caseName = '" + c.getCaseName() + "', lastUpdated = '" 
+                + dateFormat.format(cal.getTime()) + "' where konsNr = " + c.getKonsNmb() + ";";
         stmt3 = "commit;";
         System.out.println(stmt1 + "\n" + stmt2 + "\n" + stmt3);
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt1);

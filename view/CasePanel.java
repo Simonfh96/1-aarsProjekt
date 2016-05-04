@@ -1,9 +1,13 @@
 package view;
 
+import dao.CaseHandler;
 import java.awt.CardLayout;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Case;
 
 /*
@@ -127,6 +131,12 @@ public class CasePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void casePanelEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casePanelEditButtonActionPerformed
+        
+        try {
+            CaseHandler.getInstance().editCase(c);
+        } catch (SQLException ex) {
+            Logger.getLogger(CasePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
         cl.next(gui.getCardPanel());
         gui.setC(c);
     }//GEN-LAST:event_casePanelEditButtonActionPerformed
