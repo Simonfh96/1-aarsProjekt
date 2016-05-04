@@ -503,6 +503,7 @@ public class GUI extends javax.swing.JFrame {
         name = findCostumerField.getText();
         findCostumerSuggestArea.setVisible(true);
         try {
+            findCostumerField.setText("");
             ArrayList<Costumer> costumers = CostumerHandler.getInstance().searchCostumerName(name);
             for (Costumer c : costumers) {
                 findCostumerSuggestArea.append(c.getCostumerName() + "\n");
