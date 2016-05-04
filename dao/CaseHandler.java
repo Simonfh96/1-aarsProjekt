@@ -36,18 +36,11 @@ public class CaseHandler {
         return cases;
     }
     
-    /*Lav en overordnet metode, der kalder individuelle søge metoder efter hinanden, som hver returnerer en
-    ArrayList, som bliver tilføjet til den overordende ArrayList searchResults, hvis en af felterne for
-    Søgekritierne er tomme, vil metoden tjekke for det, og dermed ikke blive kaldt
-    Fx: if (!(konsNmb == null)) {
-    doSearch(konsNmb);
-    }
-    */
     public ArrayList<Case> searchCases(int konsNmb, String caseName) throws SQLException {
         ArrayList<Case> cases = new ArrayList<>();
         String statement;
         statement = "SELECT * FROM cases WHERE konsNr = '"
-                + konsNmb + "' OR caseName = '" + caseName + "';";
+                + konsNmb + "' OR caseName LIKE '" + caseName + "%';";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
