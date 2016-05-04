@@ -530,7 +530,7 @@ public class GUI extends javax.swing.JFrame {
                 listModel.addElement(costumer);
             }
 //            if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-////             findCostumerField.setText(c.getCostumerName());
+//             findCostumerField.setText(c.getCostumerName());
 //            }
         } catch (SQLException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);

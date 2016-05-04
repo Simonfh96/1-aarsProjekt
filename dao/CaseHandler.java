@@ -88,11 +88,7 @@ public class CaseHandler {
                 + "','" + c.getCaseName() + "','" + c.getLastUpdated() + "','"
                 + c.getCreatedAt() + "')";
         DBHandler.getInstance().conn.createStatement().executeUpdate(statement);
-        statement = "INSERT INTO customer (costumerName,  museumAcro, museumNmb, phone, email)"
-                + " VALUES ( '" + c.getCustomer().getCostumerName()
-                + "','" + c.getCustomer().getmAcro() + "','" + c.getCustomer().getmNumb() + "','"
-                + c.getCustomer().getPhone() + "','" + c.getCustomer().getEmail() + "')";
-        DBHandler.getInstance().conn.createStatement().executeUpdate(statement);
+        CostumerHandler.getInstance().saveCostumer(c.getCustomer());
     }
 
     public static CaseHandler getInstance() {

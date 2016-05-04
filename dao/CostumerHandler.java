@@ -47,6 +47,15 @@ public class CostumerHandler {
         }
         return costumer;
     }
+    
+    public void saveCostumer(Costumer costumer) throws SQLException {
+        String statement;
+        statement = "INSERT INTO customer (costumerName,  museumAcro, museumNmb, phone, email)"
+                + " VALUES ( '" + costumer.getCostumerName()
+                + "','" + costumer.getmAcro() + "','" + costumer.getmNumb() + "','"
+                + costumer.getPhone() + "','" + costumer.getEmail() + "')";
+        DBHandler.getInstance().conn.createStatement().executeUpdate(statement);
+    }
 
     public static CostumerHandler getInstance() {
         if (instance == null) {
