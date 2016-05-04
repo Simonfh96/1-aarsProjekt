@@ -5,7 +5,7 @@
  */
 package view;
 
-import com.sun.glass.events.KeyEvent;
+
 import dao.CaseHandler;
 import dao.CostumerHandler;
 import dao.DBHandler;
@@ -13,8 +13,6 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -140,6 +138,9 @@ public class GUI extends javax.swing.JFrame {
         objectAmountField = new javax.swing.JTextField();
         costScrollSearch = new javax.swing.JScrollPane();
         selectCostumerButton = new javax.swing.JButton();
+        createCaseButton = new javax.swing.JButton();
+        caseCreationNameField = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
         adminPanel = new javax.swing.JPanel();
         createEmployeeButton = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
@@ -279,12 +280,23 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel18.setText("Antal genstande:");
 
+        objectAmountField.setText("1");
+
         selectCostumerButton.setText("Vælg");
         selectCostumerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectCostumerButtonActionPerformed(evt);
             }
         });
+
+        createCaseButton.setText("Opret sag");
+        createCaseButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createCaseButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setText("Sagsnavn");
 
         javax.swing.GroupLayout newCasePanelLayout = new javax.swing.GroupLayout(newCasePanel);
         newCasePanel.setLayout(newCasePanelLayout);
@@ -340,7 +352,15 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(589, 589, 589)
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(objectAmountField)))
+                        .addComponent(objectAmountField, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newCasePanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(createCaseButton))
+                    .addGroup(newCasePanelLayout.createSequentialGroup()
+                        .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(caseCreationNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel19))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         newCasePanelLayout.setVerticalGroup(
@@ -392,7 +412,13 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(objectAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel18))))
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel19)
+                .addGap(7, 7, 7)
+                .addComponent(caseCreationNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addComponent(createCaseButton)
+                .addContainerGap())
         );
 
         tabbedPane.addTab("Opret sag", newCasePanel);
@@ -546,6 +572,12 @@ public class GUI extends javax.swing.JFrame {
        findCostumerField.setText("");
     }//GEN-LAST:event_findCostumerFieldMousePressed
 
+    private void createCaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseButtonActionPerformed
+        if (existingCostumerCheckBox.isSelected()) {
+            Case newCase = new Case(NORMAL, caseCreationNameField.getText(), cal.getTime(), cal.getTime(), costSearchSelected);
+        }
+    }//GEN-LAST:event_createCaseButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -584,6 +616,7 @@ public class GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel adminPanel;
     private javax.swing.JPanel cardPanel;
+    private javax.swing.JTextField caseCreationNameField;
     private javax.swing.JPanel caseHandlingPanel;
     private javax.swing.JTextField caseNameSField;
     private javax.swing.JTextField caseNmbSField;
@@ -591,6 +624,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton changeDbButton;
     private javax.swing.JScrollPane costScrollSearch;
     private javax.swing.JComboBox costumerTypeBox;
+    private javax.swing.JButton createCaseButton;
     private javax.swing.JButton createEmployeeButton;
     private javax.swing.JCheckBox dbInfoCheckBox;
     private javax.swing.JTextField dbPasswordField;
@@ -608,6 +642,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
