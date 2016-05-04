@@ -20,8 +20,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.scene.input.KeyCode;
 import javax.swing.BorderFactory;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import model.Case;
 import model.Costumer;
@@ -36,7 +37,7 @@ public class GUI extends javax.swing.JFrame {
     Case c;
     Calendar cal;
     CardLayout cl;
-    String name;
+    DefaultListModel listModel;
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY HH:mm:ss");
     /**
      * Creates new form GUI
@@ -44,12 +45,15 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
         initComponents();
         //Hvis det ikke er admin brug de 2 linjer
-        findCostumerSuggestArea.setVisible(false);
+        //costScrollSearch.setVisible(false);
         int n = tabbedPane.indexOfTab("Admin");
-        tabbedPane.setEnabledAt(2, false);
+        tabbedPane.setEnabledAt(2, false);     
+        listModel = new DefaultListModel();
+        JList list = new JList(listModel);
+        list.setSize(206, 149);
+        costScrollSearch.add(list);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.setSize(screenSize.width, screenSize.height);
-        
         cal = Calendar.getInstance();
         //c = new Case(5, "Sag", "Objekt", cal.getTime());
         cl = (CardLayout) cardPanel.getLayout();
@@ -130,8 +134,7 @@ public class GUI extends javax.swing.JFrame {
         newObjectButton = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         objectAmountField = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        findCostumerSuggestArea = new javax.swing.JTextArea();
+        costScrollSearch = new javax.swing.JScrollPane();
         adminPanel = new javax.swing.JPanel();
         createEmployeeButton = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
@@ -170,11 +173,11 @@ public class GUI extends javax.swing.JFrame {
         scrollCasePanel.setLayout(scrollCasePanelLayout);
         scrollCasePanelLayout.setHorizontalGroup(
             scrollCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 661, Short.MAX_VALUE)
+            .addGap(0, 795, Short.MAX_VALUE)
         );
         scrollCasePanelLayout.setVerticalGroup(
             scrollCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 524, Short.MAX_VALUE)
+            .addGap(0, 573, Short.MAX_VALUE)
         );
 
         scroller.setViewportView(scrollCasePanel);
@@ -271,11 +274,6 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel18.setText("Antal genstande:");
 
-        findCostumerSuggestArea.setEditable(false);
-        findCostumerSuggestArea.setColumns(20);
-        findCostumerSuggestArea.setRows(5);
-        jScrollPane1.setViewportView(findCostumerSuggestArea);
-
         javax.swing.GroupLayout newCasePanelLayout = new javax.swing.GroupLayout(newCasePanel);
         newCasePanel.setLayout(newCasePanelLayout);
         newCasePanelLayout.setHorizontalGroup(
@@ -321,13 +319,13 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(objectTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(newCasePanelLayout.createSequentialGroup()
-                        .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(findCostumerField, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1))
-                        .addGap(445, 445, 445)
+                        .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(findCostumerField, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(costScrollSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(668, 668, 668)
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(objectAmountField, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)))
+                        .addComponent(objectAmountField)))
                 .addContainerGap())
         );
         newCasePanelLayout.setVerticalGroup(
@@ -371,13 +369,13 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(findCostumerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(costScrollSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(newCasePanelLayout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(objectAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel18))))
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(171, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Opret sag", newCasePanel);
@@ -430,7 +428,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(changeDbButton)
                     .addComponent(jLabel14)
                     .addComponent(jLabel15))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
         adminPanelLayout.setVerticalGroup(
             adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -462,7 +460,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(dbInfoCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(changeDbButton)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Admin", adminPanel);
@@ -506,14 +504,14 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_changeDbButtonActionPerformed
 
     private void findCostumerFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_findCostumerFieldKeyReleased
-        name = findCostumerField.getText();
-        findCostumerSuggestArea.setVisible(true);
-        try {
-            findCostumerSuggestArea.setText("");
+        String name = findCostumerField.getText();
+        costScrollSearch.setVisible(true);
+        try { 
+            listModel.clear();
             ArrayList<Costumer> costumers = CostumerHandler.getInstance().searchCostumerName(name);
-            for (Costumer c : costumers) {
-                findCostumerSuggestArea.append(c.getCostumerName() + "\n");
-            }  
+            for (Costumer costumer : costumers) {
+                listModel.addElement(costumer);
+            }
             if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 //             findCostumerField.setText(c.getCostumerName());
             }
@@ -569,6 +567,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField caseNmbSField;
     private javax.swing.JButton caseSearchButton;
     private javax.swing.JButton changeDbButton;
+    private javax.swing.JScrollPane costScrollSearch;
     private javax.swing.JComboBox costumerTypeBox;
     private javax.swing.JButton createEmployeeButton;
     private javax.swing.JCheckBox dbInfoCheckBox;
@@ -577,7 +576,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField dbUserField;
     private javax.swing.JCheckBox existingCostumerCheckBox;
     private javax.swing.JTextField findCostumerField;
-    private javax.swing.JTextArea findCostumerSuggestArea;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -596,7 +594,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;

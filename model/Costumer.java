@@ -25,6 +25,11 @@ public class Costumer {
         this.email = email;
         this.costumerID = costumerID;
     }
+    
+    @Override
+    public String toString() {
+        return costumerName;
+    }
 
     public String getCostumerName() {
         return costumerName;
