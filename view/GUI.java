@@ -5,7 +5,9 @@
  */
 package view;
 
+import com.sun.glass.events.KeyEvent;
 import dao.CaseHandler;
+import dao.CostumerHandler;
 import dao.DBHandler;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -16,9 +18,13 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.scene.input.KeyCode;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import model.Case;
+import model.Costumer;
 
 /**
  *
@@ -30,6 +36,7 @@ public class GUI extends javax.swing.JFrame {
     Case c;
     Calendar cal;
     CardLayout cl;
+    String name;
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY HH:mm:ss");
     /**
      * Creates new form GUI
@@ -243,7 +250,11 @@ public class GUI extends javax.swing.JFrame {
 
         existingCostumerCheckBox.setText("Eksisterende kunde");
 
-        findCostumerField.setText("find kunde her");
+        findCostumerField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                findCostumerFieldKeyReleased(evt);
+            }
+        });
 
         objectTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Genstands type", "Maleri", "Arkæologi" }));
 
@@ -457,9 +468,7 @@ public class GUI extends javax.swing.JFrame {
     private void caseSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caseSearchButtonActionPerformed
         try {
             scrollCasePanel.removeAll();
-            System.out.println("1");
             cases = CaseHandler.getInstance().searchCases(Integer.parseInt(caseNmbSField.getText()), caseNameSField.getText());
-            System.out.println("2");
             for (int i = 0; i < cases.size(); i++) {
                 CasePanel cp = new CasePanel(cases.get(i), this);
                 cp.setBounds(0, 111 * i, 303, 110);
@@ -477,6 +486,19 @@ public class GUI extends javax.swing.JFrame {
     private void changeDbButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeDbButtonActionPerformed
         DBHandler.getInstance().setConfig(dbUrlField.getText(), dbUserField.getText(), dbPasswordField.getText());
     }//GEN-LAST:event_changeDbButtonActionPerformed
+
+    private void findCostumerFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_findCostumerFieldKeyReleased
+        Costumer costumer = null;
+        name = findCostumerField.getText();
+        try {
+            costumer = CostumerHandler.getInstance().searchCostumerName(name);
+            if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+             findCostumerField.setText(costumer.getCostumerName());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_findCostumerFieldKeyReleased
 
     /**
      * @param args the command line arguments

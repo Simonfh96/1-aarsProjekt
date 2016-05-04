@@ -391,9 +391,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="findCostumerField">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="find kunde her"/>
-                  </Properties>
+                  <Events>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="findCostumerFieldKeyReleased"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="objectTypeBox">
                   <Properties>

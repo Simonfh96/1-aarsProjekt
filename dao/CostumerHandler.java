@@ -14,13 +14,29 @@ import model.Costumer;
  * @author pdyst
  */
 public class CostumerHandler {
+
     private static CostumerHandler instance;
-    
+
     private CostumerHandler() {
     }
 
+    public Costumer searchCostumerName(String name) throws SQLException {
+        Costumer costumer = null;
+        String statement;
+        statement = "SELECT * FROM costumer WHERE costumerName LIKE '" + name + "%';";
+        //statement = "SELECT * FROM costumer WHERE costumerName LIKE 'Fr%';";
+        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+        while (rs.next()) {
+            costumer = new Costumer(rs.getString("costumerName"), rs.getString("museumAcro"),
+                    rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"), rs.getInt("costumer_id"));
+            System.out.println(costumer.getCostumerName());
+        }
+
+        return costumer;
+    }
+
     public Costumer getCostumer(int costumerID) throws SQLException {
-        Costumer costumer = null;   
+        Costumer costumer = null;
         String statement;
         statement = "SELECT * FROM costumer WHERE costumer_id = '" + costumerID + "';";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
@@ -29,8 +45,8 @@ public class CostumerHandler {
                     rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"), rs.getInt("costumer_id"));
         }
         return costumer;
-    } 
-    
+    }
+
     public static CostumerHandler getInstance() {
         if (instance == null) {
             instance = new CostumerHandler();
