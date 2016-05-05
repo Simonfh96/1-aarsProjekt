@@ -208,8 +208,8 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)))
                     .addComponent(caseSearchButton))
-                .addGap(18, 18, 18)
-                .addComponent(scroller)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 513, Short.MAX_VALUE)
+                .addComponent(scroller, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         caseHandlingPanelLayout.setVerticalGroup(

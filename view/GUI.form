@@ -78,8 +78,8 @@
                               </Group>
                               <Component id="caseSearchButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="scroller" max="32767" attributes="0"/>
+                          <EmptySpace pref="513" max="32767" attributes="0"/>
+                          <Component id="scroller" min="-2" pref="371" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
