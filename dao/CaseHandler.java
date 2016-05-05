@@ -92,6 +92,7 @@ public class CaseHandler {
     public int generateKonsNmb() throws SQLException {
         int konsNmb = 0;
         String statement;
+        //Eller det her statement SELECT MAX(konsNr) FROM cases;
         statement = "SELECT konsNr FROM cases ORDER BY konsNr DESC LIMIT 1;";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         if (rs.next()) {
