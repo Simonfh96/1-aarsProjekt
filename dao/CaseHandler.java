@@ -88,6 +88,17 @@ public class CaseHandler {
         DBHandler.getInstance().conn.createStatement().executeUpdate(statement);
         CostumerHandler.getInstance().saveCostumer(c.getCustomer());
     }
+    
+    public int generateKonsNmb() throws SQLException {
+        int konsNmb = 0;
+        String statement;
+        statement = "SELECT konsNr FROM cases ORDER BY konsNr DESC LIMIT 1;";
+        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+        if (rs.next()) {
+            konsNmb = rs.getInt("konsNr") + 1;
+        }
+        return konsNmb;
+    }
 
     public static CaseHandler getInstance() {
         if (instance == null) {
