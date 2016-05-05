@@ -22,6 +22,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import model.Case;
@@ -46,6 +47,7 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
+        this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         //Hvis det ikke er admin brug de 2 linjer
         //costScrollSearch.setVisible(false);
         int n = tabbedPane.indexOfTab("Admin");
@@ -54,8 +56,6 @@ public class GUI extends javax.swing.JFrame {
         list = new JList(listModel);
         list.setSize(206, 163);
         costScrollSearch.add(list);
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setSize(screenSize.width, screenSize.height);
         cal = Calendar.getInstance();
         //c = new Case(5, "Sag", "Objekt", cal.getTime());
         cl = (CardLayout) cardPanel.getLayout();
