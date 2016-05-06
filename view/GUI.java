@@ -115,6 +115,7 @@ public class GUI extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         scroller = new javax.swing.JScrollPane();
         scrollCasePanel = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         newCasePanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -143,6 +144,8 @@ public class GUI extends javax.swing.JFrame {
         createCaseButton = new javax.swing.JButton();
         caseCreationNameField = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        newCaseDescription = new javax.swing.JTextField();
         adminPanel = new javax.swing.JPanel();
         createEmployeeButton = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
@@ -202,6 +205,19 @@ public class GUI extends javax.swing.JFrame {
         );
 
         jTabbedPane2.addTab("Nye sager", jPanel1);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 740, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 536, Short.MAX_VALUE)
+        );
+
+        jTabbedPane2.addTab("Afsluttede sager", jPanel2);
 
         javax.swing.GroupLayout caseHandlingPanelLayout = new javax.swing.GroupLayout(caseHandlingPanel);
         caseHandlingPanel.setLayout(caseHandlingPanelLayout);
@@ -314,6 +330,14 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel19.setText("Sagsnavn");
 
+        jLabel20.setText("Beskrivelse");
+
+        newCaseDescription.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                newCaseDescriptionMousePressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout newCasePanelLayout = new javax.swing.GroupLayout(newCasePanel);
         newCasePanel.setLayout(newCasePanelLayout);
         newCasePanelLayout.setHorizontalGroup(
@@ -368,14 +392,16 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(589, 589, 589)
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(objectAmountField, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE))
+                        .addComponent(objectAmountField, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newCasePanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(createCaseButton))
                     .addGroup(newCasePanelLayout.createSequentialGroup()
-                        .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(caseCreationNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel19))
+                        .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(caseCreationNameField)
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel20)
+                            .addComponent(newCaseDescription, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -432,7 +458,11 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel19)
                 .addGap(7, 7, 7)
                 .addComponent(caseCreationNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(newCaseDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(createCaseButton)
                 .addContainerGap())
         );
@@ -487,7 +517,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(changeDbButton)
                     .addComponent(jLabel14)
                     .addComponent(jLabel15))
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addContainerGap(214, Short.MAX_VALUE))
         );
         adminPanelLayout.setVerticalGroup(
             adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -591,7 +621,7 @@ public class GUI extends javax.swing.JFrame {
     private void createCaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseButtonActionPerformed
         if (existingCostumerCheckBox.isSelected()) {
             try {
-                Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), caseCreationNameField.getText(), cal.getTime(), cal.getTime(), costSearchSelected);
+                Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), caseCreationNameField.getText(), newCaseDescription.getText(), cal.getTime(), cal.getTime(), costSearchSelected);
             } catch (SQLException ex) {
                 Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -600,6 +630,14 @@ public class GUI extends javax.swing.JFrame {
             //Costumer costumer = new Costumer(newCaseNameField.getText(), mAcro, WIDTH, Integer.parseInt(newCasePhoneField.getText()), newCaseEmailField.getText(), SOMEBITS);
         }
     }//GEN-LAST:event_createCaseButtonActionPerformed
+
+    private void newCaseDescriptionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newCaseDescriptionMousePressed
+        DescriptionBox dBox = new DescriptionBox(newCasePanel, newCaseDescription);
+        dBox.setBounds(0,0,400, 250);
+        newCasePanel.add(dBox);
+        repaint();
+        revalidate();
+    }//GEN-LAST:event_newCaseDescriptionMousePressed
 
     /**
      * @param args the command line arguments
@@ -667,6 +705,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -675,12 +714,14 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField newCaseAdressField;
     private javax.swing.JTextField newCaseContactField;
+    private javax.swing.JTextField newCaseDescription;
     private javax.swing.JTextField newCaseEmailField;
     private javax.swing.JTextField newCaseNameField;
     private javax.swing.JPanel newCasePanel;

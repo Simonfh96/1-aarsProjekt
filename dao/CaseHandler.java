@@ -33,7 +33,7 @@ public class CaseHandler {
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
-            Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), /*rs.getString("object"),*/
+            Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),/*rs.getString("object"),*/
                     rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);
         }
@@ -48,7 +48,7 @@ public class CaseHandler {
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
-            Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), /*rs.getString("object"),*/
+            Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),/*rs.getString("object"),*/
                     rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);
         }
@@ -81,9 +81,9 @@ public class CaseHandler {
         //Husk ArrayListen af articles
         //ArticleHandler måske?
         //Customer id samt customer objekt?
-        statement = "INSERT INTO cases (konsNr, caseName, lastUpdated, createdAt)"
+        statement = "INSERT INTO cases (konsNr, caseName, description, lastUpdated, createdAt)"
                 + " VALUES ( '" + c.getKonsNmb()
-                + "','" + c.getCaseName() + "','" + c.getLastUpdated() + "','"
+                + "','" + c.getCaseName() + "','" + c.getDescription() + "','" + c.getLastUpdated() + "','"
                 + c.getCreatedAt() + "')";
         DBHandler.getInstance().conn.createStatement().executeUpdate(statement);
         CostumerHandler.getInstance().saveCostumer(c.getCustomer());

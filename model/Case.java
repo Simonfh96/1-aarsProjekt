@@ -15,6 +15,8 @@ import java.util.Date;
 public class Case {
     private int konsNmb;
     private String caseName;
+    private String description;
+    private boolean finished;
     //private ArrayList<Article> articles; underret David angående, hvilken rækkefølge de skal oprettes i,
     //om case skal laves først og dertil have articles sat med en setter, eller om de skal oprettes først,
     // og kaldes som en parameter i constructor'en
@@ -22,9 +24,10 @@ public class Case {
     private Date createdAt;
     private Costumer customer;
 
-    public Case(int konsNmb, String caseName, /*ArrayList<Article> articles,*/ Date lastUpdated, Date createdAt, Costumer customer) {
+    public Case(int konsNmb, String caseName, String description,/*ArrayList<Article> articles,*/ Date lastUpdated, Date createdAt, Costumer customer) {
         this.konsNmb = konsNmb;
         this.caseName = caseName;
+        this.description = description;
         //this.articles = articles;
         this.lastUpdated = lastUpdated;
         this.createdAt = createdAt;
@@ -37,6 +40,10 @@ public class Case {
 
     public String getCaseName() {
         return caseName;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
 //    public ArrayList<Article> getArticles() {
