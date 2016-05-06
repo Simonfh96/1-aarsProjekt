@@ -24,9 +24,9 @@ import java.util.logging.Logger;
 public class DBHandler {
 
     private static DBHandler instance;
-    private String url;
-    private String user;
-    private String pswrd;
+    private String url = "jdbc:mysql://localhost:3306";
+    private String user = "root";
+    private String pswrd = "root";
     private String schema = "/BevaringSjaelland";
     private String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     Properties prop = new Properties();

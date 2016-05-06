@@ -11,8 +11,7 @@ import dao.CostumerHandler;
 import dao.DBHandler;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.awt.Component;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -632,8 +631,11 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_createCaseButtonActionPerformed
 
     private void newCaseDescriptionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newCaseDescriptionMousePressed
+        for (Component comp : newCasePanel.getComponents()) {
+            comp.setVisible(false);
+        }
         DescriptionBox dBox = new DescriptionBox(newCasePanel, newCaseDescription);
-        dBox.setBounds(0,0,400, 250);
+        dBox.setBounds(100, 100, 600, 480);
         newCasePanel.add(dBox);
         repaint();
         revalidate();

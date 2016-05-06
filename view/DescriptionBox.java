@@ -5,6 +5,9 @@
  */
 package view;
 
+import java.awt.Color;
+import java.awt.Component;
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -24,6 +27,8 @@ public class DescriptionBox extends javax.swing.JPanel {
         initComponents();
         this.panel = panel;
         this.field = field;
+        this.setBorder(BorderFactory.createLineBorder(Color.black));
+        descriptionArea.setText(field.getText());
     }
 
     /**
@@ -63,18 +68,18 @@ public class DescriptionBox extends javax.swing.JPanel {
                 .addComponent(jScrollPane2)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(170, 170, 170)
+                .addGap(265, 265, 265)
                 .addComponent(saveDescriptionButton)
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addContainerGap(283, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(saveDescriptionButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(5, 5, 5))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -82,6 +87,9 @@ public class DescriptionBox extends javax.swing.JPanel {
         String description = descriptionArea.getText();
         field.setText(description);
         panel.remove(this);
+        for (Component comp : panel.getComponents()) {
+            comp.setVisible(true);
+        }
         panel.repaint();
         panel.revalidate();
     }//GEN-LAST:event_saveDescriptionButtonActionPerformed
