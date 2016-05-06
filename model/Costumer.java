@@ -26,10 +26,10 @@ public class Costumer {
         this.costumerID = costumerID;
     }
     
-//    @Override
-//    public String toString() {
-//        return costumerName;
-//    }
+    @Override
+    public String toString() {
+        return costumerName;
+    }
 
     public String getCostumerName() {
         return costumerName;
