@@ -54,6 +54,7 @@ public class GUI extends javax.swing.JFrame {
         listModel = new DefaultListModel();
         list = new JList(listModel);
         list.setSize(206, 163);
+        list.setVisible(false);
         costScrollSearch.add(list);
         cal = Calendar.getInstance();
         //c = new Case(5, "Sag", "Objekt", cal.getTime());
@@ -593,7 +594,11 @@ public class GUI extends javax.swing.JFrame {
 
     private void findCostumerFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_findCostumerFieldKeyReleased
         String name = findCostumerField.getText();
+        if (!(name.equals(""))) {
         costScrollSearch.setVisible(true);
+        list.setVisible(true);
+        }
+        
         try { 
             listModel.clear();
             ArrayList<Costumer> costumers = CostumerHandler.getInstance().searchCostumerName(name);
