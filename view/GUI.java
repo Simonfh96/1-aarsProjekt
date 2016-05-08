@@ -597,8 +597,6 @@ public class GUI extends javax.swing.JFrame {
         if (!(name.equals(""))) {
         costScrollSearch.setVisible(true);
         list.setVisible(true);
-        }
-        
         try { 
             listModel.clear();
             ArrayList<Costumer> costumers = CostumerHandler.getInstance().searchCostumerName(name);
@@ -607,11 +605,11 @@ public class GUI extends javax.swing.JFrame {
             }
             costScrollSearch.setBounds(6, 300, 206, costumers.size() * 20);
             listModel.trimToSize();
-//            if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-//             findCostumerField.setText(c.getCostumerName());
-//            }
         } catch (SQLException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            DBHandler.getInstance().closeConnection();
+        }
         }
     }//GEN-LAST:event_findCostumerFieldKeyReleased
 
