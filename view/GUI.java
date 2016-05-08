@@ -597,10 +597,10 @@ public class GUI extends javax.swing.JFrame {
         try { 
             listModel.clear();
             ArrayList<Costumer> costumers = CostumerHandler.getInstance().searchCostumerName(name);
-            costScrollSearch.setBounds(6, 300, 206, costumers.size() * 20);
             for (Costumer costumer : costumers) {
                 listModel.addElement(costumer);
             }
+            costScrollSearch.setBounds(6, 300, 206, costumers.size() * 20);
             listModel.trimToSize();
 //            if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 //             findCostumerField.setText(c.getCostumerName());
