@@ -441,20 +441,21 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(existingCostumerCheckBox)
                     .addComponent(objectTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(newObjectButton))
-                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(newCasePanelLayout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(objectAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel18)))
+                            .addComponent(jLabel18))
+                        .addGap(164, 164, 164))
                     .addGroup(newCasePanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(findCostumerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(selectCostumerButton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(costScrollSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(14, 14, 14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(costScrollSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addComponent(jLabel19)
                 .addGap(7, 7, 7)
                 .addComponent(caseCreationNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -462,7 +463,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(newCaseDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(createCaseButton)
                 .addContainerGap())
         );
@@ -600,16 +601,19 @@ public class GUI extends javax.swing.JFrame {
         try { 
             listModel.clear();
             ArrayList<Costumer> costumers = CostumerHandler.getInstance().searchCostumerName(name);
-            for (Costumer costumer : costumers) {
+            costumers.stream().forEach((costumer) -> {
                 listModel.addElement(costumer);
-            }
+            });
             costScrollSearch.setBounds(6, 300, 206, costumers.size() * 20);
             listModel.trimToSize();
         } catch (SQLException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            DBHandler.getInstance().closeConnection();
+            //DBHandler.getInstance().closeConnection();
         }
+        } else {
+        costScrollSearch.setVisible(false);
+        list.setVisible(false);
         }
     }//GEN-LAST:event_findCostumerFieldKeyReleased
 
