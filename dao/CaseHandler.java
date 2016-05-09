@@ -71,7 +71,7 @@ public class CaseHandler {
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt3);
         }
 
-    /*CustomerHandler og ArticlerHandler der kalder en saveCustomer(Costumer customer) 
+    /*CustomerHandler og ArticleHandler der kalder en saveCustomer(Costumer customer) 
     og saveArticles(ArrayList<Article> articles) inde i saveCase(Case c). En getter henter customerid fra
     det Costumer objekt, som Case objektet indeholder, da kunden sagtens kan optræde 2 gange og ikke
     må have 2 forskellige customer id'er, hvorimod articles skal gemmes tilsvarende Case objektets primary key

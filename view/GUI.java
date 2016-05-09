@@ -5,7 +5,6 @@
  */
 package view;
 
-
 import dao.CaseHandler;
 import dao.CostumerHandler;
 import dao.DBHandler;
@@ -32,6 +31,7 @@ import model.Costumer;
  * @author Simon
  */
 public class GUI extends javax.swing.JFrame {
+
     ArrayList<Case> cases;
     ArrayList<CasePanel> casePanels;
     Case c;
@@ -41,6 +41,7 @@ public class GUI extends javax.swing.JFrame {
     DefaultListModel listModel;
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY HH:mm:ss");
     JList list;
+
     /**
      * Creates new form GUI
      */
@@ -50,7 +51,7 @@ public class GUI extends javax.swing.JFrame {
         //Hvis det ikke er admin brug de 2 linjer
         //costScrollSearch.setVisible(false);
         int n = tabbedPane.indexOfTab("Admin");
-        tabbedPane.setEnabledAt(2, false);     
+        tabbedPane.setEnabledAt(2, false);
         listModel = new DefaultListModel();
         list = new JList(listModel);
         list.setSize(206, 163);
@@ -73,11 +74,10 @@ public class GUI extends javax.swing.JFrame {
         } catch (SQLException ex) {
             //Det bliver formentlig efter en login skærm
         }
-
+        costScrollSearch.setDoubleBuffered(false);
     }
-    
-    
-     public CardLayout getCl() {
+
+    public CardLayout getCl() {
         return cl;
     }
 
@@ -301,8 +301,14 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         findCostumerField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                findCostumerFieldKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 findCostumerFieldKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                findCostumerFieldKeyTyped(evt);
             }
         });
 
@@ -608,26 +614,45 @@ public class GUI extends javax.swing.JFrame {
 
     private void findCostumerFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_findCostumerFieldKeyReleased
         String name = findCostumerField.getText();
+
         if (!(name.equals(""))) {
-        costScrollSearch.setVisible(true);
-        list.setVisible(true);
-        try { 
-            listModel.clear();
-            ArrayList<Costumer> costumers = CostumerHandler.getInstance().searchCostumerName(name);
-            costumers.stream().forEach((costumer) -> {
-                listModel.addElement(costumer);
-            });
-            costScrollSearch.setBounds(6, 300, 206, costumers.size() * 20);
-            listModel.trimToSize();
-        } catch (SQLException ex) {
-            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            //DBHandler.getInstance().closeConnection();
-        }
+            costScrollSearch.setVisible(true);
+ 
+                list.setVisible(true);
+
+            try {
+                listModel.clear();
+                ArrayList<Costumer> costumers = CostumerHandler.getInstance().searchCostumerName(name);
+                for (Costumer costumer : costumers) {
+                    listModel.addElement(costumer);
+                }
+                listModel.trimToSize();
+
+                
+                costScrollSearch.setBounds(6, 300, 206, costumers.size() * 20);
+               costScrollSearch.setViewportView(list);
+                costScrollSearch.setVisible(true);
+                
+                
+                list.setVisible(true);
+                list.revalidate();
+                list.repaint();
+                list.ensureIndexIsVisible(0);
+                
+                System.out.println("list showing? " + list.isShowing());
+                
+
+            } catch (SQLException ex) {
+                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+
+            } finally {
+                //DBHandler.getInstance().closeConnection();
+            }
         } else {
-        costScrollSearch.setVisible(false);
-        list.setVisible(false);
+            costScrollSearch.setVisible(false);
+            list.setVisible(false);
         }
+        
     }//GEN-LAST:event_findCostumerFieldKeyReleased
 
     private void selectCostumerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectCostumerButtonActionPerformed
@@ -636,7 +661,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_selectCostumerButtonActionPerformed
 
     private void findCostumerFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_findCostumerFieldMousePressed
-       findCostumerField.setText("");
+        findCostumerField.setText("");
     }//GEN-LAST:event_findCostumerFieldMousePressed
 
     private void createCaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseButtonActionPerformed
@@ -662,6 +687,14 @@ public class GUI extends javax.swing.JFrame {
         repaint();
         revalidate();
     }//GEN-LAST:event_newCaseDescriptionMousePressed
+
+    private void findCostumerFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_findCostumerFieldKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_findCostumerFieldKeyTyped
+
+    private void findCostumerFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_findCostumerFieldKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_findCostumerFieldKeyPressed
 
     /**
      * @param args the command line arguments
