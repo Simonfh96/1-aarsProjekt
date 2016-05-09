@@ -555,20 +555,20 @@ public class GUI extends javax.swing.JFrame {
 
         tabbedPane.addTab("Admin", adminPanel);
 
+        cardPanel.add(tabbedPane, "card2");
+
         javax.swing.GroupLayout editCasePanelLayout = new javax.swing.GroupLayout(editCasePanel);
         editCasePanel.setLayout(editCasePanelLayout);
         editCasePanelLayout.setHorizontalGroup(
             editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1056, Short.MAX_VALUE)
+            .addGap(0, 1061, Short.MAX_VALUE)
         );
         editCasePanelLayout.setVerticalGroup(
             editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 586, Short.MAX_VALUE)
+            .addGap(0, 614, Short.MAX_VALUE)
         );
 
-        tabbedPane.addTab("tab4", editCasePanel);
-
-        cardPanel.add(tabbedPane, "card2");
+        cardPanel.add(editCasePanel, "card3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
