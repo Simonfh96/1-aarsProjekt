@@ -24,7 +24,7 @@ public class Case {
     private Date createdAt;
     private Costumer customer;
 
-    public Case(int konsNmb, String caseName, String description,/*ArrayList<Article> articles,*/ Date lastUpdated, Date createdAt, Costumer customer) {
+    public Case(int konsNmb, String caseName, String description, /*boolean finished,*//*ArrayList<Article> articles,*/ Date lastUpdated, Date createdAt, Costumer customer) {
         this.konsNmb = konsNmb;
         this.caseName = caseName;
         this.description = description;
@@ -32,6 +32,7 @@ public class Case {
         this.lastUpdated = lastUpdated;
         this.createdAt = createdAt;
         this.customer = customer;
+//        this.finished = finished;
     }
 
     public int getKonsNmb() {
@@ -44,6 +45,10 @@ public class Case {
 
     public String getDescription() {
         return description;
+    }
+    
+    public boolean isFinished() {
+        return finished;
     }
 
 //    public ArrayList<Article> getArticles() {
@@ -61,6 +66,8 @@ public class Case {
     public Costumer getCustomer() {
         return customer;
     }
+
+    
     
     
     
