@@ -20,7 +20,7 @@ import model.Case;
  * @author pdysted
  */
 public class CasePanel extends javax.swing.JPanel {
-    private DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY HH:mm:ss");
+    private DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY");
     private GUI gui;
     private CardLayout cl;
     private Case c;
@@ -41,6 +41,7 @@ public class CasePanel extends javax.swing.JPanel {
         konsNrLabel.setText("" + c.getKonsNmb());
         //objectLabel.setText(c.);
         createdAtLabel.setText("Oprettet: "+dateFormat.format(c.getCreatedAt()));
+        lastUpdateLabel.setText("Sidst opdateret: "+dateFormat.format(c.getLastUpdated()));
         ownerLabel.setText(c.getCustomer().getCostumerName());
         cl = gui.getCl();
         this.gui = gui;
