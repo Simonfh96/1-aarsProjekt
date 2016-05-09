@@ -57,7 +57,6 @@ public class GUI extends javax.swing.JFrame {
         list.setVisible(false);
         costScrollSearch.add(list);
         cal = Calendar.getInstance();
-        //c = new Case(5, "Sag", "Objekt", cal.getTime());
         cl = (CardLayout) cardPanel.getLayout();
         //cl.addLayoutComponent(newCasePanel, "New case");
         try {
