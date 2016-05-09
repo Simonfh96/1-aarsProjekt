@@ -69,7 +69,7 @@ public class CaseHandler {
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt1);
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt2);
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt3);
-    }
+        }
 
     /*CustomerHandler og ArticlerHandler der kalder en saveCustomer(Costumer customer) 
     og saveArticles(ArrayList<Article> articles) inde i saveCase(Case c). En getter henter customerid fra

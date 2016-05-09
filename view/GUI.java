@@ -159,6 +159,7 @@ public class GUI extends javax.swing.JFrame {
         dbUrlField = new javax.swing.JTextField();
         dbInfoCheckBox = new javax.swing.JCheckBox();
         changeDbButton = new javax.swing.JButton();
+        editCasePanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -554,6 +555,19 @@ public class GUI extends javax.swing.JFrame {
 
         tabbedPane.addTab("Admin", adminPanel);
 
+        javax.swing.GroupLayout editCasePanelLayout = new javax.swing.GroupLayout(editCasePanel);
+        editCasePanel.setLayout(editCasePanelLayout);
+        editCasePanelLayout.setHorizontalGroup(
+            editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1056, Short.MAX_VALUE)
+        );
+        editCasePanelLayout.setVerticalGroup(
+            editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 586, Short.MAX_VALUE)
+        );
+
+        tabbedPane.addTab("tab4", editCasePanel);
+
         cardPanel.add(tabbedPane, "card2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -701,6 +715,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField dbPasswordField;
     private javax.swing.JTextField dbUrlField;
     private javax.swing.JTextField dbUserField;
+    private javax.swing.JPanel editCasePanel;
     private javax.swing.JCheckBox existingCostumerCheckBox;
     private javax.swing.JTextField findCostumerField;
     private javax.swing.JLabel jLabel1;
