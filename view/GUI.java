@@ -638,10 +638,6 @@ public class GUI extends javax.swing.JFrame {
                 list.revalidate();
                 list.repaint();
                 list.ensureIndexIsVisible(0);
-                
-                System.out.println("list showing? " + list.isShowing());
-                
-
             } catch (SQLException ex) {
                 Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
 
