@@ -40,6 +40,20 @@ public class CaseHandler {
         return cases;
     }
     
+    public ArrayList<Case> getCasesNewest() throws SQLException {
+        ArrayList<Case> cases = new ArrayList<>();
+        String statement;
+        statement = "SELECT * FROM cases ORDER BY lastUpdated DESC LIMIT 10;";
+        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+        while (rs.next()) {
+            Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
+            Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),/*rs.getString("object"),*/
+                    rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
+            cases.add(c);
+        }
+        return cases;
+    }
+    
     public ArrayList<Case> searchCases(int konsNmb, String caseName) throws SQLException {
         ArrayList<Case> cases = new ArrayList<>();
         String statement;
