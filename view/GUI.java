@@ -629,9 +629,9 @@ public class GUI extends javax.swing.JFrame {
                 listModel.trimToSize();
 
                 
-                costScrollSearch.setBounds(6, 300, 206, costumers.size() * 20);
+               costScrollSearch.setBounds(6, 300, 206, costumers.size() * 25);
                costScrollSearch.setViewportView(list);
-                costScrollSearch.setVisible(true);
+               costScrollSearch.setVisible(true);
                 
                 
                 list.setVisible(true);
