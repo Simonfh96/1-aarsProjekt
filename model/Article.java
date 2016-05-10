@@ -26,7 +26,7 @@ public class Article {
     
     @Override
     public String toString() {
-        return name + "\t" + objectType + "\tKonsNr: " + konsNmb;
+        return name + " -" + "  KonsNr: " + konsNmb;
     }
     
 

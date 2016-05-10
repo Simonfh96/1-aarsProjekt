@@ -795,7 +795,7 @@
                                                                   <Group type="102" alignment="0" attributes="0">
                                                                       <Component id="jLabel33" min="-2" max="-2" attributes="0"/>
                                                                       <EmptySpace max="-2" attributes="0"/>
-                                                                      <Component id="tlfCostumerLabel" max="32767" attributes="0"/>
+                                                                      <Component id="phoneCostumerLabel" max="32767" attributes="0"/>
                                                                   </Group>
                                                                   <Group type="102" alignment="0" attributes="0">
                                                                       <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
@@ -919,7 +919,7 @@
                                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="3" attributes="0">
                                                           <Component id="jLabel33" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="tlfCostumerLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="phoneCostumerLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1283,7 +1283,7 @@
                 <Property name="text" type="java.lang.String" value="kontaktperson"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="tlfCostumerLabel">
+            <Component class="javax.swing.JLabel" name="phoneCostumerLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="nummer"/>
               </Properties>

@@ -80,6 +80,17 @@ public class GUI extends javax.swing.JFrame {
         }
         costScrollSearch.setDoubleBuffered(false);
     }
+    
+    public void editCaseSetup() {
+        for (Article a : c.getArticles()) {
+            listModelObjects.addElement(a);
+        }
+        caseBeginDateLabel.setText(""+c.getCreatedAt());
+        costumerNameLabel.setText(c.getCustomer().getCostumerName());
+        phoneCostumerLabel.setText(""+c.getCustomer().getPhone());
+        emailCostumerLabel.setText(c.getCustomer().getEmail());
+        
+    }
 
     public CardLayout getCl() {
         return cl;
@@ -207,7 +218,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel36 = new javax.swing.JLabel();
         costumerNameLabel = new javax.swing.JLabel();
         contactPersonCostumerLabel = new javax.swing.JLabel();
-        tlfCostumerLabel = new javax.swing.JLabel();
+        phoneCostumerLabel = new javax.swing.JLabel();
         emailCostumerLabel = new javax.swing.JLabel();
         adressCostumerLabel = new javax.swing.JLabel();
         zipCodeCostumerLabel = new javax.swing.JLabel();
@@ -711,7 +722,7 @@ public class GUI extends javax.swing.JFrame {
 
         contactPersonCostumerLabel.setText("kontaktperson");
 
-        tlfCostumerLabel.setText("nummer");
+        phoneCostumerLabel.setText("nummer");
 
         emailCostumerLabel.setText("email");
 
@@ -801,7 +812,7 @@ public class GUI extends javax.swing.JFrame {
                                                             .addGroup(editCasePanelLayout.createSequentialGroup()
                                                                 .addComponent(jLabel33)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(tlfCostumerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                                .addComponent(phoneCostumerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                                             .addGroup(editCasePanelLayout.createSequentialGroup()
                                                                 .addComponent(jLabel34)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -889,7 +900,7 @@ public class GUI extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                     .addComponent(jLabel33)
-                                                    .addComponent(tlfCostumerLabel))
+                                                    .addComponent(phoneCostumerLabel))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                     .addComponent(jLabel34)
@@ -1214,11 +1225,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JComboBox objectTypeBox;
     private javax.swing.JTextField objectTypeSField;
     private javax.swing.JTextField ownerSField;
+    private javax.swing.JLabel phoneCostumerLabel;
     private javax.swing.JPanel scrollCasePanel;
     private javax.swing.JScrollPane scroller;
     private javax.swing.JButton selectCostumerButton;
     private javax.swing.JTabbedPane tabbedPane;
-    private javax.swing.JLabel tlfCostumerLabel;
     private javax.swing.JLabel zipCodeCostumerLabel;
     // End of variables declaration//GEN-END:variables
 }

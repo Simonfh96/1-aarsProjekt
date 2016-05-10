@@ -40,7 +40,9 @@ public class CasePanel extends javax.swing.JPanel {
         this.c = c;
         caseNameLabel.setText(c.getCaseName());
         konsNrLabel.setText("" + c.getKonsNmb());
-        //objectLabel.setText(c.);
+        if (c.getArticles().size() > 0) {
+        objectLabel.setText(c.getArticles().get(0).getName());
+        }
         createdAtLabel.setText("Oprettet: "+dateFormat.format(c.getCreatedAt()));
         lastUpdateLabel.setText("Sidst opdateret: "+dateFormat.format(c.getLastUpdated()));
         ownerLabel.setText(c.getCustomer().getCostumerName());
@@ -140,6 +142,7 @@ public class CasePanel extends javax.swing.JPanel {
         }
         cl.next(gui.getCardPanel());
         gui.setC(c);
+        gui.editCaseSetup();
     }//GEN-LAST:event_casePanelEditButtonActionPerformed
 
 
