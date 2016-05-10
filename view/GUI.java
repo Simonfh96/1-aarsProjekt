@@ -5,6 +5,7 @@
  */
 package view;
 
+import dao.ArticleHandler;
 import dao.CaseHandler;
 import dao.CostumerHandler;
 import dao.DBHandler;
