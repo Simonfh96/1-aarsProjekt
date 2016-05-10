@@ -27,6 +27,16 @@ public class Employee {
         this.admin = admin;
         this.partTime = partTime;
     }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public boolean isPartTime() {
+        return partTime;
+    }
+    
+    
     
     
 }

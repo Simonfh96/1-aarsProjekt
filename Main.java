@@ -1,5 +1,7 @@
 
 import control.Control;
+import dao.EmployeeHandler;
+import java.sql.SQLException;
 import model.Employee;
 
 /*
@@ -24,11 +26,20 @@ public class Main {
         //Som ud fra admin og partime opretter control ud fra en af følgende controls sub-classes:
         //AdminControl, EmployeeControl og PartTimeControl således:
         //Logind skærm åbnes her
-        //employee = EmployeeHandler.getInstance().checkLogin();
-        //if (employee.isAdmin()) {
+//        employee = EmployeeHandler.getInstance().getEmployee(username, password);
+//        if (employee.isAdmin()) {
         //control = new AdminControl()
         //}
         //GUI gui = new GUI(control); 
     }
-    
+        
+//    
+//    public void login() throws SQLException{
+//        
+//        employee = EmployeeHandler.getInstance().getEmployee("dasda", "dsa");
+//        if (employee.isAdmin()) {
+//            control = new AdminControl();
+//        }
+//        }
+//    
 }
