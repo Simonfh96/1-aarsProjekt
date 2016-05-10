@@ -5,7 +5,6 @@
  */
 package view;
 
-import dao.ArticleHandler;
 import dao.CaseHandler;
 import dao.CostumerHandler;
 import dao.DBHandler;
@@ -747,10 +746,8 @@ public class GUI extends javax.swing.JFrame {
                                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jSeparator3)
                                             .addGroup(editCasePanelLayout.createSequentialGroup()
-                                                .addComponent(jButton1)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addGroup(editCasePanelLayout.createSequentialGroup()
                                                 .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jButton1)
                                                     .addComponent(jCheckBox2)
                                                     .addGroup(editCasePanelLayout.createSequentialGroup()
                                                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -768,7 +765,7 @@ public class GUI extends javax.swing.JFrame {
                                                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                             .addComponent(jButton3)
                                                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                                .addGap(0, 20, Short.MAX_VALUE)))
+                                                .addGap(0, 65, Short.MAX_VALUE)))
                                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(editCasePanelLayout.createSequentialGroup()
                                                 .addGap(40, 40, 40)
@@ -789,7 +786,7 @@ public class GUI extends javax.swing.JFrame {
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addComponent(zipCodeCostumerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editCasePanelLayout.createSequentialGroup()
-                                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                                .addGap(0, 45, Short.MAX_VALUE)
                                                                 .addComponent(jLabel31)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addComponent(costumerNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -997,12 +994,9 @@ public class GUI extends javax.swing.JFrame {
 
     private void findCostumerFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_findCostumerFieldKeyReleased
         String name = findCostumerField.getText();
-
         if (!(name.equals(""))) {
             costScrollSearch.setVisible(true);
- 
-                list.setVisible(true);
-
+            list.setVisible(true);
             try {
                 listModel.clear();
                 ArrayList<Costumer> costumers = CostumerHandler.getInstance().searchCostumerName(name);
@@ -1010,13 +1004,10 @@ public class GUI extends javax.swing.JFrame {
                     listModel.addElement(costumer);
                 }
                 listModel.trimToSize();
+                costScrollSearch.setBounds(6, 300, 206, costumers.size() * 25);
+                costScrollSearch.setViewportView(list);
+                costScrollSearch.setVisible(true);
 
-                
-               costScrollSearch.setBounds(6, 300, 206, costumers.size() * 25);
-               costScrollSearch.setViewportView(list);
-               costScrollSearch.setVisible(true);
-                
-                
                 list.setVisible(true);
                 list.revalidate();
                 list.repaint();
@@ -1031,12 +1022,11 @@ public class GUI extends javax.swing.JFrame {
             costScrollSearch.setVisible(false);
             list.setVisible(false);
         }
-        
+
     }//GEN-LAST:event_findCostumerFieldKeyReleased
 
     private void selectCostumerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectCostumerButtonActionPerformed
         costSearchSelected = (Costumer) listModel.getElementAt(list.getSelectedIndex());
-        System.out.println(costSearchSelected.getCostumerName());
     }//GEN-LAST:event_selectCostumerButtonActionPerformed
 
     private void findCostumerFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_findCostumerFieldMousePressed
