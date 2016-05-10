@@ -11,19 +11,23 @@ package model;
  */
 public class Article {
     private String name;
-    private int ID;
+    private int caseID;
     private String objectType;
     private String owner;
-    private int consNumber;
+    private int konsNmb;
 
-    public Article(String name, int ID, String objectType, String owner, int consNumber) {
+    public Article(String name, int caseID, String objectType, /*String owner,*/ int konsNmb) {
         this.name = name;
-        this.ID = ID;
+        this.caseID = caseID;
         this.objectType = objectType;
-        this.owner = owner;
-        this.consNumber = consNumber;
+        //this.owner = owner;
+        this.konsNmb = konsNmb;
     }
     
+    @Override
+    public String toString() {
+        return name + "\t" + objectType + "\tKonsNr: " + konsNmb;
+    }
     
 
     public String getName() {
@@ -34,13 +38,13 @@ public class Article {
         this.name = name;
     }
 
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
+//    public int getID() {
+//        return ID;
+//    }
+//
+//    public void setID(int ID) {
+//        this.ID = ID;
+//    }
 
     public String getObjectType() {
         return objectType;
@@ -58,13 +62,15 @@ public class Article {
         this.owner = owner;
     }
 
-    public int getConsNumber() {
-        return consNumber;
+    public int getKonsNmb() {
+        return konsNmb;
     }
 
-    public void setConsNumber(int consNumber) {
-        this.consNumber = consNumber;
+    public void setKonsNmb(int konsNmb) {
+        this.konsNmb = konsNmb;
     }
+
+    
     
     
 }

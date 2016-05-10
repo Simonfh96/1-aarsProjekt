@@ -12,6 +12,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import model.Article;
 import model.Costumer;
 
 /**
@@ -22,6 +23,7 @@ public class CaseHandler {
     private static CaseHandler instance;
     Calendar cal;
     DateFormat dateFormat = new SimpleDateFormat("YYYY/MM/dd HH:mm:ss");
+    
     private CaseHandler() {
         cal = Calendar.getInstance();
     }
@@ -33,8 +35,9 @@ public class CaseHandler {
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
-            Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),/*rs.getString("object"),*/
-                    rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
+            ArrayList<Article> articles = ArticleHandler.getInstance().getArticles(rs.getInt("case_id"));
+            Case c = new Case(rs.getInt("case_id") ,rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"), 
+                    articles, rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);
         }
         return cases;
@@ -47,8 +50,9 @@ public class CaseHandler {
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
-            Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),/*rs.getString("object"),*/
-                    rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
+            ArrayList<Article> articles = ArticleHandler.getInstance().getArticles(rs.getInt("case_id"));
+            Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),
+                    articles, rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);
         }
         return cases;
@@ -62,8 +66,9 @@ public class CaseHandler {
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
-            Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),/*rs.getString("object"),*/
-                    rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
+            ArrayList<Article> articles = ArticleHandler.getInstance().getArticles(rs.getInt("case_id"));
+            Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),
+                    articles, rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);
         }
         return cases;

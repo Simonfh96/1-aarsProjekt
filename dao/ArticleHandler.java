@@ -5,6 +5,11 @@
  */
 package dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import model.Article;
+
 /**
  *
  * @author pdyst
@@ -14,6 +19,18 @@ public class ArticleHandler {
     
     private ArticleHandler() {
         
+    }
+    
+      public ArrayList<Article> getArticles(int caseID) throws SQLException {
+        ArrayList<Article> articles = new ArrayList<>();
+        String statement;
+        statement = "SELECT * FROM objects WHERE case_id = '" + caseID + "';";
+        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+        while (rs.next()) {
+            Article article = new Article(rs.getString("objectName"), caseID, rs.getString("objectType"), rs.getInt("konsNr"));
+            articles.add(article);
+        }
+        return articles;
     }
     
     public static ArticleHandler getInstance() {
