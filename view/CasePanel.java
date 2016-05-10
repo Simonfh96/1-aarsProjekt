@@ -23,10 +23,10 @@ import model.Case;
 public class CasePanel extends javax.swing.JPanel {
     private DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY");
     private GUI gui;
+    private Calendar cal;
     private CardLayout cl;
     private Case c;
-    private Calendar cal;
-
+    
     /**
      * Creates new form CasePanel
      *

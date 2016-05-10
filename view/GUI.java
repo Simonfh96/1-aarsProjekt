@@ -23,6 +23,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import model.Article;
 import model.Case;
 import model.Costumer;
 
@@ -39,6 +40,7 @@ public class GUI extends javax.swing.JFrame {
     CardLayout cl;
     Costumer costSearchSelected;
     DefaultListModel listModel;
+    DefaultListModel listModelObjects;
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY HH:mm:ss");
     JList list;
 
@@ -53,7 +55,9 @@ public class GUI extends javax.swing.JFrame {
         int n = tabbedPane.indexOfTab("Admin");
         tabbedPane.setEnabledAt(2, false);
         listModel = new DefaultListModel();
+        listModelObjects = new DefaultListModel();
         list = new JList(listModel);
+        jList1.setModel(listModelObjects);
         list.setSize(206, 163);
         list.setVisible(false);
         costScrollSearch.add(list);
