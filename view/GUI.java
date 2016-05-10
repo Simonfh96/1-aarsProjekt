@@ -69,7 +69,7 @@ public class GUI extends javax.swing.JFrame {
             for (int i = 0; i < cases.size(); i++) {
                 //Skal laves til en metode, der kaldes hver gang, at man opretter nye CasePanels
                 CasePanel cp = new CasePanel(cases.get(i), this);
-                cp.setBounds(0, 52 * i, 745, 50);
+                cp.setBounds(0, 52 * i, 739, 50);
                 cp.setBorder(BorderFactory.createLineBorder(Color.black));
                 scrollCasePanel.add(cp);
             }
