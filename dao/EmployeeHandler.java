@@ -49,7 +49,7 @@ public class EmployeeHandler {
             ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
 
             while (rs.next()) {
-                employee = new Employee(rs.getString("username"), rs.getString("userPassword"), 
+                employee = new Employee(rs.getInt("employee_id"), rs.getString("username"), rs.getString("userPassword"), 
                         rs.getString("firstName") + " " + rs.getString("lastName"), 
                         rs.getInt("phone"), rs.getString("email"), rs.getBoolean("admin"), rs.getBoolean("partTime"));
             }

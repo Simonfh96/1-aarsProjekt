@@ -22,7 +22,8 @@ public class Employee {
     private boolean partTime;
     private ArrayList<Case> myCases;
 
-    public Employee(String username, String password, String name, int phone, String email, boolean admin, boolean partTime) {
+    public Employee(int employeeID, String username, String password, String name, int phone, String email, boolean admin, boolean partTime) {
+        this.employeeID = employeeID;
         this.username = username;
         this.password = password;
         this.name = name;
@@ -30,6 +31,14 @@ public class Employee {
         this.email = email;
         this.admin = admin;
         this.partTime = partTime;
+    }
+
+    public int getEmployeeID() {
+        return employeeID;
+    }
+
+    public ArrayList<Case> getMyCases() {
+        return myCases;
     }
 
     public boolean isAdmin() {

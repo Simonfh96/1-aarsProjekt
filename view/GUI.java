@@ -9,6 +9,7 @@ import control.Control;
 import dao.CaseHandler;
 import dao.CostumerHandler;
 import dao.DBHandler;
+import dao.EmployeeHandler;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -69,20 +70,23 @@ public class GUI extends javax.swing.JFrame {
         cal = Calendar.getInstance();
         cl = (CardLayout) cardPanel.getLayout();
         try {
-            cases = CaseHandler.getInstance().getCasesNewest();
-            for (int i = 0; i < cases.size(); i++) {
-                //Skal laves til en metode, der kaldes hver gang, at man opretter nye CasePanels
-                CasePanel cp = new CasePanel(cases.get(i), this);
-                cp.setBounds(0, 52 * i, 739, 50);
-                cp.setBorder(BorderFactory.createLineBorder(Color.black));
-                scrollCasePanel.add(cp);
-            }
+            generateCasePanels(CaseHandler.getInstance().getCasesNewest(), newestCasesPanel);
+            generateCasePanels(CaseHandler.getInstance().getMyCases(employee.getEmployeeID()), myCasesPanel);
             repaint();
             revalidate();
         } catch (SQLException ex) {
             //Det bliver formentlig efter en login skærm
         }
         costScrollSearch.setDoubleBuffered(false);
+    }
+    
+    public void generateCasePanels(ArrayList<Case> cases, JPanel panel) {
+        for (int i = 0; i < cases.size(); i++) {
+                CasePanel cp = new CasePanel(cases.get(i), this);
+                cp.setBounds(0, 52 * i, 739, 50);
+                cp.setBorder(BorderFactory.createLineBorder(Color.black));
+                panel.add(cp);
+            }
     }
     
     public void editCaseSetup() {
@@ -136,12 +140,13 @@ public class GUI extends javax.swing.JFrame {
         objectTypeSField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
-        myCasesPanel = new javax.swing.JPanel();
+        myCasesTab = new javax.swing.JPanel();
         myCasesScrollPane = new javax.swing.JScrollPane();
+        myCasesPanel = new javax.swing.JPanel();
+        NewestCasesTab = new javax.swing.JPanel();
+        newestCasesScrollPane = new javax.swing.JScrollPane();
         newestCasesPanel = new javax.swing.JPanel();
-        scroller = new javax.swing.JScrollPane();
-        scrollCasePanel = new javax.swing.JPanel();
-        finishedCasesPanel = new javax.swing.JPanel();
+        finishedCasesTab = new javax.swing.JPanel();
         newCasePanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -273,55 +278,68 @@ public class GUI extends javax.swing.JFrame {
         myCasesPanel.setLayout(myCasesPanelLayout);
         myCasesPanelLayout.setHorizontalGroup(
             myCasesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(myCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
+            .addGap(0, 738, Short.MAX_VALUE)
         );
         myCasesPanelLayout.setVerticalGroup(
             myCasesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(myCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
-        );
-
-        jTabbedPane2.addTab("Mine sager", myCasesPanel);
-
-        scroller.setHorizontalScrollBar(null);
-
-        javax.swing.GroupLayout scrollCasePanelLayout = new javax.swing.GroupLayout(scrollCasePanel);
-        scrollCasePanel.setLayout(scrollCasePanelLayout);
-        scrollCasePanelLayout.setHorizontalGroup(
-            scrollCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 795, Short.MAX_VALUE)
-        );
-        scrollCasePanelLayout.setVerticalGroup(
-            scrollCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 591, Short.MAX_VALUE)
         );
 
-        scroller.setViewportView(scrollCasePanel);
+        myCasesScrollPane.setViewportView(myCasesPanel);
+
+        javax.swing.GroupLayout myCasesTabLayout = new javax.swing.GroupLayout(myCasesTab);
+        myCasesTab.setLayout(myCasesTabLayout);
+        myCasesTabLayout.setHorizontalGroup(
+            myCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(myCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
+        );
+        myCasesTabLayout.setVerticalGroup(
+            myCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(myCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
+        );
+
+        jTabbedPane2.addTab("Mine sager", myCasesTab);
+
+        newestCasesScrollPane.setHorizontalScrollBar(null);
 
         javax.swing.GroupLayout newestCasesPanelLayout = new javax.swing.GroupLayout(newestCasesPanel);
         newestCasesPanel.setLayout(newestCasesPanelLayout);
         newestCasesPanelLayout.setHorizontalGroup(
             newestCasesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scroller, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
+            .addGap(0, 795, Short.MAX_VALUE)
         );
         newestCasesPanelLayout.setVerticalGroup(
             newestCasesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scroller)
+            .addGap(0, 591, Short.MAX_VALUE)
         );
 
-        jTabbedPane2.addTab("Nye sager", newestCasesPanel);
+        newestCasesScrollPane.setViewportView(newestCasesPanel);
 
-        javax.swing.GroupLayout finishedCasesPanelLayout = new javax.swing.GroupLayout(finishedCasesPanel);
-        finishedCasesPanel.setLayout(finishedCasesPanelLayout);
-        finishedCasesPanelLayout.setHorizontalGroup(
-            finishedCasesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout NewestCasesTabLayout = new javax.swing.GroupLayout(NewestCasesTab);
+        NewestCasesTab.setLayout(NewestCasesTabLayout);
+        NewestCasesTabLayout.setHorizontalGroup(
+            NewestCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(newestCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
+        );
+        NewestCasesTabLayout.setVerticalGroup(
+            NewestCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(newestCasesScrollPane)
+        );
+
+        jTabbedPane2.addTab("Nye sager", NewestCasesTab);
+
+        javax.swing.GroupLayout finishedCasesTabLayout = new javax.swing.GroupLayout(finishedCasesTab);
+        finishedCasesTab.setLayout(finishedCasesTabLayout);
+        finishedCasesTabLayout.setHorizontalGroup(
+            finishedCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 740, Short.MAX_VALUE)
         );
-        finishedCasesPanelLayout.setVerticalGroup(
-            finishedCasesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        finishedCasesTabLayout.setVerticalGroup(
+            finishedCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 593, Short.MAX_VALUE)
         );
 
-        jTabbedPane2.addTab("Afsluttede sager", finishedCasesPanel);
+        jTabbedPane2.addTab("Afsluttede sager", finishedCasesTab);
 
         javax.swing.GroupLayout caseHandlingPanelLayout = new javax.swing.GroupLayout(caseHandlingPanel);
         caseHandlingPanel.setLayout(caseHandlingPanelLayout);
@@ -1063,13 +1081,13 @@ public class GUI extends javax.swing.JFrame {
 
     private void caseSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caseSearchButtonActionPerformed
         try {
-            scrollCasePanel.removeAll();
+            newestCasesPanel.removeAll();
             cases = CaseHandler.getInstance().searchCases(Integer.parseInt(caseNmbSField.getText()), caseNameSField.getText());
             for (int i = 0; i < cases.size(); i++) {
                 CasePanel cp = new CasePanel(cases.get(i), this);
                 cp.setBounds(0, 52 * i, 739, 50);
                 cp.setBorder(BorderFactory.createLineBorder(Color.black));
-                scrollCasePanel.add(cp);
+                newestCasesPanel.add(cp);
             }
             repaint();
             revalidate();
@@ -1189,6 +1207,7 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel NewestCasesTab;
     private javax.swing.JPanel adminPanel;
     private javax.swing.JLabel adressCostumerLabel;
     private javax.swing.JPanel cardPanel;
@@ -1217,7 +1236,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel emailCostumerLabel;
     private javax.swing.JCheckBox existingCostumerCheckBox;
     private javax.swing.JTextField findCostumerField;
-    private javax.swing.JPanel finishedCasesPanel;
+    private javax.swing.JPanel finishedCasesTab;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -1295,6 +1314,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField lastUpdatedField;
     private javax.swing.JPanel myCasesPanel;
     private javax.swing.JScrollPane myCasesScrollPane;
+    private javax.swing.JPanel myCasesTab;
     private javax.swing.JTextField newCaseAdressField;
     private javax.swing.JTextField newCaseContactField;
     private javax.swing.JTextField newCaseDescription;
@@ -1305,13 +1325,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField newCaseZipCodeField;
     private javax.swing.JButton newObjectButton;
     private javax.swing.JPanel newestCasesPanel;
+    private javax.swing.JScrollPane newestCasesScrollPane;
     private javax.swing.JTextField objectAmountField;
     private javax.swing.JComboBox objectTypeBox;
     private javax.swing.JTextField objectTypeSField;
     private javax.swing.JTextField ownerSField;
     private javax.swing.JLabel phoneCostumerLabel;
-    private javax.swing.JPanel scrollCasePanel;
-    private javax.swing.JScrollPane scroller;
     private javax.swing.JButton selectCostumerButton;
     private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JLabel zipCodeCostumerLabel;
