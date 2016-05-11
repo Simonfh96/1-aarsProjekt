@@ -53,7 +53,7 @@ public class GUI extends javax.swing.JFrame {
         //Hvis det ikke er admin brug de 2 linjer
         //costScrollSearch.setVisible(false);
         int n = tabbedPane.indexOfTab("Admin");
-        tabbedPane.setEnabledAt(2, false);
+        tabbedPane.setEnabledAt(2, true);
         listModel = new DefaultListModel();
         listModelObjects = new DefaultListModel();
         list = new JList(listModel);
@@ -272,7 +272,7 @@ public class GUI extends javax.swing.JFrame {
         );
         scrollCasePanelLayout.setVerticalGroup(
             scrollCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 582, Short.MAX_VALUE)
+            .addGap(0, 591, Short.MAX_VALUE)
         );
 
         scroller.setViewportView(scrollCasePanel);
@@ -298,7 +298,7 @@ public class GUI extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 584, Short.MAX_VALUE)
+            .addGap(0, 593, Short.MAX_VALUE)
         );
 
         jTabbedPane2.addTab("Afsluttede sager", jPanel2);
@@ -553,7 +553,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(newCaseDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addComponent(createCaseButton)
                 .addContainerGap())
         );
@@ -640,7 +640,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(dbInfoCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(changeDbButton)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Admin", adminPanel);
@@ -1017,19 +1017,18 @@ public class GUI extends javax.swing.JFrame {
                                     .addComponent(jLabel38))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jCheckBox4)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel42)
                             .addComponent(lastUpdatedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel41)
                             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4)))
+                            .addComponent(jButton4)
+                            .addComponent(editPanelBackButton))
+                        .addContainerGap())
                     .addGroup(editCasePanelLayout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(editPanelBackButton)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         cardPanel.add(editCasePanel, "card3");
