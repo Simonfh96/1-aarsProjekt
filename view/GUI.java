@@ -91,7 +91,8 @@ public class GUI extends javax.swing.JFrame {
         emailCostumerLabel.setText(c.getCustomer().getEmail());
         lastUpdatedField.setText(dateFormat.format(c.getLastUpdated()));
         caseDescriptionEditPanel.setText(c.getDescription());
-        
+        caseNmbEditPanel.setText(""+c.getKonsNmb());
+        caseNameEditPanel.setText(c.getCaseName());
     }
 
     public CardLayout getCl() {
@@ -231,9 +232,9 @@ public class GUI extends javax.swing.JFrame {
         caseEndedDateLabel = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
         jLabel39 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        caseNmbEditPanel = new javax.swing.JTextField();
         jLabel40 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        caseNameEditPanel = new javax.swing.JTextField();
         jLabel41 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jLabel42 = new javax.swing.JLabel();
@@ -816,11 +817,11 @@ public class GUI extends javax.swing.JFrame {
                                                         .addGap(0, 0, Short.MAX_VALUE)
                                                         .addComponent(jLabel39)))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(caseNmbEditPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel40)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(caseNameEditPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(editCasePanelLayout.createSequentialGroup()
@@ -899,9 +900,9 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jLabel26)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel39)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(caseNmbEditPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel40)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(caseNameEditPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(editCasePanelLayout.createSequentialGroup()
@@ -1168,7 +1169,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField caseDescriptionEditPanel;
     private javax.swing.JLabel caseEndedDateLabel;
     private javax.swing.JPanel caseHandlingPanel;
+    private javax.swing.JTextField caseNameEditPanel;
     private javax.swing.JTextField caseNameSField;
+    private javax.swing.JTextField caseNmbEditPanel;
     private javax.swing.JTextField caseNmbSField;
     private javax.swing.JButton caseSearchButton;
     private javax.swing.JButton changeDbButton;
@@ -1260,8 +1263,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField lastUpdatedField;
     private javax.swing.JTextField newCaseAdressField;
