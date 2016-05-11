@@ -132,7 +132,7 @@ public class LoginView extends javax.swing.JFrame {
             } else {
                 control = new EmployeeControl();
             }
-            GUI gui = new GUI(control);
+            GUI gui = new GUI(control, employee);
             gui.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);

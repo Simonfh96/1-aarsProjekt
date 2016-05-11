@@ -44,15 +44,17 @@ public class GUI extends javax.swing.JFrame {
     private DefaultListModel listModel;
     private DefaultListModel listModelObjects;
     private DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY HH:mm:ss");
+    private static Employee employee;
     private JList list;
 
     /**
      * Creates new form GUI
      */
-    public GUI(Control control) {
+    public GUI(Control control, Employee employee) {
         initComponents();
         this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         this.control = control;
+        this.employee = employee;
         //Hvis det ikke er admin brug de 2 linjer
         //costScrollSearch.setVisible(false);
         int n = tabbedPane.indexOfTab("Admin");
@@ -135,6 +137,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         myCasesPanel = new javax.swing.JPanel();
+        myCasesScrollPane = new javax.swing.JScrollPane();
         newestCasesPanel = new javax.swing.JPanel();
         scroller = new javax.swing.JScrollPane();
         scrollCasePanel = new javax.swing.JPanel();
@@ -270,11 +273,11 @@ public class GUI extends javax.swing.JFrame {
         myCasesPanel.setLayout(myCasesPanelLayout);
         myCasesPanelLayout.setHorizontalGroup(
             myCasesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 740, Short.MAX_VALUE)
+            .addComponent(myCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
         );
         myCasesPanelLayout.setVerticalGroup(
             myCasesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 593, Short.MAX_VALUE)
+            .addComponent(myCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
         );
 
         jTabbedPane2.addTab("Mine sager", myCasesPanel);
@@ -402,14 +405,8 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         findCostumerField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                findCostumerFieldKeyPressed(evt);
-            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 findCostumerFieldKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                findCostumerFieldKeyTyped(evt);
             }
         });
 
@@ -1101,7 +1098,7 @@ public class GUI extends javax.swing.JFrame {
                 costScrollSearch.setBounds(6, 300, 206, costumers.size() * 25);
                 costScrollSearch.setViewportView(list);
                 costScrollSearch.setVisible(true);
-
+                //Checker der tjekker, om der trykkes ned på piletasten, så den går ned på listen med søgeforslag
                 list.setVisible(true);
                 list.revalidate();
                 list.repaint();
@@ -1151,14 +1148,6 @@ public class GUI extends javax.swing.JFrame {
         revalidate();
     }//GEN-LAST:event_newCaseDescriptionMousePressed
 
-    private void findCostumerFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_findCostumerFieldKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_findCostumerFieldKeyTyped
-
-    private void findCostumerFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_findCostumerFieldKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_findCostumerFieldKeyPressed
-
     private void editPanelBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editPanelBackButtonActionPerformed
         c = null;
         cl.previous(cardPanel);
@@ -1194,7 +1183,7 @@ public class GUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI(control).setVisible(true);
+                new GUI(control, employee).setVisible(true);
             }
         });
     }
@@ -1305,6 +1294,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField lastUpdatedField;
     private javax.swing.JPanel myCasesPanel;
+    private javax.swing.JScrollPane myCasesScrollPane;
     private javax.swing.JTextField newCaseAdressField;
     private javax.swing.JTextField newCaseContactField;
     private javax.swing.JTextField newCaseDescription;
