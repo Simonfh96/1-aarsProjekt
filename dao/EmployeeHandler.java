@@ -25,7 +25,7 @@ public class EmployeeHandler {
         boolean check = false;
         DBHandler dbh = DBHandler.getInstance();
         Statement stm = (Statement) dbh.getConn().createStatement();
-        String sql = "SELECT * FROM users WHERE username = '" + username + "' AND pssword = '" + password + "'";
+        String sql = "SELECT * FROM employee WHERE username LIKE '" + username + "' AND userPassword = '" + password + "'";
         ResultSet rs = stm.executeQuery(sql);
         while (rs.next()) {
             check = true;
@@ -44,7 +44,7 @@ public class EmployeeHandler {
         if (loggedIn) {
         try {
             String statement;
-            statement = "SELECT * FROM users WHERE username LIKE '" + username + "' AND pssword = '" + password + "'";
+            statement = "SELECT * FROM employee WHERE username LIKE '" + username + "' AND userPassword = '" + password + "'";
             System.out.println(statement);
             ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
 
