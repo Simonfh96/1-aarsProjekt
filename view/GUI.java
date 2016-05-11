@@ -241,6 +241,7 @@ public class GUI extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jLabel42 = new javax.swing.JLabel();
         lastUpdatedField = new javax.swing.JTextField();
+        editPanelBackButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -766,6 +767,13 @@ public class GUI extends javax.swing.JFrame {
 
         lastUpdatedField.setEditable(false);
 
+        editPanelBackButton.setText("Tilbage");
+        editPanelBackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editPanelBackButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout editCasePanelLayout = new javax.swing.GroupLayout(editCasePanel);
         editCasePanel.setLayout(editCasePanelLayout);
         editCasePanelLayout.setHorizontalGroup(
@@ -774,7 +782,9 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(editCasePanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(editPanelBackButton))
                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(editCasePanelLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1016,7 +1026,9 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jButton4)))
                     .addGroup(editCasePanelLayout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 32, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(editPanelBackButton)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -1131,6 +1143,11 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_findCostumerFieldKeyPressed
 
+    private void editPanelBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editPanelBackButtonActionPerformed
+        c = null;
+        cl.previous(cardPanel);
+    }//GEN-LAST:event_editPanelBackButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1191,6 +1208,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField dbUrlField;
     private javax.swing.JTextField dbUserField;
     private javax.swing.JPanel editCasePanel;
+    private javax.swing.JButton editPanelBackButton;
     private javax.swing.JLabel emailCostumerLabel;
     private javax.swing.JCheckBox existingCostumerCheckBox;
     private javax.swing.JTextField findCostumerField;
