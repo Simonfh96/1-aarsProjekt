@@ -63,7 +63,6 @@ public class GUI extends javax.swing.JFrame {
         costScrollSearch.add(list);
         cal = Calendar.getInstance();
         cl = (CardLayout) cardPanel.getLayout();
-        //cl.addLayoutComponent(newCasePanel, "New case");
         try {
             cases = CaseHandler.getInstance().getCasesNewest();
             for (int i = 0; i < cases.size(); i++) {
