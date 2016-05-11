@@ -26,6 +26,7 @@ import javax.swing.JPanel;
 import model.Article;
 import model.Case;
 import model.Costumer;
+import model.Employee;
 
 /**
  *
@@ -81,6 +82,7 @@ public class GUI extends javax.swing.JFrame {
     }
     
     public void editCaseSetup() {
+        listModelObjects.clear();
         for (Article a : c.getArticles()) {
             listModelObjects.addElement(a);
         }
