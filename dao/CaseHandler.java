@@ -61,8 +61,8 @@ public class CaseHandler {
     public ArrayList<Case> searchCases(int konsNmb, String caseName) throws SQLException {
         ArrayList<Case> cases = new ArrayList<>();
         String statement;
-        statement = "SELECT * FROM cases WHERE konsNr = '"
-                + konsNmb + "' OR caseName LIKE '" + caseName + "%';";
+        statement = "SELECT * FROM cases WHERE konsNr = "
+                + konsNmb + " OR caseName LIKE '" + caseName + "%';";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));

@@ -1054,7 +1054,7 @@ public class GUI extends javax.swing.JFrame {
             cases = CaseHandler.getInstance().searchCases(Integer.parseInt(caseNmbSField.getText()), caseNameSField.getText());
             for (int i = 0; i < cases.size(); i++) {
                 CasePanel cp = new CasePanel(cases.get(i), this);
-                cp.setBounds(0, 111 * i, 303, 110);
+                cp.setBounds(0, 52 * i, 739, 50);
                 cp.setBorder(BorderFactory.createLineBorder(Color.black));
                 scrollCasePanel.add(cp);
             }
