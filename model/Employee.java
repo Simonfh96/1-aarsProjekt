@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author pdyst
@@ -17,6 +19,7 @@ public class Employee {
     private String email;
     private boolean admin;
     private boolean partTime;
+    private ArrayList<Case> myCases;
 
     public Employee(String username, String password, String name, int phone, String email, boolean admin, boolean partTime) {
         this.username = username;
