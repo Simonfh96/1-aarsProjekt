@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author pdyst
  */
 public class Employee {
+    private int employeeID;
     private String username;
     private String password;
     private String name;
