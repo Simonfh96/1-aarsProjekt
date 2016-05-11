@@ -49,7 +49,9 @@ public class EmployeeHandler {
             ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
 
             while (rs.next()) {
-                //employee = new Employee(username, password, username, 0, username, true, true);
+                employee = new Employee(rs.getString("username"), rs.getString("userPassword"), 
+                        rs.getString("firstName") + " " + rs.getString("lastName"), 
+                        rs.getInt("phone"), rs.getString("email"), rs.getBoolean("admin"), rs.getBoolean("partTime"));
             }
         } catch (SQLException ex) {
 
