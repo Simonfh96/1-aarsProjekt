@@ -93,6 +93,8 @@ public class GUI extends javax.swing.JFrame {
         caseDescriptionEditPanel.setText(c.getDescription());
         caseNmbEditPanel.setText(""+c.getKonsNmb());
         caseNameEditPanel.setText(c.getCaseName());
+        adressCostumerLabel.setText(c.getCustomer().getAddress());
+        zipCodeCostumerLabel.setText(c.getCustomer().getCityOfZip());
     }
 
     public CardLayout getCl() {

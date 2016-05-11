@@ -15,14 +15,18 @@ public class Costumer {
     private int mNumb;
     private int phone;
     private String email;
+    private String address;
+    private String cityOfZip;
     private int costumerID;
 
-    public Costumer(String costumerName, String mAcro, int mNumb, int phone, String email, int costumerID) {
+    public Costumer(String costumerName, String mAcro, int mNumb, int phone, String email, String address, String cityOfZip, int costumerID) {
         this.costumerName = costumerName;
         this.mAcro = mAcro;
         this.mNumb = mNumb;
         this.phone = phone;
         this.email = email;
+        this.address = address;
+        this.cityOfZip = cityOfZip;
         this.costumerID = costumerID;
     }
     
@@ -73,6 +77,14 @@ public class Costumer {
 
     public int getCostumerID() {
         return costumerID;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getCityOfZip() {
+        return cityOfZip;
     }
     
     
