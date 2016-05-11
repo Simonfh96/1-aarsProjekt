@@ -25,7 +25,6 @@ public class CostumerHandler {
         ArrayList<Costumer> costumers = new ArrayList<>();
         String statement;
         statement = "SELECT * FROM costumer LEFT JOIN zipCodes ON costumer.zipCode = zipCodes.zipCode WHERE costumerName LIKE '" + name + "%';";
-        //statement = "SELECT * FROM costumer WHERE costumerName LIKE 'Fr%';";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Costumer costumer = new Costumer(rs.getString("costumerName"), rs.getString("museumAcro"),

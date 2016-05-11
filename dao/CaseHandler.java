@@ -37,12 +37,12 @@ public class CaseHandler {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
             ArrayList<Article> articles = ArticleHandler.getInstance().getArticles(rs.getInt("case_id"));
             Case c = new Case(rs.getInt("case_id") ,rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"), 
-                    articles, rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
+                    articles, /*rs.getBoolean("finished")*/ rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);
         }
         return cases;
     }
-    
+//    
     public ArrayList<Case> getCasesNewest() throws SQLException {
         ArrayList<Case> cases = new ArrayList<>();
         String statement;
@@ -61,17 +61,36 @@ public class CaseHandler {
     public ArrayList<Case> getMyCases(int employeeID) throws SQLException {
         ArrayList<Case> cases = new ArrayList<>();
         String statement;
+        //and finished = 0;
         statement = "SELECT * FROM myCases LEFT JOIN cases ON myCases.cases_id = cases.case_id WHERE employee_id =" + employeeID + ";";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
             ArrayList<Article> articles = ArticleHandler.getInstance().getArticles(rs.getInt("case_id"));
             Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),
-                    articles, rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
+                    articles, /*rs.getBoolean("finished")*/ rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);
         }
         return cases;
     }
+    
+    public ArrayList<Case> getFinishedCases() throws SQLException {
+        ArrayList<Case> cases = new ArrayList<>();
+        String statement;
+        //and finished = 0;
+        statement = "SELECT * FROM cases WHERE finished = 1;";
+        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+        while (rs.next()) {
+            Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
+            ArrayList<Article> articles = ArticleHandler.getInstance().getArticles(rs.getInt("case_id"));
+            Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),
+                    articles, /*rs.getBoolean("finished")*/ rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
+            cases.add(c);
+        }
+        return cases;
+    }
+    
+    
     
     public ArrayList<Case> searchCases(int konsNmb, String caseName) throws SQLException {
         ArrayList<Case> cases = new ArrayList<>();
@@ -83,7 +102,7 @@ public class CaseHandler {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
             ArrayList<Article> articles = ArticleHandler.getInstance().getArticles(rs.getInt("case_id"));
             Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),
-                    articles, rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
+                    articles, /*rs.getBoolean("finished"),*/ rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);
         }
         return cases;

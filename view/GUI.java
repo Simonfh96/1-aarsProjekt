@@ -35,7 +35,7 @@ import model.Employee;
  * @author Simon
  */
 public class GUI extends javax.swing.JFrame {
-    private ArrayList<Case> cases;
+    ArrayList<Case> cases;
     private ArrayList<CasePanel> casePanels;
     private Case c;
     private Calendar cal;
@@ -70,8 +70,10 @@ public class GUI extends javax.swing.JFrame {
         cal = Calendar.getInstance();
         cl = (CardLayout) cardPanel.getLayout();
         try {
-            generateCasePanels(CaseHandler.getInstance().getCasesNewest(), newestCasesPanel);
+            cases = CaseHandler.getInstance().getCasesNewest();
+            generateCasePanels(cases, newestCasesPanel);
             generateCasePanels(CaseHandler.getInstance().getMyCases(employee.getEmployeeID()), myCasesPanel);
+            //generateCasePanels(CaseHandler.getInstance().getFinishedCases(), finishedcasesPanel);
             repaint();
             revalidate();
         } catch (SQLException ex) {
@@ -147,6 +149,8 @@ public class GUI extends javax.swing.JFrame {
         newestCasesScrollPane = new javax.swing.JScrollPane();
         newestCasesPanel = new javax.swing.JPanel();
         finishedCasesTab = new javax.swing.JPanel();
+        finishedCasesScrollPane = new javax.swing.JScrollPane();
+        finishedcasesPanel = new javax.swing.JPanel();
         newCasePanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -291,11 +295,11 @@ public class GUI extends javax.swing.JFrame {
         myCasesTab.setLayout(myCasesTabLayout);
         myCasesTabLayout.setHorizontalGroup(
             myCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(myCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
+            .addComponent(myCasesScrollPane)
         );
         myCasesTabLayout.setVerticalGroup(
             myCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(myCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
+            .addComponent(myCasesScrollPane)
         );
 
         jTabbedPane2.addTab("Mine sager", myCasesTab);
@@ -328,15 +332,28 @@ public class GUI extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Nye sager", NewestCasesTab);
 
+        javax.swing.GroupLayout finishedcasesPanelLayout = new javax.swing.GroupLayout(finishedcasesPanel);
+        finishedcasesPanel.setLayout(finishedcasesPanelLayout);
+        finishedcasesPanelLayout.setHorizontalGroup(
+            finishedcasesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 738, Short.MAX_VALUE)
+        );
+        finishedcasesPanelLayout.setVerticalGroup(
+            finishedcasesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 591, Short.MAX_VALUE)
+        );
+
+        finishedCasesScrollPane.setViewportView(finishedcasesPanel);
+
         javax.swing.GroupLayout finishedCasesTabLayout = new javax.swing.GroupLayout(finishedCasesTab);
         finishedCasesTab.setLayout(finishedCasesTabLayout);
         finishedCasesTabLayout.setHorizontalGroup(
             finishedCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 740, Short.MAX_VALUE)
+            .addComponent(finishedCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
         );
         finishedCasesTabLayout.setVerticalGroup(
             finishedCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 593, Short.MAX_VALUE)
+            .addComponent(finishedCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
         );
 
         jTabbedPane2.addTab("Afsluttede sager", finishedCasesTab);
@@ -1080,21 +1097,21 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void caseSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caseSearchButtonActionPerformed
-        try {
-            newestCasesPanel.removeAll();
-            cases = CaseHandler.getInstance().searchCases(Integer.parseInt(caseNmbSField.getText()), caseNameSField.getText());
-            for (int i = 0; i < cases.size(); i++) {
-                CasePanel cp = new CasePanel(cases.get(i), this);
-                cp.setBounds(0, 52 * i, 739, 50);
-                cp.setBorder(BorderFactory.createLineBorder(Color.black));
-                newestCasesPanel.add(cp);
-            }
-            repaint();
-            revalidate();
-        } catch (SQLException ex) {
-            //JOptionPane.showMessageDialog(rootPane, ex, title, HEIGHT);
-            //Eller label med rød tekst
-        }
+//        try {
+//            newestCasesPanel.removeAll();
+//            cases = CaseHandler.getInstance().searchCases(Integer.parseInt(caseNmbSField.getText()), caseNameSField.getText());
+//            for (int i = 0; i < cases.size(); i++) {
+//                CasePanel cp = new CasePanel(cases.get(i), this);
+//                cp.setBounds(0, 52 * i, 739, 50);
+//                cp.setBorder(BorderFactory.createLineBorder(Color.black));
+//                newestCasesPanel.add(cp);
+//            }
+//            repaint();
+//            revalidate();
+//        } catch (SQLException ex) {
+//            //JOptionPane.showMessageDialog(rootPane, ex, title, HEIGHT);
+//            //Eller label med rød tekst
+//        }
     }//GEN-LAST:event_caseSearchButtonActionPerformed
 
     private void changeDbButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeDbButtonActionPerformed
@@ -1236,7 +1253,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel emailCostumerLabel;
     private javax.swing.JCheckBox existingCostumerCheckBox;
     private javax.swing.JTextField findCostumerField;
+    private javax.swing.JScrollPane finishedCasesScrollPane;
     private javax.swing.JPanel finishedCasesTab;
+    private javax.swing.JPanel finishedcasesPanel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

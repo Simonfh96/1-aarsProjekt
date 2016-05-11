@@ -1,6 +1,6 @@
 package view;
 
-import dao.CaseHandler;
+import dao.CostumerHandler;
 import java.awt.CardLayout;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Article;
 import model.Case;
+import model.Costumer;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -34,7 +35,7 @@ public class CasePanel extends javax.swing.JPanel {
      * @param c the case object which's getter methods is used to set the labels with info
      * @param gui a reference to the gui, which allows the Panel to navigate through the cardlayout
      */
-    public CasePanel(Case c, GUI gui) {
+    public CasePanel(Case c, GUI gui)  {
         initComponents();
         cal = Calendar.getInstance();
         this.c = c;
@@ -43,9 +44,9 @@ public class CasePanel extends javax.swing.JPanel {
         if (c.getArticles().size() > 0) {
         objectLabel.setText(c.getArticles().get(0).getName());
         }
+        ownerLabel.setText(c.getCustomer().getCostumerName() + "");
         createdAtLabel.setText("Oprettet: "+dateFormat.format(c.getCreatedAt()));
         lastUpdateLabel.setText("Sidst opdateret: "+dateFormat.format(c.getLastUpdated()));
-        ownerLabel.setText(c.getCustomer().getCostumerName());
         cl = gui.getCl();
         this.gui = gui;
     }
