@@ -5,16 +5,28 @@
  */
 package view;
 
+import control.AdminControl;
+import control.Control;
+import control.EmployeeControl;
+import control.PartTimeControl;
+import dao.EmployeeHandler;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.Employee;
+
 /**
  *
  * @author Tanja
  */
-public class LoginJFrame extends javax.swing.JFrame {
+public class LoginView extends javax.swing.JFrame {
+
+    Control control;
 
     /**
      * Creates new form LoginJFrame
      */
-    public LoginJFrame() {
+    public LoginView() {
         initComponents();
     }
 
@@ -28,11 +40,11 @@ public class LoginJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jTextField1 = new javax.swing.JTextField();
+        passwordField = new javax.swing.JPasswordField();
+        usernameField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        loginButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -41,7 +53,7 @@ public class LoginJFrame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("LiSong Pro", 0, 36)); // NOI18N
         jLabel1.setText("Log ind");
 
-        jPasswordField1.setText("jPasswordField1");
+        passwordField.setText("jPasswordField1");
 
         jLabel2.setFont(new java.awt.Font("LiSong Pro", 0, 18)); // NOI18N
         jLabel2.setText("Brugernavn");
@@ -49,10 +61,13 @@ public class LoginJFrame extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("LiSong Pro", 0, 18)); // NOI18N
         jLabel3.setText("Kodeord");
 
-        jButton1.setFont(new java.awt.Font("LiSong Pro", 0, 18)); // NOI18N
-        jButton1.setText("Log ind");
-
-        jLabel4.setIcon(new javax.swing.ImageIcon("/Users/Tanja/Desktop/BevaringBjællandLogo.png")); // NOI18N
+        loginButton.setFont(new java.awt.Font("LiSong Pro", 0, 18)); // NOI18N
+        loginButton.setText("Log ind");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,15 +82,15 @@ public class LoginJFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(111, 111, 111)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
+                            .addComponent(loginButton)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(210, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -90,19 +105,40 @@ public class LoginJFrame extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(41, 41, 41)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(loginButton)
                 .addGap(88, 88, 88))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        try {
+            //Der opstår nullpointer exception, hvis man ikke taster noget ind i feltet,
+            //Eller hvis den ikke kan finde det, så der skal sikres mod det
+            //Eventuelt med en hjælpende fejlbesked til brugeren
+            Employee employee = EmployeeHandler.getInstance().getEmployee(usernameField.getText(), passwordField.getText());
+            if (employee.isAdmin()) {
+                control = new AdminControl();
+            } else if (employee.isPartTime()) {
+                control = new PartTimeControl();
+            } else {
+                control = new EmployeeControl();
+            }
+            GUI gui = new GUI(control);
+            gui.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("JOptionThatSaysCan'tLogin");
+        }
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,31 +157,32 @@ public class LoginJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginJFrame().setVisible(true);
+                new LoginView().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton loginButton;
+    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables
 }

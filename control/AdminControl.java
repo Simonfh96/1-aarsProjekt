@@ -9,6 +9,9 @@ package control;
  *
  * @author pdyst
  */
-public abstract class Control {
+public class AdminControl extends Control {
+
+    public AdminControl() {
+    }
     
 }

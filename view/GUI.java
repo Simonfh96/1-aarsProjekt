@@ -5,6 +5,7 @@
  */
 package view;
 
+import control.Control;
 import dao.CaseHandler;
 import dao.CostumerHandler;
 import dao.DBHandler;
@@ -33,24 +34,25 @@ import model.Employee;
  * @author Simon
  */
 public class GUI extends javax.swing.JFrame {
-
-    ArrayList<Case> cases;
-    ArrayList<CasePanel> casePanels;
-    Case c;
-    Calendar cal;
-    CardLayout cl;
-    Costumer costSearchSelected;
-    DefaultListModel listModel;
-    DefaultListModel listModelObjects;
-    DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY HH:mm:ss");
-    JList list;
+    private ArrayList<Case> cases;
+    private ArrayList<CasePanel> casePanels;
+    private Case c;
+    private Calendar cal;
+    private CardLayout cl;
+    private static Control control;
+    private Costumer costSearchSelected;
+    private DefaultListModel listModel;
+    private DefaultListModel listModelObjects;
+    private DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY HH:mm:ss");
+    private JList list;
 
     /**
      * Creates new form GUI
      */
-    public GUI() {
+    public GUI(Control control) {
         initComponents();
         this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+        this.control = control;
         //Hvis det ikke er admin brug de 2 linjer
         //costScrollSearch.setVisible(false);
         int n = tabbedPane.indexOfTab("Admin");
@@ -1192,7 +1194,7 @@ public class GUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI().setVisible(true);
+                new GUI(control).setVisible(true);
             }
         });
     }

@@ -1,8 +1,8 @@
 
 import control.Control;
-import dao.EmployeeHandler;
-import java.sql.SQLException;
 import model.Employee;
+import view.GUI;
+import view.LoginView;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -31,6 +31,9 @@ public class Main {
         //control = new AdminControl()
         //}
         //GUI gui = new GUI(control); 
+        
+        LoginView lw = new LoginView();
+        lw.setVisible(true);
     }
         
 //    
