@@ -90,6 +90,7 @@ public class GUI extends javax.swing.JFrame {
         phoneCostumerLabel.setText(""+c.getCustomer().getPhone());
         emailCostumerLabel.setText(c.getCustomer().getEmail());
         lastUpdatedField.setText(dateFormat.format(c.getLastUpdated()));
+        caseDescriptionEditPanel.setText(c.getDescription());
         
     }
 
@@ -200,7 +201,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox();
         jLabel27 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        caseDescriptionEditPanel = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
         jComboBox4 = new javax.swing.JComboBox();
         jSeparator4 = new javax.swing.JSeparator();
@@ -831,7 +832,7 @@ public class GUI extends javax.swing.JFrame {
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                             .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                            .addComponent(jTextField2)))
+                                                            .addComponent(caseDescriptionEditPanel)))
                                                     .addComponent(jSeparator5)
                                                     .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addGroup(editCasePanelLayout.createSequentialGroup()
@@ -871,7 +872,6 @@ public class GUI extends javax.swing.JFrame {
                                                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(0, 0, Short.MAX_VALUE))
                                             .addGroup(editCasePanelLayout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(jLabel42)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(lastUpdatedField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -908,7 +908,7 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jCheckBox2)
                             .addComponent(jLabel27)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(caseDescriptionEditPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(editCasePanelLayout.createSequentialGroup()
                                 .addGap(6, 6, 6)
@@ -926,7 +926,7 @@ public class GUI extends javax.swing.JFrame {
                                             .addComponent(jLabel32)
                                             .addComponent(contactPersonCostumerLabel))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel33)
                                             .addComponent(phoneCostumerLabel))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1165,6 +1165,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel cardPanel;
     private javax.swing.JLabel caseBeginDateLabel;
     private javax.swing.JTextField caseCreationNameField;
+    private javax.swing.JTextField caseDescriptionEditPanel;
     private javax.swing.JLabel caseEndedDateLabel;
     private javax.swing.JPanel caseHandlingPanel;
     private javax.swing.JTextField caseNameSField;
@@ -1259,7 +1260,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
