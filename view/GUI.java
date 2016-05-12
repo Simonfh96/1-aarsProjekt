@@ -56,10 +56,11 @@ public class GUI extends javax.swing.JFrame {
         this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         this.control = control;
         this.employee = employee;
-        //Hvis det ikke er admin brug de 2 linjer
-        //costScrollSearch.setVisible(false);
-        int n = tabbedPane.indexOfTab("Admin");
-        tabbedPane.setEnabledAt(2, true);
+        int adminTab = tabbedPane.indexOfTab("Admin");
+        tabbedPane.setEnabledAt(adminTab, false);
+        if (employee.isAdmin()) {
+        tabbedPane.setEnabledAt(adminTab, true);
+        }
         listModel = new DefaultListModel();
         listModelObjects = new DefaultListModel();
         list = new JList(listModel);
