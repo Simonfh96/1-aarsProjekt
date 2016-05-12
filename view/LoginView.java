@@ -57,6 +57,7 @@ public class LoginView extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("LiSong Pro", 0, 36)); // NOI18N
         jLabel1.setText("Log ind");
 
+        passwordField.setText("''''''''");
         passwordField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 passwordFieldMousePressed(evt);
