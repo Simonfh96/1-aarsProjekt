@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import model.Article;
 import model.Costumer;
+import model.Employee;
 
 /**
  *
@@ -42,7 +43,7 @@ public class CaseHandler {
         }
         return cases;
     }
-//    
+    
     public ArrayList<Case> getCasesNewest() throws SQLException {
         ArrayList<Case> cases = new ArrayList<>();
         String statement;
@@ -153,6 +154,15 @@ public class CaseHandler {
         }
         return konsNmb;
     }
+    /*Metoden må kun benyttes på de sager, som er under fanen mine sager,
+    * da det kun bruges til referencer
+    */
+    public void deleteMyCase(int employeeID, int caseID) throws SQLException {
+        String stmt1;
+        stmt1 = "DELETE FROM mycases WHERE employee_id = " + employeeID + " AND cases_id = "+ caseID +";";
+        DBHandler.getInstance().conn.createStatement().executeUpdate(stmt1);
+        //Sikre at den ikke prøver at slette noget, som ikke er der
+        }
 
     public static CaseHandler getInstance() {
         if (instance == null) {

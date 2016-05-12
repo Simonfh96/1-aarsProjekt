@@ -67,6 +67,10 @@ public class Case {
         return customer;
     }
 
+    public int getCaseID() {
+        return caseID;
+    }
+
     
     
     

@@ -228,7 +228,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox3 = new javax.swing.JCheckBox();
-        jButton4 = new javax.swing.JButton();
+        saveChangesEditCaseButton = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JSeparator();
         jCheckBox4 = new javax.swing.JCheckBox();
         jLabel30 = new javax.swing.JLabel();
@@ -259,6 +259,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel42 = new javax.swing.JLabel();
         lastUpdatedField = new javax.swing.JTextField();
         editPanelBackButton = new javax.swing.JButton();
+        addToMyCasesCheckBox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -350,11 +351,11 @@ public class GUI extends javax.swing.JFrame {
         finishedCasesTab.setLayout(finishedCasesTabLayout);
         finishedCasesTabLayout.setHorizontalGroup(
             finishedCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(finishedCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
+            .addComponent(finishedCasesScrollPane)
         );
         finishedCasesTabLayout.setVerticalGroup(
             finishedCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(finishedCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
+            .addComponent(finishedCasesScrollPane)
         );
 
         jTabbedPane2.addTab("Afsluttede sager", finishedCasesTab);
@@ -764,7 +765,12 @@ public class GUI extends javax.swing.JFrame {
 
         jCheckBox3.setText("Fil i arkivet");
 
-        jButton4.setText("Gem ændringer");
+        saveChangesEditCaseButton.setText("Gem ændringer");
+        saveChangesEditCaseButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveChangesEditCaseButtonActionPerformed(evt);
+            }
+        });
 
         jCheckBox4.setText("Sagen er afsluttet");
 
@@ -823,6 +829,8 @@ public class GUI extends javax.swing.JFrame {
                 editPanelBackButtonActionPerformed(evt);
             }
         });
+
+        addToMyCasesCheckBox.setText("Tilføj til mine sager");
 
         javax.swing.GroupLayout editCasePanelLayout = new javax.swing.GroupLayout(editCasePanel);
         editCasePanel.setLayout(editCasePanelLayout);
@@ -889,6 +897,17 @@ public class GUI extends javax.swing.JFrame {
                                         .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editCasePanelLayout.createSequentialGroup()
+                                                .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(editCasePanelLayout.createSequentialGroup()
+                                                        .addComponent(jLabel37)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(caseBeginDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(editCasePanelLayout.createSequentialGroup()
+                                                        .addComponent(jLabel38)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(caseEndedDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGap(24, 24, 24))
                                             .addGroup(editCasePanelLayout.createSequentialGroup()
                                                 .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                     .addGroup(editCasePanelLayout.createSequentialGroup()
@@ -917,26 +936,9 @@ public class GUI extends javax.swing.JFrame {
                                                             .addComponent(emailCostumerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                             .addComponent(adressCostumerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                             .addComponent(zipCodeCostumerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                                                .addContainerGap())
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editCasePanelLayout.createSequentialGroup()
-                                                .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(editCasePanelLayout.createSequentialGroup()
-                                                        .addComponent(jLabel37)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(caseBeginDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(editCasePanelLayout.createSequentialGroup()
-                                                        .addComponent(jLabel38)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(caseEndedDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addComponent(jCheckBox4))
-                                                .addGap(24, 24, 24))))
+                                                .addContainerGap())))
                                     .addGroup(editCasePanelLayout.createSequentialGroup()
                                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(editCasePanelLayout.createSequentialGroup()
-                                                .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel25)
-                                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(0, 1086, Short.MAX_VALUE))
                                             .addGroup(editCasePanelLayout.createSequentialGroup()
                                                 .addGap(0, 0, Short.MAX_VALUE)
                                                 .addComponent(jLabel42)
@@ -947,7 +949,16 @@ public class GUI extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jButton4)))
+                                                .addComponent(saveChangesEditCaseButton))
+                                            .addGroup(editCasePanelLayout.createSequentialGroup()
+                                                .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel25)
+                                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(830, 830, 830)
+                                                .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(addToMyCasesCheckBox)
+                                                    .addComponent(jCheckBox4))
+                                                .addGap(0, 0, Short.MAX_VALUE)))
                                         .addContainerGap())))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editCasePanelLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1065,7 +1076,9 @@ public class GUI extends javax.swing.JFrame {
                                 .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(caseEndedDateLabel)
                                     .addComponent(jLabel38))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(addToMyCasesCheckBox)
+                                .addGap(3, 3, 3)
                                 .addComponent(jCheckBox4)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1073,7 +1086,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(lastUpdatedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel41)
                             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4)
+                            .addComponent(saveChangesEditCaseButton)
                             .addComponent(editPanelBackButton))
                         .addContainerGap())
                     .addGroup(editCasePanelLayout.createSequentialGroup()
@@ -1190,6 +1203,18 @@ public class GUI extends javax.swing.JFrame {
         cl.previous(cardPanel);
     }//GEN-LAST:event_editPanelBackButtonActionPerformed
 
+    private void saveChangesEditCaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveChangesEditCaseButtonActionPerformed
+        if (addToMyCasesCheckBox.isSelected()) {
+            
+        } else {
+            try {
+                CaseHandler.getInstance().deleteMyCase(c.getCaseID(), employee.getEmployeeID());
+            } catch (SQLException ex) {
+                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_saveChangesEditCaseButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1227,6 +1252,7 @@ public class GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel NewestCasesTab;
+    private javax.swing.JCheckBox addToMyCasesCheckBox;
     private javax.swing.JPanel adminPanel;
     private javax.swing.JLabel adressCostumerLabel;
     private javax.swing.JPanel cardPanel;
@@ -1261,7 +1287,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
@@ -1352,6 +1377,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField objectTypeSField;
     private javax.swing.JTextField ownerSField;
     private javax.swing.JLabel phoneCostumerLabel;
+    private javax.swing.JButton saveChangesEditCaseButton;
     private javax.swing.JButton selectCostumerButton;
     private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JLabel zipCodeCostumerLabel;
