@@ -28,7 +28,6 @@ public class Costumer {
         this.address = address;
         this.cityOfZip = cityOfZip;
         this.costumerID = costumerID;
-        System.out.println(costumerName + mAcro + mNumb + phone + email + address + cityOfZip + costumerID);
     }
     
     @Override

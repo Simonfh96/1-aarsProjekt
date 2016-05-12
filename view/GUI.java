@@ -1097,21 +1097,22 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void caseSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caseSearchButtonActionPerformed
-//        try {
-//            newestCasesPanel.removeAll();
-//            cases = CaseHandler.getInstance().searchCases(Integer.parseInt(caseNmbSField.getText()), caseNameSField.getText());
-//            for (int i = 0; i < cases.size(); i++) {
-//                CasePanel cp = new CasePanel(cases.get(i), this);
-//                cp.setBounds(0, 52 * i, 739, 50);
-//                cp.setBorder(BorderFactory.createLineBorder(Color.black));
-//                newestCasesPanel.add(cp);
-//            }
-//            repaint();
-//            revalidate();
-//        } catch (SQLException ex) {
-//            //JOptionPane.showMessageDialog(rootPane, ex, title, HEIGHT);
-//            //Eller label med rød tekst
-//        }
+        try {
+            newestCasesPanel.removeAll();
+            cases = CaseHandler.getInstance().searchCases(Integer.parseInt(caseNmbSField.getText()), caseNameSField.getText());
+            
+            for (int i = 0; i < cases.size(); i++) {
+                CasePanel cp = new CasePanel(cases.get(i), this);
+                cp.setBounds(0, 52 * i, 739, 50);
+                cp.setBorder(BorderFactory.createLineBorder(Color.black));
+                newestCasesPanel.add(cp);
+            }
+            repaint();
+            revalidate();
+        } catch (SQLException ex) {
+            //JOptionPane.showMessageDialog(rootPane, ex, title, HEIGHT);
+            //Eller label med rød tekst
+        }
     }//GEN-LAST:event_caseSearchButtonActionPerformed
 
     private void changeDbButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeDbButtonActionPerformed

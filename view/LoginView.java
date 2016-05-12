@@ -54,6 +54,11 @@ public class LoginView extends javax.swing.JFrame {
         jLabel1.setText("Log ind");
 
         passwordField.setText("jPasswordField1");
+        passwordField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                passwordFieldMousePressed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("LiSong Pro", 0, 18)); // NOI18N
         jLabel2.setText("Brugernavn");
@@ -139,6 +144,10 @@ public class LoginView extends javax.swing.JFrame {
             System.out.println("JOptionThatSaysCan'tLogin");
         }
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void passwordFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordFieldMousePressed
+        passwordField.setText("grete12345");
+    }//GEN-LAST:event_passwordFieldMousePressed
 
     /**
      * @param args the command line arguments

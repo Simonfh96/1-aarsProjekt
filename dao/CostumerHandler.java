@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -27,7 +27,7 @@ public class CostumerHandler {
         statement = "SELECT * FROM costumer LEFT JOIN zipCodes ON costumer.zipCode = zipCodes.zipCode WHERE costumerName LIKE '" + name + "%';";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
-            Costumer costumer = new Costumer(rs.getString("costumerName"), rs.getString("museumAcro"),
+            Costumer costumer = new Costumer(rs.getString("costumerName"), rs.getString("acronym"),
                     rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"), 
                     rs.getString("address"), rs.getString("zipCode") + ", " + rs.getString("cityName"), rs.getInt("costumer_id"));
             costumers.add(costumer);
@@ -42,7 +42,7 @@ public class CostumerHandler {
         statement = "SELECT * FROM costumer LEFT JOIN zipCodes ON costumer.zipCode = zipCodes.zipCode WHERE costumer_id = '" + costumerID + "';";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
-                costumer = new Costumer(rs.getString("costumerName"), rs.getString("museumAcro"),
+                costumer = new Costumer(rs.getString("costumerName"), rs.getString("acronym"),
                     rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"), 
                     rs.getString("address"), rs.getString("zipCode") + ", " + rs.getString("cityName"), rs.getInt("costumer_id"));
         }

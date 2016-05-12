@@ -5,13 +5,16 @@
  */
 package control;
 
+import model.Employee;
+
 /**
  *
  * @author pdyst
  */
 public class AdminControl extends Control {
-
+    
     public AdminControl() {
+        
     }
     
 }
