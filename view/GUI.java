@@ -13,6 +13,7 @@ import dao.EmployeeHandler;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -25,6 +26,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import listeners.SearchListListener;
 import model.Article;
 import model.Case;
 import model.Costumer;
@@ -35,6 +37,7 @@ import model.Employee;
  * @author Simon
  */
 public class GUI extends javax.swing.JFrame {
+
     ArrayList<Case> cases;
     private ArrayList<CasePanel> casePanels;
     private Case c;
@@ -59,7 +62,7 @@ public class GUI extends javax.swing.JFrame {
         int adminTab = tabbedPane.indexOfTab("Admin");
         tabbedPane.setEnabledAt(adminTab, false);
         if (employee.isAdmin()) {
-        tabbedPane.setEnabledAt(adminTab, true);
+            tabbedPane.setEnabledAt(adminTab, true);
         }
         listModel = new DefaultListModel();
         listModelObjects = new DefaultListModel();
@@ -82,16 +85,16 @@ public class GUI extends javax.swing.JFrame {
         }
         costScrollSearch.setDoubleBuffered(false);
     }
-    
+
     public void generateCasePanels(ArrayList<Case> cases, JPanel panel) {
         for (int i = 0; i < cases.size(); i++) {
-                CasePanel cp = new CasePanel(cases.get(i), this);
-                cp.setBounds(0, 52 * i, 739, 50);
-                cp.setBorder(BorderFactory.createLineBorder(Color.black));
-                panel.add(cp);
-            }
+            CasePanel cp = new CasePanel(cases.get(i), this);
+            cp.setBounds(0, 52 * i, 739, 50);
+            cp.setBorder(BorderFactory.createLineBorder(Color.black));
+            panel.add(cp);
+        }
     }
-    
+
     public void editCaseSetup() {
         listModelObjects.clear();
         for (Article a : c.getArticles()) {
@@ -99,11 +102,11 @@ public class GUI extends javax.swing.JFrame {
         }
         caseBeginDateLabel.setText(dateFormat.format(c.getCreatedAt()));
         costumerNameLabel.setText(c.getCustomer().getCostumerName());
-        phoneCostumerLabel.setText(""+c.getCustomer().getPhone());
+        phoneCostumerLabel.setText("" + c.getCustomer().getPhone());
         emailCostumerLabel.setText(c.getCustomer().getEmail());
         lastUpdatedField.setText(dateFormat.format(c.getLastUpdated()));
         caseDescriptionEditPanel.setText(c.getDescription());
-        caseNmbEditPanel.setText(""+c.getKonsNmb());
+        caseNmbEditPanel.setText("" + c.getKonsNmb());
         jTextField4.setText(c.getCaseName());
         adressCostumerLabel.setText(c.getCustomer().getAddress());
         zipCodeCostumerLabel.setText(c.getCustomer().getCityOfZip());
@@ -255,7 +258,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel40 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jLabel41 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        employeeLastUpdateField = new javax.swing.JTextField();
         jLabel42 = new javax.swing.JLabel();
         lastUpdatedField = new javax.swing.JTextField();
         editPanelBackButton = new javax.swing.JButton();
@@ -439,6 +442,11 @@ public class GUI extends javax.swing.JFrame {
         findCostumerField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 findCostumerFieldMousePressed(evt);
+            }
+        });
+        findCostumerField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findCostumerFieldActionPerformed(evt);
             }
         });
         findCostumerField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -816,8 +824,8 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel41.setText("af");
 
-        jTextField5.setEditable(false);
-        jTextField5.setText("Majbritt Pedersen");
+        employeeLastUpdateField.setEditable(false);
+        employeeLastUpdateField.setText("Majbritt Pedersen");
 
         jLabel42.setText("Sidst opdateret d.");
 
@@ -947,7 +955,7 @@ public class GUI extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jLabel41)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(employeeLastUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(saveChangesEditCaseButton))
                                             .addGroup(editCasePanelLayout.createSequentialGroup()
@@ -1085,7 +1093,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jLabel42)
                             .addComponent(lastUpdatedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel41)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(employeeLastUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(saveChangesEditCaseButton)
                             .addComponent(editPanelBackButton))
                         .addContainerGap())
@@ -1114,7 +1122,7 @@ public class GUI extends javax.swing.JFrame {
         try {
             newestCasesPanel.removeAll();
             cases = CaseHandler.getInstance().searchCases(Integer.parseInt(caseNmbSField.getText()), caseNameSField.getText());
-            
+
             for (int i = 0; i < cases.size(); i++) {
                 CasePanel cp = new CasePanel(cases.get(i), this);
                 cp.setBounds(0, 52 * i, 739, 50);
@@ -1153,6 +1161,13 @@ public class GUI extends javax.swing.JFrame {
                 list.revalidate();
                 list.repaint();
                 list.ensureIndexIsVisible(0);
+                if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
+                    list.requestFocus(true);
+                    list.setSelectedIndex(0);
+                    SearchListListener sl = new SearchListListener(findCostumerField, list);
+                    list.addKeyListener(sl);
+                }
+                
             } catch (SQLException ex) {
                 Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
 
@@ -1190,6 +1205,7 @@ public class GUI extends javax.swing.JFrame {
     private void newCaseDescriptionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newCaseDescriptionMousePressed
         for (Component comp : newCasePanel.getComponents()) {
             comp.setVisible(false);
+            comp.setEnabled(false);
         }
         DescriptionBox dBox = new DescriptionBox(newCasePanel, newCaseDescription);
         dBox.setBounds(100, 100, 600, 480);
@@ -1205,7 +1221,12 @@ public class GUI extends javax.swing.JFrame {
 
     private void saveChangesEditCaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveChangesEditCaseButtonActionPerformed
         if (addToMyCasesCheckBox.isSelected()) {
-            
+            try {
+                CaseHandler.getInstance().addToMyCases(employee, c);
+                employeeLastUpdateField.setText(employee.getName());
+            } catch (SQLException ex) {
+                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             try {
                 CaseHandler.getInstance().deleteMyCase(c.getCaseID(), employee.getEmployeeID());
@@ -1214,6 +1235,10 @@ public class GUI extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_saveChangesEditCaseButtonActionPerformed
+
+    private void findCostumerFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findCostumerFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_findCostumerFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1279,6 +1304,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel editCasePanel;
     private javax.swing.JButton editPanelBackButton;
     private javax.swing.JLabel emailCostumerLabel;
+    private javax.swing.JTextField employeeLastUpdateField;
     private javax.swing.JCheckBox existingCostumerCheckBox;
     private javax.swing.JTextField findCostumerField;
     private javax.swing.JScrollPane finishedCasesScrollPane;
@@ -1356,7 +1382,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField lastUpdatedField;
     private javax.swing.JPanel myCasesPanel;
     private javax.swing.JScrollPane myCasesScrollPane;

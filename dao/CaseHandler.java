@@ -21,10 +21,11 @@ import model.Employee;
  * @author pdyst
  */
 public class CaseHandler {
+
     private static CaseHandler instance;
     Calendar cal;
     DateFormat dateFormat = new SimpleDateFormat("YYYY/MM/dd HH:mm:ss");
-    
+
     private CaseHandler() {
         cal = Calendar.getInstance();
     }
@@ -37,13 +38,13 @@ public class CaseHandler {
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
             ArrayList<Article> articles = ArticleHandler.getInstance().getArticles(rs.getInt("case_id"));
-            Case c = new Case(rs.getInt("case_id") ,rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"), 
+            Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),
                     articles, /*rs.getBoolean("finished")*/ rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);
         }
         return cases;
     }
-    
+
     public ArrayList<Case> getCasesNewest() throws SQLException {
         ArrayList<Case> cases = new ArrayList<>();
         String statement;
@@ -58,7 +59,7 @@ public class CaseHandler {
         }
         return cases;
     }
-    
+
     public ArrayList<Case> getMyCases(int employeeID) throws SQLException {
         ArrayList<Case> cases = new ArrayList<>();
         String statement;
@@ -74,7 +75,7 @@ public class CaseHandler {
         }
         return cases;
     }
-    
+
     public ArrayList<Case> getFinishedCases() throws SQLException {
         ArrayList<Case> cases = new ArrayList<>();
         String statement;
@@ -90,9 +91,7 @@ public class CaseHandler {
         }
         return cases;
     }
-    
-    
-    
+
     public ArrayList<Case> searchCases(int konsNmb, String caseName) throws SQLException {
         ArrayList<Case> cases = new ArrayList<>();
         String statement;
@@ -116,20 +115,20 @@ public class CaseHandler {
         String stmt2;
         String stmt3;
         stmt1 = "begin;";
-        stmt2 = "update cases set caseName = '" + c.getCaseName() + "', lastUpdated = '" 
+        stmt2 = "update cases set caseName = '" + c.getCaseName() + "', lastUpdated = '"
                 + dateFormat.format(cal.getTime()) + "' where konsNr = " + c.getKonsNmb() + ";";
         stmt3 = "commit;";
         System.out.println(stmt1 + "\n" + stmt2 + "\n" + stmt3);
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt1);
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt2);
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt3);
-        }
+    }
 
     /*CustomerHandler og ArticleHandler der kalder en saveCustomer(Costumer customer) 
     og saveArticles(ArrayList<Article> articles) inde i saveCase(Case c). En getter henter customerid fra
     det Costumer objekt, som Case objektet indeholder, da kunden sagtens kan optræde 2 gange og ikke
     må have 2 forskellige customer id'er, hvorimod articles skal gemmes tilsvarende Case objektets primary key
-    */
+     */
     public void saveCase(Case c) throws SQLException {
         String statement;
         //Husk ArrayListen af articles
@@ -142,7 +141,7 @@ public class CaseHandler {
         DBHandler.getInstance().conn.createStatement().executeUpdate(statement);
         CostumerHandler.getInstance().saveCostumer(c.getCustomer());
     }
-    
+
     public int generateKonsNmb() throws SQLException {
         int konsNmb = 0;
         String statement;
@@ -154,15 +153,37 @@ public class CaseHandler {
         }
         return konsNmb;
     }
+
+    public void addToMyCases(Employee e, Case c) throws SQLException {
+        boolean added = false;
+        String statement;
+        for (Case myCase : CaseHandler.getInstance().getMyCases(e.getEmployeeID())) {
+            if (c.getCaseID() == myCase.getCaseID()) {
+                added = true;
+                System.out.println("already added");
+            }
+        }
+        if (added = false) {
+            System.out.println("sdad");
+        }
+//        statement = "INSERT INTO cases (konsNr, caseName, description, lastUpdated, createdAt)"
+//                + " VALUES ( '" + c.getKonsNmb()
+//                + "','" + c.getCaseName() + "','" + c.getDescription() + "','" + c.getLastUpdated() + "','"
+//                + c.getCreatedAt() + "')";
+//        DBHandler.getInstance().conn.createStatement().executeUpdate(statement);
+//        CostumerHandler.getInstance().saveCostumer(c.getCustomer());
+    }
+
     /*Metoden må kun benyttes på de sager, som er under fanen mine sager,
     * da det kun bruges til referencer
-    */
+     */
     public void deleteMyCase(int employeeID, int caseID) throws SQLException {
+        //Lav samme tjek som addTocases bare omvendt
         String stmt1;
-        stmt1 = "DELETE FROM mycases WHERE employee_id = " + employeeID + " AND cases_id = "+ caseID +";";
+        stmt1 = "DELETE FROM mycases WHERE employee_id = " + employeeID + " AND cases_id = " + caseID + ";";
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt1);
         //Sikre at den ikke prøver at slette noget, som ikke er der
-        }
+    }
 
     public static CaseHandler getInstance() {
         if (instance == null) {

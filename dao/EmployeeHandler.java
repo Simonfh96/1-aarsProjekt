@@ -47,7 +47,7 @@ public class EmployeeHandler {
             statement = "SELECT * FROM employee WHERE username LIKE '" + username + "' AND userPassword = '" + password + "'";
             System.out.println(statement);
             ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
-
+            //bliver ikke oprettet med en arraylist derfor nullpointer exception
             while (rs.next()) {
                 employee = new Employee(rs.getInt("employee_id"), rs.getString("username"), rs.getString("userPassword"), 
                         rs.getString("firstName") + " " + rs.getString("lastName"), 

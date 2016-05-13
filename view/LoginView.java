@@ -151,6 +151,7 @@ public class LoginView extends javax.swing.JFrame {
             }
             GUI gui = new GUI(control, employee);
             gui.setVisible(true);
+           //find en måde at fjerne vinduet på 
         } catch (SQLException ex) {
             Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("JOptionThatSaysCan'tLogin");

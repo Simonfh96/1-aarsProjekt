@@ -33,6 +33,10 @@ public class Employee {
         this.partTime = partTime;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public int getEmployeeID() {
         return employeeID;
     }

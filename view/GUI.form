@@ -558,6 +558,7 @@
                   </Properties>
                   <Events>
                     <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="findCostumerFieldMousePressed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="findCostumerFieldActionPerformed"/>
                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="findCostumerFieldKeyReleased"/>
                   </Events>
                 </Component>
@@ -920,7 +921,7 @@
                                                       <EmptySpace max="-2" attributes="0"/>
                                                       <Component id="jLabel41" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="jTextField5" min="-2" pref="152" max="-2" attributes="0"/>
+                                                      <Component id="employeeLastUpdateField" min="-2" pref="152" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
                                                       <Component id="saveChangesEditCaseButton" min="-2" max="-2" attributes="0"/>
                                                   </Group>
@@ -1098,7 +1099,7 @@
                                   <Component id="jLabel42" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lastUpdatedField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel41" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="employeeLastUpdateField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="saveChangesEditCaseButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="editPanelBackButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1452,7 +1453,7 @@
                 <Property name="text" type="java.lang.String" value="af"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField5">
+            <Component class="javax.swing.JTextField" name="employeeLastUpdateField">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="text" type="java.lang.String" value="Majbritt Pedersen"/>
