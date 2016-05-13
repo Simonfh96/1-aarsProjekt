@@ -7,8 +7,10 @@ package model;
 
 /**
  *
- * @author pdyst
+ * @author pdysted
  */
 public class Task {
+    private String status;
+    private String description;
     
 }
