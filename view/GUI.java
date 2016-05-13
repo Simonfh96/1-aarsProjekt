@@ -1149,6 +1149,11 @@ public class GUI extends javax.swing.JFrame {
             try {
                 listModel.clear();
                 ArrayList<Costumer> costumers = CostumerHandler.getInstance().searchCostumerName(name);
+                String search = findCostumerField.getText();
+                if (costumers.size() > 0) {
+                findCostumerField.setText(search + costumers.get(0).getCostumerName().substring(search.length()));
+                findCostumerField.setSelectionStart(search.length());
+                }
                 for (Costumer costumer : costumers) {
                     listModel.addElement(costumer);
                 }
