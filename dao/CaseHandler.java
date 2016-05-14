@@ -172,6 +172,7 @@ public class CaseHandler {
 //                + c.getCreatedAt() + "')";
 //        DBHandler.getInstance().conn.createStatement().executeUpdate(statement);
 //        CostumerHandler.getInstance().saveCostumer(c.getCustomer());
+            
     }
 
     /*Metoden må kun benyttes på de sager, som er under fanen mine sager,
