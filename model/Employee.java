@@ -22,7 +22,7 @@ public class Employee {
     private boolean partTime;
     private ArrayList<Case> myCases;
 
-    public Employee(int employeeID, String username, String password, String name, int phone, String email, boolean admin, boolean partTime) {
+    public Employee(int employeeID, String username, String password, String name, int phone, String email, boolean admin, boolean partTime, ArrayList<Case> myCases) {
         this.employeeID = employeeID;
         this.username = username;
         this.password = password;
@@ -31,6 +31,7 @@ public class Employee {
         this.email = email;
         this.admin = admin;
         this.partTime = partTime;
+        this.myCases = myCases;
     }
 
     public String getName() {
