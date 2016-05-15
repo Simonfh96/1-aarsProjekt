@@ -42,9 +42,6 @@ public class Employee {
                 System.out.println("already added");
             }
         }
-        if (added = false) {
-            System.out.println("not added");
-        }
         return added;
     }
 

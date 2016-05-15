@@ -100,7 +100,11 @@ public class GUI extends javax.swing.JFrame {
         for (Article a : c.getArticles()) {
             listModelObjects.addElement(a);
         }
-        // lav en metode i employee, der tjekker om case allerede er tilføjet 
+        if (employee.checkAddedMyCases(c) == true) {
+            addToMyCasesCheckBox.setSelected(true);
+        } else {
+            addToMyCasesCheckBox.setSelected(false);
+        }
         caseBeginDateLabel.setText(dateFormat.format(c.getCreatedAt()));
         costumerNameLabel.setText(c.getCustomer().getCostumerName());
         phoneCostumerLabel.setText("" + c.getCustomer().getPhone());
