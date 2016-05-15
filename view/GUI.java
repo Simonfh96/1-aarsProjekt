@@ -1231,7 +1231,7 @@ public class GUI extends javax.swing.JFrame {
                 if (employee.checkAddedMyCases(c) == false) {
                     CaseHandler.getInstance().addToMyCases(employee, c);
                     employeeLastUpdateField.setText(employee.getName());
-                    lastUpdatedField.setText("" + cal.getTime());
+                    lastUpdatedField.setText("" + dateFormat.format(cal.getTime()));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -1241,7 +1241,7 @@ public class GUI extends javax.swing.JFrame {
                 if (employee.checkAddedMyCases(c)) {
                     CaseHandler.getInstance().deleteMyCase(c.getCaseID(), employee.getEmployeeID());
                     employeeLastUpdateField.setText(employee.getName());
-                    lastUpdatedField.setText("" + cal.getTime());
+                    lastUpdatedField.setText("" + dateFormat.format(cal.getTime()));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
