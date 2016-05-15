@@ -1226,6 +1226,15 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_editPanelBackButtonActionPerformed
 
     private void saveChangesEditCaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveChangesEditCaseButtonActionPerformed
+        /*Fyld felterne med info, hvorefter den tjekker, om de er ændret i forhold til dem i databasen
+        og ud fra det logger, hvilken felter der er ændret om af hvem
+        -Overvej om der skal laves en Log/LogEntry klasse, eller om det blot skal være en ArrayList af Strings
+        Eksempel på en log entry:
+        Grete Hansen Ændrede i sagsnavn - 15/5/2016 20:54:10
+        employee.getName() + "\t" + tingen de foretager sig + komponentet/erne, som de foretager ændriger på
+        + tidspunket ændringerne er foretaget
+        */
+        
         if (addToMyCasesCheckBox.isSelected()) {
             try {
                 if (employee.checkAddedMyCases(c) == false) {
