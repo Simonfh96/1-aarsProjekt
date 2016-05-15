@@ -21,7 +21,7 @@ import model.Employee;
  * @author Tanja
  */
 public class LoginView extends javax.swing.JFrame {
-        
+
     Control control;
 
     /**
@@ -138,12 +138,9 @@ public class LoginView extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         try {
-            /*Der opstår nullpointer exception, hvis man ikke taster noget ind i feltet,
-            Eller hvis den ikke kan finde det, så der skal sikres mod det
-            Eventuelt med en hjælpende fejlbesked til brugeren
-            Hvis login fejler:
-            En "glemt password?" popper op, som sender en besked til en admin, som kan nulstille koden fra admin tab
-            */
+            //Der opstår nullpointer exception, hvis man ikke taster noget ind i feltet,
+            //Eller hvis den ikke kan finde det, så der skal sikres mod det
+            //Eventuelt med en hjælpende fejlbesked til brugeren
             Employee employee = EmployeeHandler.getInstance().getEmployee(usernameField.getText(), passwordField.getText());
             if (employee.isAdmin()) {
                 control = new AdminControl();
