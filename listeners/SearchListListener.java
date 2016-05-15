@@ -22,6 +22,9 @@ public class SearchListListener implements KeyListener {
     public SearchListListener(JTextField textField, JList list) {
         this.textField = textField;
         this.list = list;
+        list.requestFocus(true);
+        list.setSelectedIndex(0);
+        list.addKeyListener(this);
     }
     @Override
     public void keyTyped(KeyEvent e) {
@@ -35,9 +38,10 @@ public class SearchListListener implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
+        Costumer costumer = (Costumer)list.getSelectedValue();
+        textField.setText(costumer.getCostumerName());
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-            Costumer costumer = (Costumer)list.getSelectedValue();
-            textField.setText(costumer.getCostumerName());
+            textField.requestFocus();
         }
     }
     

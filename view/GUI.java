@@ -100,7 +100,7 @@ public class GUI extends javax.swing.JFrame {
         for (Article a : c.getArticles()) {
             listModelObjects.addElement(a);
         }
-        
+        // lav en metode i employee, der tjekker om case allerede er tilføjet 
         caseBeginDateLabel.setText(dateFormat.format(c.getCreatedAt()));
         costumerNameLabel.setText(c.getCustomer().getCostumerName());
         phoneCostumerLabel.setText("" + c.getCustomer().getPhone());
@@ -1143,48 +1143,41 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_changeDbButtonActionPerformed
 
     private void findCostumerFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_findCostumerFieldKeyReleased
-        String name = findCostumerField.getText();
-        if (!(name.equals(""))) {
+        String search = findCostumerField.getText();
+        if (!(search.equals(""))) {
             costScrollSearch.setVisible(true);
             list.setVisible(true);
-            try {
-                listModel.clear();
-                ArrayList<Costumer> costumers = CostumerHandler.getInstance().searchCostumerName(name);
-                String search = findCostumerField.getText();
-                if (costumers.size() > 0) {
-                findCostumerField.setText(search + costumers.get(0).getCostumerName().substring(search.length()));
-                findCostumerField.setSelectionStart(search.length());
+            if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
+                SearchListListener sl = new SearchListListener(findCostumerField, list);
+            } else {
+                try {
+                    listModel.clear();
+                    ArrayList<Costumer> costumers = CostumerHandler.getInstance().searchCostumerName(search);
+                    if (costumers.size() > 0) {
+                        findCostumerField.setText(search + costumers.get(0).getCostumerName().substring(search.length()));
+                        findCostumerField.setSelectionStart(search.length());
+                    }
+                    for (Costumer costumer : costumers) {
+                        listModel.addElement(costumer);
+                    }
+                    listModel.trimToSize();
+                    costScrollSearch.setBounds(6, 300, 206, costumers.size() * 25);
+                    costScrollSearch.setViewportView(list);
+                    costScrollSearch.setVisible(true);
+                    //Checker der tjekker, om der trykkes ned på piletasten, så den går ned på listen med søgeforslag
+                    list.setVisible(true);
+                    list.revalidate();
+                    list.repaint();
+                    list.ensureIndexIsVisible(0);
+                } catch (SQLException ex) {
+                    Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                for (Costumer costumer : costumers) {
-                    listModel.addElement(costumer);
-                }
-                listModel.trimToSize();
-                costScrollSearch.setBounds(6, 300, 206, costumers.size() * 25);
-                costScrollSearch.setViewportView(list);
-                costScrollSearch.setVisible(true);
-                //Checker der tjekker, om der trykkes ned på piletasten, så den går ned på listen med søgeforslag
-                list.setVisible(true);
-                list.revalidate();
-                list.repaint();
-                list.ensureIndexIsVisible(0);
-                if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
-                    list.requestFocus(true);
-                    list.setSelectedIndex(0);
-                    SearchListListener sl = new SearchListListener(findCostumerField, list);
-                    list.addKeyListener(sl);
-                }
-                
-            } catch (SQLException ex) {
-                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
-
-            } finally {
-                //DBHandler.getInstance().closeConnection();
             }
         } else {
             costScrollSearch.setVisible(false);
             list.setVisible(false);
         }
-
+    
     }//GEN-LAST:event_findCostumerFieldKeyReleased
 
     private void selectCostumerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectCostumerButtonActionPerformed
