@@ -33,6 +33,20 @@ public class Employee {
         this.partTime = partTime;
         this.myCases = myCases;
     }
+    
+    public boolean checkAddedMyCases(Case c) {
+        boolean added = false;
+        for (Case myCase :  myCases) {
+            if (c.getCaseID() == myCase.getCaseID()) {
+                added = true;
+                System.out.println("already added");
+            }
+        }
+        if (added = false) {
+            System.out.println("not added");
+        }
+        return added;
+    }
 
     public String getName() {
         return name;

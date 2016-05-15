@@ -76,7 +76,7 @@ public class GUI extends javax.swing.JFrame {
         try {
             cases = CaseHandler.getInstance().getCasesNewest();
             generateCasePanels(cases, newestCasesPanel);
-            generateCasePanels(CaseHandler.getInstance().getMyCases(employee.getEmployeeID()), myCasesPanel);
+            generateCasePanels(employee.getMyCases(), myCasesPanel);
             //generateCasePanels(CaseHandler.getInstance().getFinishedCases(), finishedcasesPanel);
             repaint();
             revalidate();
@@ -1187,8 +1187,9 @@ public class GUI extends javax.swing.JFrame {
     private void findCostumerFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_findCostumerFieldMousePressed
         if (findCostumerField.equals("Find kunde her...")) {
         findCostumerField.setText("");
-        }
+        } else {
         findCostumerField.setSelectionStart(0);
+        }
     }//GEN-LAST:event_findCostumerFieldMousePressed
 
     private void createCaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseButtonActionPerformed
@@ -1224,14 +1225,18 @@ public class GUI extends javax.swing.JFrame {
     private void saveChangesEditCaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveChangesEditCaseButtonActionPerformed
         if (addToMyCasesCheckBox.isSelected()) {
             try {
+                if (employee.checkAddedMyCases(c) == false) {
                 CaseHandler.getInstance().addToMyCases(employee, c);
-                employeeLastUpdateField.setText(employee.getName());
+                employeeLastUpdateField.setText(employee.getName()); 
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             try {
+                if (employee.checkAddedMyCases(c)) {
                 CaseHandler.getInstance().deleteMyCase(c.getCaseID(), employee.getEmployeeID());
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
             }

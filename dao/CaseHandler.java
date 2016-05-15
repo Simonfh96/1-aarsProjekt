@@ -155,17 +155,7 @@ public class CaseHandler {
     }
 
     public void addToMyCases(Employee e, Case c) throws SQLException {
-        boolean added = false;
         String statement;
-        for (Case myCase : CaseHandler.getInstance().getMyCases(e.getEmployeeID())) {
-            if (c.getCaseID() == myCase.getCaseID()) {
-                added = true;
-                System.out.println("already added");
-            }
-        }
-        if (added = false) {
-            System.out.println("sdad");
-        }
 //        statement = "INSERT INTO cases (konsNr, caseName, description, lastUpdated, createdAt)"
 //                + " VALUES ( '" + c.getKonsNmb()
 //                + "','" + c.getCaseName() + "','" + c.getDescription() + "','" + c.getLastUpdated() + "','"
