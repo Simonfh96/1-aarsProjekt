@@ -1185,7 +1185,10 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_selectCostumerButtonActionPerformed
 
     private void findCostumerFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_findCostumerFieldMousePressed
+        if (findCostumerField.equals("Find kunde her...")) {
         findCostumerField.setText("");
+        }
+        findCostumerField.setSelectionStart(0);
     }//GEN-LAST:event_findCostumerFieldMousePressed
 
     private void createCaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseButtonActionPerformed
