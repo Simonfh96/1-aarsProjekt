@@ -189,6 +189,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         newCaseDescription = new javax.swing.JTextField();
+        employeeSettingsPanel = new javax.swing.JPanel();
         adminPanel = new javax.swing.JPanel();
         createEmployeeButton = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
@@ -622,6 +623,19 @@ public class GUI extends javax.swing.JFrame {
         );
 
         tabbedPane.addTab("Opret sag", newCasePanel);
+
+        javax.swing.GroupLayout employeeSettingsPanelLayout = new javax.swing.GroupLayout(employeeSettingsPanel);
+        employeeSettingsPanel.setLayout(employeeSettingsPanelLayout);
+        employeeSettingsPanelLayout.setHorizontalGroup(
+            employeeSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1448, Short.MAX_VALUE)
+        );
+        employeeSettingsPanelLayout.setVerticalGroup(
+            employeeSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 643, Short.MAX_VALUE)
+        );
+
+        tabbedPane.addTab("Indstillinger", employeeSettingsPanel);
 
         createEmployeeButton.setText("Opret medarbejder");
 
@@ -1327,6 +1341,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton editPanelBackButton;
     private javax.swing.JLabel emailCostumerLabel;
     private javax.swing.JTextField employeeLastUpdateField;
+    private javax.swing.JPanel employeeSettingsPanel;
     private javax.swing.JCheckBox existingCostumerCheckBox;
     private javax.swing.JTextField findCostumerField;
     private javax.swing.JScrollPane finishedCasesScrollPane;
