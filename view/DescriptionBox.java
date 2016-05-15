@@ -89,6 +89,7 @@ public class DescriptionBox extends javax.swing.JPanel {
         panel.remove(this);
         for (Component comp : panel.getComponents()) {
             comp.setVisible(true);
+            comp.setEnabled(true);
         }
         panel.repaint();
         panel.revalidate();
