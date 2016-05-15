@@ -169,7 +169,6 @@ public class CaseHandler {
     * da det kun bruges til referencer
      */
     public void deleteMyCase(int employeeID, int caseID) throws SQLException {
-        //Lav samme tjek som addTocases bare omvendt
         String stmt1;
         stmt1 = "DELETE FROM mycases WHERE employee_id = " + employeeID + " AND cases_id = " + caseID + ";";
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt1);
