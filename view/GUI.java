@@ -9,7 +9,6 @@ import control.Control;
 import dao.CaseHandler;
 import dao.CostumerHandler;
 import dao.DBHandler;
-import dao.EmployeeHandler;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -1181,7 +1180,7 @@ public class GUI extends javax.swing.JFrame {
             costScrollSearch.setVisible(false);
             list.setVisible(false);
         }
-    
+
     }//GEN-LAST:event_findCostumerFieldKeyReleased
 
     private void selectCostumerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectCostumerButtonActionPerformed
@@ -1190,9 +1189,9 @@ public class GUI extends javax.swing.JFrame {
 
     private void findCostumerFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_findCostumerFieldMousePressed
         if (findCostumerField.equals("Find kunde her...")) {
-        findCostumerField.setText("");
+            findCostumerField.setText("");
         } else {
-        findCostumerField.setSelectionStart(0);
+            findCostumerField.setSelectionStart(0);
         }
     }//GEN-LAST:event_findCostumerFieldMousePressed
 
@@ -1230,8 +1229,9 @@ public class GUI extends javax.swing.JFrame {
         if (addToMyCasesCheckBox.isSelected()) {
             try {
                 if (employee.checkAddedMyCases(c) == false) {
-                CaseHandler.getInstance().addToMyCases(employee, c);
-                employeeLastUpdateField.setText(employee.getName()); 
+                    CaseHandler.getInstance().addToMyCases(employee, c);
+                    employeeLastUpdateField.setText(employee.getName());
+                    lastUpdatedField.setText("" + cal.getTime());
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -1239,7 +1239,9 @@ public class GUI extends javax.swing.JFrame {
         } else {
             try {
                 if (employee.checkAddedMyCases(c)) {
-                CaseHandler.getInstance().deleteMyCase(c.getCaseID(), employee.getEmployeeID());
+                    CaseHandler.getInstance().deleteMyCase(c.getCaseID(), employee.getEmployeeID());
+                    employeeLastUpdateField.setText(employee.getName());
+                    lastUpdatedField.setText("" + cal.getTime());
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
