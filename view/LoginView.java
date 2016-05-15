@@ -159,7 +159,7 @@ public class LoginView extends javax.swing.JFrame {
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void passwordFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordFieldMousePressed
-        passwordField.setText("grete12345");
+        passwordField.setText("admin12345");
     }//GEN-LAST:event_passwordFieldMousePressed
 
     /**

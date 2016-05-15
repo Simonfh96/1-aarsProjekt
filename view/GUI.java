@@ -61,7 +61,7 @@ public class GUI extends javax.swing.JFrame {
         int adminTab = tabbedPane.indexOfTab("Admin");
         tabbedPane.setEnabledAt(adminTab, false);
         if (employee.isAdmin()) {
-            tabbedPane.setEnabledAt(adminTab, true);
+            tabbedPane.setEnabledAt(adminTab, true);    
         }
         listModel = new DefaultListModel();
         listModelObjects = new DefaultListModel();
