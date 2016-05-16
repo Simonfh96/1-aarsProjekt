@@ -5,6 +5,7 @@
  */
 package dao;
 
+import java.sql.PreparedStatement;
 import model.Case;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -62,10 +63,11 @@ public class CaseHandler {
 
     public ArrayList<Case> getMyCases(int employeeID) throws SQLException {
         ArrayList<Case> cases = new ArrayList<>();
-        String statement;
-        //and finished = 0;
-        statement = "SELECT * FROM myCases LEFT JOIN cases ON myCases.cases_id = cases.case_id WHERE employee_id =" + employeeID + ";";
-        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+        PreparedStatement ps = null;
+	String selectSQL = "SELECT * FROM myCases LEFT JOIN cases ON myCases.cases_id = cases.case_id WHERE employee_id = ?";
+        ps = DBHandler.getInstance().conn.prepareStatement(selectSQL);
+        ps.setInt(1, employeeID);
+        ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
             ArrayList<Article> articles = ArticleHandler.getInstance().getArticles(rs.getInt("case_id"));
