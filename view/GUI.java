@@ -9,6 +9,7 @@ import control.Control;
 import dao.CaseHandler;
 import dao.CostumerHandler;
 import dao.DBHandler;
+import dao.EmployeeHandler;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -678,6 +679,11 @@ public class GUI extends javax.swing.JFrame {
         jSeparator8.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         saveLoginInfoButton.setText("Gem");
+        saveLoginInfoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveLoginInfoButtonActionPerformed(evt);
+            }
+        });
 
         jLabel48.setFont(new java.awt.Font("LiSong Pro", 0, 18)); // NOI18N
         jLabel48.setText("Personlige indtillinger");
@@ -1527,6 +1533,14 @@ public class GUI extends javax.swing.JFrame {
     private void findCostumerFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findCostumerFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_findCostumerFieldActionPerformed
+
+    private void saveLoginInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveLoginInfoButtonActionPerformed
+        try {
+            EmployeeHandler.getInstance().changePasswordAndUsername(newUsernameField.getText(), newPasswordField2.getText(), employee.getEmployeeID());
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_saveLoginInfoButtonActionPerformed
 
     /**
      * @param args the command line arguments
