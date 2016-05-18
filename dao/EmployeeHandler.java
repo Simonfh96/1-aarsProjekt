@@ -5,6 +5,7 @@
  */
 package dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -61,6 +62,15 @@ public class EmployeeHandler {
         }
         }
         return employee;
+    }
+    
+    public void changePasswordAndUsername(String username, String password, int employeeID) throws SQLException {
+        PreparedStatement ps = null;
+        String updateLoginInfo = "UPDATE employee SET userName = ?, userPassword = ? WHERE employee_id = " + employeeID;
+        ps = DBHandler.getInstance().conn.prepareStatement(updateLoginInfo);
+        ps.setString(1, username);
+        ps.setString(2, password);
+        ps.executeUpdate();
     }
     
     public static EmployeeHandler getInstance() {
