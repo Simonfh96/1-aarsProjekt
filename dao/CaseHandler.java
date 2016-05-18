@@ -75,6 +75,7 @@ public class CaseHandler {
                     articles, /*rs.getBoolean("finished")*/ rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);
         }
+        
         return cases;
     }
 
