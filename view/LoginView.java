@@ -141,6 +141,7 @@ public class LoginView extends javax.swing.JFrame {
             //Der opstår nullpointer exception, hvis man ikke taster noget ind i feltet,
             //Eller hvis den ikke kan finde det, så der skal sikres mod det
             //Eventuelt med en hjælpende fejlbesked til brugeren
+            //Måske sende en besked til admin omkring nulstilling af koden
             Employee employee = EmployeeHandler.getInstance().getEmployee(usernameField.getText(), passwordField.getText());
             if (employee.isAdmin()) {
                 control = new AdminControl();
