@@ -190,6 +190,23 @@ public class GUI extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         newCaseDescription = new javax.swing.JTextField();
         employeeSettingsPanel = new javax.swing.JPanel();
+        jLabel43 = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        newUsernameField = new javax.swing.JTextField();
+        jLabel46 = new javax.swing.JLabel();
+        newPasswordField1 = new javax.swing.JTextField();
+        jLabel47 = new javax.swing.JLabel();
+        newPasswordField2 = new javax.swing.JTextField();
+        jSeparator8 = new javax.swing.JSeparator();
+        saveLoginInfoButton = new javax.swing.JButton();
+        jLabel48 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        editEmailField = new javax.swing.JTextField();
+        jLabel50 = new javax.swing.JLabel();
+        editPhoneField = new javax.swing.JTextField();
+        savePersonalInfoButton = new javax.swing.JButton();
         adminPanel = new javax.swing.JPanel();
         createEmployeeButton = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
@@ -520,7 +537,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel10)
                                     .addComponent(newCaseEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 821, Short.MAX_VALUE)
                         .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newCasePanelLayout.createSequentialGroup()
                                 .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -542,21 +559,21 @@ public class GUI extends javax.swing.JFrame {
                             .addGroup(newCasePanelLayout.createSequentialGroup()
                                 .addComponent(findCostumerField, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(selectCostumerButton)))
-                        .addGap(589, 589, 589)
-                        .addComponent(jLabel18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(objectAmountField, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
+                                .addComponent(selectCostumerButton))
+                            .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(caseCreationNameField)
+                                .addComponent(jLabel19)
+                                .addComponent(jLabel20)
+                                .addComponent(newCaseDescription, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newCasePanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(createCaseButton))
-                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                        .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(caseCreationNameField)
-                            .addComponent(jLabel19)
-                            .addComponent(jLabel20)
-                            .addComponent(newCaseDescription, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(createCaseButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newCasePanelLayout.createSequentialGroup()
+                                .addComponent(jLabel18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(objectAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         newCasePanelLayout.setVerticalGroup(
@@ -624,15 +641,110 @@ public class GUI extends javax.swing.JFrame {
 
         tabbedPane.addTab("Opret sag", newCasePanel);
 
+        jLabel43.setFont(new java.awt.Font("LiSong Pro", 0, 36)); // NOI18N
+        jLabel43.setText("Mine indstillinger");
+
+        jLabel44.setFont(new java.awt.Font("LiSong Pro", 0, 18)); // NOI18N
+        jLabel44.setText("Lod ind");
+
+        jLabel45.setText("Nyt brugernavn");
+
+        jLabel46.setText("Ny kode");
+
+        jLabel47.setText("Gentag ny kode");
+
+        jSeparator8.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        saveLoginInfoButton.setText("Gem");
+
+        jLabel48.setFont(new java.awt.Font("LiSong Pro", 0, 18)); // NOI18N
+        jLabel48.setText("Personlige indtillinger");
+
+        jLabel49.setText("Email");
+
+        jLabel50.setText("Tlf.");
+
+        savePersonalInfoButton.setText("Gem");
+
         javax.swing.GroupLayout employeeSettingsPanelLayout = new javax.swing.GroupLayout(employeeSettingsPanel);
         employeeSettingsPanel.setLayout(employeeSettingsPanelLayout);
         employeeSettingsPanelLayout.setHorizontalGroup(
             employeeSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1448, Short.MAX_VALUE)
+            .addGroup(employeeSettingsPanelLayout.createSequentialGroup()
+                .addGroup(employeeSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(employeeSettingsPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(employeeSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel43)
+                            .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(employeeSettingsPanelLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(employeeSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(employeeSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel47)
+                                .addComponent(jLabel45)
+                                .addComponent(jLabel44)
+                                .addComponent(newUsernameField)
+                                .addComponent(jLabel46)
+                                .addComponent(newPasswordField1)
+                                .addComponent(newPasswordField2, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
+                            .addComponent(saveLoginInfoButton))
+                        .addGap(36, 36, 36)
+                        .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(employeeSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel49)
+                            .addComponent(jLabel48)
+                            .addComponent(jLabel50)
+                            .addComponent(editEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(editPhoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(savePersonalInfoButton))))
+                .addContainerGap(1011, Short.MAX_VALUE))
         );
         employeeSettingsPanelLayout.setVerticalGroup(
             employeeSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 643, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employeeSettingsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(employeeSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(employeeSettingsPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel43)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 57, 57)
+                        .addGroup(employeeSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(employeeSettingsPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel44)
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel45)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(newUsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel46)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(newPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel47)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(newPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(saveLoginInfoButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 5, Short.MAX_VALUE))
+                            .addGroup(employeeSettingsPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel48)
+                                .addGap(29, 29, 29)
+                                .addComponent(jLabel49)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(editEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel50)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(editPhoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(savePersonalInfoButton))))
+                    .addGroup(employeeSettingsPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(274, 274, 274))
         );
 
         tabbedPane.addTab("Indstillinger", employeeSettingsPanel);
@@ -1338,7 +1450,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField dbUrlField;
     private javax.swing.JTextField dbUserField;
     private javax.swing.JPanel editCasePanel;
+    private javax.swing.JTextField editEmailField;
     private javax.swing.JButton editPanelBackButton;
+    private javax.swing.JTextField editPhoneField;
     private javax.swing.JLabel emailCostumerLabel;
     private javax.swing.JTextField employeeLastUpdateField;
     private javax.swing.JPanel employeeSettingsPanel;
@@ -1396,7 +1510,15 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1415,6 +1537,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField jTextField1;
@@ -1432,6 +1556,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField newCasePhoneField;
     private javax.swing.JTextField newCaseZipCodeField;
     private javax.swing.JButton newObjectButton;
+    private javax.swing.JTextField newPasswordField1;
+    private javax.swing.JTextField newPasswordField2;
+    private javax.swing.JTextField newUsernameField;
     private javax.swing.JPanel newestCasesPanel;
     private javax.swing.JScrollPane newestCasesScrollPane;
     private javax.swing.JTextField objectAmountField;
@@ -1440,6 +1567,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField ownerSField;
     private javax.swing.JLabel phoneCostumerLabel;
     private javax.swing.JButton saveChangesEditCaseButton;
+    private javax.swing.JButton saveLoginInfoButton;
+    private javax.swing.JButton savePersonalInfoButton;
     private javax.swing.JButton selectCostumerButton;
     private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JLabel zipCodeCostumerLabel;
