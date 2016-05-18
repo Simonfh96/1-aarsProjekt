@@ -97,6 +97,12 @@ public class CaseHandler {
 
     public ArrayList<Case> searchCases(int konsNmb, String caseName) throws SQLException {
         ArrayList<Case> cases = new ArrayList<>();
+//        PreparedStatement ps = null;
+//	String selectSQL = "SELECT * FROM cases WHERE konsNr = ? OR caseName LIKE '?%'";
+//        ps = DBHandler.getInstance().conn.prepareStatement(selectSQL);
+//        ps.setInt(1, konsNmb);
+//        ps.setString(2, caseName);
+//        ResultSet rs = ps.executeQuery();
         String statement;
         statement = "SELECT * FROM cases WHERE konsNr = "
                 + konsNmb + " OR caseName LIKE '" + caseName + "%';";
