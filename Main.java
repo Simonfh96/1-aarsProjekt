@@ -1,6 +1,7 @@
 
 import control.Control;
 import model.Employee;
+import model.Log;
 import view.GUI;
 import view.LoginView;
 
@@ -24,6 +25,8 @@ public class Main {
     public static void main(String[] args) {
         GUI gui = new GUI(control, employee);
         gui.setVisible(true);
+        
+      
     }
         
 }
