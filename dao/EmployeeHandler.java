@@ -66,8 +66,9 @@ public class EmployeeHandler {
         return employee;
     }
     
-    public void changePasswordAndUsername(String username, String password, int employeeID) throws SQLException {
+    public void changePasswordAndUsername(String username, String password, Employee e) throws SQLException {
         PreparedStatement ps = null;
+        int employeeID = e.getEmployeeID();
         String updateLoginInfo = "UPDATE employee SET userName = ?, userPassword = ? WHERE employee_id = " + employeeID;
         ps = DBHandler.getInstance().conn.prepareStatement(updateLoginInfo);
         ps.setString(1, username);
