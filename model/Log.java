@@ -28,5 +28,10 @@ public class Log {
         this.date = date;
     }
     
+    @Override
+    public String toString() {
+        return employee + " " + action + " " + componentName + " " + changedTo + " " + date; 
+    }
+    
     
 }
