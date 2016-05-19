@@ -76,6 +76,10 @@ public class EmployeeHandler {
         ps.executeUpdate();
     }
     
+    public void deactivateEmployee(Employee employee) {
+        
+    }
+    
     public static EmployeeHandler getInstance() {
         if (instance == null) {
             instance = new EmployeeHandler();
