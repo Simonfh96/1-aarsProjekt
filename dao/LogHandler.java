@@ -7,6 +7,7 @@ package dao;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import model.Log;
 
 /**
@@ -18,6 +19,12 @@ public class LogHandler {
     
     private LogHandler() {
         
+    }
+    
+    public ArrayList<Log> gatherLogs(Date from, Date to) {
+        ArrayList<Log> logs = null;
+        
+        return logs;
     }
     
     public void writeLogToFile(ArrayList<Log> logs) throws IOException {
