@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -12,6 +13,7 @@ import java.util.Date;
  * @author pdysted
  */
 public class Log {
+    private static ArrayList<Log> logs;
     private final String employee;
     private final String action;
     private final String componentName;

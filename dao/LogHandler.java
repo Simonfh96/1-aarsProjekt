@@ -5,6 +5,8 @@
  */
 package dao;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import model.Log;
 
 /**
@@ -15,6 +17,10 @@ public class LogHandler {
     private static LogHandler instance;
     
     private LogHandler() {
+        
+    }
+    
+    public void writeLogToFile(ArrayList<Log> logs) throws IOException {
         
     }
     
