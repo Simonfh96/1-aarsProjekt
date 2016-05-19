@@ -229,23 +229,23 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jList5 = new javax.swing.JList();
+        findCustomerOrEditList = new javax.swing.JList();
         jLabel65 = new javax.swing.JLabel();
         jSeparator12 = new javax.swing.JSeparator();
         jLabel66 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        findCustomerNameField = new javax.swing.JTextField();
         jLabel67 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        findCustomerContactInfoField = new javax.swing.JTextField();
         jLabel68 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        findCustomerPhoneField = new javax.swing.JTextField();
         jLabel69 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        findCustomerEmailField = new javax.swing.JTextField();
         jLabel70 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        findCustomerZipCodeField = new javax.swing.JTextField();
         jLabel71 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jButton6 = new javax.swing.JButton();
+        findCustomerAdressField = new javax.swing.JTextField();
+        findCustomerEdibleCheckBox = new javax.swing.JCheckBox();
+        findCustomerSaveInfoButton = new javax.swing.JButton();
         employeeSettingsPanel = new javax.swing.JPanel();
         jLabel43 = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
@@ -799,18 +799,20 @@ public class GUI extends javax.swing.JFrame {
 
         tabbedPane.addTab("Opret sag", newCasePanel);
 
-        jList5.setModel(new javax.swing.AbstractListModel() {
+        findCustomerOrEditList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane8.setViewportView(jList5);
+        jScrollPane8.setViewportView(findCustomerOrEditList);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 99, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -836,9 +838,9 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel71.setText("Adresse");
 
-        jCheckBox5.setText("Ændre kundens oplysninger");
+        findCustomerEdibleCheckBox.setText("Ændre kundens oplysninger");
 
-        jButton6.setText("Gem");
+        findCustomerSaveInfoButton.setText("Gem");
 
         javax.swing.GroupLayout customerListPanelLayout = new javax.swing.GroupLayout(customerListPanel);
         customerListPanel.setLayout(customerListPanelLayout);
@@ -855,19 +857,19 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(customerListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel66)
-                            .addComponent(jTextField2)
+                            .addComponent(findCustomerNameField)
                             .addComponent(jLabel67)
-                            .addComponent(jTextField3)
+                            .addComponent(findCustomerContactInfoField)
                             .addComponent(jLabel68)
-                            .addComponent(jTextField5)
+                            .addComponent(findCustomerPhoneField)
                             .addComponent(jLabel69)
-                            .addComponent(jTextField6)
+                            .addComponent(findCustomerEmailField)
                             .addComponent(jLabel70)
-                            .addComponent(jTextField7)
+                            .addComponent(findCustomerZipCodeField)
                             .addComponent(jLabel71)
-                            .addComponent(jTextField8)
-                            .addComponent(jCheckBox5)
-                            .addComponent(jButton6))))
+                            .addComponent(findCustomerAdressField)
+                            .addComponent(findCustomerEdibleCheckBox)
+                            .addComponent(findCustomerSaveInfoButton))))
                 .addContainerGap(907, Short.MAX_VALUE))
         );
         customerListPanelLayout.setVerticalGroup(
@@ -883,31 +885,31 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(customerListPanelLayout.createSequentialGroup()
                         .addComponent(jLabel66)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(findCustomerNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel67)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(findCustomerContactInfoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel68)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(findCustomerPhoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel69)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(findCustomerEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel70)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(findCustomerZipCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel71)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(findCustomerAdressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jCheckBox5)
+                        .addComponent(findCustomerEdibleCheckBox)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6)))
+                        .addComponent(findCustomerSaveInfoButton)))
                 .addContainerGap())
         );
 
@@ -1885,6 +1887,15 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel employeeSettingsPanel;
     private javax.swing.JCheckBox existingCostumerCheckBox;
     private javax.swing.JTextField findCostumerField;
+    private javax.swing.JTextField findCustomerAdressField;
+    private javax.swing.JTextField findCustomerContactInfoField;
+    private javax.swing.JCheckBox findCustomerEdibleCheckBox;
+    private javax.swing.JTextField findCustomerEmailField;
+    private javax.swing.JTextField findCustomerNameField;
+    private javax.swing.JList findCustomerOrEditList;
+    private javax.swing.JTextField findCustomerPhoneField;
+    private javax.swing.JButton findCustomerSaveInfoButton;
+    private javax.swing.JTextField findCustomerZipCodeField;
     private javax.swing.JScrollPane finishedCasesScrollPane;
     private javax.swing.JPanel finishedCasesTab;
     private javax.swing.JPanel finishedcasesPanel;
@@ -1893,12 +1904,10 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
@@ -1978,7 +1987,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JList jList2;
     private javax.swing.JList jList3;
     private javax.swing.JList jList4;
-    private javax.swing.JList jList5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
@@ -2005,13 +2013,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField lastUpdatedField;
     private javax.swing.JPanel myCasesPanel;
     private javax.swing.JScrollPane myCasesScrollPane;

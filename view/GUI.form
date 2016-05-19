@@ -811,19 +811,19 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jLabel66" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField2" max="32767" attributes="0"/>
+                                      <Component id="findCustomerNameField" max="32767" attributes="0"/>
                                       <Component id="jLabel67" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField3" max="32767" attributes="0"/>
+                                      <Component id="findCustomerContactInfoField" max="32767" attributes="0"/>
                                       <Component id="jLabel68" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField5" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="findCustomerPhoneField" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jLabel69" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField6" max="32767" attributes="0"/>
+                                      <Component id="findCustomerEmailField" max="32767" attributes="0"/>
                                       <Component id="jLabel70" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField7" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="findCustomerZipCodeField" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jLabel71" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField8" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jCheckBox5" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+                                      <Component id="findCustomerAdressField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="findCustomerEdibleCheckBox" min="-2" max="-2" attributes="0"/>
+                                      <Component id="findCustomerSaveInfoButton" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -845,31 +845,31 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel66" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="findCustomerNameField" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel67" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="findCustomerContactInfoField" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel68" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField5" min="-2" max="-2" attributes="0"/>
+                                  <Component id="findCustomerPhoneField" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel69" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField6" min="-2" max="-2" attributes="0"/>
+                                  <Component id="findCustomerEmailField" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel70" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField7" min="-2" max="-2" attributes="0"/>
+                                  <Component id="findCustomerZipCodeField" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel71" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField8" min="-2" max="-2" attributes="0"/>
+                                  <Component id="findCustomerAdressField" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox5" min="-2" max="-2" attributes="0"/>
+                                  <Component id="findCustomerEdibleCheckBox" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+                                  <Component id="findCustomerSaveInfoButton" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -887,7 +887,10 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane8" alignment="0" pref="490" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jScrollPane8" min="-2" pref="391" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="99" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
@@ -904,7 +907,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JList" name="jList5">
+                            <Component class="javax.swing.JList" name="findCustomerOrEditList">
                               <Properties>
                                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                                   <StringArray count="5">
@@ -941,49 +944,49 @@
                     <Property name="text" type="java.lang.String" value="Navn"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField2">
+                <Component class="javax.swing.JTextField" name="findCustomerNameField">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel67">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Kontaktperson"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField3">
+                <Component class="javax.swing.JTextField" name="findCustomerContactInfoField">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel68">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Tlf."/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField5">
+                <Component class="javax.swing.JTextField" name="findCustomerPhoneField">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel69">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Email"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField6">
+                <Component class="javax.swing.JTextField" name="findCustomerEmailField">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel70">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Postnummer"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField7">
+                <Component class="javax.swing.JTextField" name="findCustomerZipCodeField">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel71">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Adresse"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField8">
+                <Component class="javax.swing.JTextField" name="findCustomerAdressField">
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="jCheckBox5">
+                <Component class="javax.swing.JCheckBox" name="findCustomerEdibleCheckBox">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#xc6;ndre kundens oplysninger"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton6">
+                <Component class="javax.swing.JButton" name="findCustomerSaveInfoButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Gem"/>
                   </Properties>
