@@ -14,14 +14,14 @@ import java.util.Date;
 public class Log {
     private final String employee;
     private final String action;
-    private final Date date;
-    private final String component;
+    private final String componentName;
     private final String changedTo;
+    private final Date date;
 
-    public Log(Employee employee, String action, String component, String changedTo, Date date) {
+    public Log(Employee employee, String action, String componentName, String changedTo, Date date) {
         this.employee = employee.getName();
         this.action = action;
-        this.component = component;
+        this.componentName = componentName;
         this.changedTo = changedTo;
         this.date = date;
     }
