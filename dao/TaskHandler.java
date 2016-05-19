@@ -18,6 +18,10 @@ public class TaskHandler {
         
     }
     
+    public void editTask(Task task) {
+        
+    }
+    
     public void saveTask(Task task) {
         
     }
