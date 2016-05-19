@@ -215,17 +215,37 @@ public class GUI extends javax.swing.JFrame {
         jLabel61 = new javax.swing.JLabel();
         createCaseMuseumsNrField = new javax.swing.JTextField();
         jLabel62 = new javax.swing.JLabel();
-        createCaseLocationBox = new javax.swing.JComboBox<>();
+        createCaseLocationBox = new javax.swing.JComboBox<String>();
         createCaseObjectNameField = new javax.swing.JTextField();
         jLabel63 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         createCaseObjectDescriptionArea = new javax.swing.JTextArea();
         jLabel64 = new javax.swing.JLabel();
-        createCaseTaskBox = new javax.swing.JComboBox<>();
+        createCaseTaskBox = new javax.swing.JComboBox<String>();
         createCaseAddTaskButton = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
-        createCaseTaskList = new javax.swing.JList<>();
+        createCaseTaskList = new javax.swing.JList<String>();
         customerListPanel = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jList5 = new javax.swing.JList();
+        jLabel65 = new javax.swing.JLabel();
+        jSeparator12 = new javax.swing.JSeparator();
+        jLabel66 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel67 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel68 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel69 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jLabel70 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
+        jLabel71 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jCheckBox5 = new javax.swing.JCheckBox();
+        jButton6 = new javax.swing.JButton();
         employeeSettingsPanel = new javax.swing.JPanel();
         jLabel43 = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
@@ -466,7 +486,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)))
                     .addComponent(caseSearchButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 583, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 591, Short.MAX_VALUE)
                 .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -574,7 +594,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel62.setText("Genstands navn");
 
-        createCaseLocationBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Placering" }));
+        createCaseLocationBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Placering" }));
 
         jLabel63.setText("Museums nr.");
 
@@ -584,14 +604,14 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel64.setText("Genstandsbeskrivelse");
 
-        createCaseTaskBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Opgaver" }));
+        createCaseTaskBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Opgaver" }));
 
         createCaseAddTaskButton.setText("Tilføj");
 
-        createCaseTaskList.setModel(new javax.swing.AbstractListModel<String>() {
+        createCaseTaskList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "liste med", "det valgte", "opgaver" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane7.setViewportView(createCaseTaskList);
 
@@ -623,7 +643,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel10)
                                     .addComponent(newCaseEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 821, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 829, Short.MAX_VALUE)
                         .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newCasePanelLayout.createSequentialGroup()
                                 .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -655,7 +675,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newCasePanelLayout.createSequentialGroup()
                         .addComponent(costScrollSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(newCasePanelLayout.createSequentialGroup()
                                 .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -666,14 +686,10 @@ public class GUI extends javax.swing.JFrame {
                                         .addComponent(createCaseAddTaskButton)
                                         .addGap(36, 36, 36)
                                         .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newCasePanelLayout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel61))
-                                            .addGroup(newCasePanelLayout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel62, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel63, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                            .addComponent(jLabel61, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel62, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jLabel63, javax.swing.GroupLayout.Alignment.TRAILING)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(createTaskConsNumberField)
@@ -682,15 +698,15 @@ public class GUI extends javax.swing.JFrame {
                                             .addComponent(createCaseObjectNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)))
                                     .addGroup(newCasePanelLayout.createSequentialGroup()
                                         .addGap(40, 40, 40)
-                                        .addComponent(jLabel64)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
+                                        .addComponent(jLabel64))))
                             .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(createCaseButton, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newCasePanelLayout.createSequentialGroup()
                                     .addComponent(jLabel18)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(objectAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jSeparator11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jSeparator11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         newCasePanelLayout.setVerticalGroup(
@@ -783,15 +799,116 @@ public class GUI extends javax.swing.JFrame {
 
         tabbedPane.addTab("Opret sag", newCasePanel);
 
+        jList5.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane8.setViewportView(jList5);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 719, Short.MAX_VALUE)
+        );
+
+        jScrollPane5.setViewportView(jPanel1);
+
+        jLabel65.setFont(new java.awt.Font("LiSong Pro", 0, 36)); // NOI18N
+        jLabel65.setText("Kundeliste");
+
+        jSeparator12.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        jLabel66.setText("Navn");
+
+        jLabel67.setText("Kontaktperson");
+
+        jLabel68.setText("Tlf.");
+
+        jLabel69.setText("Email");
+
+        jLabel70.setText("Postnummer");
+
+        jLabel71.setText("Adresse");
+
+        jCheckBox5.setText("Ændre kundens oplysninger");
+
+        jButton6.setText("Gem");
+
         javax.swing.GroupLayout customerListPanelLayout = new javax.swing.GroupLayout(customerListPanel);
         customerListPanel.setLayout(customerListPanelLayout);
         customerListPanelLayout.setHorizontalGroup(
             customerListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1540, Short.MAX_VALUE)
+            .addGroup(customerListPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(customerListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel65)
+                    .addGroup(customerListPanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(customerListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel66)
+                            .addComponent(jTextField2)
+                            .addComponent(jLabel67)
+                            .addComponent(jTextField3)
+                            .addComponent(jLabel68)
+                            .addComponent(jTextField5)
+                            .addComponent(jLabel69)
+                            .addComponent(jTextField6)
+                            .addComponent(jLabel70)
+                            .addComponent(jTextField7)
+                            .addComponent(jLabel71)
+                            .addComponent(jTextField8)
+                            .addComponent(jCheckBox5)
+                            .addComponent(jButton6))))
+                .addContainerGap(907, Short.MAX_VALUE))
         );
         customerListPanelLayout.setVerticalGroup(
             customerListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerListPanelLayout.createSequentialGroup()
+                .addContainerGap(12, Short.MAX_VALUE)
+                .addComponent(jLabel65)
+                .addGap(18, 18, 18)
+                .addGroup(customerListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(customerListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jSeparator12)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE))
+                    .addGroup(customerListPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel66)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel67)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel68)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel69)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel70)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel71)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jCheckBox5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton6)))
+                .addContainerGap())
         );
 
         tabbedPane.addTab("Kundekartotek", customerListPanel);
@@ -859,7 +976,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(editEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(editPhoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(savePersonalInfoButton))))
-                .addContainerGap(1011, Short.MAX_VALUE))
+                .addContainerGap(1019, Short.MAX_VALUE))
         );
         employeeSettingsPanelLayout.setVerticalGroup(
             employeeSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1036,7 +1153,7 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton4))
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 1150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(376, Short.MAX_VALUE))
+                .addContainerGap(384, Short.MAX_VALUE))
         );
         adminPanelLayout.setVerticalGroup(
             adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1316,7 +1433,7 @@ public class GUI extends javax.swing.JFrame {
                                                                     .addComponent(jButton3)
                                                                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                                             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGap(0, 235, Short.MAX_VALUE))
+                                                        .addGap(0, 239, Short.MAX_VALUE))
                                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editCasePanelLayout.createSequentialGroup()
                                                         .addGap(0, 0, Short.MAX_VALUE)
                                                         .addComponent(jLabel39)))
@@ -1326,7 +1443,7 @@ public class GUI extends javax.swing.JFrame {
                                         .addComponent(jLabel40)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editCasePanelLayout.createSequentialGroup()
                                                 .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1776,10 +1893,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
@@ -1845,24 +1964,36 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel70;
+    private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JList jList1;
     private javax.swing.JList jList2;
     private javax.swing.JList jList3;
     private javax.swing.JList jList4;
+    private javax.swing.JList jList5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
+    private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -1874,7 +2005,13 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField lastUpdatedField;
     private javax.swing.JPanel myCasesPanel;
     private javax.swing.JScrollPane myCasesScrollPane;
