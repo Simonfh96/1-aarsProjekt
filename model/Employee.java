@@ -64,6 +64,10 @@ public class Employee {
     public boolean isPartTime() {
         return partTime;
     }
+
+    public void setMyCases(ArrayList<Case> myCases) {
+        this.myCases = myCases;
+    }
     
     
     

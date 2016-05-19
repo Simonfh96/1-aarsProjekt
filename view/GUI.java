@@ -38,7 +38,7 @@ import model.Employee;
  */
 public class GUI extends javax.swing.JFrame {
 
-    ArrayList<Case> cases;
+    private ArrayList<Case> cases;
     private ArrayList<CasePanel> casePanels;
     private Case c;
     private Calendar cal;

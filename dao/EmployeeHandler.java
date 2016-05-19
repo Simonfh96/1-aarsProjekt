@@ -52,10 +52,12 @@ public class EmployeeHandler {
             ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
             //bliver ikke oprettet med en arraylist derfor nullpointer exception
             while (rs.next()) {
-                ArrayList<Case> myCases = CaseHandler.getInstance().getMyCases(rs.getInt("employee_id"));
+                ArrayList<Case> myCases = new ArrayList<>();
                 employee = new Employee(rs.getInt("employee_id"), rs.getString("username"), rs.getString("userPassword"), 
                         rs.getString("firstName") + " " + rs.getString("lastName"), 
                         rs.getInt("phone"), rs.getString("email"), rs.getBoolean("admin"), rs.getBoolean("partTime"), myCases);
+                 myCases = CaseHandler.getInstance().getMyCases(employee);
+                 employee.setMyCases(myCases);
             }
         } catch (SQLException ex) {
 

@@ -61,8 +61,9 @@ public class CaseHandler {
         return cases;
     }
 
-    public ArrayList<Case> getMyCases(int employeeID) throws SQLException {
+    public ArrayList<Case> getMyCases(Employee e) throws SQLException {
         ArrayList<Case> cases = new ArrayList<>();
+        int employeeID = e.getEmployeeID();
         PreparedStatement ps = null;
 	String selectSQL = "SELECT * FROM myCases LEFT JOIN cases ON myCases.cases_id = cases.case_id WHERE employee_id = ?";
         ps = DBHandler.getInstance().conn.prepareStatement(selectSQL);
@@ -98,7 +99,7 @@ public class CaseHandler {
     public ArrayList<Case> searchCases(int konsNmb, String caseName) throws SQLException {
         ArrayList<Case> cases = new ArrayList<>();
 //        PreparedStatement ps = null;
-//	String selectSQL = "SELECT * FROM cases WHERE konsNr = ? OR caseName LIKE '?%'";
+//	String selectSQL = "SELECT * FROM cases WHERE konsNr = ? AND caseName LIKE '?%'";
 //        ps = DBHandler.getInstance().conn.prepareStatement(selectSQL);
 //        ps.setInt(1, konsNmb);
 //        ps.setString(2, caseName);
