@@ -18,12 +18,12 @@ public class Log {
     private final String component;
     private final String changedTo;
 
-    public Log(Employee employee, String action, Date date, String component, String changedTo) {
+    public Log(Employee employee, String action, String component, String changedTo, Date date) {
         this.employee = employee.getName();
         this.action = action;
-        this.date = date;
         this.component = component;
         this.changedTo = changedTo;
+        this.date = date;
     }
     
     
