@@ -225,6 +225,7 @@ public class GUI extends javax.swing.JFrame {
         createCaseAddTaskButton = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
         createCaseTaskList = new javax.swing.JList<>();
+        customerListPanel = new javax.swing.JPanel();
         employeeSettingsPanel = new javax.swing.JPanel();
         jLabel43 = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
@@ -781,6 +782,19 @@ public class GUI extends javax.swing.JFrame {
         );
 
         tabbedPane.addTab("Opret sag", newCasePanel);
+
+        javax.swing.GroupLayout customerListPanelLayout = new javax.swing.GroupLayout(customerListPanel);
+        customerListPanel.setLayout(customerListPanelLayout);
+        customerListPanelLayout.setHorizontalGroup(
+            customerListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1540, Short.MAX_VALUE)
+        );
+        customerListPanelLayout.setVerticalGroup(
+            customerListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 700, Short.MAX_VALUE)
+        );
+
+        tabbedPane.addTab("Kundekartotek", customerListPanel);
 
         jLabel43.setFont(new java.awt.Font("LiSong Pro", 0, 36)); // NOI18N
         jLabel43.setText("Mine indstillinger");
@@ -1740,6 +1754,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JList<String> createCaseTaskList;
     private javax.swing.JButton createNewEmployeeButton;
     private javax.swing.JTextField createTaskConsNumberField;
+    private javax.swing.JPanel customerListPanel;
     private javax.swing.JCheckBox dbInfoCheckBox;
     private javax.swing.JTextField dbPasswordField;
     private javax.swing.JTextField dbUrlField;
