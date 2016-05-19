@@ -44,7 +44,7 @@ public class EmployeeHandler {
     public Employee getEmployee(String username, String password) throws SQLException{
         Employee employee = null;
         boolean loggedIn = checkLogin(username, password);
-        if (loggedIn) {
+        if (loggedIn == true) {
         try {
             String statement;
             statement = "SELECT * FROM employee WHERE username LIKE '" + username + "' AND userPassword = '" + password + "'";
