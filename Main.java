@@ -15,14 +15,15 @@ import view.LoginView;
  * @author pdyst
  */
 public class Main {
-    Employee employee;
-    Control control;
+    private static Control control = null;
+    private static Employee employee = null;
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        LoginView lw = new LoginView();
-        lw.setVisible(true);
+        GUI gui = new GUI(control, employee);
+        gui.setVisible(true);
     }
         
 }

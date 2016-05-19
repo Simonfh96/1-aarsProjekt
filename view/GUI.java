@@ -50,15 +50,23 @@ public class GUI extends javax.swing.JFrame {
     private DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY HH:mm:ss");
     private static Employee employee;
     private JList list;
+    private LoginView lw;
 
     /**
      * Creates new form GUI
      */
     public GUI(Control control, Employee employee) {
         initComponents();
+        lw = new LoginView(this);
+        lw.setAlwaysOnTop(true);
+        this.setEnabled(false);
+        lw.setVisible(true);
         this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         this.control = control;
         this.employee = employee;
+        while (control == null || employee == null) {
+            
+        }
         int adminTab = tabbedPane.indexOfTab("Admin");
         tabbedPane.setEnabledAt(adminTab, false);
         if (employee.isAdmin()) {
@@ -75,9 +83,12 @@ public class GUI extends javax.swing.JFrame {
         cl = (CardLayout) cardPanel.getLayout();
         try {
             cases = CaseHandler.getInstance().getCasesNewest();
-            generateCasePanels(cases, newestCasesPanel);
-            generateCasePanels(employee.getMyCases(), myCasesPanel);
-            //generateCasePanels(CaseHandler.getInstance().getFinishedCases(), finishedcasesPanel);
+            for (Case aCase : cases) {
+                System.out.println(aCase.getCaseName());
+            }
+            createCasePanels(cases, newestCasesPanel);
+            createCasePanels(employee.getMyCases(), myCasesPanel);
+            createCasePanels(CaseHandler.getInstance().getFinishedCases(), finishedcasesPanel);
             repaint();
             revalidate();
         } catch (SQLException ex) {
@@ -85,8 +96,17 @@ public class GUI extends javax.swing.JFrame {
         }
         costScrollSearch.setDoubleBuffered(false);
     }
+    
+    public void setUserControl(Control control, Employee employee){
+        this.control = control;
+        this.employee = employee;
+        lw.dispose();
+        this.setVisible(true);
+        this.setEnabled(true);
+        this.requestFocus();
+    }
 
-    public void generateCasePanels(ArrayList<Case> cases, JPanel panel) {
+    public void createCasePanels(ArrayList<Case> cases, JPanel panel) {
         for (int i = 0; i < cases.size(); i++) {
             CasePanel cp = new CasePanel(cases.get(i), this);
             cp.setBounds(0, 52 * i, 739, 50);

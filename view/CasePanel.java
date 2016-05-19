@@ -32,6 +32,7 @@ public class CasePanel extends javax.swing.JPanel {
      */
     public CasePanel(Case c, GUI gui)  {
         initComponents();
+        this.gui = gui;
         cal = Calendar.getInstance();
         this.c = c;
         caseNameLabel.setText(c.getCaseName());
@@ -43,7 +44,7 @@ public class CasePanel extends javax.swing.JPanel {
         createdAtLabel.setText("Oprettet: "+dateFormat.format(c.getCreatedAt()));
         lastUpdateLabel.setText("Sidst opdateret: "+dateFormat.format(c.getLastUpdated()));
         cl = gui.getCl();
-        this.gui = gui;
+        
     }
     
     
