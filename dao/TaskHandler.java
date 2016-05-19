@@ -5,14 +5,20 @@
  */
 package dao;
 
+import model.Task;
+
 /**
  *
- * @author pdyst
+ * @author pdysted
  */
 public class TaskHandler {
     private static TaskHandler instance;
     
     private TaskHandler() {
+        
+    }
+    
+    public void saveTask(Task task) {
         
     }
     

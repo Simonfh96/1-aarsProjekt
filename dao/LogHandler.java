@@ -5,14 +5,20 @@
  */
 package dao;
 
+import model.Log;
+
 /**
  *
- * @author pdyst
+ * @author pdysted
  */
 public class LogHandler {
     private static LogHandler instance;
     
     private LogHandler() {
+        
+    }
+    
+    public void saveLog(Log log) {
         
     }
     
