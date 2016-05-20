@@ -22,7 +22,8 @@ import model.Employee;
  */
 public class LoginView extends javax.swing.JFrame {
     private GUI gui;
-    Control control;
+    private static Control control;
+    private static Employee employee;
 
     /**
      * Creates new form LoginJFrame
@@ -143,7 +144,7 @@ public class LoginView extends javax.swing.JFrame {
             //Eller hvis den ikke kan finde det, så der skal sikres mod det
             //Eventuelt med en hjælpende fejlbesked til brugeren
             //Måske sende en besked til admin omkring nulstilling af koden
-            Employee employee = EmployeeHandler.getInstance().getEmployee(usernameField.getText(), passwordField.getText());
+            employee = EmployeeHandler.getInstance().getEmployee(usernameField.getText(), passwordField.getText());
             System.out.println("sdasdsdasdasddas");
             System.out.println("here " + employee.getName());
             if (employee != null) {
