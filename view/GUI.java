@@ -101,7 +101,7 @@ public class GUI extends javax.swing.JFrame {
     
     public void setUserControl(Control control, Employee employee){
         GUI.control = control;
-        employee = employee;
+        GUI.employee = employee;
         lw.dispose();
         this.setVisible(true);
         this.setEnabled(true);
