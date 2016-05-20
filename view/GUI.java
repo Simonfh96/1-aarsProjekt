@@ -86,9 +86,6 @@ public class GUI extends javax.swing.JFrame {
         cl = (CardLayout) cardPanel.getLayout();
         try {
             cases = CaseHandler.getInstance().getCasesNewest();
-            for (Case aCase : cases) {
-                System.out.println(aCase.getCaseName());
-            }
             createCasePanels(cases, newestCasesPanel);
             createCasePanels(employee.getMyCases(), myCasesPanel);
             createCasePanels(CaseHandler.getInstance().getFinishedCases(), finishedcasesPanel);
