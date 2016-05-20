@@ -5,12 +5,15 @@
  */
 package dao;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JFileChooser;
 import model.Employee;
 import model.Log;
 
@@ -18,7 +21,7 @@ import model.Log;
  *
  * @author pdysted
  */
-public class LogHandler {
+public class LogHandler implements Runnable {
 
     private static LogHandler instance;
 
@@ -47,7 +50,16 @@ public class LogHandler {
     //Benyt metoden gatherLogs() til at lave en ArrayList at udskrive
     //Kør den eventuelt i en Thread, da længere logs kan tage tid at udskrive
     public void writeLogToFile(ArrayList<Log> logs) throws IOException {
-
+        JFileChooser fc = new JFileChooser();
+        int returnVal = fc.showSaveDialog(null);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {   
+        }
+            PrintWriter pw = new PrintWriter(fc.getSelectedFile() +".txt");
+            for (Log log: logs) {
+            pw.print(log.toString());
+        }
+            pw.close();
+        
     }
 
     public void saveLog(Log log) throws SQLException {
@@ -62,6 +74,17 @@ public class LogHandler {
         ps.setDate(6, (Date) log.getDate());
         ps.execute();
         DBHandler.getInstance().conn.close();
+    }
+    
+    @Override
+    public void run() {
+         try {
+                
+              Thread.sleep(50);
+            } catch (InterruptedException ex) {
+                System.out.println("Log udskrivning afbrudt");
+            }
+         
     }
 
     public static LogHandler getInstance() {

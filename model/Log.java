@@ -32,7 +32,8 @@ public class Log {
     
     @Override
     public String toString() {
-        return  employee.getName() + " " + actionMade + " " + componentName + " " + changedFrom + " " + changedTo + " " + date; 
+        return  employee.getName() + " " + actionMade + " " + componentName 
+                + " " + changedFrom + " " + changedTo + " " + date + "\n"; 
     }
 
     public Employee getEmployee() {
@@ -58,6 +59,7 @@ public class Log {
     public Date getDate() {
         return date;
     }
+    
     
     
 }
