@@ -46,20 +46,18 @@ public class LogHandler implements Runnable {
         }
         return logs;
     }
-    
+
     //Benyt metoden gatherLogs() til at lave en ArrayList at udskrive
     //Kør den eventuelt i en Thread, da længere logs kan tage tid at udskrive
     public void writeLogToFile(ArrayList<Log> logs) throws IOException {
         JFileChooser fc = new JFileChooser();
         int returnVal = fc.showSaveDialog(null);
-        if (returnVal == JFileChooser.APPROVE_OPTION) {   
-        }
-            PrintWriter pw = new PrintWriter(fc.getSelectedFile() +".txt");
-            for (Log log: logs) {
+        PrintWriter pw = new PrintWriter(fc.getSelectedFile() + ".txt");
+        for (Log log : logs) {
             pw.print(log.toString());
         }
-            pw.close();
-        
+        pw.close();
+
     }
 
     public void saveLog(Log log) throws SQLException {
@@ -75,16 +73,16 @@ public class LogHandler implements Runnable {
         ps.execute();
         DBHandler.getInstance().conn.close();
     }
-    
+
     @Override
     public void run() {
-         try {
-                
-              Thread.sleep(50);
-            } catch (InterruptedException ex) {
-                System.out.println("Log udskrivning afbrudt");
-            }
-         
+        try {
+
+            Thread.sleep(50);
+        } catch (InterruptedException ex) {
+            System.out.println("Log udskrivning afbrudt");
+        }
+
     }
 
     public static LogHandler getInstance() {
