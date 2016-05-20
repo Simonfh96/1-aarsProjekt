@@ -55,6 +55,7 @@ public class GUI extends javax.swing.JFrame {
 
     /**
      * Creates new form GUI
+     * @param control
      */
     public GUI(Control control) {
         initComponents();
