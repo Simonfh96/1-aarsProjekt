@@ -48,7 +48,7 @@ public class GUI extends javax.swing.JFrame {
     private DefaultListModel listModel;
     private DefaultListModel listModelObjects;
     private DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY HH:mm:ss");
-    private static Employee employee;
+    private Employee employee;
     private JList list;
     private boolean loggedIn = false;
     private LoginView lw;
@@ -56,7 +56,7 @@ public class GUI extends javax.swing.JFrame {
     /**
      * Creates new form GUI
      */
-    public GUI(Control control, Employee employee) {
+    public GUI(Control control) {
         initComponents();
         lw = new LoginView(this);
         lw.setAlwaysOnTop(true);
@@ -64,7 +64,7 @@ public class GUI extends javax.swing.JFrame {
         lw.setVisible(true);
         this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         this.control = control;
-        this.employee = employee;
+        employee = null;
         while (!loggedIn) {
             System.out.println("not");
         }
@@ -101,7 +101,7 @@ public class GUI extends javax.swing.JFrame {
     
     public void setUserControl(Control control, Employee employee){
         GUI.control = control;
-        GUI.employee = employee;
+        this.employee = employee;
         lw.dispose();
         this.setVisible(true);
         this.setEnabled(true);
@@ -1902,7 +1902,7 @@ public class GUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI(control, employee).setVisible(true);
+                new GUI(control).setVisible(true);
             }
         });
     }

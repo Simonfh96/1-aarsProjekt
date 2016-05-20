@@ -17,13 +17,12 @@ import view.LoginView;
  */
 public class Main {
     private static Control control = null;
-    private static Employee employee = null;
     
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        GUI gui = new GUI(control, employee);
+        GUI gui = new GUI(control);
         gui.setVisible(true);
         
       

@@ -23,7 +23,7 @@ import model.Employee;
 public class LoginView extends javax.swing.JFrame {
     private GUI gui;
     private static Control control;
-    private static Employee employee;
+    private Employee employee;
 
     /**
      * Creates new form LoginJFrame
