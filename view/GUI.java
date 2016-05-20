@@ -81,7 +81,7 @@ public class GUI extends javax.swing.JFrame {
         list.setSize(206, 163);
         list.setVisible(false);
         costScrollSearch.add(list);
-        costScrollSearch.setVisible(false);
+        costScrollSearch.setVisible(true);
         cal = Calendar.getInstance();
         cl = (CardLayout) cardPanel.getLayout();
         try {
@@ -219,16 +219,16 @@ public class GUI extends javax.swing.JFrame {
         jLabel61 = new javax.swing.JLabel();
         createCaseMuseumsNrField = new javax.swing.JTextField();
         jLabel62 = new javax.swing.JLabel();
-        createCaseLocationBox = new javax.swing.JComboBox<String>();
+        createCaseLocationBox = new javax.swing.JComboBox<>();
         createCaseObjectNameField = new javax.swing.JTextField();
         jLabel63 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         createCaseObjectDescriptionArea = new javax.swing.JTextArea();
         jLabel64 = new javax.swing.JLabel();
-        createCaseTaskBox = new javax.swing.JComboBox<String>();
+        createCaseTaskBox = new javax.swing.JComboBox<>();
         createCaseAddTaskButton = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
-        createCaseTaskList = new javax.swing.JList<String>();
+        createCaseTaskList = new javax.swing.JList<>();
         customerListPanel = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
@@ -577,6 +577,8 @@ public class GUI extends javax.swing.JFrame {
 
         objectAmountField.setText("1");
 
+        costScrollSearch.setHorizontalScrollBar(null);
+
         selectCostumerButton.setText("Vælg");
         selectCostumerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -605,7 +607,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel62.setText("Genstands navn");
 
-        createCaseLocationBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Placering" }));
+        createCaseLocationBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Placering" }));
 
         jLabel63.setText("Museums nr.");
 
@@ -615,14 +617,14 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel64.setText("Genstandsbeskrivelse");
 
-        createCaseTaskBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Opgaver" }));
+        createCaseTaskBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Opgaver" }));
 
         createCaseAddTaskButton.setText("Tilføj");
 
-        createCaseTaskList.setModel(new javax.swing.AbstractListModel() {
+        createCaseTaskList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "liste med", "det valgte", "opgaver" };
             public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane7.setViewportView(createCaseTaskList);
 
