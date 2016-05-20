@@ -144,14 +144,18 @@ public class LoginView extends javax.swing.JFrame {
             //Eventuelt med en hjælpende fejlbesked til brugeren
             //Måske sende en besked til admin omkring nulstilling af koden
             Employee employee = EmployeeHandler.getInstance().getEmployee(usernameField.getText(), passwordField.getText());
+            System.out.println("sdasdsdasdasddas");
+            System.out.println("here " + employee.getName());
             if (employee != null) {
             if (employee.isAdmin()) {
                 control = new AdminControl();
+                System.out.println("admin");
             } else if (employee.isPartTime()) {
                 control = new PartTimeControl();
             } else {
                 control = new EmployeeControl();
             }
+                
             gui.setUserControl(control, employee);
             }
         } catch (SQLException ex) {

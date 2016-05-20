@@ -50,6 +50,7 @@ public class GUI extends javax.swing.JFrame {
     private DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY HH:mm:ss");
     private static Employee employee;
     private JList list;
+    private boolean loggedIn = false;
     private LoginView lw;
 
     /**
@@ -64,9 +65,10 @@ public class GUI extends javax.swing.JFrame {
         this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         this.control = control;
         this.employee = employee;
-        while (control == null || employee == null) {
-            
+        while (!loggedIn) {
+            System.out.println("not");
         }
+        System.out.println("now");
         int adminTab = tabbedPane.indexOfTab("Admin");
         tabbedPane.setEnabledAt(adminTab, false);
         if (employee.isAdmin()) {
@@ -98,12 +100,13 @@ public class GUI extends javax.swing.JFrame {
     }
     
     public void setUserControl(Control control, Employee employee){
-        this.control = control;
-        this.employee = employee;
+        GUI.control = control;
+        GUI.employee = employee;
         lw.dispose();
         this.setVisible(true);
         this.setEnabled(true);
         this.requestFocus();
+        loggedIn = true;
     }
 
     public void createCasePanels(ArrayList<Case> cases, JPanel panel) {
