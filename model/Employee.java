@@ -6,6 +6,7 @@
 package model;
 
 import java.util.ArrayList;
+import view.GUI;
 
 /**
  *
@@ -68,7 +69,6 @@ public class Employee {
     public void setMyCases(ArrayList<Case> myCases) {
         this.myCases = myCases;
     }
-    
     
     
     
