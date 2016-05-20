@@ -43,7 +43,9 @@ public class LogHandler {
         }
         return logs;
     }
-
+    
+    //Benyt metoden gatherLogs() til at lave en ArrayList at udskrive
+    //Kør den eventuelt i en Thread, da længere logs kan tage tid at udskrive
     public void writeLogToFile(ArrayList<Log> logs) throws IOException {
 
     }
