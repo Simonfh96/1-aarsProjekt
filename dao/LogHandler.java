@@ -6,8 +6,12 @@
 package dao;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
+import model.Employee;
 import model.Log;
 
 /**
@@ -21,9 +25,20 @@ public class LogHandler {
         
     }
     
-    public ArrayList<Log> gatherLogs(Date from, Date to) {
+    public ArrayList<Log> gatherLogs(Date from, Date to) throws SQLException {
         ArrayList<Log> logs = null;
+        PreparedStatement ps = null;
+        String gatherLogs = "SELECT * FROM logs WHERE timeMade BETWEEN '?' AND '?'";
+        ps = DBHandler.getInstance().getConn().prepareStatement(gatherLogs);
+        ps.setDate(1, from);
+        ps.setDate(2, to);
+        ResultSet rs = ps.executeQuery();
         
+        while (rs.next()) {
+            Employee employee = null;
+            Log log = new Log(employee, rs.getString("actionMade"), rs.getString("componentName"), rs.getString("changedTo"), rs.getDate("timeMade"));
+            logs.add(log);
+        }
         return logs;
     }
     
