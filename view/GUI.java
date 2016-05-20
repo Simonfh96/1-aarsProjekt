@@ -81,6 +81,7 @@ public class GUI extends javax.swing.JFrame {
         list.setSize(206, 163);
         list.setVisible(false);
         costScrollSearch.add(list);
+        costScrollSearch.setVisible(false);
         cal = Calendar.getInstance();
         cl = (CardLayout) cardPanel.getLayout();
         try {
