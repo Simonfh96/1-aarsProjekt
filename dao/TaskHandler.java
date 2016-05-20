@@ -5,6 +5,8 @@
  */
 package dao;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import model.Task;
 
 /**
@@ -22,8 +24,14 @@ public class TaskHandler {
         
     }
     
-    public void saveTask(Task task) {
-        
+    public void saveTask(Task task) throws SQLException {
+        String insertTask = "INSERT INTO tasks (tStatus, description)"
+                + " values (?, ?)";
+        PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(insertTask);
+        ps.setString(1, task.getStatus());
+        ps.setString(2, task.getDescription());
+        ps.execute();
+        DBHandler.getInstance().conn.close();
     }
     
     public static TaskHandler getInstance() {

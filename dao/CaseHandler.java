@@ -45,7 +45,7 @@ public class CaseHandler {
         }
         return cases;
     }
-
+    
     public ArrayList<Case> getCasesNewest() throws SQLException {
         ArrayList<Case> cases = new ArrayList<>();
         String statement;

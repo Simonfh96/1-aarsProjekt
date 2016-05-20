@@ -49,6 +49,7 @@ public class LogHandler implements Runnable {
 
     //Benyt metoden gatherLogs() til at lave en ArrayList at udskrive
     //Kør den eventuelt i en Thread, da længere logs kan tage tid at udskrive
+    //Den virker ikke endnu spørg David, hvorvidt man skal benytte sig af en thread eller ej
     public void writeLogToFile(ArrayList<Log> logs) throws IOException {
         JFileChooser fc = new JFileChooser();
         int returnVal = fc.showSaveDialog(null);
