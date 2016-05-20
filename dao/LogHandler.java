@@ -28,14 +28,15 @@ public class LogHandler {
     public ArrayList<Log> gatherLogs(Date from, Date to) throws SQLException {
         ArrayList<Log> logs = null;
         PreparedStatement ps = null;
-        String gatherLogs = "SELECT * FROM logs WHERE timeMade BETWEEN '?' AND '?'";
+        String gatherLogs = "SELECT * FROM logs LEFT JOIN employee ON log.employee_id = employee.employee_id "
+                + "WHERE timeMade BETWEEN '?' AND '?'";
         ps = DBHandler.getInstance().getConn().prepareStatement(gatherLogs);
         ps.setDate(1, from);
         ps.setDate(2, to);
         ResultSet rs = ps.executeQuery();
         
         while (rs.next()) {
-            Employee employee = null;
+            Employee employee = EmployeeHandler.getInstance().getEmployee(rs.getInt("employee_id"));
             Log log = new Log(employee, rs.getString("actionMade"), rs.getString("componentName"), rs.getString("changedTo"), rs.getDate("timeMade"));
             logs.add(log);
         }

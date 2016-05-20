@@ -18,11 +18,13 @@ import model.Employee;
  * @author pdyst
  */
 public class EmployeeHandler {
+
     private static EmployeeHandler instance;
-    
+
     private EmployeeHandler() {
-        
+
     }
+
     //Skriv om private metode kald i rapporten
     private boolean checkLogin(String username, String password) throws SQLException {
         boolean check = false;
@@ -40,32 +42,50 @@ public class EmployeeHandler {
         }
         return check;
     }
-    
-    public Employee getEmployee(String username, String password) throws SQLException{
+
+    public Employee getEmployee(String username, String password) throws SQLException {
         Employee employee = null;
         boolean loggedIn = checkLogin(username, password);
         if (loggedIn == true) {
-        try {
-            String statement;
-            statement = "SELECT * FROM employee WHERE username LIKE '" + username + "' AND userPassword = '" + password + "'";
-            System.out.println(statement);
-            ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
-            //bliver ikke oprettet med en arraylist derfor nullpointer exception
-            while (rs.next()) {
-                ArrayList<Case> myCases = new ArrayList<>();
-                employee = new Employee(rs.getInt("employee_id"), rs.getString("username"), rs.getString("userPassword"), 
-                        rs.getString("firstName") + " " + rs.getString("lastName"), 
-                        rs.getInt("phone"), rs.getString("email"), rs.getBoolean("admin"), rs.getBoolean("partTime"), myCases);
-                 myCases = CaseHandler.getInstance().getMyCases(employee);
-                 employee.setMyCases(myCases);
-            }
-        } catch (SQLException ex) {
+            try {
+                String statement;
+                statement = "SELECT * FROM employee WHERE username LIKE '" + username + "' AND userPassword = '" + password + "'";
+                System.out.println(statement);
+                ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+                //bliver ikke oprettet med en arraylist derfor nullpointer exception
+                while (rs.next()) {
+                    ArrayList<Case> myCases = new ArrayList<>();
+                    employee = new Employee(rs.getInt("employee_id"), rs.getString("username"), rs.getString("userPassword"),
+                            rs.getString("firstName") + " " + rs.getString("lastName"),
+                            rs.getInt("phone"), rs.getString("email"), rs.getBoolean("admin"), rs.getBoolean("partTime"), myCases);
+                    myCases = CaseHandler.getInstance().getMyCases(employee);
+                    employee.setMyCases(myCases);
+                }
+            } catch (SQLException ex) {
 
-        }
+            }
         }
         return employee;
     }
-    
+
+    public Employee getEmployee(int employeeID) throws SQLException {
+        Employee employee = null;
+        PreparedStatement ps = null;
+        String getEmployee = "SELECT * FROM employee WHERE employee_id = ?";
+        ps = DBHandler.getInstance().getConn().prepareStatement(getEmployee);
+        ps.setInt(1, employeeID);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            ArrayList<Case> myCases = new ArrayList<>();
+            employee = new Employee(rs.getInt("employee_id"), rs.getString("username"), rs.getString("userPassword"),
+                    rs.getString("firstName") + " " + rs.getString("lastName"),
+                    rs.getInt("phone"), rs.getString("email"), rs.getBoolean("admin"), rs.getBoolean("partTime"), myCases);
+            myCases = CaseHandler.getInstance().getMyCases(employee);
+            employee.setMyCases(myCases);
+        }
+        return employee;
+    }
+
     public void changePasswordAndUsername(String username, String password, Employee e) throws SQLException {
         PreparedStatement ps = null;
         int employeeID = e.getEmployeeID();
@@ -75,11 +95,11 @@ public class EmployeeHandler {
         ps.setString(2, password);
         ps.executeUpdate();
     }
-    
+
     public void deactivateEmployee(Employee employee) {
-        
+
     }
-    
+
     public static EmployeeHandler getInstance() {
         if (instance == null) {
             instance = new EmployeeHandler();
