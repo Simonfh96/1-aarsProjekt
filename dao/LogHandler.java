@@ -30,7 +30,7 @@ public class LogHandler {
         PreparedStatement ps = null;
         String gatherLogs = "SELECT * FROM logs LEFT JOIN employee ON log.employee_id = employee.employee_id "
                 + "WHERE timeMade BETWEEN '?' AND '?'";
-        ps = DBHandler.getInstance().getConn().prepareStatement(gatherLogs);
+        ps = DBHandler.getInstance().conn.prepareStatement(gatherLogs);
         ps.setDate(1, from);
         ps.setDate(2, to);
         ResultSet rs = ps.executeQuery();
