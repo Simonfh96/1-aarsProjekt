@@ -19,12 +19,13 @@ import model.Log;
  * @author pdysted
  */
 public class LogHandler {
+
     private static LogHandler instance;
-    
+
     private LogHandler() {
-        
+
     }
-    
+
     public ArrayList<Log> gatherLogs(Date from, Date to) throws SQLException {
         ArrayList<Log> logs = null;
         PreparedStatement ps = null;
@@ -34,23 +35,33 @@ public class LogHandler {
         ps.setDate(1, from);
         ps.setDate(2, to);
         ResultSet rs = ps.executeQuery();
-        
+
         while (rs.next()) {
             Employee employee = EmployeeHandler.getInstance().getEmployee(rs.getInt("employee_id"));
-            Log log = new Log(employee, rs.getString("actionMade"), rs.getString("componentName"), rs.getString("changedTo"), rs.getDate("timeMade"));
+            Log log = new Log(employee, rs.getString("actionMade"), rs.getString("componentName"), rs.getString("changedFrom"), rs.getString("changedTo"), rs.getDate("timeMade"));
             logs.add(log);
         }
         return logs;
     }
-    
+
     public void writeLogToFile(ArrayList<Log> logs) throws IOException {
-        
+
     }
-    
-    public void saveLog(Log log) {
-        
+
+    public void saveLog(Log log) throws SQLException {
+        String insertLog = "INSERT INTO log (employee_id, actionMade, componentName, changedFrom, changedTo, timeMade)"
+                + " values (?, ?, ?, ?, ?, ?)";
+        PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(insertLog);
+        ps.setInt(1, log.getEmployee().getEmployeeID());
+        ps.setString(2, log.getActionMade());
+        ps.setString(3, log.getComponentName());
+        ps.setString(4, log.getChangedFrom());
+        ps.setString(5, log.getChangedTo());
+        ps.setDate(6, (Date) log.getDate());
+        ps.execute();
+        DBHandler.getInstance().conn.close();
     }
-    
+
     public static LogHandler getInstance() {
         if (instance == null) {
             instance = new LogHandler();

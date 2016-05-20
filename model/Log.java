@@ -14,23 +14,49 @@ import java.util.Date;
  */
 public class Log {
     private static ArrayList<Log> logs;
-    private final String employee;
-    private final String action;
+    private final Employee employee;
+    private final String actionMade;
     private final String componentName;
+    private final String changedFrom;
     private final String changedTo;
     private final Date date;
 
-    public Log(Employee employee, String action, String componentName, String changedTo, Date date) {
-        this.employee = employee.getName();
-        this.action = action;
+    public Log(Employee employee, String actionMade, String componentName, String changedFrom, String changedTo, Date date) {
+        this.employee = employee;
+        this.actionMade = actionMade;
         this.componentName = componentName;
+        this.changedFrom = changedFrom;
         this.changedTo = changedTo;
         this.date = date;
     }
     
     @Override
     public String toString() {
-        return employee + " " + action + " " + componentName + " " + changedTo + " " + date; 
+        return  employee.getName() + " " + actionMade + " " + componentName + " " + changedFrom + " " + changedTo + " " + date; 
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public String getActionMade() {
+        return actionMade;
+    }
+
+    public String getComponentName() {
+        return componentName;
+    }
+
+    public String getChangedFrom() {
+        return changedFrom;
+    }
+
+    public String getChangedTo() {
+        return changedTo;
+    }
+
+    public Date getDate() {
+        return date;
     }
     
     
