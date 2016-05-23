@@ -1819,14 +1819,15 @@ public class GUI extends javax.swing.JFrame {
 
     private void createCaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseButtonActionPerformed
         if (existingCostumerCheckBox.isSelected()) {
-//            try {
-//                //Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), caseCreationNameField.getText(), newCaseDescription.getText(), cal.getTime(), cal.getTime(), costSearchSelected);
-//            } catch (SQLException ex) {
-//                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
-//            }
+            try {
+                ArrayList<Article> articles = new ArrayList<>();
+                //Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), caseCreationNameField.getText(), newCaseDescription.getText(), articles,cal.getTime(), cal.getTime(), costSearchSelected);
+            } catch (SQLException ex) {
+                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
-            //metode der tæller costumer id en op fra databasen
-            //Costumer costumer = new Costumer(newCaseNameField.getText(), mAcro, WIDTH, Integer.parseInt(newCasePhoneField.getText()), newCaseEmailField.getText(), SOMEBITS);
+//            metode der tæller costumer id en op fra databasen
+//            Costumer costumer = new Costumer(newCaseNameField.getText(), mAcro, WIDTH, Integer.parseInt(newCasePhoneField.getText()), newCaseEmailField.getText(), SOMEBITS);
         }
     }//GEN-LAST:event_createCaseButtonActionPerformed
 
