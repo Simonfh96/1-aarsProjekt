@@ -6,7 +6,6 @@
 package model;
 
 import java.util.ArrayList;
-import view.GUI;
 
 /**
  *
@@ -38,7 +37,7 @@ public class Employee {
     public boolean checkAddedMyCases(Case c) {
         boolean added = false;
         for (Case myCase :  myCases) {
-            if (c.getCaseID() == myCase.getCaseID()) {
+            if (c.getKonsNmb() == myCase.getKonsNmb()) {
                 added = true;
                 System.out.println("already added");
             }

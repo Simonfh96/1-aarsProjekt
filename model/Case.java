@@ -13,7 +13,6 @@ import java.util.Date;
  * @author Simon
  */
 public class Case {
-    private int caseID;
     private int konsNmb;
     private String caseName;
     private String description;
@@ -24,8 +23,7 @@ public class Case {
     private Costumer customer;
 
     //CaseID skal fjernes fra parameterne i constructoren og erstattes af caseKonsNmb/konsNmb
-    public Case(int caseID, int konsNmb, String caseName, String description, ArrayList<Article> articles, /*boolean finished*/ Date lastUpdated, Date createdAt, Costumer customer) {
-        this.caseID = caseID;
+    public Case(int konsNmb, String caseName, String description, ArrayList<Article> articles, /*boolean finished*/ Date lastUpdated, Date createdAt, Costumer customer) {
         this.konsNmb = konsNmb;
         this.caseName = caseName;
         this.description = description;
@@ -66,10 +64,6 @@ public class Case {
 
     public Costumer getCustomer() {
         return customer;
-    }
-
-    public int getCaseID() {
-        return caseID;
     }
 
     

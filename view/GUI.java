@@ -1876,7 +1876,7 @@ public class GUI extends javax.swing.JFrame {
         } else {
             try {
                 if (employee.checkAddedMyCases(c)) {
-                    CaseHandler.getInstance().deleteMyCase(c.getCaseID(), employee.getEmployeeID());
+                    CaseHandler.getInstance().deleteMyCase(c.getKonsNmb(), employee.getEmployeeID());
                     employeeLastUpdateField.setText(employee.getName());
                     lastUpdatedField.setText("" + dateFormat.format(cal.getTime()));
                 }
