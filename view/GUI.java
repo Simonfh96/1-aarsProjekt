@@ -37,7 +37,7 @@ import model.Employee;
  * @author Simon
  */
 public class GUI extends javax.swing.JFrame {
-    private ArrayList<Article> articles;
+    private ArrayList<Article> articles = new ArrayList<>();
     private ArrayList<Case> cases;
     private ArrayList<CasePanel> casePanels;
     private Case c;
@@ -1823,17 +1823,21 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_findCostumerFieldMousePressed
 
     private void createCaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseButtonActionPerformed
-//        if (existingCostumerCheckBox.isSelected()) {
-//            try {
-//                
-////                Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), caseCreationNameField.getText(), newCaseDescription.getText(), articles,cal.getTime(), cal.getTime(), costSearchSelected);
-//            } catch (SQLException ex) {
-//                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        } else {
-////            metode der tæller costumer id en op fra databasen
-////            Costumer costumer = new Costumer(newCaseNameField.getText(), mAcro, WIDTH, Integer.parseInt(newCasePhoneField.getText()), newCaseEmailField.getText(), SOMEBITS);
-//        }
+        if (existingCostumerCheckBox.isSelected()) {
+            try {
+                Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), caseCreationNameField.getText(), newCaseDescription.getText(), articles, false, cal.getTime(), cal.getTime(), costSearchSelected);
+            } catch (SQLException ex) {
+                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            //metode der tæller costumer id en op fra databasen
+            try {
+            Costumer costumer = new Costumer(newCaseNameField.getText(), "museums akronym", 11/*museums nummer*/, Integer.parseInt(newCasePhoneField.getText()), newCaseEmailField.getText(), "Addresse", "4700 zip", 0/*metode til at tælle costumer id op*/);
+            Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), caseCreationNameField.getText(), newCaseDescription.getText(), articles, false, cal.getTime(), cal.getTime(), costumer);
+            } catch (SQLException ex) {
+                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_createCaseButtonActionPerformed
 
     private void newCaseDescriptionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newCaseDescriptionMousePressed
@@ -1899,7 +1903,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_saveLoginInfoButtonActionPerformed
 
     private void newObjectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newObjectButtonActionPerformed
-//        Article article = new Article(newObjectNameField.getText(), , (String)newObjectTypeBox.getSelectedItem(), NORMAL);
+     Article article = new Article(newObjectNameField.getText(), 0/*metode til at hente casens nr*/, (String)newObjectTypeBox.getSelectedItem(), 0/*metode til at lave dens kons nr*/);
+     articles.add(article);
     }//GEN-LAST:event_newObjectButtonActionPerformed
 
     /**
