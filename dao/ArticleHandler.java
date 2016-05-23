@@ -21,13 +21,13 @@ public class ArticleHandler {
         
     }
     
-      public ArrayList<Article> getArticles(int caseID) throws SQLException {
+      public ArrayList<Article> getArticles(int caseKonsNmb) throws SQLException {
         ArrayList<Article> articles = new ArrayList<>();
         String statement;
-        statement = "SELECT * FROM objects WHERE case_id = '" + caseID + "';";
+        statement = "SELECT * FROM objects WHERE caseKonsNmb = '" + caseKonsNmb + "';";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
-            Article article = new Article(rs.getString("objectName"), caseID, rs.getString("objectType"), rs.getInt("konsNr"));
+            Article article = new Article(rs.getString("objectName"), caseKonsNmb, rs.getString("objectType"), rs.getInt("konsNr"));
             articles.add(article);
         }
         return articles;

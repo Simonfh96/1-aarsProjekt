@@ -38,7 +38,7 @@ public class CaseHandler {
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
-            ArrayList<Article> articles = ArticleHandler.getInstance().getArticles(rs.getInt("case_id"));
+            ArrayList<Article> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
             Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),
                     articles, /*rs.getBoolean("finished")*/ rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);
@@ -71,7 +71,7 @@ public class CaseHandler {
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
-            ArrayList<Article> articles = ArticleHandler.getInstance().getArticles(rs.getInt("case_id"));
+            ArrayList<Article> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
             Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),
                     articles, /*rs.getBoolean("finished")*/ rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);
@@ -88,7 +88,7 @@ public class CaseHandler {
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
-            ArrayList<Article> articles = ArticleHandler.getInstance().getArticles(rs.getInt("case_id"));
+            ArrayList<Article> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
             Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),
                     articles, /*rs.getBoolean("finished")*/ rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);
@@ -110,7 +110,7 @@ public class CaseHandler {
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
-            ArrayList<Article> articles = ArticleHandler.getInstance().getArticles(rs.getInt("case_id"));
+            ArrayList<Article> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
             Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),
                     articles, /*rs.getBoolean("finished"),*/ rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);

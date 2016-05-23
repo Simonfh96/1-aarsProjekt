@@ -11,16 +11,17 @@ package model;
  */
 public class Article {
     private String name;
-    private int caseID;
+    //Udskift med den tilhørende case's kons nr
+    private int caseKonsNmb;
     private String objectType;
-    private String owner;
+    //private String owner;
     private int konsNmb;
 
-    public Article(String name, int caseID, String objectType, /*String owner,*/ int konsNmb) {
+    public Article(String name, int caseKonsNmb, String objectType, /*owner*/ int konsNmb) {
         this.name = name;
-        this.caseID = caseID;
+        this.caseKonsNmb = caseKonsNmb;
         this.objectType = objectType;
-        //this.owner = owner;
+        /*this.owner = owner;*/
         this.konsNmb = konsNmb;
     }
     
@@ -38,14 +39,6 @@ public class Article {
         this.name = name;
     }
 
-//    public int getID() {
-//        return ID;
-//    }
-//
-//    public void setID(int ID) {
-//        this.ID = ID;
-//    }
-
     public String getObjectType() {
         return objectType;
     }
@@ -53,14 +46,14 @@ public class Article {
     public void setObjectType(String objectType) {
         this.objectType = objectType;
     }
-
-    public String getOwner() {
-        return owner;
-    }
-
-    public void setOwner(String owner) {
-        this.owner = owner;
-    }
+//
+//    public String getOwner() {
+//        return owner;
+//    }
+//
+//    public void setOwner(String owner) {
+//        this.owner = owner;
+//    }
 
     public int getKonsNmb() {
         return konsNmb;

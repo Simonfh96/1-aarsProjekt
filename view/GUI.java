@@ -37,7 +37,7 @@ import model.Employee;
  * @author Simon
  */
 public class GUI extends javax.swing.JFrame {
-
+    private ArrayList<Article> articles;
     private ArrayList<Case> cases;
     private ArrayList<CasePanel> casePanels;
     private Case c;
@@ -201,7 +201,7 @@ public class GUI extends javax.swing.JFrame {
         costumerTypeBox = new javax.swing.JComboBox();
         existingCostumerCheckBox = new javax.swing.JCheckBox();
         findCostumerField = new javax.swing.JTextField();
-        objectTypeBox = new javax.swing.JComboBox();
+        newObjectTypeBox = new javax.swing.JComboBox();
         newObjectButton = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         objectAmountField = new javax.swing.JTextField();
@@ -216,16 +216,16 @@ public class GUI extends javax.swing.JFrame {
         jLabel61 = new javax.swing.JLabel();
         createCaseMuseumsNrField = new javax.swing.JTextField();
         jLabel62 = new javax.swing.JLabel();
-        createCaseLocationBox = new javax.swing.JComboBox<String>();
-        createCaseObjectNameField = new javax.swing.JTextField();
+        createCaseLocationBox = new javax.swing.JComboBox<>();
+        newObjectNameField = new javax.swing.JTextField();
         jLabel63 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         createCaseObjectDescriptionArea = new javax.swing.JTextArea();
         jLabel64 = new javax.swing.JLabel();
-        createCaseTaskBox = new javax.swing.JComboBox<String>();
+        createCaseTaskBox = new javax.swing.JComboBox<>();
         createCaseAddTaskButton = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
-        createCaseTaskList = new javax.swing.JList<String>();
+        createCaseTaskList = new javax.swing.JList<>();
         jSeparator14 = new javax.swing.JSeparator();
         jSeparator15 = new javax.swing.JSeparator();
         customerListPanel = new javax.swing.JPanel();
@@ -568,9 +568,14 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        objectTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Genstands type", "Maleri", "Arkæologi" }));
+        newObjectTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Genstands type", "Maleri", "Arkæologi" }));
 
         newObjectButton.setText("Ny Genstand");
+        newObjectButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newObjectButtonActionPerformed(evt);
+            }
+        });
 
         jLabel18.setText("Antal genstande:");
 
@@ -606,7 +611,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel62.setText("Genstands navn");
 
-        createCaseLocationBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Placering" }));
+        createCaseLocationBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Placering" }));
 
         jLabel63.setText("Museums nr.");
 
@@ -616,14 +621,14 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel64.setText("Genstandsbeskrivelse");
 
-        createCaseTaskBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Opgaver" }));
+        createCaseTaskBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Opgaver" }));
 
         createCaseAddTaskButton.setText("Tilføj");
 
-        createCaseTaskList.setModel(new javax.swing.AbstractListModel() {
+        createCaseTaskList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "liste med", "det valgte", "opgaver" };
             public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane7.setViewportView(createCaseTaskList);
 
@@ -707,11 +712,11 @@ public class GUI extends javax.swing.JFrame {
                                             .addComponent(jLabel61))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(objectTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(newObjectTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(createCaseMuseumsNrField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(createTaskConsNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(objectAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(createCaseObjectNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(newObjectNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addComponent(jLabel64)
                                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
@@ -801,7 +806,7 @@ public class GUI extends javax.swing.JFrame {
                                     .addGroup(newCasePanelLayout.createSequentialGroup()
                                         .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(newObjectButton)
-                                            .addComponent(objectTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(newObjectTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(objectAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -817,7 +822,7 @@ public class GUI extends javax.swing.JFrame {
                                         .addGap(13, 13, 13)
                                         .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(jLabel62)
-                                            .addComponent(createCaseObjectNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(newObjectNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(35, 35, 35)
                                         .addComponent(jLabel64)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1818,17 +1823,17 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_findCostumerFieldMousePressed
 
     private void createCaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseButtonActionPerformed
-        if (existingCostumerCheckBox.isSelected()) {
-            try {
-                ArrayList<Article> articles = new ArrayList<>();
-                //Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), caseCreationNameField.getText(), newCaseDescription.getText(), articles,cal.getTime(), cal.getTime(), costSearchSelected);
-            } catch (SQLException ex) {
-                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-//            metode der tæller costumer id en op fra databasen
-//            Costumer costumer = new Costumer(newCaseNameField.getText(), mAcro, WIDTH, Integer.parseInt(newCasePhoneField.getText()), newCaseEmailField.getText(), SOMEBITS);
-        }
+//        if (existingCostumerCheckBox.isSelected()) {
+//            try {
+//                
+////                Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), caseCreationNameField.getText(), newCaseDescription.getText(), articles,cal.getTime(), cal.getTime(), costSearchSelected);
+//            } catch (SQLException ex) {
+//                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        } else {
+////            metode der tæller costumer id en op fra databasen
+////            Costumer costumer = new Costumer(newCaseNameField.getText(), mAcro, WIDTH, Integer.parseInt(newCasePhoneField.getText()), newCaseEmailField.getText(), SOMEBITS);
+//        }
     }//GEN-LAST:event_createCaseButtonActionPerformed
 
     private void newCaseDescriptionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newCaseDescriptionMousePressed
@@ -1893,6 +1898,10 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_saveLoginInfoButtonActionPerformed
 
+    private void newObjectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newObjectButtonActionPerformed
+//        Article article = new Article(newObjectNameField.getText(), , (String)newObjectTypeBox.getSelectedItem(), NORMAL);
+    }//GEN-LAST:event_newObjectButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1953,7 +1962,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> createCaseLocationBox;
     private javax.swing.JTextField createCaseMuseumsNrField;
     private javax.swing.JTextArea createCaseObjectDescriptionArea;
-    private javax.swing.JTextField createCaseObjectNameField;
     private javax.swing.JComboBox<String> createCaseTaskBox;
     private javax.swing.JList<String> createCaseTaskList;
     private javax.swing.JButton createNewEmployeeButton;
@@ -2129,13 +2137,14 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JComboBox newEmployeeTypeBox;
     private javax.swing.JTextField newEmployeeUsernameField;
     private javax.swing.JButton newObjectButton;
+    private javax.swing.JTextField newObjectNameField;
+    private javax.swing.JComboBox newObjectTypeBox;
     private javax.swing.JTextField newPasswordField1;
     private javax.swing.JTextField newPasswordField2;
     private javax.swing.JTextField newUsernameField;
     private javax.swing.JPanel newestCasesPanel;
     private javax.swing.JScrollPane newestCasesScrollPane;
     private javax.swing.JTextField objectAmountField;
-    private javax.swing.JComboBox objectTypeBox;
     private javax.swing.JTextField objectTypeSField;
     private javax.swing.JTextField ownerSField;
     private javax.swing.JLabel phoneCostumerLabel;

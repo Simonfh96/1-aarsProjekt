@@ -408,11 +408,11 @@
                                                   </Group>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="objectTypeBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="newObjectTypeBox" alignment="0" min="-2" max="-2" attributes="0"/>
                                                       <Component id="createCaseMuseumsNrField" min="-2" pref="130" max="-2" attributes="0"/>
                                                       <Component id="createTaskConsNumberField" min="-2" pref="130" max="-2" attributes="0"/>
                                                       <Component id="objectAmountField" min="-2" pref="70" max="-2" attributes="0"/>
-                                                      <Component id="createCaseObjectNameField" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
+                                                      <Component id="newObjectNameField" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <Component id="jLabel64" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -528,7 +528,7 @@
                                               <Group type="102" attributes="0">
                                                   <Group type="103" groupAlignment="3" attributes="0">
                                                       <Component id="newObjectButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="objectTypeBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="newObjectTypeBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -548,7 +548,7 @@
                                                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="3" attributes="0">
                                                       <Component id="jLabel62" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="createCaseObjectNameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="newObjectNameField" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                                                   <Component id="jLabel64" min="-2" max="-2" attributes="0"/>
@@ -652,7 +652,7 @@
                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="findCostumerFieldKeyReleased"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="objectTypeBox">
+                <Component class="javax.swing.JComboBox" name="newObjectTypeBox">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="3">
@@ -667,6 +667,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ny Genstand"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newObjectButtonActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel18">
                   <Properties>
@@ -746,7 +749,7 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JTextField" name="createCaseObjectNameField">
+                <Component class="javax.swing.JTextField" name="newObjectNameField">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel63">
                   <Properties>
