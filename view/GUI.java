@@ -531,7 +531,7 @@ public class GUI extends javax.swing.JFrame {
         tabbedPane.addTab("Sagsliste", caseHandlingPanel);
 
         jLabel5.setFont(new java.awt.Font("LiSong Pro", 0, 36)); // NOI18N
-        jLabel5.setText("Opret ny Sag");
+        jLabel5.setText("Opret ny sag");
 
         jLabel6.setText("Ny kunde");
 
