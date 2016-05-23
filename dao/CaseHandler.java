@@ -60,7 +60,7 @@ public class CaseHandler {
         }
         return cases;
     }
-
+    
     public ArrayList<Case> getMyCases(Employee e) throws SQLException {
         ArrayList<Case> cases = new ArrayList<>();
         int employeeID = e.getEmployeeID();

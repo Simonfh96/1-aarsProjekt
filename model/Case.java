@@ -23,6 +23,7 @@ public class Case {
     private Date createdAt;
     private Costumer customer;
 
+    //CaseID skal fjernes fra parameterne i constructoren og erstattes af caseKonsNmb/konsNmb
     public Case(int caseID, int konsNmb, String caseName, String description, ArrayList<Article> articles, /*boolean finished*/ Date lastUpdated, Date createdAt, Costumer customer) {
         this.caseID = caseID;
         this.konsNmb = konsNmb;
