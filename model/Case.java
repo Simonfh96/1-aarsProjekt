@@ -17,18 +17,18 @@ public class Case {
     private String caseName;
     private String description;
     private ArrayList<Article> articles;
-//    private boolean finished;
+    private boolean finished;
     private Date lastUpdated;
     private Date createdAt;
     private Costumer customer;
 
     //CaseID skal fjernes fra parameterne i constructoren og erstattes af caseKonsNmb/konsNmb
-    public Case(int konsNmb, String caseName, String description, ArrayList<Article> articles, /*boolean finished*/ Date lastUpdated, Date createdAt, Costumer customer) {
+    public Case(int konsNmb, String caseName, String description, ArrayList<Article> articles, boolean finished, Date lastUpdated, Date createdAt, Costumer customer) {
         this.konsNmb = konsNmb;
         this.caseName = caseName;
         this.description = description;
         this.articles = articles;
-//        this.finished = finished;
+        this.finished = finished;
         this.lastUpdated = lastUpdated;
         this.createdAt = createdAt;
         this.customer = customer;
@@ -46,9 +46,9 @@ public class Case {
         return description;
     }
     
-//    public boolean isFinished() {
-//        return finished;
-//    }
+    public boolean isFinished() {
+        return finished;
+    }
 
     public ArrayList<Article> getArticles() {
         return articles;
