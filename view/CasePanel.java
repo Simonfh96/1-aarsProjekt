@@ -37,9 +37,6 @@ public class CasePanel extends javax.swing.JPanel {
         this.c = c;
         caseNameLabel.setText(c.getCaseName());
         konsNrLabel.setText("" + c.getKonsNmb());
-        if (c.getArticles().size() > 0) {
-        objectLabel.setText(c.getArticles().get(0).getName());
-        }
         ownerLabel.setText(c.getCustomer().getCostumerName() + "");
         createdAtLabel.setText("Oprettet: "+dateFormat.format(c.getCreatedAt()));
         lastUpdateLabel.setText("Sidst opdateret: "+dateFormat.format(c.getLastUpdated()));
@@ -61,7 +58,6 @@ public class CasePanel extends javax.swing.JPanel {
         caseNameLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         konsNrLabel = new javax.swing.JLabel();
-        objectLabel = new javax.swing.JLabel();
         createdAtLabel = new javax.swing.JLabel();
         casePanelEditButton = new javax.swing.JButton();
         ownerLabel = new javax.swing.JLabel();
@@ -69,11 +65,9 @@ public class CasePanel extends javax.swing.JPanel {
 
         caseNameLabel.setText("Case name:");
 
-        jLabel1.setText("Kons nr:");
+        jLabel1.setText("Sags nr.");
 
-        konsNrLabel.setText("Nr kons");
-
-        objectLabel.setText("Object: ");
+        konsNrLabel.setText("Sags nr.");
 
         createdAtLabel.setText("CreatedAt");
 
@@ -101,9 +95,7 @@ public class CasePanel extends javax.swing.JPanel {
                         .addComponent(konsNrLabel))
                     .addComponent(caseNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(objectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ownerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(ownerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lastUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
@@ -126,8 +118,7 @@ public class CasePanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(konsNrLabel)
-                            .addComponent(lastUpdateLabel)
-                            .addComponent(objectLabel)))
+                            .addComponent(lastUpdateLabel)))
                     .addComponent(casePanelEditButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -150,7 +141,6 @@ public class CasePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel konsNrLabel;
     private javax.swing.JLabel lastUpdateLabel;
-    private javax.swing.JLabel objectLabel;
     private javax.swing.JLabel ownerLabel;
     // End of variables declaration//GEN-END:variables
 }
