@@ -64,5 +64,17 @@ public class CostumerHandler {
         }
         return instance;
     }
-
+    
+    public ArrayList<Costumer> selectAllCostumer() throws SQLException {
+        ArrayList<Costumer> costumers = new ArrayList<>();
+        String statement;
+        statement = "SELECT * FROM costumer;";
+        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+        while (rs.next()) {
+                Costumer costumer = new Costumer(rs.getString("costumerName"), rs.getString("acronym"),
+                    rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"), 
+                    rs.getString("address"), rs.getString("zipCode") + ", " + rs.getString("cityName"), rs.getInt("costumer_id"));
+        }
+        return costumers;
+    }
 }
