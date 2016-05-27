@@ -5,6 +5,7 @@
  */
 package dao;
 
+import interfaces.PanelInterface;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -65,16 +66,18 @@ public class CostumerHandler {
         return instance;
     }
     
-    public ArrayList<Costumer> selectAllCostumer() throws SQLException {
-        ArrayList<Costumer> costumers = new ArrayList<>();
+    public ArrayList<PanelInterface> selectAllCostumer() throws SQLException {
+        ArrayList<PanelInterface> costumers = new ArrayList<>();
         String statement;
-        statement = "SELECT * FROM costumer;";
+        statement = "SELECT * FROM costumer LEFT JOIN zipCodes ON costumer.zipCode = zipCodes.zipCode";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
                 Costumer costumer = new Costumer(rs.getString("costumerName"), rs.getString("acronym"),
                     rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"), 
                     rs.getString("address"), rs.getString("zipCode") + ", " + rs.getString("cityName"), rs.getInt("costumer_id"));
+                System.out.println(costumer.getCostumerName());
                 costumers.add(costumer);
+                
         }
         return costumers;
     }

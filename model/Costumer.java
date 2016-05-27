@@ -5,11 +5,14 @@
  */
 package model;
 
+import interfaces.PanelInterface;
+import java.util.ArrayList;
+
 /**
  *
  * @author Tanja
  */
-public class Costumer {
+public class Costumer implements PanelInterface {
     private String costumerName;
     private String mAcro;
     private int mNumb;
@@ -18,6 +21,7 @@ public class Costumer {
     private String address;
     private String cityOfZip;
     private int costumerID;
+    private ArrayList<Costumer> customers;
 
     public Costumer(String costumerName, String mAcro, int mNumb, int phone, String email, String address, String cityOfZip, int costumerID) {
         this.costumerName = costumerName;
@@ -35,6 +39,11 @@ public class Costumer {
         return costumerName;
     }
 
+    public ArrayList<Costumer> getCustomers() {
+        return customers;
+    }
+    
+    
     public String getCostumerName() {
         return costumerName;
     }

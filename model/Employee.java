@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package model;
-
+import model.Case;
+import interfaces.PanelInterface;
 import java.util.ArrayList;
 
 /**
@@ -20,9 +21,9 @@ public class Employee {
     private String email;
     private boolean admin;
     private boolean partTime;
-    private ArrayList<Case> myCases;
+    private ArrayList<PanelInterface> myCases;
 
-    public Employee(int employeeID, String username, String password, String name, int phone, String email, boolean admin, boolean partTime, ArrayList<Case> myCases) {
+    public Employee(int employeeID, String username, String password, String name, int phone, String email, boolean admin, boolean partTime, ArrayList<PanelInterface> myCases) {
         this.employeeID = employeeID;
         this.username = username;
         this.password = password;
@@ -36,8 +37,9 @@ public class Employee {
     
     public boolean checkAddedMyCases(Case c) {
         boolean added = false;
-        for (Case myCase :  myCases) {
-            if (c.getKonsNmb() == myCase.getKonsNmb()) {
+        for (PanelInterface myCase :  myCases) {
+            Case mc = (Case) myCase;
+            if (c.getKonsNmb()  == mc.getKonsNmb()) {
                 added = true;
                 System.out.println("already added");
             }
@@ -49,11 +51,28 @@ public class Employee {
         return name;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public int getPhone() {
+        return phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+    
+
     public int getEmployeeID() {
         return employeeID;
     }
 
-    public ArrayList<Case> getMyCases() {
+    public ArrayList<PanelInterface> getMyCases() {
         return myCases;
     }
 
@@ -65,7 +84,7 @@ public class Employee {
         return partTime;
     }
 
-    public void setMyCases(ArrayList<Case> myCases) {
+    public void setMyCases(ArrayList<PanelInterface> myCases) {
         this.myCases = myCases;
     }
     

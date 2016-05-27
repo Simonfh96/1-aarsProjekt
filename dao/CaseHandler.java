@@ -5,6 +5,7 @@
  */
 package dao;
 
+import interfaces.PanelInterface;
 import java.sql.PreparedStatement;
 import model.Case;
 import java.sql.ResultSet;
@@ -46,8 +47,9 @@ public class CaseHandler {
         return cases;
     }
     
-    public ArrayList<Case> getCasesNewest() throws SQLException {
-        ArrayList<Case> cases = new ArrayList<>();
+    //PanelInteface som datatype volder problemer
+    public ArrayList<PanelInterface> getCasesNewest() throws SQLException {
+        ArrayList<PanelInterface> cases = new ArrayList<>();
         String statement;
         statement = "SELECT * FROM cases ORDER BY lastUpdated DESC LIMIT 10;";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
@@ -61,8 +63,8 @@ public class CaseHandler {
         return cases;
     }
     
-    public ArrayList<Case> getMyCases(Employee e) throws SQLException {
-        ArrayList<Case> cases = new ArrayList<>();
+    public ArrayList<PanelInterface> getMyCases(Employee e) throws SQLException {
+        ArrayList<PanelInterface> cases = new ArrayList<>();
         int employeeID = e.getEmployeeID();
         PreparedStatement ps = null;
 	String selectSQL = "SELECT * FROM myCases LEFT JOIN cases ON myCases.cases_id = cases.case_id WHERE employee_id = ?";
@@ -80,8 +82,8 @@ public class CaseHandler {
         return cases;
     }
 
-    public ArrayList<Case> getFinishedCases() throws SQLException {
-        ArrayList<Case> cases = new ArrayList<>();
+    public ArrayList<PanelInterface> getFinishedCases() throws SQLException {
+        ArrayList<PanelInterface> cases = new ArrayList<>();
         String statement;
         //and finished = 0;
         statement = "SELECT * FROM cases WHERE finished = 1;";

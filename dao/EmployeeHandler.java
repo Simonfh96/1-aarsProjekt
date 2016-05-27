@@ -5,6 +5,7 @@
  */
 package dao;
 
+import interfaces.PanelInterface;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -54,7 +55,7 @@ public class EmployeeHandler {
                 ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
                 //bliver ikke oprettet med en arraylist derfor nullpointer exception
                 while (rs.next()) {
-                    ArrayList<Case> myCases = new ArrayList<>();
+                    ArrayList<PanelInterface> myCases = new ArrayList<>();
                     employee = new Employee(rs.getInt("employee_id"), rs.getString("username"), rs.getString("userPassword"),
                             rs.getString("firstName") + " " + rs.getString("lastName"),
                             rs.getInt("phone"), rs.getString("email"), rs.getBoolean("admin"), rs.getBoolean("partTime"), myCases);
@@ -76,7 +77,7 @@ public class EmployeeHandler {
         ps.setInt(1, employeeID);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
-            ArrayList<Case> myCases = new ArrayList<>();
+            ArrayList<PanelInterface> myCases = new ArrayList<>();
             employee = new Employee(rs.getInt("employee_id"), rs.getString("username"), rs.getString("userPassword"),
                     rs.getString("firstName") + " " + rs.getString("lastName"),
                     rs.getInt("phone"), rs.getString("email"), rs.getBoolean("admin"), rs.getBoolean("partTime"), myCases);
@@ -94,11 +95,31 @@ public class EmployeeHandler {
         ps.setString(1, username);
         ps.setString(2, password);
         ps.executeUpdate();
+        
     }
 
     public void deactivateEmployee(Employee employee) {
 
     }
+    
+    public void createEmployee(Employee employee) throws SQLException {
+        String statement;
+        statement = "INSERT INTO employee (userName, userPassword, firstName, lastName, phone, email, admin, partTime)"
+                + "VALUES ('" + employee.getUsername() + "','" + employee.getPassword() + "','"
+                + employee.getName();
+    }
+    
+    /*
+    public void saveCostumer(Costumer costumer) throws SQLException {
+        String statement;
+        statement = "INSERT INTO customer (costumerName,  museumAcro, museumNmb, phone, email)"
+                + " VALUES ( '" + costumer.getCostumerName()
+                + "','" + costumer.getmAcro() + "','" + costumer.getmNumb() + "','"
+                + costumer.getPhone() + "','" + costumer.getEmail() + "')";
+        DBHandler.getInstance().conn.createStatement().executeUpdate(statement);
+    }
+    */
+    
 
     public static EmployeeHandler getInstance() {
         if (instance == null) {

@@ -5,18 +5,28 @@
  */
 package view;
 
+
+import interfaces.PanelInterface;
+import model.Costumer;
+
 /**
  *
  * @author Tanja
  */
-public class CustomerPanel extends javax.swing.JPanel {
-
+public class CustomerPanel extends javax.swing.JPanel{
+    private Costumer c;
+    
     /**
      * Creates new form customerPanel
+     * @param c 
      */
-    public CustomerPanel() {
+    public CustomerPanel(Costumer c) {
         initComponents();
+        this.c = c;
+        customerNameLabel.setText(c.getCostumerName());
+        
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,27 +37,44 @@ public class CustomerPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        customerNameLabel = new javax.swing.JLabel();
+        selectCustomerButton = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLabel1.setText("Kundenavn");
+        customerNameLabel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        customerNameLabel.setText("Kundenavn");
+
+        selectCustomerButton.setText("Vælg");
+        selectCustomerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectCustomerButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 318, Short.MAX_VALUE))
+                .addComponent(customerNameLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 237, Short.MAX_VALUE)
+                .addComponent(selectCustomerButton)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(customerNameLabel)
+                .addComponent(selectCustomerButton))
         );
     }// </editor-fold>//GEN-END:initComponents
+        
+    private void selectCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectCustomerButtonActionPerformed
+
+    }//GEN-LAST:event_selectCustomerButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel customerNameLabel;
+    private javax.swing.JButton selectCustomerButton;
     // End of variables declaration//GEN-END:variables
 }

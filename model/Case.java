@@ -5,6 +5,7 @@
  */
 package model;
 
+import interfaces.PanelInterface;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -12,7 +13,7 @@ import java.util.Date;
  *
  * @author Simon
  */
-public class Case {
+public class Case implements PanelInterface{
     private int konsNmb;
     private String caseName;
     private String description;
