@@ -44,8 +44,10 @@ public class PanelFactory {
     //den skal oprette en af de tre typer panels alt efter værdien i switchen
     //
     public void createPanels(ArrayList<PanelInterface> panels, JPanel displayPanel, GUI gui, String type) {
+        System.out.println("switch");
         switch (type) {
             case "CasePanel":
+                System.out.println("casepanel");
                 for (int i = 0; i < panels.size(); i++) {
                     CasePanel cp = new CasePanel((Case) panels.get(i), gui);
                     cp.setBounds(0, 52 * i, displayPanel.getWidth(), 50);
@@ -57,17 +59,18 @@ public class PanelFactory {
 
                 break;
 
-//            case "articlePanel":
-//                for (int i = 0; i < panels.size(); i++) {
-//                    ArticlePanel ap = new ArticlePanel((Article) panels.get(i));
-//                    ap.setBounds(0, 52 * i, displayPanel.getWidth(), 50);
-//                    ap.setBorder(BorderFactory.createLineBorder(Color.black));
-//                    displayPanel.add(ap);
-//                    displayPanel.repaint();
-//                    displayPanel.revalidate();
-//                }
+            case "ArticlePanel":
+                for (int i = 0; i < panels.size(); i++) {
+                    ArticlePanel ap = new ArticlePanel((Article) panels.get(i));
+                    ap.setBounds(0, 52 * i, displayPanel.getWidth(), 50);
+                    ap.setBorder(BorderFactory.createLineBorder(Color.black));
+                    displayPanel.add(ap);
+                    displayPanel.repaint();
+                    displayPanel.revalidate();
+                }
 
-//                break;
+                break;
+                
             case "CostumerPanel":
                 for (int i = 0; i < panels.size(); i++) {
                     CustomerPanel cp = new CustomerPanel((Costumer) panels.get(i));

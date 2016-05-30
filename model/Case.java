@@ -17,14 +17,14 @@ public class Case implements PanelInterface{
     private int konsNmb;
     private String caseName;
     private String description;
-    private ArrayList<Article> articles;
+    private ArrayList<PanelInterface> articles;
     private boolean finished;
     private Date lastUpdated;
     private Date createdAt;
     private Costumer customer;
 
     //CaseID skal fjernes fra parameterne i constructoren og erstattes af caseKonsNmb/konsNmb
-    public Case(int konsNmb, String caseName, String description, ArrayList<Article> articles, boolean finished, Date lastUpdated, Date createdAt, Costumer customer) {
+    public Case(int konsNmb, String caseName, String description, ArrayList<PanelInterface> articles, boolean finished, Date lastUpdated, Date createdAt, Costumer customer) {
         this.konsNmb = konsNmb;
         this.caseName = caseName;
         this.description = description;
@@ -51,7 +51,7 @@ public class Case implements PanelInterface{
         return finished;
     }
 
-    public ArrayList<Article> getArticles() {
+    public ArrayList<PanelInterface> getArticles() {
         return articles;
     }
 

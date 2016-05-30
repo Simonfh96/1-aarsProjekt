@@ -9,13 +9,12 @@ package model;
  *
  * @author Tanja
  */
-public class Contacts {
-    
+public class Contact {
     private String conName;
     private int conPhone;
     private String conEmail;
 
-    public Contacts(String conName, int conPhone, String conEmail) {
+    public Contact(String conName, int conPhone, String conEmail) {
         this.conName = conName;
         this.conPhone = conPhone;
         this.conEmail = conEmail;

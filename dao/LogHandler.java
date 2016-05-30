@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
+import javax.swing.JTextArea;
 import model.Employee;
 import model.Log;
 
@@ -29,19 +30,22 @@ public class LogHandler implements Runnable {
 
     }
 
-    public ArrayList<Log> gatherLogs(Date from, Date to) throws SQLException {
+    public ArrayList<Log> gatherLogs(java.util.Date from, java.util.Date to, JTextArea logTextArea) throws SQLException {
         ArrayList<Log> logs = null;
         PreparedStatement ps = null;
+        java.sql.Date sqlFrom = new java.sql.Date(from.getTime());
+        java.sql.Date sqlTo = new java.sql.Date(to.getTime()); 
         String gatherLogs = "SELECT * FROM logs LEFT JOIN employee ON log.employee_id = employee.employee_id "
                 + "WHERE timeMade BETWEEN '?' AND '?'";
         ps = DBHandler.getInstance().conn.prepareStatement(gatherLogs);
-        ps.setDate(1, from);
-        ps.setDate(2, to);
+        ps.setDate(1, sqlFrom);
+        ps.setDate(2, sqlTo);
         ResultSet rs = ps.executeQuery();
 
         while (rs.next()) {
             Employee employee = EmployeeHandler.getInstance().getEmployee(rs.getInt("employee_id"));
             Log log = new Log(employee, rs.getString("actionMade"), rs.getString("componentName"), rs.getString("changedFrom"), rs.getString("changedTo"), rs.getDate("timeMade"));
+            logTextArea.append(log.toString() + "\n");
             logs.add(log);
         }
         return logs;

@@ -6,7 +6,9 @@
 package dao;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import model.Task;
 
 /**
@@ -18,6 +20,20 @@ public class TaskHandler {
     
     private TaskHandler() {
         
+    }
+    
+    public ArrayList<Task> getTasks(int articleID) throws SQLException {
+        ArrayList<Task> tasks = new ArrayList<>();
+        PreparedStatement ps = null;
+        String getTasks = "SELECT * FROM tasks WHERE article_id = ?";
+        ps = DBHandler.getInstance().getConn().prepareStatement(getTasks);
+        ps.setInt(1, articleID);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Task task = new Task(rs.getString("tStatus"), rs.getString("description"));
+            tasks.add(task);
+        }
+        return tasks;
     }
     
     public void editTask(Task task) {

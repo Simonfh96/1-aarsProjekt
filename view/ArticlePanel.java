@@ -5,7 +5,8 @@
  */
 package view;
 
-import interfaces.PanelInterface;
+
+import java.awt.Color;
 import model.Article;
 
 /**
@@ -14,6 +15,7 @@ import model.Article;
  */
 public class ArticlePanel extends javax.swing.JPanel {
     private Article a;
+    private Color normal;
     /**
      * Creates new form ArticlePanel
      * @param a
@@ -21,6 +23,18 @@ public class ArticlePanel extends javax.swing.JPanel {
     public ArticlePanel(Article a) {
         initComponents();
         this.a = a;
+        normal = this.getBackground();
+        articleNameLabel.setText(a.getName());
+        konsNmbLabel.setText(""+a.getKonsNmb());
+    }
+    
+    public void setSelected(boolean selected) {
+        articlePanelCheckBox.setSelected(selected);
+        if (selected == true) {
+            this.setBackground(Color.BLUE);
+        } else {
+            this.setBackground(normal);
+        }
     }
 
     /**
@@ -32,19 +46,67 @@ public class ArticlePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        articleNameLabel = new javax.swing.JLabel();
+        konsNmbLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        articlePanelCheckBox = new javax.swing.JCheckBox();
+
+        articleNameLabel.setText("Name");
+
+        konsNmbLabel.setText("KonsNr");
+
+        jLabel1.setText("Kons nr:");
+
+        articlePanelCheckBox.setText("Markér");
+        articlePanelCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                articlePanelCheckBoxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(articleNameLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(konsNmbLabel))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(articlePanelCheckBox)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(articleNameLabel)
+                    .addComponent(konsNmbLabel)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(articlePanelCheckBox))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void articlePanelCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_articlePanelCheckBoxActionPerformed
+        if (articlePanelCheckBox.isSelected() == true) {
+            this.setBackground(Color.BLUE);
+        } else {
+            this.setBackground(normal);
+        }
+    }//GEN-LAST:event_articlePanelCheckBoxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel articleNameLabel;
+    private javax.swing.JCheckBox articlePanelCheckBox;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel konsNmbLabel;
     // End of variables declaration//GEN-END:variables
 }

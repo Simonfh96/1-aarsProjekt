@@ -20,10 +20,12 @@ public class Costumer implements PanelInterface {
     private String email;
     private String address;
     private String cityOfZip;
+    private ArrayList<Contact> contacts;
     private int costumerID;
+    //Hvad bruges customers til?
     private ArrayList<Costumer> customers;
 
-    public Costumer(String costumerName, String mAcro, int mNumb, int phone, String email, String address, String cityOfZip, int costumerID) {
+    public Costumer(String costumerName, String mAcro, int mNumb, int phone, String email, String address, String cityOfZip, ArrayList<Contact> contacts, int costumerID) {
         this.costumerName = costumerName;
         this.mAcro = mAcro;
         this.mNumb = mNumb;
@@ -31,6 +33,7 @@ public class Costumer implements PanelInterface {
         this.email = email;
         this.address = address;
         this.cityOfZip = cityOfZip;
+        this.contacts = contacts;
         this.costumerID = costumerID;
     }
     

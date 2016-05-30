@@ -39,7 +39,7 @@ public class CaseHandler {
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
-            ArrayList<Article> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
+            ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
             Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),
                     articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);
@@ -55,7 +55,7 @@ public class CaseHandler {
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
-            ArrayList<Article> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
+            ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
             Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),
                     articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);
@@ -73,7 +73,7 @@ public class CaseHandler {
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
-            ArrayList<Article> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
+            ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
             Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),
                     articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);
@@ -90,7 +90,7 @@ public class CaseHandler {
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
-            ArrayList<Article> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
+            ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
             Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),
                     articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);
@@ -98,8 +98,8 @@ public class CaseHandler {
         return cases;
     }
 
-    public ArrayList<Case> searchCases(int konsNmb, String caseName) throws SQLException {
-        ArrayList<Case> cases = new ArrayList<>();
+    public ArrayList<PanelInterface> searchCases(int konsNmb, String caseName) throws SQLException {
+        ArrayList<PanelInterface> cases = new ArrayList<>();
 //        PreparedStatement ps = null;
 //	String selectSQL = "SELECT * FROM cases WHERE konsNr = ? AND caseName LIKE '?%'";
 //        ps = DBHandler.getInstance().conn.prepareStatement(selectSQL);
@@ -112,7 +112,7 @@ public class CaseHandler {
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
-            ArrayList<Article> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
+            ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
             Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),
                     articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);

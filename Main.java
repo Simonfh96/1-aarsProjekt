@@ -1,9 +1,6 @@
 
 import control.Control;
-import model.Employee;
-import model.Log;
 import view.GUI;
-import view.LoginView;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

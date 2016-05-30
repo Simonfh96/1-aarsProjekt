@@ -5,24 +5,29 @@
  */
 package model;
 
+import interfaces.PanelInterface;
+import java.util.ArrayList;
+
 /**
  *
- * @author pdyst
+ * @author pdysted
  */
-public class Article {
+public class Article implements PanelInterface {
     private String name;
     //Udskift med den tilhørende case's kons nr
     private int caseKonsNmb;
     private String objectType;
     //private String owner;
     private int konsNmb;
+    private ArrayList<Task> tasks;
 
-    public Article(String name, int caseKonsNmb, String objectType, /*owner*/ int konsNmb) {
+    public Article(String name, int caseKonsNmb, String objectType, /*owner*/ int konsNmb, ArrayList<Task> tasks) {
         this.name = name;
         this.caseKonsNmb = caseKonsNmb;
         this.objectType = objectType;
         /*this.owner = owner;*/
         this.konsNmb = konsNmb;
+        this.tasks = tasks;
     }
     
     @Override

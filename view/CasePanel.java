@@ -126,9 +126,6 @@ public class CasePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void casePanelEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casePanelEditButtonActionPerformed
-        for (Article a : c.getArticles()) {
-            System.out.println(a.toString());
-        }
         cl.next(gui.getCardPanel());
         gui.setC(c);
         gui.editCaseSetup();
