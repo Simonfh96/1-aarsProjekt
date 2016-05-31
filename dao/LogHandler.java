@@ -8,6 +8,7 @@ package dao;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.CallableStatement;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -65,18 +66,16 @@ public class LogHandler implements Runnable {
 
     }
 
-    public void saveLog(Log log) throws SQLException {
-        String insertLog = "INSERT INTO log (employee_id, actionMade, componentName, changedFrom, changedTo, timeMade)"
-                + " values (?, ?, ?, ?, ?, ?)";
-        PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(insertLog);
-        ps.setInt(1, log.getEmployee().getEmployeeID());
-        ps.setString(2, log.getActionMade());
-        ps.setString(3, log.getComponentName());
-        ps.setString(4, log.getChangedFrom());
-        ps.setString(5, log.getChangedTo());
-        ps.setDate(6, (Date) log.getDate());
-        ps.execute();
-        DBHandler.getInstance().conn.close();
+    public void saveLog(Log l) throws SQLException {
+        CallableStatement cs = null;
+        cs = DBHandler.getInstance().conn.prepareCall("{CALL AddLog(?, ?, ?, ?, ?, ?)}");
+        cs.setInt(1, l.getEmployee().getEmployeeID());
+        cs.setString(2, l.getActionMade());
+        cs.setString(3, l.getComponentName());
+        cs.setString(4, l.getChangedFrom());
+        cs.setString(5, l.getChangedTo());
+        cs.setDate(6, l.getDate());
+        cs.execute();
     }
 
     @Override

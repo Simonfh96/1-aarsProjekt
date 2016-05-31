@@ -13,7 +13,6 @@ import dao.EmployeeHandler;
 import factories.PanelFactory;
 import interfaces.PanelInterface;
 import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
@@ -23,7 +22,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JList;
@@ -63,7 +61,7 @@ public class GUI extends javax.swing.JFrame {
      *
      * @param control
      */
-    public GUI(Control control) {
+    public GUI(Control control) throws SQLException {
         initComponents();
         lw = new LoginView(this);
         lw.setAlwaysOnTop(true);
@@ -1988,7 +1986,11 @@ public class GUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI(control).setVisible(true);
+                try {
+                    new GUI(control).setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
