@@ -31,6 +31,7 @@ import javax.swing.JPanel;
 import listeners.SearchListListener;
 import model.Article;
 import model.Case;
+import model.Contact;
 import model.Costumer;
 import model.Employee;
 import model.Task;
@@ -1824,6 +1825,7 @@ public class GUI extends javax.swing.JFrame {
         if (existingCostumerCheckBox.isSelected()) {
             try {
                 Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), caseCreationNameField.getText(), newCaseDescription.getText(), articles, false, cal.getTime(), cal.getTime(), costSearchSelected);
+                CaseHandler.getInstance().saveCase(newCase, employee, true);
             } catch (SQLException ex) {
                 Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1831,10 +1833,12 @@ public class GUI extends javax.swing.JFrame {
             //metode der tæller costumer id en op fra databasen
             try {
                 //skal slettets igen casehandler
-                CaseHandler.getInstance().getCases();
                 //ArrayList af contacts
-                //Costumer costumer = new Costumer(newCaseNameField.getText(), "museums akronym", 11/*museums nummer*/, Integer.parseInt(newCasePhoneField.getText()), newCaseEmailField.getText(), "Addresse", "4700 zip", 0/*metode til at tælle costumer id op*/);
-//                Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), caseCreationNameField.getText(), newCaseDescription.getText(), articles, false, cal.getTime(), cal.getTime(), costumer);
+                //Oprette kontaker til kunden? ContactHandler
+                ArrayList<Contact> contacts = new ArrayList<>();
+                Costumer costumer = new Costumer(CostumerHandler.getInstance().generateCostumerID(), newCaseNameField.getText(), "museums akronym", 11/*museums nummer*/, Integer.parseInt(newCasePhoneField.getText()), newCaseEmailField.getText(), "Addresse", "4700 zip", contacts);
+                Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), caseCreationNameField.getText(), newCaseDescription.getText(), articles, false, cal.getTime(), cal.getTime(), costumer);
+                CaseHandler.getInstance().saveCase(newCase, employee, false);
             } catch (SQLException ex) {
                 Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
             }

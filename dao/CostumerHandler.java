@@ -89,6 +89,17 @@ public class CostumerHandler {
             ContactHandler.getInstance().saveContacts(c);
         }
     }
+    
+    public int generateCostumerID() throws SQLException {
+        int costumerID = 0;
+        String statement;
+        statement = "SELECT costumer_id FROM costumer ORDER BY costumer_id DESC LIMIT 1;";
+        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+        if (rs.next()) {
+            costumerID = rs.getInt("costumer_id") + 1;
+        }
+        return costumerID;
+    }
 
     public static CostumerHandler getInstance() {
         if (instance == null) {
