@@ -52,9 +52,7 @@ public class EmployeeHandler {
             try {
                 String statement;
                 statement = "SELECT * FROM employee WHERE username LIKE '" + username + "' AND userPassword = '" + password + "'";
-                System.out.println(statement);
                 ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
-                //bliver ikke oprettet med en arraylist derfor nullpointer exception
                 while (rs.next()) {
                     ArrayList<PanelInterface> myCases = new ArrayList<>();
                     employee = new Employee(rs.getInt("employee_id"), rs.getString("username"), rs.getString("userPassword"),
@@ -99,8 +97,12 @@ public class EmployeeHandler {
         
     }
     
-    public void deactivateEmployee(Employee employee) {
-        
+    public void deactivateEmployee(Employee e) throws SQLException {
+        PreparedStatement ps = null;
+        String setActive = "UPDATE employee SET active = ? WHERE employee_id = " + e.getEmployeeID();
+        ps = DBHandler.getInstance().conn.prepareStatement(setActive);
+        ps.setBoolean(1, e.isActive());
+        ps.executeUpdate();
     }
     
     public void saveEmployee(Employee e) throws SQLException {
