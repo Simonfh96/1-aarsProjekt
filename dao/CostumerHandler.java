@@ -85,7 +85,7 @@ public class CostumerHandler {
         ps.setInt(8, 1); //Metode der tjekker efter zip code og returner id'et dertil
         ps.setInt(9, c.getCostumerID());
         ps.execute();
-        if (c.getContacts().size() < 1) {
+        if (c.getContacts().size() > 0) {
             ContactHandler.getInstance().saveContacts(c);
         }
     }

@@ -6,10 +6,12 @@
 package dao;
 
 import interfaces.PanelInterface;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Article;
+import model.Case;
 import model.Task;
 
 /**
@@ -35,6 +37,23 @@ public class ArticleHandler {
         }
         return articles;
     }
+      
+    public void saveArticle(Article a, Case c) throws SQLException {
+             String saveArticles;
+             saveArticles = "INSERT INTO articles (caseKonsNmb, objectName, objectType, konsNr)"
+                + " values (?, ?, ?, ?)";
+             PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(saveArticles);
+             ps.setInt(1, c.getKonsNmb());
+             ps.setString(2, a.getName());
+             ps.setString(3, a.getObjectType());
+             ps.setInt(4, a.getKonsNmb());
+             ps.execute(); 
+             if (a.getTasks().size() > 0) {
+                 for (Task t : a.getTasks()) {
+                 TaskHandler.getInstance().saveTask(t);
+                 }
+             }
+     }
     
     public static ArticleHandler getInstance() {
         if (instance == null) {

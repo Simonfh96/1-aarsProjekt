@@ -37,9 +37,20 @@ public class ContactHandler {
         return contacts;
     }
      
-     public void saveContacts(Costumer c) {
+     public void saveContacts(Costumer c) throws SQLException {
          ArrayList<Contact> contacts = c.getContacts();
-         
+         for (int i = 0; i < contacts.size(); i++) {
+             String saveCostumer;
+             saveCostumer = "INSERT INTO contacts (customer_id, contactName, phone, email)"
+                + " values (?, ?, ?, ?)";
+             PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(saveCostumer);
+             ps.setInt(1, c.getCostumerID());
+             ps.setString(2, contacts.get(i).getConName());
+             ps.setInt(3, contacts.get(i).getConPhone());
+             ps.setString(4, contacts.get(i).getConEmail());
+             ps.execute(); 
+         }
+         DBHandler.getInstance().conn.close();
      }
     
     public static ContactHandler getInstance() {

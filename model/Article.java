@@ -68,6 +68,10 @@ public class Article implements PanelInterface {
         this.konsNmb = konsNmb;
     }
 
+    public ArrayList<Task> getTasks() {
+        return tasks;
+    }
+
     
     
     

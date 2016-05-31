@@ -163,7 +163,12 @@ public class CaseHandler {
         ps.setInt(8, c.getCustomer().getCostumerID());
         ps.execute();
         CostumerHandler.getInstance().saveCostumer(c.getCustomer(), existingCostumer);
-//        ArticleHandler.getInstance().saveArticles();
+        if (c.getArticles().size() > 0) {
+            for (PanelInterface article : c.getArticles()) {
+                Article a = (Article) article;
+                ArticleHandler.getInstance().saveArticle(a, c);
+            }
+        }
     }
 
     public int generateKonsNmb() throws SQLException {
