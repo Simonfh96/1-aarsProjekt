@@ -23,9 +23,10 @@ public class Employee {
     private String email;
     private boolean admin;
     private boolean partTime;
+    private boolean active;
     private ArrayList<PanelInterface> myCases;
 
-    public Employee(int employeeID, String username, String password, String firstName, String lastName, int phone, String email, boolean admin, boolean partTime, ArrayList<PanelInterface> myCases) {
+    public Employee(int employeeID, String username, String password, String firstName, String lastName, int phone, String email, boolean admin, boolean partTime, boolean active,ArrayList<PanelInterface> myCases) {
         this.employeeID = employeeID;
         this.username = username;
         this.password = password;
@@ -36,6 +37,7 @@ public class Employee {
         this.email = email;
         this.admin = admin;
         this.partTime = partTime;
+        this.active = active;
         this.myCases = myCases;
     }
     
@@ -98,6 +100,10 @@ public class Employee {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public boolean isActive() {
+        return active;
     }
     
     

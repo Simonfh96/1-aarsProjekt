@@ -20,11 +20,11 @@ import model.Employee;
  * @author pdyst
  */
 public class EmployeeHandler {
-
+    
     private static EmployeeHandler instance;
-
+    
     private EmployeeHandler() {
-
+        
     }
 
     //Skriv om private metode kald i rapporten
@@ -44,7 +44,7 @@ public class EmployeeHandler {
         }
         return check;
     }
-
+    
     public Employee getEmployee(String username, String password) throws SQLException {
         Employee employee = null;
         boolean loggedIn = checkLogin(username, password);
@@ -59,17 +59,17 @@ public class EmployeeHandler {
                     ArrayList<PanelInterface> myCases = new ArrayList<>();
                     employee = new Employee(rs.getInt("employee_id"), rs.getString("username"), rs.getString("userPassword"),
                             rs.getString("firstName"), rs.getString("lastName"),
-                            rs.getInt("phone"), rs.getString("email"), rs.getBoolean("admin"), rs.getBoolean("partTime"), myCases);
+                            rs.getInt("phone"), rs.getString("email"), rs.getBoolean("admin"), rs.getBoolean("partTime"), rs.getBoolean("active"), myCases);
                     myCases = CaseHandler.getInstance().getMyCases(employee);
                     employee.setMyCases(myCases);
                 }
             } catch (SQLException ex) {
-
+                
             }
         }
         return employee;
     }
-
+    
     public Employee getEmployee(int employeeID) throws SQLException {
         Employee employee = null;
         PreparedStatement ps = null;
@@ -81,13 +81,13 @@ public class EmployeeHandler {
             ArrayList<PanelInterface> myCases = new ArrayList<>();
             employee = new Employee(rs.getInt("employee_id"), rs.getString("username"), rs.getString("userPassword"),
                     rs.getString("firstName"), rs.getString("lastName"),
-                    rs.getInt("phone"), rs.getString("email"), rs.getBoolean("admin"), rs.getBoolean("partTime"), myCases);
+                    rs.getInt("phone"), rs.getString("email"), rs.getBoolean("admin"), rs.getBoolean("partTime"), rs.getBoolean("active"), myCases);
             myCases = CaseHandler.getInstance().getMyCases(employee);
             employee.setMyCases(myCases);
         }
         return employee;
     }
-
+    
     public void changePasswordAndUsername(String username, String password, Employee e) throws SQLException {
         PreparedStatement ps = null;
         int employeeID = e.getEmployeeID();
@@ -98,21 +98,14 @@ public class EmployeeHandler {
         ps.executeUpdate();
         
     }
-
-    public void deactivateEmployee(Employee employee) {
-
-    }
     
-//    public void createEmployee(Employee employee) throws SQLException {
-//        String statement;
-//        statement = "INSERT INTO employee (userName, userPassword, firstName, lastName, phone, email, admin, partTime)"
-//                + "VALUES ('" + employee.getUsername() + "','" + employee.getPassword() + "','"
-//                + employee.getName();
-//    }
+    public void deactivateEmployee(Employee employee) {
+        
+    }
     
     public void saveEmployee(Employee e) throws SQLException {
         CallableStatement cs = null;
-        cs = DBHandler.getInstance().conn.prepareCall("{CALL AddEmployee(?, ?, ?, ?, ?, ?, ?, ?, ?)}");
+        cs = DBHandler.getInstance().conn.prepareCall("{CALL AddEmployee(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}");
         cs.setInt(1, e.getEmployeeID());
         cs.setString(2, e.getUsername());
         cs.setString(3, e.getPassword());
@@ -122,6 +115,7 @@ public class EmployeeHandler {
         cs.setString(7, e.getEmail());
         cs.setBoolean(8, e.isAdmin());
         cs.setBoolean(9, e.isPartTime());
+        cs.setBoolean(10, e.isActive());
         cs.execute();
     }
     
@@ -136,7 +130,6 @@ public class EmployeeHandler {
         return employeeID;
     }
     
-
     public static EmployeeHandler getInstance() {
         if (instance == null) {
             instance = new EmployeeHandler();

@@ -1945,7 +1945,7 @@ public class GUI extends javax.swing.JFrame {
                 partTime = true;
             }
             Employee newE = new Employee(EmployeeHandler.getInstance().generateEmployeeID(), newEmployeeUsernameField.getText(), newEmployeePassword2Field.getText(), newEmployeeFirstnameField.getText(),
-                    newEmployeeLastnameField.getText(), Integer.parseInt(newEmployeePhoneField.getText()), newEmployeeEmailField.getText(), admin, partTime, newMyCases);
+            newEmployeeLastnameField.getText(), Integer.parseInt(newEmployeePhoneField.getText()), newEmployeeEmailField.getText(), admin, partTime, true, newMyCases);
             EmployeeHandler.getInstance().saveEmployee(newE);
         } catch (SQLException ex) {
             System.out.println(ex.getLocalizedMessage());
