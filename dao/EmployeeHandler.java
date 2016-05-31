@@ -112,7 +112,7 @@ public class EmployeeHandler {
     
     public void saveEmployee(Employee e) throws SQLException {
         CallableStatement cs = null;
-        cs = DBHandler.getInstance().conn.prepareCall("{ CALL AddEmployee(?, ?, ?, ?, ?, ?, ?, ?, ?)}");
+        cs = DBHandler.getInstance().conn.prepareCall("{CALL AddEmployee(?, ?, ?, ?, ?, ?, ?, ?, ?)}");
         cs.setInt(1, e.getEmployeeID());
         cs.setString(2, e.getUsername());
         cs.setString(3, e.getPassword());
