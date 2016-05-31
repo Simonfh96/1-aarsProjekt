@@ -29,7 +29,7 @@ public class ArticleHandler {
         statement = "SELECT * FROM objects WHERE caseKonsNmb = '" + caseKonsNmb + "';";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
-            ArrayList<Task> tasks = TaskHandler.getInstance().getTasks(rs.getInt("object_id"));
+            ArrayList<Task> tasks = TaskHandler.getInstance().getTasks(rs.getInt("objects_id"));
             Article article = new Article(rs.getString("objectName"), caseKonsNmb, rs.getString("objectType"), rs.getInt("konsNr"), tasks);
             articles.add(article);
         }

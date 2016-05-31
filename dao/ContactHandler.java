@@ -30,7 +30,7 @@ public class ContactHandler {
         ps.setInt(1, costumerID);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
-            Contact contact = new Contact(rs.getString("contactName"), rs.getInt("phone"), rs.getString("eamil"));
+            Contact contact = new Contact(rs.getString("contactName"), rs.getInt("phone"), rs.getString("email"));
             contacts.add(contact);
         }
         return contacts;

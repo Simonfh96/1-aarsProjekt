@@ -25,7 +25,7 @@ public class TaskHandler {
     public ArrayList<Task> getTasks(int articleID) throws SQLException {
         ArrayList<Task> tasks = new ArrayList<>();
         PreparedStatement ps = null;
-        String getTasks = "SELECT * FROM tasks WHERE article_id = ?";
+        String getTasks = "SELECT * FROM tasks WHERE object_id = ?";
         ps = DBHandler.getInstance().getConn().prepareStatement(getTasks);
         ps.setInt(1, articleID);
         ResultSet rs = ps.executeQuery();

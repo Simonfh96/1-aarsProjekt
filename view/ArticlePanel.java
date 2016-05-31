@@ -15,7 +15,7 @@ import model.Article;
  */
 public class ArticlePanel extends javax.swing.JPanel {
     private Article a;
-    private Color normal;
+    private final Color normal;
     /**
      * Creates new form ArticlePanel
      * @param a
@@ -50,6 +50,15 @@ public class ArticlePanel extends javax.swing.JPanel {
         konsNmbLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         articlePanelCheckBox = new javax.swing.JCheckBox();
+
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                formMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                formMouseEntered(evt);
+            }
+        });
 
         articleNameLabel.setText("Name");
 
@@ -101,6 +110,16 @@ public class ArticlePanel extends javax.swing.JPanel {
             this.setBackground(normal);
         }
     }//GEN-LAST:event_articlePanelCheckBoxActionPerformed
+
+    private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
+        this.setBackground(Color.BLUE);
+    }//GEN-LAST:event_formMouseEntered
+
+    private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
+        if (articlePanelCheckBox.isSelected() == false) {
+            this.setBackground(normal);
+        }
+    }//GEN-LAST:event_formMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
