@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Contact;
+import model.Costumer;
 
 /**
  *
@@ -35,6 +36,11 @@ public class ContactHandler {
         }
         return contacts;
     }
+     
+     public void saveContacts(Costumer c) {
+         ArrayList<Contact> contacts = c.getContacts();
+         
+     }
     
     public static ContactHandler getInstance() {
         if (instance == null) {

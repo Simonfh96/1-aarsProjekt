@@ -25,7 +25,8 @@ public class Costumer implements PanelInterface {
     //Hvad bruges customers til?
     private ArrayList<Costumer> customers;
 
-    public Costumer(String costumerName, String mAcro, int mNumb, int phone, String email, String address, String cityOfZip, ArrayList<Contact> contacts, int costumerID) {
+    public Costumer(int costumerID, String costumerName, String mAcro, int mNumb, int phone, String email, String address, String cityOfZip, ArrayList<Contact> contacts) {
+        this.costumerID = costumerID;
         this.costumerName = costumerName;
         this.mAcro = mAcro;
         this.mNumb = mNumb;
@@ -34,7 +35,6 @@ public class Costumer implements PanelInterface {
         this.address = address;
         this.cityOfZip = cityOfZip;
         this.contacts = contacts;
-        this.costumerID = costumerID;
     }
     
     @Override
@@ -98,6 +98,11 @@ public class Costumer implements PanelInterface {
     public String getCityOfZip() {
         return cityOfZip;
     }
+
+    public ArrayList<Contact> getContacts() {
+        return contacts;
+    }
+    
     
     
 }

@@ -23,7 +23,7 @@ public class Case implements PanelInterface{
     private Date createdAt;
     private Costumer customer;
 
-    //CaseID skal fjernes fra parameterne i constructoren og erstattes af caseKonsNmb/konsNmb
+    //Sagsnr skal tilføjes, så det kan søges på (Case tables PK)
     public Case(int konsNmb, String caseName, String description, ArrayList<PanelInterface> articles, boolean finished, Date lastUpdated, Date createdAt, Costumer customer) {
         this.konsNmb = konsNmb;
         this.caseName = caseName;

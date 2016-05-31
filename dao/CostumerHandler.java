@@ -6,6 +6,7 @@
 package dao;
 
 import interfaces.PanelInterface;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -30,9 +31,9 @@ public class CostumerHandler {
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             ArrayList<Contact> contacts = ContactHandler.getInstance().getContacts(rs.getInt("costumer_id"));
-            Costumer costumer = new Costumer(rs.getString("costumerName"), rs.getString("acronym"),
+            Costumer costumer = new Costumer(rs.getInt("costumer_id"), rs.getString("costumerName"), rs.getString("acronym"),
                     rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"),
-                    rs.getString("address"), rs.getString("zipCode") + ", " + rs.getString("cityName"), contacts, rs.getInt("costumer_id"));
+                    rs.getString("address"), rs.getString("zipCode") + ", " + rs.getString("cityName"), contacts);
             costumers.add(costumer);
         }
 
@@ -46,9 +47,9 @@ public class CostumerHandler {
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             ArrayList<Contact> contacts = ContactHandler.getInstance().getContacts(costumerID);
-            costumer = new Costumer(rs.getString("costumerName"), rs.getString("acronym"),
+            costumer = new Costumer(rs.getInt("costumer_id"), rs.getString("costumerName"), rs.getString("acronym"),
                     rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"),
-                    rs.getString("address"), rs.getString("zipCode") + ", " + rs.getString("cityName"), contacts, rs.getInt("costumer_id"));
+                    rs.getString("address"), rs.getString("zipCode") + ", " + rs.getString("cityName"), contacts);
         }
         return costumer;
     }
@@ -60,22 +61,33 @@ public class CostumerHandler {
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             ArrayList<Contact> contacts = ContactHandler.getInstance().getContacts(rs.getInt("costumer_id"));
-            Costumer costumer = new Costumer(rs.getString("costumerName"), rs.getString("acronym"),
+            Costumer costumer = new Costumer(rs.getInt("costumer_id"), rs.getString("costumerName"), rs.getString("acronym"),
                     rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"),
-                    rs.getString("address"), rs.getString("zipCode") + ", " + rs.getString("cityName"), contacts, rs.getInt("costumer_id"));
+                    rs.getString("address"), rs.getString("zipCode") + ", " + rs.getString("cityName"), contacts);
             costumers.add(costumer);
 
         }
         return costumers;
     }
 
-    public void saveCostumer(Costumer costumer) throws SQLException {
-        String statement;
-        statement = "INSERT INTO customer (costumerName,  museumAcro, museumNmb, phone, email)"
-                + " VALUES ( '" + costumer.getCostumerName()
-                + "','" + costumer.getmAcro() + "','" + costumer.getmNumb() + "','"
-                + costumer.getPhone() + "','" + costumer.getEmail() + "')";
-        DBHandler.getInstance().conn.createStatement().executeUpdate(statement);
+    public void saveCostumer(Costumer c, boolean existingCostumer) throws SQLException {
+        String saveCostumer;
+        saveCostumer = "INSERT INTO costumer (costumer_id, costumerName, acronym, museumNmb, phone, email, address, zipCode, contact_id)"
+                + " values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(saveCostumer);
+        ps.setInt(1, c.getCostumerID());
+        ps.setString(2, c.getCostumerName());
+        ps.setString(3, c.getmAcro());
+        ps.setInt(4, c.getmNumb());
+        ps.setInt(5, c.getPhone());
+        ps.setString(6, c.getEmail());
+        ps.setString(7, c.getAddress());
+        ps.setInt(8, 1); //Metode der tjekker efter zip code og returner id'et dertil
+        ps.setInt(9, c.getCostumerID());
+        ps.execute();
+        if (c.getContacts().size() < 1) {
+            ContactHandler.getInstance().saveContacts(c);
+        }
     }
 
     public static CostumerHandler getInstance() {
