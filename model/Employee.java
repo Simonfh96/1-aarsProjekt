@@ -16,18 +16,22 @@ public class Employee {
     private int employeeID;
     private String username;
     private String password;
-    private String name;
+    private String firstName;
+    private String lastName;
+    private String fullName;
     private int phone;
     private String email;
     private boolean admin;
     private boolean partTime;
     private ArrayList<PanelInterface> myCases;
 
-    public Employee(int employeeID, String username, String password, String name, int phone, String email, boolean admin, boolean partTime, ArrayList<PanelInterface> myCases) {
+    public Employee(int employeeID, String username, String password, String firstName, String lastName, int phone, String email, boolean admin, boolean partTime, ArrayList<PanelInterface> myCases) {
         this.employeeID = employeeID;
         this.username = username;
         this.password = password;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        fullName = firstName + " " + lastName;
         this.phone = phone;
         this.email = email;
         this.admin = admin;
@@ -47,8 +51,8 @@ public class Employee {
         return added;
     }
 
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
     public String getUsername() {
@@ -86,6 +90,14 @@ public class Employee {
 
     public void setMyCases(ArrayList<PanelInterface> myCases) {
         this.myCases = myCases;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
     
     

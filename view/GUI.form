@@ -1609,8 +1609,11 @@
                 <Component class="javax.swing.JComboBox" name="newEmployeeTypeBox">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
+                      <StringArray count="4">
                         <StringItem index="0" value="Medarbejder type"/>
+                        <StringItem index="1" value="Admin"/>
+                        <StringItem index="2" value="Medarbejder"/>
+                        <StringItem index="3" value="Projekt ansat"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -1661,6 +1664,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Opret"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createNewEmployeeButtonActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator10">
                   <Properties>

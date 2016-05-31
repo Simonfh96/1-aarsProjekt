@@ -104,7 +104,6 @@ public class GUI extends javax.swing.JFrame {
         }
         costScrollSearch.setDoubleBuffered(false);
     }
-        
 
     public void setUserControl(Control control, Employee employee) {
         GUI.control = control;
@@ -124,7 +123,6 @@ public class GUI extends javax.swing.JFrame {
 //            panel.add(cp);
 //        }
 //    }
-    
     public void editCaseSetup() {
         listModelObjects.clear();
         PanelFactory.getInstance().createPanels(c.getArticles(), articleDisplayPanel, this, "ArticlePanel");
@@ -225,16 +223,16 @@ public class GUI extends javax.swing.JFrame {
         jLabel61 = new javax.swing.JLabel();
         createCaseMuseumsNrField = new javax.swing.JTextField();
         jLabel62 = new javax.swing.JLabel();
-        createCaseLocationBox = new javax.swing.JComboBox<String>();
+        createCaseLocationBox = new javax.swing.JComboBox<>();
         newObjectNameField = new javax.swing.JTextField();
         jLabel63 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         createCaseObjectDescriptionArea = new javax.swing.JTextArea();
         jLabel64 = new javax.swing.JLabel();
-        createCaseTaskBox = new javax.swing.JComboBox<String>();
+        createCaseTaskBox = new javax.swing.JComboBox<>();
         createCaseAddTaskButton = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
-        createCaseTaskList = new javax.swing.JList<String>();
+        createCaseTaskList = new javax.swing.JList<>();
         jSeparator14 = new javax.swing.JSeparator();
         jSeparator15 = new javax.swing.JSeparator();
         jTextField2 = new javax.swing.JTextField();
@@ -620,7 +618,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel62.setText("Genstands navn");
 
-        createCaseLocationBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Placering" }));
+        createCaseLocationBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Placering" }));
 
         jLabel63.setText("Museums nr.");
 
@@ -630,14 +628,14 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel64.setText("Genstandsbeskrivelse");
 
-        createCaseTaskBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Opgaver" }));
+        createCaseTaskBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Opgaver" }));
 
         createCaseAddTaskButton.setText("Tilføj");
 
-        createCaseTaskList.setModel(new javax.swing.AbstractListModel() {
+        createCaseTaskList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "liste med", "det valgte", "opgaver" };
             public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane7.setViewportView(createCaseTaskList);
 
@@ -1157,7 +1155,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel53.setText("Efternavn");
 
-        newEmployeeTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Medarbejder type" }));
+        newEmployeeTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Medarbejder type", "Admin", "Medarbejder", "Projekt ansat" }));
 
         jLabel54.setText("Email");
 
@@ -1172,6 +1170,11 @@ public class GUI extends javax.swing.JFrame {
         jLabel59.setText("Gentag kode");
 
         createNewEmployeeButton.setText("Opret");
+        createNewEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createNewEmployeeButtonActionPerformed(evt);
+            }
+        });
 
         jSeparator10.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
@@ -1922,18 +1925,38 @@ public class GUI extends javax.swing.JFrame {
             for (int i = 0; i < articleDisplayPanel.getComponents().length; i++) {
                 ArticlePanel ap = (ArticlePanel) articleDisplayPanel.getComponent(i);
                 ap.setSelected(false);
+            }
         }
-    }
     }//GEN-LAST:event_selectAllArticlesBoxActionPerformed
 
     private void logButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_logButtonActionPerformed
 
-/**
- * @param args the command line arguments
- */
-public static void main(String args[]) {
+    private void createNewEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createNewEmployeeButtonActionPerformed
+        try {
+            ArrayList<PanelInterface> newMyCases = new ArrayList<>();
+            String employeeType = (String) newEmployeeTypeBox.getSelectedItem();
+            boolean admin = false;
+            boolean partTime = false;
+            if (employeeType.equals("Admin")) {
+                admin = true;
+            } else if (employeeType.equals("Projekt ansat"))  {
+                partTime = true;
+            }
+            Employee newE = new Employee(EmployeeHandler.getInstance().generateEmployeeID(), newEmployeeUsernameField.getText(), newEmployeePassword2Field.getText(), newEmployeeFirstnameField.getText(),
+                    newEmployeeLastnameField.getText(), Integer.parseInt(newEmployeePhoneField.getText()), newEmployeeEmailField.getText(), admin, partTime, newMyCases);
+            EmployeeHandler.getInstance().saveEmployee(newE);
+        } catch (SQLException ex) {
+            System.out.println(ex.getLocalizedMessage());
+        } 
+        
+    }//GEN-LAST:event_createNewEmployeeButtonActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -1944,32 +1967,21 @@ public static void main(String args[]) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                
 
-}
+                }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } 
-
-catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } 
-
-catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } 
-
-catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(GUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(GUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(GUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

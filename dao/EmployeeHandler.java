@@ -6,6 +6,7 @@
 package dao;
 
 import interfaces.PanelInterface;
+import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -57,7 +58,7 @@ public class EmployeeHandler {
                 while (rs.next()) {
                     ArrayList<PanelInterface> myCases = new ArrayList<>();
                     employee = new Employee(rs.getInt("employee_id"), rs.getString("username"), rs.getString("userPassword"),
-                            rs.getString("firstName") + " " + rs.getString("lastName"),
+                            rs.getString("firstName"), rs.getString("lastName"),
                             rs.getInt("phone"), rs.getString("email"), rs.getBoolean("admin"), rs.getBoolean("partTime"), myCases);
                     myCases = CaseHandler.getInstance().getMyCases(employee);
                     employee.setMyCases(myCases);
@@ -79,7 +80,7 @@ public class EmployeeHandler {
         while (rs.next()) {
             ArrayList<PanelInterface> myCases = new ArrayList<>();
             employee = new Employee(rs.getInt("employee_id"), rs.getString("username"), rs.getString("userPassword"),
-                    rs.getString("firstName") + " " + rs.getString("lastName"),
+                    rs.getString("firstName"), rs.getString("lastName"),
                     rs.getInt("phone"), rs.getString("email"), rs.getBoolean("admin"), rs.getBoolean("partTime"), myCases);
             myCases = CaseHandler.getInstance().getMyCases(employee);
             employee.setMyCases(myCases);
@@ -102,23 +103,38 @@ public class EmployeeHandler {
 
     }
     
-    public void createEmployee(Employee employee) throws SQLException {
-        String statement;
-        statement = "INSERT INTO employee (userName, userPassword, firstName, lastName, phone, email, admin, partTime)"
-                + "VALUES ('" + employee.getUsername() + "','" + employee.getPassword() + "','"
-                + employee.getName();
+//    public void createEmployee(Employee employee) throws SQLException {
+//        String statement;
+//        statement = "INSERT INTO employee (userName, userPassword, firstName, lastName, phone, email, admin, partTime)"
+//                + "VALUES ('" + employee.getUsername() + "','" + employee.getPassword() + "','"
+//                + employee.getName();
+//    }
+    
+    public void saveEmployee(Employee e) throws SQLException {
+        CallableStatement cs = null;
+        cs = DBHandler.getInstance().conn.prepareCall("{ CALL AddEmployee(?, ?, ?, ?, ?, ?, ?, ?, ?)}");
+        cs.setInt(1, e.getEmployeeID());
+        cs.setString(2, e.getUsername());
+        cs.setString(3, e.getPassword());
+        cs.setString(4, e.getFirstName());
+        cs.setString(5, e.getLastName());
+        cs.setInt(6, e.getPhone());
+        cs.setString(7, e.getEmail());
+        cs.setBoolean(8, e.isAdmin());
+        cs.setBoolean(9, e.isPartTime());
+        cs.execute();
     }
     
-    /*
-    public void saveCostumer(Costumer costumer) throws SQLException {
+    public int generateEmployeeID() throws SQLException {
+        int employeeID = 0;
         String statement;
-        statement = "INSERT INTO customer (costumerName,  museumAcro, museumNmb, phone, email)"
-                + " VALUES ( '" + costumer.getCostumerName()
-                + "','" + costumer.getmAcro() + "','" + costumer.getmNumb() + "','"
-                + costumer.getPhone() + "','" + costumer.getEmail() + "')";
-        DBHandler.getInstance().conn.createStatement().executeUpdate(statement);
+        statement = "SELECT employee_id FROM employee ORDER BY employee_id DESC LIMIT 1;";
+        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+        if (rs.next()) {
+            employeeID = rs.getInt("employee_id") + 1;
+        }
+        return employeeID;
     }
-    */
     
 
     public static EmployeeHandler getInstance() {

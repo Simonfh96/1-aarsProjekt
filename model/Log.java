@@ -32,7 +32,7 @@ public class Log {
     
     @Override
     public String toString() {
-        return  employee.getName() + " " + actionMade + " " + componentName 
+        return  employee.getFullName() + " " + actionMade + " " + componentName 
                 + " " + changedFrom + " " + changedTo + " " + date + "\n"; 
     }
 

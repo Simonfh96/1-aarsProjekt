@@ -158,7 +158,7 @@ public class CaseHandler {
         ps.setString(3, c.getDescription());
         ps.setBoolean(4, c.isFinished());
         ps.setDate(5, sqlLastUpdate);
-        ps.setString(6, e.getName());
+        ps.setString(6, e.getFullName());
         ps.setDate(7, sqlCreatedAt);
         ps.setInt(8, c.getCustomer().getCostumerID());
         ps.execute();
