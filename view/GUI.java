@@ -62,7 +62,7 @@ public class GUI extends javax.swing.JFrame {
      *
      * @param control
      */
-    public GUI(Control control) throws SQLException {
+    public GUI(Control control) {
         initComponents();
         lw = new LoginView(this);
         lw.setAlwaysOnTop(true);
@@ -2214,12 +2214,9 @@ public class GUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
                     new GUI(control).setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
+            
         });
     }
 

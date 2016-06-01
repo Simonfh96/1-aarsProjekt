@@ -31,6 +31,7 @@ public class LoginView extends javax.swing.JFrame {
     public LoginView(GUI gui) {
         this.gui = gui;
         initComponents();
+        errorMessageLabel.setVisible(false);
         this.getContentPane().setBackground(Color.WHITE);
     }
 
@@ -51,6 +52,7 @@ public class LoginView extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        errorMessageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -78,6 +80,9 @@ public class LoginView extends javax.swing.JFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/BevaringSjællandLogo.png"))); // NOI18N
 
+        errorMessageLabel.setForeground(new java.awt.Color(255, 0, 0));
+        errorMessageLabel.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,7 +103,8 @@ public class LoginView extends javax.swing.JFrame {
                             .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(loginButton)
-                                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(errorMessageLabel)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(138, 138, 138)))
@@ -115,7 +121,9 @@ public class LoginView extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5))
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(63, 63, 63)
+                .addGap(43, 43, 43)
+                .addComponent(errorMessageLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -139,14 +147,19 @@ public class LoginView extends javax.swing.JFrame {
             //Måske sende en besked til admin omkring nulstilling af koden
             employee = EmployeeHandler.getInstance().getEmployee(usernameField.getText(), passwordField.getText());
             if (employee != null) {
-            if (employee.isAdmin()) {
-                control = new AdminControl();
-            } else if (employee.isPartTime()) {
-                control = new PartTimeControl();
-            } else {
-                control = new EmployeeControl();
-            }
-            gui.setUserControl(control, employee);
+                if (employee.isActive() != true) {
+                    errorMessageLabel.setText("Brugeren er ikke længere aktiv");
+                    errorMessageLabel.setVisible(true);
+                } else {
+                    if (employee.isAdmin()) {
+                        control = new AdminControl();
+                    } else if (employee.isPartTime()) {
+                        control = new PartTimeControl();
+                    } else {
+                        control = new EmployeeControl();
+                    }
+                    gui.setUserControl(control, employee);
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
@@ -158,9 +171,9 @@ public class LoginView extends javax.swing.JFrame {
         passwordField.setText("admin12345");
     }//GEN-LAST:event_passwordFieldMousePressed
 
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel errorMessageLabel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
