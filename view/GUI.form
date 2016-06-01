@@ -1554,7 +1554,7 @@
                                                       <Component id="jLabel79" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
                                                       <Component id="jLabel80" max="32767" attributes="0"/>
                                                       <Component id="resetPasswordButton" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="jButton4" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="deactiveEmployee" alignment="0" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -1663,7 +1663,7 @@
                                           <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                                           <Component id="jLabel80" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                                          <Component id="deactiveEmployee" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -1854,10 +1854,13 @@
                     </Container>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JButton" name="jButton4">
+                <Component class="javax.swing.JButton" name="deactiveEmployee">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Deaktiver medarbejder"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deactiveEmployeeActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="resetPasswordButton">
                   <Properties>

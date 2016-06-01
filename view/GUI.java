@@ -322,7 +322,7 @@ public class GUI extends javax.swing.JFrame {
         logButton = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
         employeeListPanel = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
+        deactiveEmployee = new javax.swing.JButton();
         resetPasswordButton = new javax.swing.JButton();
         jLabel79 = new javax.swing.JLabel();
         jLabel80 = new javax.swing.JLabel();
@@ -1287,7 +1287,12 @@ public class GUI extends javax.swing.JFrame {
 
         jScrollPane8.setViewportView(employeeListPanel);
 
-        jButton4.setText("Deaktiver medarbejder");
+        deactiveEmployee.setText("Deaktiver medarbejder");
+        deactiveEmployee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deactiveEmployeeActionPerformed(evt);
+            }
+        });
 
         resetPasswordButton.setText("Nulstil adgangskode");
         resetPasswordButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1375,7 +1380,7 @@ public class GUI extends javax.swing.JFrame {
                                             .addComponent(jLabel79, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel80, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(resetPasswordButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                            .addComponent(deactiveEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                         .addGap(0, 135, Short.MAX_VALUE))
                     .addComponent(jSeparator2))
                 .addContainerGap())
@@ -1463,7 +1468,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addGap(3, 3, 3)
                                 .addComponent(jLabel80)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton4)
+                                .addComponent(deactiveEmployee)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(136, 136, 136))
         );
@@ -2154,6 +2159,24 @@ public class GUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_resetPasswordButtonActionPerformed
 
+    private void deactiveEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deactiveEmployeeActionPerformed
+        Employee employeePReset = null;
+        for (Component comp : employeeListPanel.getComponents()) {
+            EmployeePanel ep = (EmployeePanel)comp;
+            if (ep.isSelected()) {
+                employeePReset = ep.getEmployee();
+            }
+        }
+        if (employeePReset != null) {
+            employeePReset.setActive(false);
+            try {
+                EmployeeHandler.getInstance().deactivateEmployee(employeePReset);
+            } catch (SQLException ex) {
+                System.out.println(ex.getLocalizedMessage());
+            }
+        }
+    }//GEN-LAST:event_deactiveEmployeeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2238,6 +2261,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField dbPasswordField;
     private javax.swing.JTextField dbUrlField;
     private javax.swing.JTextField dbUserField;
+    private javax.swing.JButton deactiveEmployee;
     private javax.swing.JPanel editCasePanel;
     private javax.swing.JTextField editEmailField;
     private javax.swing.JButton editPanelBackButton;
@@ -2262,7 +2286,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox3;
