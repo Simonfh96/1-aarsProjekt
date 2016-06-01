@@ -1274,6 +1274,8 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane8.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
         javax.swing.GroupLayout employeeListPanelLayout = new javax.swing.GroupLayout(employeeListPanel);
         employeeListPanel.setLayout(employeeListPanelLayout);
         employeeListPanelLayout.setHorizontalGroup(
