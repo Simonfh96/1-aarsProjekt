@@ -169,7 +169,7 @@ public class GUI extends javax.swing.JFrame {
         caseSearchButton = new javax.swing.JButton();
         objectTypeSField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
+        caseDisplayPane = new javax.swing.JTabbedPane();
         myCasesTab = new javax.swing.JPanel();
         myCasesScrollPane = new javax.swing.JScrollPane();
         myCasesPanel = new javax.swing.JPanel();
@@ -418,7 +418,7 @@ public class GUI extends javax.swing.JFrame {
         );
         myCasesPanelLayout.setVerticalGroup(
             myCasesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 673, Short.MAX_VALUE)
+            .addGap(0, 699, Short.MAX_VALUE)
         );
 
         myCasesScrollPane.setViewportView(myCasesPanel);
@@ -434,7 +434,9 @@ public class GUI extends javax.swing.JFrame {
             .addComponent(myCasesScrollPane)
         );
 
-        jTabbedPane2.addTab("Mine sager", myCasesTab);
+        caseDisplayPane.addTab("Mine sager", myCasesTab);
+
+        NewestCasesTab.setPreferredSize(new java.awt.Dimension(740, 675));
 
         newestCasesScrollPane.setHorizontalScrollBar(null);
 
@@ -446,7 +448,7 @@ public class GUI extends javax.swing.JFrame {
         );
         newestCasesPanelLayout.setVerticalGroup(
             newestCasesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 673, Short.MAX_VALUE)
+            .addGap(0, 699, Short.MAX_VALUE)
         );
 
         newestCasesScrollPane.setViewportView(newestCasesPanel);
@@ -455,14 +457,14 @@ public class GUI extends javax.swing.JFrame {
         NewestCasesTab.setLayout(NewestCasesTabLayout);
         NewestCasesTabLayout.setHorizontalGroup(
             NewestCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(newestCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE)
+            .addComponent(newestCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
         );
         NewestCasesTabLayout.setVerticalGroup(
             NewestCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(newestCasesScrollPane)
         );
 
-        jTabbedPane2.addTab("Nye sager", NewestCasesTab);
+        caseDisplayPane.addTab("Nye sager", NewestCasesTab);
 
         javax.swing.GroupLayout finishedCasesPanelLayout = new javax.swing.GroupLayout(finishedCasesPanel);
         finishedCasesPanel.setLayout(finishedCasesPanelLayout);
@@ -472,7 +474,7 @@ public class GUI extends javax.swing.JFrame {
         );
         finishedCasesPanelLayout.setVerticalGroup(
             finishedCasesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 673, Short.MAX_VALUE)
+            .addGap(0, 699, Short.MAX_VALUE)
         );
 
         finishedCasesScrollPane.setViewportView(finishedCasesPanel);
@@ -488,7 +490,7 @@ public class GUI extends javax.swing.JFrame {
             .addComponent(finishedCasesScrollPane)
         );
 
-        jTabbedPane2.addTab("Afsluttede sager", finishedCasesTab);
+        caseDisplayPane.addTab("Afsluttede sager", finishedCasesTab);
 
         jLabel60.setText("Kons nr.");
 
@@ -514,8 +516,8 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
                             .addComponent(jLabel60))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 492, Short.MAX_VALUE)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 494, Short.MAX_VALUE)
+                .addComponent(caseDisplayPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         caseHandlingPanelLayout.setVerticalGroup(
@@ -523,7 +525,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(caseHandlingPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane2)
+                    .addComponent(caseDisplayPane)
                     .addGroup(caseHandlingPanelLayout.createSequentialGroup()
                         .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(caseNmbSField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2078,7 +2080,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_selectAllArticlesBoxActionPerformed
 
     private void logButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logButtonActionPerformed
-        // TODO add your handling code here:
+        LogWindow logWindow = new LogWindow();
+        logWindow.setVisible(true);
     }//GEN-LAST:event_logButtonActionPerformed
 
     private void createNewEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createNewEmployeeButtonActionPerformed
@@ -2234,6 +2237,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel caseBeginDateLabel;
     private javax.swing.JTextField caseCreationNameField;
     private javax.swing.JTextField caseDescriptionEditPanel;
+    private javax.swing.JTabbedPane caseDisplayPane;
     private javax.swing.JLabel caseEndedDateLabel;
     private javax.swing.JPanel caseHandlingPanel;
     private javax.swing.JTextField caseNameSField;
@@ -2404,7 +2408,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField konsNmbField;
