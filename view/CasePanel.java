@@ -64,6 +64,8 @@ public class CasePanel extends javax.swing.JPanel {
         ownerLabel = new javax.swing.JLabel();
         lastUpdateLabel = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(740, 56));
+
         caseNameLabel.setText("Case name:");
 
         jLabel1.setText("Sags nr.");
@@ -97,7 +99,7 @@ public class CasePanel extends javax.swing.JPanel {
                     .addComponent(caseNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ownerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lastUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
                     .addComponent(createdAtLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))

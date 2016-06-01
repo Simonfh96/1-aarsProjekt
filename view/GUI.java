@@ -440,11 +440,13 @@ public class GUI extends javax.swing.JFrame {
 
         newestCasesScrollPane.setHorizontalScrollBar(null);
 
+        newestCasesPanel.setPreferredSize(new java.awt.Dimension(738, 699));
+
         javax.swing.GroupLayout newestCasesPanelLayout = new javax.swing.GroupLayout(newestCasesPanel);
         newestCasesPanel.setLayout(newestCasesPanelLayout);
         newestCasesPanelLayout.setHorizontalGroup(
             newestCasesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 795, Short.MAX_VALUE)
+            .addGap(0, 738, Short.MAX_VALUE)
         );
         newestCasesPanelLayout.setVerticalGroup(
             newestCasesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -457,11 +459,11 @@ public class GUI extends javax.swing.JFrame {
         NewestCasesTab.setLayout(NewestCasesTabLayout);
         NewestCasesTabLayout.setHorizontalGroup(
             NewestCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(newestCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
+            .addComponent(newestCasesScrollPane)
         );
         NewestCasesTabLayout.setVerticalGroup(
             NewestCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(newestCasesScrollPane)
+            .addComponent(newestCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE)
         );
 
         caseDisplayPane.addTab("Nye sager", NewestCasesTab);
