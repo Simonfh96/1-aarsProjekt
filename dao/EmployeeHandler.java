@@ -121,6 +121,21 @@ public class EmployeeHandler {
         cs.execute();
     }
     
+    public ArrayList<PanelInterface> selectAllEmployees() throws SQLException {
+        ArrayList<PanelInterface> employees = new ArrayList<>();
+        String statement;
+        statement = "SELECT * FROM employee;";
+        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+        while (rs.next()) {
+            ArrayList<PanelInterface> myCases = new ArrayList<>();
+            Employee employee = new Employee(rs.getInt("employee_id"), rs.getString("username"), rs.getString("userPassword"),
+                    rs.getString("firstName"), rs.getString("lastName"),
+                    rs.getInt("phone"), rs.getString("email"), rs.getBoolean("admin"), rs.getBoolean("partTime"), rs.getBoolean("active"), myCases);
+            employees.add(employee);
+        }
+        return employees;
+    }
+    
     public int generateEmployeeID() throws SQLException {
         int employeeID = 0;
         String statement;
