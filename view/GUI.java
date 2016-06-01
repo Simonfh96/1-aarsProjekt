@@ -2020,11 +2020,11 @@ public class GUI extends javax.swing.JFrame {
 
         if (addToMyCasesCheckBox.isSelected()) {
             try {
-//                if (employee.checkAddedMyCases(c) == false) {
+                if (employee.checkAddedMyCases(c) == false) {
                 CaseHandler.getInstance().addToMyCases(employee, c);
                 employeeLastUpdateField.setText(employee.getFullName());
                 lastUpdatedField.setText("" + dateFormat.format(cal.getTime()));
-//                }
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
             }
