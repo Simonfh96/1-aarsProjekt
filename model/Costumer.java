@@ -98,6 +98,10 @@ public class Costumer implements PanelInterface {
     public String getCityOfZip() {
         return cityOfZip;
     }
+    
+    public void addContact(Contact contact) {
+        contacts.add(contact);
+    }
 
     public ArrayList<Contact> getContacts() {
         return contacts;

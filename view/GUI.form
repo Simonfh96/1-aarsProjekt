@@ -336,107 +336,142 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                      <Component id="newCaseNameField" min="-2" pref="203" max="-2" attributes="0"/>
-                                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                      <Component id="newCaseContactField" min="-2" pref="203" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                      <Component id="newCasePhoneField" min="-2" pref="206" max="-2" attributes="0"/>
-                                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                      <Component id="newCaseEmailField" min="-2" pref="206" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                                      <Component id="newCaseAdressField" min="-2" pref="206" max="-2" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="67" pref="67" max="-2" attributes="0"/>
-                                          <Component id="jLabel74" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="newCaseZipCodeField" min="-2" pref="90" max="-2" attributes="0"/>
-                                          <EmptySpace min="36" pref="36" max="-2" attributes="0"/>
-                                          <Component id="jTextField2" min="-2" pref="80" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace min="33" pref="33" max="-2" attributes="0"/>
-                                  <Component id="costumerTypeBox" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                  <Component id="jSeparator15" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="jSeparator1" min="-2" pref="1309" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="existingCostumerCheckBox" min="-2" max="-2" attributes="0"/>
-                                      <Component id="findCostumerField" min="-2" pref="206" max="-2" attributes="0"/>
-                                      <Component id="costScrollSearch" min="-2" pref="206" max="-2" attributes="0"/>
-                                      <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                                      <Component id="caseCreationNameField" min="-2" pref="206" max="-2" attributes="0"/>
-                                      <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                                      <Component id="newCaseDescription" min="-2" pref="206" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                  <Component id="selectCostumerButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                                  <Component id="jSeparator14" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="newObjectButton" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                          <Component id="newObjectTypeBox" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                                          <Component id="objectAmountField" min="-2" pref="70" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="jLabel61" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="61" pref="61" max="-2" attributes="0"/>
-                                          <Component id="createTaskConsNumberField" min="-2" pref="130" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="jLabel63" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
-                                          <Component id="createCaseMuseumsNrField" min="-2" pref="130" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="jLabel62" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
-                                          <Component id="newObjectNameField" min="-2" pref="130" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="jLabel64" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane6" min="-2" pref="260" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="141" pref="141" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jSeparator1" min="-2" pref="1309" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="createCaseLocationBox" min="-2" pref="130" max="-2" attributes="0"/>
-                                              <Component id="createCaseTaskBox" min="-2" pref="132" max="-2" attributes="0"/>
+                                              <Component id="existingCostumerCheckBox" min="-2" max="-2" attributes="0"/>
+                                              <Component id="findCostumerField" min="-2" pref="206" max="-2" attributes="0"/>
+                                              <Component id="costScrollSearch" min="-2" pref="206" max="-2" attributes="0"/>
+                                              <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                                              <Component id="caseCreationNameField" min="-2" pref="206" max="-2" attributes="0"/>
+                                              <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
+                                              <Component id="newCaseDescription" min="-2" pref="206" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                          <Component id="createCaseAddTaskButton" min="-2" max="-2" attributes="0"/>
+                                          <Component id="selectCostumerButton" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                                          <Component id="jSeparator14" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="newObjectButton" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                                  <Component id="newObjectTypeBox" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                                                  <Component id="objectAmountField" min="-2" pref="70" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="jLabel61" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="61" pref="61" max="-2" attributes="0"/>
+                                                  <Component id="createTaskConsNumberField" min="-2" pref="130" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="jLabel63" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
+                                                  <Component id="createCaseMuseumsNrField" min="-2" pref="130" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="jLabel62" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
+                                                  <Component id="newObjectNameField" min="-2" pref="130" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="jLabel64" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jScrollPane6" min="-2" pref="260" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="141" pref="141" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="createCaseLocationBox" min="-2" pref="130" max="-2" attributes="0"/>
+                                                      <Component id="createCaseTaskBox" min="-2" pref="132" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                                  <Component id="createCaseAddTaskButton" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="jScrollPane5" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <EmptySpace min="339" pref="339" max="-2" attributes="0"/>
+                                                  <Component id="createCaseButton" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="jScrollPane7" min="-2" pref="132" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
                                       </Group>
-                                      <Component id="jScrollPane5" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="addContactButton" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
-                                          <EmptySpace min="339" pref="339" max="-2" attributes="0"/>
-                                          <Component id="createCaseButton" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                              <Component id="newCaseNameField" min="-2" pref="203" max="-2" attributes="0"/>
+                                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                              <Component id="newCaseContactField" min="-2" pref="203" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                              <Component id="newCasePhoneField" min="-2" pref="206" max="-2" attributes="0"/>
+                                              <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                              <Component id="newCaseEmailField" min="-2" pref="206" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                                              <Component id="newCaseAddressField" min="-2" pref="206" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="67" pref="67" max="-2" attributes="0"/>
+                                                  <Component id="jLabel74" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="newCaseZipCodeField" min="-2" pref="90" max="-2" attributes="0"/>
+                                                  <EmptySpace min="36" pref="36" max="-2" attributes="0"/>
+                                                  <Component id="newCaseAcroField" min="-2" pref="80" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace min="33" pref="33" max="-2" attributes="0"/>
+                                          <Component id="costumerTypeBox" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                          <Component id="jSeparator15" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jScrollPane7" min="-2" pref="132" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="jLabel75" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="addContactNameField" pref="110" max="32767" attributes="0"/>
+                                                      <Component id="jLabel76" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="addContactPhoneField" alignment="0" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Group type="102" attributes="0">
+                                                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                                          <Component id="jLabel77" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                          <Component id="addContactEmailField" min="-2" pref="155" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                              </Group>
+                                              <Component id="jLabel78" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jScrollPane11" min="-2" pref="132" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -477,7 +512,7 @@
                                       <Group type="102" attributes="0">
                                           <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                          <Component id="newCaseAdressField" min="-2" max="-2" attributes="0"/>
+                                          <Component id="newCaseAddressField" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
@@ -486,13 +521,35 @@
                                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="newCaseZipCodeField" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jTextField2" min="-2" max="-2" attributes="0"/>
+                                              <Component id="newCaseAcroField" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
                               </Group>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jScrollPane11" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel78" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="jLabel75" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="addContactNameField" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel76" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel77" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="addContactPhoneField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="addContactEmailField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="addContactButton" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
-                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -639,7 +696,7 @@
                     <Property name="text" type="java.lang.String" value="Adresse"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="newCaseAdressField">
+                <Component class="javax.swing.JTextField" name="newCaseAddressField">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel17">
                   <Properties>
@@ -664,6 +721,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Eksisterende kunde"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="existingCostumerCheckBoxActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="findCostumerField">
                   <Properties>
@@ -851,7 +911,7 @@
                     <Property name="orientation" type="int" value="1"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField2">
+                <Component class="javax.swing.JTextField" name="newCaseAcroField">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel74">
                   <Properties>
@@ -870,6 +930,59 @@
                         <Property name="columns" type="int" value="20"/>
                         <Property name="rows" type="int" value="5"/>
                       </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JLabel" name="jLabel75">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Navn"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="addContactNameField">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel76">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Tlf."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="addContactPhoneField">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel77">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Email"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="addContactEmailField">
+                </Component>
+                <Component class="javax.swing.JButton" name="addContactButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Tilf&#xf8;j"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addContactButtonActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel78">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Sylfaen" size="24" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Tilf&#xf8;j kontakt"/>
+                  </Properties>
+                </Component>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane11">
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JList" name="newContactList">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                          <StringArray count="0"/>
+                        </Property>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
