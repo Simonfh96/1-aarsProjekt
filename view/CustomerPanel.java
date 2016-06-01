@@ -7,6 +7,7 @@ package view;
 
 
 import interfaces.PanelInterface;
+import java.awt.Color;
 import model.Costumer;
 
 /**
@@ -22,6 +23,7 @@ public class CustomerPanel extends javax.swing.JPanel{
      */
     public CustomerPanel(Costumer c) {
         initComponents();
+        setBackground(Color.white);
         this.c = c;
         customerNameLabel.setText(c.getCostumerName());
         

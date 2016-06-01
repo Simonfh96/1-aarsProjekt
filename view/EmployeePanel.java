@@ -5,6 +5,7 @@
  */
 package view;
 
+import java.awt.Color;
 import model.Employee;
 
 /**
@@ -12,13 +13,17 @@ import model.Employee;
  * @author Tanja
  */
 public class EmployeePanel extends javax.swing.JPanel {
-    Employee e;
+    private Employee e;
+    private final Color normal;
+    private boolean selected;
     /**
      * Creates new form EmployeePanel
      */
     public EmployeePanel(Employee e) {
         initComponents();
         this.e = e;
+        normal = this.getBackground();
+        selected = false;
         employeeNameLabel.setText(e.getFullName());
     }
 
@@ -32,6 +37,18 @@ public class EmployeePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         employeeNameLabel = new javax.swing.JLabel();
+
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                formMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                formMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                formMouseReleased(evt);
+            }
+        });
 
         employeeNameLabel.setText("Employee Name");
 
@@ -52,6 +69,26 @@ public class EmployeePanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
+        setBackground(Color.BLUE);
+    }//GEN-LAST:event_formMouseEntered
+
+    private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
+        if (selected) {
+            selected = false;
+            setBackground(normal);
+        } else {
+            selected = true;
+            setBackground(Color.BLUE);
+        }
+    }//GEN-LAST:event_formMouseReleased
+
+    private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
+        if (selected == false) {
+           setBackground(normal); 
+        }
+    }//GEN-LAST:event_formMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
