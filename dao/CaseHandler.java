@@ -185,14 +185,13 @@ public class CaseHandler {
     }
 
     public void addToMyCases(Employee e, Case c) throws SQLException {
-        String statement;
-//        statement = "INSERT INTO myCases (konsNr, caseName, description, lastUpdated, createdAt)"
-//                + " VALUES ( '" + c.getKonsNmb()
-//                + "','" + c.getCaseName() + "','" + c.getDescription() + "','" + c.getLastUpdated() + "','"
-//                + c.getCreatedAt() + "')";
-//        DBHandler.getInstance().conn.createStatement().executeUpdate(statement);
-//        CostumerHandler.getInstance().saveCostumer(c.getCustomer());
-            
+        String addCase = "INSERT INTO myCases (employee_id, cases_id)"
+                + " values (?, ?)";
+        PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(addCase);
+        ps.setInt(1, e.getEmployeeID());
+        ps.setInt(1, 2/*CASE ID - Sags nr*/);
+        ps.execute();
+        DBHandler.getInstance().conn.close();
     }
 
     /*Metoden må kun benyttes på de sager, som er under fanen mine sager,

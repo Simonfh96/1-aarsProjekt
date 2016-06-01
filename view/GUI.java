@@ -2022,19 +2022,19 @@ public class GUI extends javax.swing.JFrame {
             try {
 //                if (employee.checkAddedMyCases(c) == false) {
                 CaseHandler.getInstance().addToMyCases(employee, c);
-//                    employeeLastUpdateField.setText(employee.getName());
-//                    lastUpdatedField.setText("" + dateFormat.format(cal.getTime()));
+                employeeLastUpdateField.setText(employee.getFullName());
+                lastUpdatedField.setText("" + dateFormat.format(cal.getTime()));
 //                }
             } catch (SQLException ex) {
                 Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             try {
-//                if (employee.checkAddedMyCases(c)) {
+                if (employee.checkAddedMyCases(c)) {
                 CaseHandler.getInstance().deleteMyCase(c.getKonsNmb(), employee.getEmployeeID());
-//                    employeeLastUpdateField.setText(employee.getName());
-//                    lastUpdatedField.setText("" + dateFormat.format(cal.getTime()));
-//                }
+                employeeLastUpdateField.setText(employee.getFullName());
+                lastUpdatedField.setText("" + dateFormat.format(cal.getTime()));
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
             }

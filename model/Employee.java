@@ -48,7 +48,6 @@ public class Employee implements PanelInterface {
             Case mc = (Case) myCase;
             if (c.getKonsNmb()  == mc.getKonsNmb()) {
                 added = true;
-                System.out.println("already added");
             }
         }
         return added;
