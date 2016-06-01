@@ -97,6 +97,15 @@ public class EmployeeHandler {
         
     }
     
+    public void resetPassword(Employee e) throws SQLException {
+        PreparedStatement ps = null;
+        int employeeID = e.getEmployeeID();
+        String resetPassword = "UPDATE employee SET userPassword = ? WHERE employee_id = " + employeeID;
+        ps = DBHandler.getInstance().conn.prepareStatement(resetPassword);
+        ps.setString(1, e.getPassword());
+        ps.executeUpdate();
+    }
+    
     public void deactivateEmployee(Employee e) throws SQLException {
         PreparedStatement ps = null;
         String setActive = "UPDATE employee SET active = ? WHERE employee_id = " + e.getEmployeeID();

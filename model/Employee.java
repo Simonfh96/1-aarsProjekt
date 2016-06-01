@@ -18,6 +18,7 @@ public class Employee implements PanelInterface {
     private String firstName;
     private String lastName;
     private String fullName;
+    private String initials;
     private int phone;
     private String email;
     private boolean admin;
@@ -32,6 +33,7 @@ public class Employee implements PanelInterface {
         this.firstName = firstName;
         this.lastName = lastName;
         fullName = firstName + " " + lastName;
+        initials = "GH";
         this.phone = phone;
         this.email = email;
         this.admin = admin;
@@ -108,6 +110,15 @@ public class Employee implements PanelInterface {
     public void setActive(boolean active) {
         this.active = active;
     }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getInitials() {
+        return initials;
+    }
+    
     
     
     

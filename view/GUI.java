@@ -323,7 +323,7 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane8 = new javax.swing.JScrollPane();
         employeeListPanel = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        resetPasswordButton = new javax.swing.JButton();
         jLabel79 = new javax.swing.JLabel();
         jLabel80 = new javax.swing.JLabel();
         editCasePanel = new javax.swing.JPanel();
@@ -1289,7 +1289,12 @@ public class GUI extends javax.swing.JFrame {
 
         jButton4.setText("Deaktiver medarbejder");
 
-        jButton6.setText("Nulstil adgangskode");
+        resetPasswordButton.setText("Nulstil adgangskode");
+        resetPasswordButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetPasswordButtonActionPerformed(evt);
+            }
+        });
 
         jLabel79.setText("Nulstilte adgangskoder er");
 
@@ -1369,7 +1374,7 @@ public class GUI extends javax.swing.JFrame {
                                         .addGroup(adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel79, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel80, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(resetPasswordButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                         .addGap(0, 135, Short.MAX_VALUE))
                     .addComponent(jSeparator2))
@@ -1452,7 +1457,7 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
                             .addGroup(adminPanelLayout.createSequentialGroup()
-                                .addComponent(jButton6)
+                                .addComponent(resetPasswordButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel79)
                                 .addGap(3, 3, 3)
@@ -2130,6 +2135,25 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_existingCostumerCheckBoxActionPerformed
 
+    private void resetPasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetPasswordButtonActionPerformed
+        Employee employeePReset = null;
+        for (Component comp : employeeListPanel.getComponents()) {
+            EmployeePanel ep = (EmployeePanel)comp;
+            if (ep.isSelected()) {
+                employeePReset = ep.getEmployee();
+            }
+        }
+        if (employeePReset != null) {
+            employeePReset.setPassword(employeePReset.getInitials()+"123");
+            try {
+                EmployeeHandler.getInstance().resetPassword(employeePReset);
+            } catch (SQLException ex) {
+                System.out.println(ex.getLocalizedMessage());
+            }
+        }
+        
+    }//GEN-LAST:event_resetPasswordButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2240,7 +2264,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
@@ -2399,6 +2422,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField objectTypeSField;
     private javax.swing.JTextField ownerSField;
     private javax.swing.JLabel phoneCostumerLabel;
+    private javax.swing.JButton resetPasswordButton;
     private javax.swing.JButton saveChangesEditCaseButton;
     private javax.swing.JButton saveLoginInfoButton;
     private javax.swing.JButton savePersonalInfoButton;

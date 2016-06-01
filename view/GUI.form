@@ -1553,7 +1553,7 @@
                                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                       <Component id="jLabel79" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
                                                       <Component id="jLabel80" max="32767" attributes="0"/>
-                                                      <Component id="jButton6" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="resetPasswordButton" alignment="0" max="32767" attributes="0"/>
                                                       <Component id="jButton4" alignment="0" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
@@ -1657,7 +1657,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jScrollPane8" pref="451" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
-                                          <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+                                          <Component id="resetPasswordButton" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jLabel79" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
@@ -1859,10 +1859,13 @@
                     <Property name="text" type="java.lang.String" value="Deaktiver medarbejder"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton6">
+                <Component class="javax.swing.JButton" name="resetPasswordButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Nulstil adgangskode"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="resetPasswordButtonActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel79">
                   <Properties>

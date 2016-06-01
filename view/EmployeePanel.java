@@ -27,6 +27,15 @@ public class EmployeePanel extends javax.swing.JPanel {
         employeeNameLabel.setText(e.getFullName());
     }
 
+    public Employee getEmployee() {
+        return e;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
