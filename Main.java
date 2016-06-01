@@ -1,5 +1,8 @@
 
 import control.Control;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import view.GUI;
 
 /*
@@ -19,7 +22,12 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        GUI gui = new GUI(control);
+        GUI gui = null;
+        try {
+            gui = new GUI(control);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
         gui.setVisible(true);
         
       
