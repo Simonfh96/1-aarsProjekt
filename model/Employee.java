@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package model;
-import model.Case;
 import interfaces.PanelInterface;
 import java.util.ArrayList;
 
@@ -12,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author pdyst
  */
-public class Employee {
+public class Employee implements PanelInterface {
     private int employeeID;
     private String username;
     private String password;

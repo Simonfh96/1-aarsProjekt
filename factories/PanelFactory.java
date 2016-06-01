@@ -13,9 +13,11 @@ import javax.swing.JPanel;
 import model.Article;
 import model.Case;
 import model.Costumer;
+import model.Employee;
 import view.ArticlePanel;
 import view.CasePanel;
 import view.CustomerPanel;
+import view.EmployeePanel;
 import view.GUI;
 //import view.GUI;
 
@@ -81,6 +83,15 @@ public class PanelFactory {
                     displayPanel.revalidate();
                 }
                 break;
+            case "EmployeePanel":
+                for (int i = 0; i < panels.size(); i++) {
+                    EmployeePanel ep = new EmployeePanel((Employee)panels.get(i));
+                    ep.setBounds(0, 38 * i, displayPanel.getWidth(), 36);
+                    ep.setBorder(BorderFactory.createLineBorder(Color.black));
+                    displayPanel.add(ep);
+                    displayPanel.repaint();
+                    displayPanel.revalidate();
+                }
         }
 
     }

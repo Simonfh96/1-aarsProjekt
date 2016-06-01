@@ -221,22 +221,22 @@ public class GUI extends javax.swing.JFrame {
         jLabel61 = new javax.swing.JLabel();
         createCaseMuseumsNrField = new javax.swing.JTextField();
         jLabel62 = new javax.swing.JLabel();
-        createCaseLocationBox = new javax.swing.JComboBox<String>();
+        createCaseLocationBox = new javax.swing.JComboBox<>();
         newObjectNameField = new javax.swing.JTextField();
         jLabel63 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         createCaseObjectDescriptionArea = new javax.swing.JTextArea();
         jLabel64 = new javax.swing.JLabel();
-        createCaseTaskBox = new javax.swing.JComboBox<String>();
+        createCaseTaskBox = new javax.swing.JComboBox<>();
         createCaseAddTaskButton = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
-        createCaseTaskList = new javax.swing.JList<String>();
+        createCaseTaskList = new javax.swing.JList<>();
         jSeparator14 = new javax.swing.JSeparator();
         jSeparator15 = new javax.swing.JSeparator();
         jTextField2 = new javax.swing.JTextField();
         jLabel74 = new javax.swing.JLabel();
         customerListPanel = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
+        customerListScrollPane = new javax.swing.JScrollPane();
         showAllCustomerPanel = new javax.swing.JPanel();
         jLabel65 = new javax.swing.JLabel();
         jSeparator12 = new javax.swing.JSeparator();
@@ -315,7 +315,7 @@ public class GUI extends javax.swing.JFrame {
         jSeparator10 = new javax.swing.JSeparator();
         logButton = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
+        employeeListPanel = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         editCasePanel = new javax.swing.JPanel();
@@ -620,7 +620,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel62.setText("Genstands navn");
 
-        createCaseLocationBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Placering" }));
+        createCaseLocationBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Placering" }));
 
         jLabel63.setText("Museums nr.");
 
@@ -630,14 +630,14 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel64.setText("Genstandsbeskrivelse");
 
-        createCaseTaskBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Opgaver" }));
+        createCaseTaskBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Opgaver" }));
 
         createCaseAddTaskButton.setText("Tilføj");
 
-        createCaseTaskList.setModel(new javax.swing.AbstractListModel() {
+        createCaseTaskList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "liste med", "det valgte", "opgaver" };
             public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane7.setViewportView(createCaseTaskList);
 
@@ -857,7 +857,7 @@ public class GUI extends javax.swing.JFrame {
             .addGap(0, 719, Short.MAX_VALUE)
         );
 
-        jScrollPane5.setViewportView(showAllCustomerPanel);
+        customerListScrollPane.setViewportView(showAllCustomerPanel);
 
         jLabel65.setFont(new java.awt.Font("LiSong Pro", 0, 36)); // NOI18N
         jLabel65.setText("Kundeliste");
@@ -919,7 +919,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(customerListPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(customerListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(customerListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel65))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -966,7 +966,7 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(customerListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(customerListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jSeparator12)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
+                                .addComponent(customerListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
                                 .addComponent(jSeparator13, javax.swing.GroupLayout.Alignment.TRAILING))
                             .addGroup(customerListPanelLayout.createSequentialGroup()
                                 .addGap(22, 22, 22)
@@ -1179,20 +1179,20 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout employeeListPanelLayout = new javax.swing.GroupLayout(employeeListPanel);
+        employeeListPanel.setLayout(employeeListPanelLayout);
+        employeeListPanelLayout.setHorizontalGroup(
+            employeeListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 260, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        employeeListPanelLayout.setVerticalGroup(
+            employeeListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 447, Short.MAX_VALUE)
         );
 
-        jScrollPane8.setViewportView(jPanel1);
+        jScrollPane8.setViewportView(employeeListPanel);
 
-        jButton4.setText("Slet medarbejder");
+        jButton4.setText("Deaktiver medarbejder");
 
         jButton6.setText("Nulstil adgangskode");
 
@@ -1268,9 +1268,9 @@ public class GUI extends javax.swing.JFrame {
                             .addGroup(adminPanelLayout.createSequentialGroup()
                                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addGroup(adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton4)
-                                    .addComponent(jButton6)))))))
+                                .addGroup(adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
         );
         adminPanelLayout.setVerticalGroup(
             adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2052,6 +2052,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton createNewEmployeeButton;
     private javax.swing.JTextField createTaskConsNumberField;
     private javax.swing.JPanel customerListPanel;
+    private javax.swing.JScrollPane customerListScrollPane;
     private javax.swing.JCheckBox dbInfoCheckBox;
     private javax.swing.JTextField dbPasswordField;
     private javax.swing.JTextField dbUrlField;
@@ -2062,6 +2063,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField editPhoneField;
     private javax.swing.JLabel emailCostumerLabel;
     private javax.swing.JTextField employeeLastUpdateField;
+    private javax.swing.JPanel employeeListPanel;
     private javax.swing.JPanel employeeSettingsPanel;
     private javax.swing.JCheckBox existingCostumerCheckBox;
     private javax.swing.JTextField findCostumerField;
@@ -2167,14 +2169,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JList jList3;
     private javax.swing.JList jList4;
     private javax.swing.JList jList5;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;

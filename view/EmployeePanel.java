@@ -5,17 +5,21 @@
  */
 package view;
 
+import model.Employee;
+
 /**
  *
  * @author Tanja
  */
 public class EmployeePanel extends javax.swing.JPanel {
-
+    Employee e;
     /**
      * Creates new form EmployeePanel
      */
-    public EmployeePanel() {
+    public EmployeePanel(Employee e) {
         initComponents();
+        this.e = e;
+        employeeNameLabel.setText(e.getFullName());
     }
 
     /**
@@ -27,9 +31,9 @@ public class EmployeePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        employeeNameLabel = new javax.swing.JLabel();
 
-        jLabel1.setText("Employee Name");
+        employeeNameLabel.setText("Employee Name");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -37,20 +41,20 @@ public class EmployeePanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                .addComponent(employeeNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(employeeNameLabel)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel employeeNameLabel;
     // End of variables declaration//GEN-END:variables
 }
