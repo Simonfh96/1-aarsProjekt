@@ -40,7 +40,7 @@ public class CaseHandler {
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
             ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
-            Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),
+            Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"),rs.getString("caseName"), rs.getString("description"),
                     articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);
         }
@@ -56,7 +56,7 @@ public class CaseHandler {
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
             ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
-            Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),
+            Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
                     articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);
         }
@@ -74,7 +74,7 @@ public class CaseHandler {
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
             ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
-            Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),
+            Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
                     articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);
         }
@@ -91,7 +91,7 @@ public class CaseHandler {
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
             ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
-            Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),
+            Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
                     articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);
         }
@@ -113,7 +113,7 @@ public class CaseHandler {
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
             ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
-            Case c = new Case(rs.getInt("konsNr"), rs.getString("caseName"), rs.getString("description"),
+            Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
                     articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
             cases.add(c);
         }
@@ -150,17 +150,18 @@ public class CaseHandler {
         utilDateConvert = c.getCreatedAt();
         java.sql.Date sqlCreatedAt = new java.sql.Date(utilDateConvert.getTime());
         String saveCase;
-        saveCase = "INSERT INTO cases (konsNr, caseName, description, finished, lastUpdated, updateBy, createdAt, costumer_id)"
+        saveCase = "INSERT INTO cases (konsNr, offerNmb, caseName, description, finished, lastUpdated, updateBy, createdAt, costumer_id)"
                 + " values (?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(saveCase);
         ps.setInt(1, c.getKonsNmb());
-        ps.setString(2, c.getCaseName());
-        ps.setString(3, c.getDescription());
-        ps.setBoolean(4, c.isFinished());
-        ps.setDate(5, sqlLastUpdate);
-        ps.setString(6, e.getFullName());
-        ps.setDate(7, sqlCreatedAt);
-        ps.setInt(8, c.getCustomer().getCostumerID());
+        ps.setInt(2, c.getOfferNmb());
+        ps.setString(3, c.getCaseName());
+        ps.setString(4, c.getDescription());
+        ps.setBoolean(5, c.isFinished());
+        ps.setDate(6, sqlLastUpdate);
+        ps.setString(7, e.getFullName());
+        ps.setDate(8, sqlCreatedAt);
+        ps.setInt(9, c.getCustomer().getCostumerID());
         ps.execute();
         CostumerHandler.getInstance().saveCostumer(c.getCustomer(), existingCostumer);
         if (c.getArticles().size() > 0) {

@@ -15,6 +15,7 @@ import java.util.Date;
  */
 public class Case implements PanelInterface{
     private int konsNmb;
+    private int offerNmb;
     private String caseName;
     private String description;
     private ArrayList<PanelInterface> articles;
@@ -24,8 +25,9 @@ public class Case implements PanelInterface{
     private Costumer customer;
 
     //Sagsnr skal tilføjes, så det kan søges på (Case tables PK)
-    public Case(int konsNmb, String caseName, String description, ArrayList<PanelInterface> articles, boolean finished, Date lastUpdated, Date createdAt, Costumer customer) {
+    public Case(int konsNmb, int offerNmb, String caseName, String description, ArrayList<PanelInterface> articles, boolean finished, Date lastUpdated, Date createdAt, Costumer customer) {
         this.konsNmb = konsNmb;
+        this.offerNmb = offerNmb;
         this.caseName = caseName;
         this.description = description;
         this.articles = articles;
@@ -65,6 +67,10 @@ public class Case implements PanelInterface{
 
     public Costumer getCustomer() {
         return customer;
+    }
+
+    public int getOfferNmb() {
+        return offerNmb;
     }
 
     

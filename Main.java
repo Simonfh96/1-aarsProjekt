@@ -10,27 +10,22 @@ import view.GUI;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author pdyst
  */
 public class Main {
+
     private static Control control = null;
-    
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         GUI gui = null;
-        try {
-            gui = new GUI(control);
-        } catch (SQLException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        gui = new GUI(control);
         gui.setVisible(true);
-        
-      
+
     }
-        
+
 }
