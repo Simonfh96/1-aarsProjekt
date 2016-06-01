@@ -60,12 +60,20 @@ public class Article implements PanelInterface {
 //        this.owner = owner;
 //    }
 
+    public void setCaseKonsNmb(int caseKonsNmb) {
+        this.caseKonsNmb = caseKonsNmb;
+    }
+
     public int getKonsNmb() {
         return konsNmb;
     }
 
     public void setKonsNmb(int konsNmb) {
         this.konsNmb = konsNmb;
+    }
+    
+    public void addTask(Task task) {
+        tasks.add(task);
     }
 
     public ArrayList<Task> getTasks() {

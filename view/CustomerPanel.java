@@ -6,7 +6,6 @@
 package view;
 
 
-import interfaces.PanelInterface;
 import java.awt.Color;
 import model.Costumer;
 

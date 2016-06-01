@@ -39,8 +39,8 @@ import model.Task;
  * @author Simon
  */
 public class GUI extends javax.swing.JFrame {
-
-    private ArrayList<PanelInterface> articles = new ArrayList<>();
+    
+    private ArrayList<PanelInterface> newCaseArticles = new ArrayList<>();
     private ArrayList<PanelInterface> cases;
     private ArrayList<CasePanel> casePanels;
     private Case c;
@@ -113,15 +113,7 @@ public class GUI extends javax.swing.JFrame {
         this.requestFocus();
         loggedIn = true;
     }
-
-//    public void createCasePanels(ArrayList<Case> cases, JPanel panel) {
-//        for (int i = 0; i < cases.size(); i++) {
-//            CasePanel cp = new CasePanel(cases.get(i), this);
-//            cp.setBounds(0, 52 * i, panel.getWidth(), 50);
-//            cp.setBorder(BorderFactory.createLineBorder(Color.black));
-//            panel.add(cp);
-//        }
-//    }
+    
     public void editCaseSetup() {
         listModelObjects.clear();
         PanelFactory.getInstance().createPanels(c.getArticles(), articleDisplayPanel, this, "ArticlePanel");
@@ -236,6 +228,8 @@ public class GUI extends javax.swing.JFrame {
         jSeparator15 = new javax.swing.JSeparator();
         jTextField2 = new javax.swing.JTextField();
         jLabel74 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        taskDescriptionArea = new javax.swing.JTextArea();
         customerListPanel = new javax.swing.JPanel();
         customerListScrollPane = new javax.swing.JScrollPane();
         showAllCustomerPanel = new javax.swing.JPanel();
@@ -507,7 +501,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
                             .addComponent(jLabel60))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 376, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 410, Short.MAX_VALUE)
                 .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -634,6 +628,11 @@ public class GUI extends javax.swing.JFrame {
         createCaseTaskBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Opgaver" }));
 
         createCaseAddTaskButton.setText("Tilføj");
+        createCaseAddTaskButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createCaseAddTaskButtonActionPerformed(evt);
+            }
+        });
 
         createCaseTaskList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "liste med", "det valgte", "opgaver" };
@@ -647,6 +646,10 @@ public class GUI extends javax.swing.JFrame {
         jSeparator15.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         jLabel74.setText("Akronym");
+
+        taskDescriptionArea.setColumns(20);
+        taskDescriptionArea.setRows(5);
+        jScrollPane5.setViewportView(taskDescriptionArea);
 
         javax.swing.GroupLayout newCasePanelLayout = new javax.swing.GroupLayout(newCasePanel);
         newCasePanel.setLayout(newCasePanelLayout);
@@ -725,13 +728,20 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(141, 141, 141)
                         .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(createCaseLocationBox, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(createCaseTaskBox, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(6, 6, 6)
-                        .addComponent(createCaseAddTaskButton)
-                        .addGap(339, 339, 339)
-                        .addComponent(createCaseButton))))
+                            .addGroup(newCasePanelLayout.createSequentialGroup()
+                                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(createCaseLocationBox, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(createCaseTaskBox, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(6, 6, 6)
+                                .addComponent(createCaseAddTaskButton))
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(newCasePanelLayout.createSequentialGroup()
+                                .addGap(339, 339, 339)
+                                .addComponent(createCaseButton))
+                            .addGroup(newCasePanelLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))))
         );
         newCasePanelLayout.setVerticalGroup(
             newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -798,51 +808,56 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(selectCostumerButton))
                     .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(newCasePanelLayout.createSequentialGroup()
-                        .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(newObjectButton)
-                            .addGroup(newCasePanelLayout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(newObjectTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(6, 6, 6)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(171, 171, 171)
+                        .addComponent(createCaseButton))
+                    .addGroup(newCasePanelLayout.createSequentialGroup()
                         .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(newCasePanelLayout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel18))
-                            .addComponent(objectAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(newObjectButton)
+                                    .addGroup(newCasePanelLayout.createSequentialGroup()
+                                        .addGap(1, 1, 1)
+                                        .addComponent(newObjectTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(6, 6, 6)
+                                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(newCasePanelLayout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
+                                        .addComponent(jLabel18))
+                                    .addComponent(objectAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(newCasePanelLayout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
+                                        .addComponent(jLabel61))
+                                    .addComponent(createTaskConsNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(11, 11, 11)
+                                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(newCasePanelLayout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
+                                        .addComponent(jLabel63))
+                                    .addComponent(createCaseMuseumsNrField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(13, 13, 13)
+                                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(newCasePanelLayout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
+                                        .addComponent(jLabel62))
+                                    .addComponent(newObjectNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(35, 35, 35)
+                                .addComponent(jLabel64))
                             .addGroup(newCasePanelLayout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel61))
-                            .addComponent(createTaskConsNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(newCasePanelLayout.createSequentialGroup()
+                                        .addGap(26, 26, 26)
+                                        .addComponent(createCaseAddTaskButton))
+                                    .addGroup(newCasePanelLayout.createSequentialGroup()
+                                        .addComponent(createCaseLocationBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(7, 7, 7)
+                                        .addComponent(createCaseTaskBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(11, 11, 11)
-                        .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(newCasePanelLayout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel63))
-                            .addComponent(createCaseMuseumsNrField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(13, 13, 13)
-                        .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(newCasePanelLayout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel62))
-                            .addComponent(newObjectNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel64)
-                        .addGap(11, 11, 11)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                        .addComponent(createCaseLocationBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)
-                        .addComponent(createCaseTaskBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(createCaseAddTaskButton))
-                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                        .addGap(345, 345, 345)
-                        .addComponent(createCaseButton))))
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         tabbedPane.addTab("Opret sag", newCasePanel);
@@ -950,7 +965,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(customerListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel72)
                     .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addContainerGap(271, Short.MAX_VALUE))
         );
         customerListPanelLayout.setVerticalGroup(
             customerListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1821,7 +1836,6 @@ public class GUI extends javax.swing.JFrame {
                     costScrollSearch.setBounds(6, 300, 206, costumers.size() * 25);
                     costScrollSearch.setViewportView(list);
                     costScrollSearch.setVisible(true);
-                    //Checker der tjekker, om der trykkes ned på piletasten, så den går ned på listen med søgeforslag
                     list.setVisible(true);
                     list.revalidate();
                     list.repaint();
@@ -1852,25 +1866,26 @@ public class GUI extends javax.swing.JFrame {
     private void createCaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseButtonActionPerformed
         if (existingCostumerCheckBox.isSelected()) {
             try {
-                Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), caseCreationNameField.getText(), newCaseDescription.getText(), articles, false, cal.getTime(), cal.getTime(), costSearchSelected);
+                Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), caseCreationNameField.getText(), newCaseDescription.getText(), newCaseArticles, false, cal.getTime(), cal.getTime(), costSearchSelected);
                 CaseHandler.getInstance().saveCase(newCase, employee, true);
             } catch (SQLException ex) {
                 Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            //metode der tæller costumer id en op fra databasen
             try {
-                //skal slettets igen casehandler
                 //ArrayList af contacts
                 //Oprette kontaker til kunden? ContactHandler
                 ArrayList<Contact> contacts = new ArrayList<>();
                 Costumer costumer = new Costumer(CostumerHandler.getInstance().generateCostumerID(), newCaseNameField.getText(), "museums akronym", 11/*museums nummer*/, Integer.parseInt(newCasePhoneField.getText()), newCaseEmailField.getText(), "Addresse", "4700 zip", contacts);
-                Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), caseCreationNameField.getText(), newCaseDescription.getText(), articles, false, cal.getTime(), cal.getTime(), costumer);
+                Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), caseCreationNameField.getText(), newCaseDescription.getText(), newCaseArticles, false, cal.getTime(), cal.getTime(), costumer);
                 CaseHandler.getInstance().saveCase(newCase, employee, false);
             } catch (SQLException ex) {
                 Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
         }
+        newCaseArticles.clear();
+        costSearchSelected = null;
     }//GEN-LAST:event_createCaseButtonActionPerformed
 
     private void newCaseDescriptionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newCaseDescriptionMousePressed
@@ -1932,10 +1947,15 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_saveLoginInfoButtonActionPerformed
 
     private void newObjectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newObjectButtonActionPerformed
-        //Skal enten fyldes eller startes som tom
+        //Articles kan ikke få adgang til casens kons nr før, derfor bruges nul som startværdi,
+        //Der derefter bruger en setter til at hente sagens kons nr, når der trykkes på opret sag
+        //Det samme gøres med selve Article objekts kons nr, der genereres ved at tage sagens kons nr
+        //Og kører ArrayList'en igennem og lægger iterator til sagens kons nr
+        //Tasks skal sættes efter oprettelse af den Article, som de skal knyttes til
+        //Det gøres ved at tage den sidste index fra ArrayList'en, så man har den sidst oprettede Article
         ArrayList<Task> tasks = new ArrayList<>();
-        Article article = new Article(newObjectNameField.getText(), 0/*metode til at hente casens nr*/, (String) newObjectTypeBox.getSelectedItem(), 0/*metode til at lave dens kons nr*/, tasks);
-        articles.add(article);
+        Article article = new Article(newObjectNameField.getText(), 0, (String) newObjectTypeBox.getSelectedItem(), 0, tasks);
+        newCaseArticles.add(article);
     }//GEN-LAST:event_newObjectButtonActionPerformed
 
     private void selectAllArticlesBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAllArticlesBoxActionPerformed
@@ -1977,6 +1997,12 @@ public class GUI extends javax.swing.JFrame {
         } 
         
     }//GEN-LAST:event_createNewEmployeeButtonActionPerformed
+
+    private void createCaseAddTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseAddTaskButtonActionPerformed
+        Task task = new Task("Endnu ikke påbegyndt", taskDescriptionArea.getText());
+        Article article = (Article)newCaseArticles.get(newCaseArticles.size());
+        article.addTask(task);
+    }//GEN-LAST:event_createCaseAddTaskButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2176,6 +2202,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
@@ -2241,6 +2268,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton selectCostumerButton;
     private javax.swing.JPanel showAllCustomerPanel;
     private javax.swing.JTabbedPane tabbedPane;
+    private javax.swing.JTextArea taskDescriptionArea;
     private javax.swing.JLabel zipCodeCostumerLabel;
     // End of variables declaration//GEN-END:variables
 }
