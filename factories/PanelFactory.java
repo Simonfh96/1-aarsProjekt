@@ -49,10 +49,9 @@ public class PanelFactory {
         System.out.println("switch");
         switch (type) {
             case "CasePanel":
-                System.out.println("casepanel");
                 for (int i = 0; i < panels.size(); i++) {
                     CasePanel cp = new CasePanel((Case) panels.get(i), gui);
-                    cp.setBounds(0, 52 * i, displayPanel.getWidth(), 50);
+                    cp.setBounds(0, 52 * i, displayPanel.getWidth() - 3, 50);
                     cp.setBorder(BorderFactory.createLineBorder(Color.black));
                     displayPanel.add(cp);
                     displayPanel.repaint();
