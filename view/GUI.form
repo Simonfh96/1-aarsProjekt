@@ -64,6 +64,7 @@
                               <Component id="caseSearchButton" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="searchOfferNmbField" alignment="0" max="32767" attributes="0"/>
                                       <Component id="konsNmbField" alignment="0" max="32767" attributes="0"/>
                                       <Component id="objectTypeSField" pref="75" max="32767" attributes="0"/>
                                       <Component id="ownerSField" max="32767" attributes="0"/>
@@ -77,6 +78,7 @@
                                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel60" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel83" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -117,7 +119,12 @@
                                       <Component id="konsNmbField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel60" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="searchOfferNmbField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel83" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="caseSearchButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
@@ -325,6 +332,13 @@
                 <Component class="javax.swing.JLabel" name="jLabel60">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Kons nr."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="searchOfferNmbField">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel83">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Tilbuds nr."/>
                   </Properties>
                 </Component>
               </SubComponents>

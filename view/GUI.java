@@ -182,6 +182,8 @@ public class GUI extends javax.swing.JFrame {
         finishedCasesPanel = new javax.swing.JPanel();
         konsNmbField = new javax.swing.JTextField();
         jLabel60 = new javax.swing.JLabel();
+        searchOfferNmbField = new javax.swing.JTextField();
+        jLabel83 = new javax.swing.JLabel();
         newCasePanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -501,6 +503,8 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel60.setText("Kons nr.");
 
+        jLabel83.setText("Tilbuds nr.");
+
         javax.swing.GroupLayout caseHandlingPanelLayout = new javax.swing.GroupLayout(caseHandlingPanel);
         caseHandlingPanel.setLayout(caseHandlingPanelLayout);
         caseHandlingPanelLayout.setHorizontalGroup(
@@ -511,6 +515,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(caseSearchButton)
                     .addGroup(caseHandlingPanelLayout.createSequentialGroup()
                         .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(searchOfferNmbField, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(konsNmbField, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(objectTypeSField, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
                             .addComponent(ownerSField)
@@ -522,7 +527,8 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel60))))
+                            .addComponent(jLabel60)
+                            .addComponent(jLabel83))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 494, Short.MAX_VALUE)
                 .addComponent(caseDisplayPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -553,7 +559,11 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(konsNmbField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel60))
-                        .addGap(43, 43, 43)
+                        .addGap(5, 5, 5)
+                        .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(searchOfferNmbField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel83))
+                        .addGap(18, 18, 18)
                         .addComponent(caseSearchButton)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -2406,6 +2416,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel80;
     private javax.swing.JLabel jLabel81;
     private javax.swing.JLabel jLabel82;
+    private javax.swing.JLabel jLabel83;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JList jList2;
     private javax.swing.JList jList3;
@@ -2482,6 +2493,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton saveChangesEditCaseButton;
     private javax.swing.JButton saveLoginInfoButton;
     private javax.swing.JButton savePersonalInfoButton;
+    private javax.swing.JTextField searchOfferNmbField;
     private javax.swing.JCheckBox selectAllArticlesBox;
     private javax.swing.JButton selectCostumerButton;
     private javax.swing.JPanel showAllCustomerPanel;
