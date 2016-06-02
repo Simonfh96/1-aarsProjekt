@@ -28,8 +28,7 @@ import view.GUI;
 public class PanelFactory {
 
     PanelInterface panel;
-// Skal erstattes med enten et interface som datatype til at returnere de ønskede panels
-// Ellers skal en super class bruges, som alle panels extender som subclasses
+
 
     private PanelFactory() {
     }
@@ -43,8 +42,7 @@ public class PanelFactory {
         private static final PanelFactory INSTANCE = new PanelFactory();
     }
 
-    //den skal oprette en af de tre typer panels alt efter værdien i switchen
-    //
+    //den skal oprette en af de fire typer panels alt efter værdien i switchen
     public void createPanels(ArrayList<PanelInterface> panels, JPanel displayPanel, GUI gui, String type) {
         System.out.println("switch");
         switch (type) {

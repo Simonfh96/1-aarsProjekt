@@ -461,6 +461,7 @@ public class GUI extends javax.swing.JFrame {
         addToMyCasesCheckBox = new javax.swing.JCheckBox();
         editCaseOfferNmbField = new javax.swing.JTextField();
         jLabel82 = new javax.swing.JLabel();
+        jButton12 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -504,7 +505,7 @@ public class GUI extends javax.swing.JFrame {
         );
         myCasesTabLayout.setVerticalGroup(
             myCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(myCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addComponent(myCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
         );
 
         caseDisplayPane.addTab("Mine sager", myCasesTab);
@@ -536,7 +537,7 @@ public class GUI extends javax.swing.JFrame {
         );
         NewestCasesTabLayout.setVerticalGroup(
             NewestCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(newestCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addComponent(newestCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
         );
 
         caseDisplayPane.addTab("Nye sager", NewestCasesTab);
@@ -562,7 +563,7 @@ public class GUI extends javax.swing.JFrame {
         );
         finishedCasesTabLayout.setVerticalGroup(
             finishedCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(finishedCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addComponent(finishedCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
         );
 
         caseDisplayPane.addTab("Afsluttede sager", finishedCasesTab);
@@ -595,7 +596,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel60)
                             .addComponent(jLabel83))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 494, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 493, Short.MAX_VALUE)
                 .addComponent(caseDisplayPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -604,7 +605,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(caseHandlingPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(caseDisplayPane)
+                    .addComponent(caseDisplayPane, javax.swing.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
                     .addGroup(caseHandlingPanelLayout.createSequentialGroup()
                         .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(caseNmbSField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1067,7 +1068,7 @@ public class GUI extends javax.swing.JFrame {
                                     .addGroup(newCasePanelLayout.createSequentialGroup()
                                         .addGap(18, 18, 18)
                                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(92, Short.MAX_VALUE))
+                        .addContainerGap(91, Short.MAX_VALUE))
                     .addGroup(newCasePanelLayout.createSequentialGroup()
                         .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(addContactButton)
@@ -1371,7 +1372,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(customerListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel72)
                     .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(353, Short.MAX_VALUE))
+                .addContainerGap(352, Short.MAX_VALUE))
         );
         customerListPanelLayout.setVerticalGroup(
             customerListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1490,7 +1491,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(editEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(editPhoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(savePersonalInfoButton))))
-                .addContainerGap(886, Short.MAX_VALUE))
+                .addContainerGap(885, Short.MAX_VALUE))
         );
         employeeSettingsPanelLayout.setVerticalGroup(
             employeeSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1710,7 +1711,7 @@ public class GUI extends javax.swing.JFrame {
                                             .addComponent(jLabel80, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(resetPasswordButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(deactiveEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                        .addGap(0, 135, Short.MAX_VALUE))
+                        .addGap(0, 134, Short.MAX_VALUE))
                     .addComponent(jSeparator2))
                 .addContainerGap())
         );
@@ -1789,7 +1790,7 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(logButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
                             .addGroup(adminPanelLayout.createSequentialGroup()
                                 .addComponent(resetPasswordButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1953,6 +1954,8 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel82.setText("Tilbuds nr.");
 
+        jButton12.setText("Log");
+
         javax.swing.GroupLayout editCasePanelLayout = new javax.swing.GroupLayout(editCasePanel);
         editCasePanel.setLayout(editCasePanelLayout);
         editCasePanelLayout.setHorizontalGroup(
@@ -2024,64 +2027,65 @@ public class GUI extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(caseNmbEditPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel40)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(editCasePanelLayout.createSequentialGroup()
-                                                .addComponent(jLabel42)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(lastUpdatedField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel41)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(employeeLastUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(saveChangesEditCaseButton)
-                                                .addContainerGap())
-                                            .addGroup(editCasePanelLayout.createSequentialGroup()
-                                                .addComponent(jLabel40)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editCasePanelLayout.createSequentialGroup()
                                                 .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editCasePanelLayout.createSequentialGroup()
-                                                        .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addGroup(editCasePanelLayout.createSequentialGroup()
-                                                                .addComponent(jLabel37)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(caseBeginDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                            .addGroup(editCasePanelLayout.createSequentialGroup()
-                                                                .addComponent(jLabel38)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(caseEndedDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                        .addGap(24, 24, 24))
                                                     .addGroup(editCasePanelLayout.createSequentialGroup()
+                                                        .addComponent(jLabel37)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(caseBeginDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(editCasePanelLayout.createSequentialGroup()
+                                                        .addComponent(jLabel38)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(caseEndedDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGap(24, 24, 24))
+                                            .addGroup(editCasePanelLayout.createSequentialGroup()
+                                                .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addGroup(editCasePanelLayout.createSequentialGroup()
+                                                        .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                            .addComponent(jLabel27)
+                                                            .addComponent(jLabel26))
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                            .addGroup(editCasePanelLayout.createSequentialGroup()
-                                                                .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                    .addComponent(jLabel27)
-                                                                    .addComponent(jLabel26))
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                                    .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                    .addComponent(caseDescriptionEditPanel)))
-                                                            .addComponent(jSeparator5)
-                                                            .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addGroup(editCasePanelLayout.createSequentialGroup()
-                                                                .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                    .addComponent(jLabel32)
-                                                                    .addComponent(jLabel33)
-                                                                    .addComponent(jLabel31)
-                                                                    .addComponent(jLabel34)
-                                                                    .addComponent(jLabel35)
-                                                                    .addComponent(jLabel36))
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                                    .addComponent(costumerNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                    .addComponent(contactPersonCostumerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
-                                                                    .addComponent(phoneCostumerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                    .addComponent(emailCostumerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                    .addComponent(adressCostumerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                    .addComponent(zipCodeCostumerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                                                        .addContainerGap())))))))
+                                                            .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                            .addComponent(caseDescriptionEditPanel)))
+                                                    .addComponent(jSeparator5)
+                                                    .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(editCasePanelLayout.createSequentialGroup()
+                                                        .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(jLabel32)
+                                                            .addComponent(jLabel33)
+                                                            .addComponent(jLabel31)
+                                                            .addComponent(jLabel34)
+                                                            .addComponent(jLabel35)
+                                                            .addComponent(jLabel36))
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                            .addComponent(costumerNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                            .addComponent(contactPersonCostumerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                                                            .addComponent(phoneCostumerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                            .addComponent(emailCostumerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                            .addComponent(adressCostumerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                            .addComponent(zipCodeCostumerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                                .addContainerGap())))
+                                    .addGroup(editCasePanelLayout.createSequentialGroup()
+                                        .addGap(497, 497, 497)
+                                        .addComponent(jLabel42)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lastUpdatedField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel41)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(employeeLastUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(saveChangesEditCaseButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton12)
+                                        .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editCasePanelLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2216,7 +2220,8 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(lastUpdatedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel41)
                             .addComponent(employeeLastUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(saveChangesEditCaseButton))))
+                            .addComponent(saveChangesEditCaseButton)
+                            .addComponent(jButton12))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2621,6 +2626,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
