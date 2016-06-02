@@ -2073,15 +2073,15 @@ public class GUI extends javax.swing.JFrame {
                                                             .addComponent(zipCodeCostumerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                                 .addContainerGap())))
                                     .addGroup(editCasePanelLayout.createSequentialGroup()
-                                        .addGap(497, 497, 497)
+                                        .addGap(491, 491, 491)
                                         .addComponent(jLabel42)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(lastUpdatedField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel41)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(employeeLastUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGap(2, 2, 2)
                                         .addComponent(saveChangesEditCaseButton)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jButton12)
@@ -2365,7 +2365,7 @@ public class GUI extends javax.swing.JFrame {
                 lastUpdatedField.setText("" + dateFormat.format(cal.getTime()));
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(ex.getLocalizedMessage());
             }
         } else {
             try {
@@ -2375,7 +2375,7 @@ public class GUI extends javax.swing.JFrame {
                 lastUpdatedField.setText("" + dateFormat.format(cal.getTime()));
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(ex.getLocalizedMessage());
             }
         }
     }//GEN-LAST:event_saveChangesEditCaseButtonActionPerformed
