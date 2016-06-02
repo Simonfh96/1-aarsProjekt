@@ -735,7 +735,7 @@ public class GUI extends javax.swing.JFrame {
 
         jButton4.setText("Tilføj");
         jPanel1.add(jButton4);
-        jButton4.setBounds(930, 160, 80, 23);
+        jButton4.setBounds(930, 159, 80, 23);
 
         jCheckBox2.setText("Eksisterende kunde");
         jPanel1.add(jCheckBox2);
@@ -745,7 +745,7 @@ public class GUI extends javax.swing.JFrame {
 
         jButton6.setText("Vælg");
         jPanel1.add(jButton6);
-        jButton6.setBounds(190, 230, 80, 23);
+        jButton6.setBounds(180, 229, 80, 23);
 
         jList6.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -818,11 +818,11 @@ public class GUI extends javax.swing.JFrame {
 
         jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Placering" }));
         jPanel1.add(jComboBox7);
-        jComboBox7.setBounds(750, 200, 110, 20);
+        jComboBox7.setBounds(750, 201, 110, 20);
 
         jButton8.setText("Ny Placering");
         jPanel1.add(jButton8);
-        jButton8.setBounds(633, 200, 110, 23);
+        jButton8.setBounds(630, 200, 110, 23);
 
         jButton9.setText("Ny opgave");
         jPanel1.add(jButton9);
@@ -830,7 +830,7 @@ public class GUI extends javax.swing.JFrame {
 
         jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Opgaver" }));
         jPanel1.add(jComboBox8);
-        jComboBox8.setBounds(750, 240, 110, 20);
+        jComboBox8.setBounds(750, 241, 110, 20);
 
         jLabel104.setText("Opgave beskrivelse");
         jPanel1.add(jLabel104);
