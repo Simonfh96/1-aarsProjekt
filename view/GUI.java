@@ -2412,8 +2412,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_selectAllArticlesBoxActionPerformed
 
     private void logButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logButtonActionPerformed
-        LogWindow logWindow = new LogWindow();
-        logWindow.setVisible(true);
+        
     }//GEN-LAST:event_logButtonActionPerformed
 
     private void createNewEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createNewEmployeeButtonActionPerformed
