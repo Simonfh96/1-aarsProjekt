@@ -785,7 +785,7 @@ public class GUI extends javax.swing.JFrame {
 
         jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Genstands type" }));
         jPanel1.add(jComboBox6);
-        jComboBox6.setBounds(420, 200, 140, 20);
+        jComboBox6.setBounds(420, 201, 140, 20);
 
         jLabel100.setText("Antal genstande");
         jPanel1.add(jLabel100);
