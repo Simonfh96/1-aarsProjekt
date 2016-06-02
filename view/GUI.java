@@ -185,6 +185,69 @@ public class GUI extends javax.swing.JFrame {
         searchOfferNmbField = new javax.swing.JTextField();
         jLabel83 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jLabel84 = new javax.swing.JLabel();
+        jLabel85 = new javax.swing.JLabel();
+        jLabel86 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel87 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel88 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        jLabel89 = new javax.swing.JLabel();
+        jLabel90 = new javax.swing.JLabel();
+        jLabel91 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jLabel92 = new javax.swing.JLabel();
+        jTextField9 = new javax.swing.JTextField();
+        jComboBox5 = new javax.swing.JComboBox<>();
+        jSeparator11 = new javax.swing.JSeparator();
+        jSeparator16 = new javax.swing.JSeparator();
+        jLabel93 = new javax.swing.JLabel();
+        jLabel94 = new javax.swing.JLabel();
+        jTextField10 = new javax.swing.JTextField();
+        jLabel95 = new javax.swing.JLabel();
+        jTextField11 = new javax.swing.JTextField();
+        jLabel96 = new javax.swing.JLabel();
+        jTextField12 = new javax.swing.JTextField();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        jButton4 = new javax.swing.JButton();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jTextField13 = new javax.swing.JTextField();
+        jButton6 = new javax.swing.JButton();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        jList6 = new javax.swing.JList<>();
+        jLabel97 = new javax.swing.JLabel();
+        jTextField14 = new javax.swing.JTextField();
+        jLabel98 = new javax.swing.JLabel();
+        jTextField15 = new javax.swing.JTextField();
+        jLabel99 = new javax.swing.JLabel();
+        jTextField16 = new javax.swing.JTextField();
+        jSeparator17 = new javax.swing.JSeparator();
+        jButton7 = new javax.swing.JButton();
+        jComboBox6 = new javax.swing.JComboBox<>();
+        jLabel100 = new javax.swing.JLabel();
+        jLabel101 = new javax.swing.JLabel();
+        jLabel102 = new javax.swing.JLabel();
+        jTextField17 = new javax.swing.JTextField();
+        jTextField18 = new javax.swing.JTextField();
+        jTextField19 = new javax.swing.JTextField();
+        jLabel103 = new javax.swing.JLabel();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jComboBox7 = new javax.swing.JComboBox<>();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jComboBox8 = new javax.swing.JComboBox<>();
+        jLabel104 = new javax.swing.JLabel();
+        jScrollPane15 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jButton10 = new javax.swing.JButton();
+        jScrollPane16 = new javax.swing.JScrollPane();
+        jList7 = new javax.swing.JList<>();
+        jButton11 = new javax.swing.JButton();
         newCasePanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -574,16 +637,229 @@ public class GUI extends javax.swing.JFrame {
 
         tabbedPane.addTab("Sagsliste", caseHandlingPanel);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1411, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
-        );
+        jPanel1.setLayout(null);
+
+        jLabel84.setFont(new java.awt.Font("Sylfaen", 0, 24)); // NOI18N
+        jLabel84.setText("Opret ny sag");
+        jPanel1.add(jLabel84);
+        jLabel84.setBounds(10, 10, 140, 30);
+
+        jLabel85.setText("Ny kunde");
+        jPanel1.add(jLabel85);
+        jLabel85.setBounds(20, 50, 110, 14);
+
+        jLabel86.setText("Navn");
+        jPanel1.add(jLabel86);
+        jLabel86.setBounds(20, 80, 150, 14);
+        jPanel1.add(jTextField2);
+        jTextField2.setBounds(20, 100, 150, 20);
+
+        jLabel87.setText("Kontaktperson");
+        jPanel1.add(jLabel87);
+        jLabel87.setBounds(20, 140, 150, 14);
+        jPanel1.add(jTextField3);
+        jTextField3.setBounds(20, 160, 150, 20);
+
+        jLabel88.setText("Tlf. nummer");
+        jPanel1.add(jLabel88);
+        jLabel88.setBounds(200, 80, 150, 14);
+        jPanel1.add(jTextField5);
+        jTextField5.setBounds(200, 100, 150, 20);
+        jPanel1.add(jTextField6);
+        jTextField6.setBounds(200, 160, 150, 20);
+        jPanel1.add(jTextField7);
+        jTextField7.setBounds(380, 100, 150, 20);
+
+        jLabel89.setText("Email");
+        jPanel1.add(jLabel89);
+        jLabel89.setBounds(200, 140, 150, 14);
+
+        jLabel90.setText("Adresse");
+        jPanel1.add(jLabel90);
+        jLabel90.setBounds(380, 80, 150, 14);
+
+        jLabel91.setText("Postnummer");
+        jPanel1.add(jLabel91);
+        jLabel91.setBounds(380, 140, 80, 14);
+        jPanel1.add(jTextField8);
+        jTextField8.setBounds(380, 160, 80, 20);
+
+        jLabel92.setText("Akronym");
+        jPanel1.add(jLabel92);
+        jLabel92.setBounds(480, 140, 70, 14);
+        jPanel1.add(jTextField9);
+        jTextField9.setBounds(480, 160, 70, 20);
+
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kundetype" }));
+        jPanel1.add(jComboBox5);
+        jComboBox5.setBounds(476, 10, 100, 20);
+        jPanel1.add(jSeparator11);
+        jSeparator11.setBounds(20, 190, 1330, 10);
+
+        jSeparator16.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jPanel1.add(jSeparator16);
+        jSeparator16.setBounds(620, 10, 10, 170);
+
+        jLabel93.setFont(new java.awt.Font("Sylfaen", 0, 24)); // NOI18N
+        jLabel93.setText("Tilføj kontakt");
+        jPanel1.add(jLabel93);
+        jLabel93.setBounds(630, 10, 150, 30);
+
+        jLabel94.setText("Navn");
+        jPanel1.add(jLabel94);
+        jLabel94.setBounds(630, 80, 100, 14);
+        jPanel1.add(jTextField10);
+        jTextField10.setBounds(630, 100, 100, 20);
+
+        jLabel95.setText("Tlf. nummer");
+        jPanel1.add(jLabel95);
+        jLabel95.setBounds(630, 140, 100, 14);
+        jPanel1.add(jTextField11);
+        jTextField11.setBounds(630, 160, 100, 20);
+
+        jLabel96.setText("Email");
+        jPanel1.add(jLabel96);
+        jLabel96.setBounds(750, 140, 160, 14);
+        jPanel1.add(jTextField12);
+        jTextField12.setBounds(750, 160, 160, 20);
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane12.setViewportView(jList1);
+
+        jPanel1.add(jScrollPane12);
+        jScrollPane12.setBounds(1020, 30, 120, 150);
+
+        jButton4.setText("Tilføj");
+        jPanel1.add(jButton4);
+        jButton4.setBounds(930, 160, 80, 23);
+
+        jCheckBox2.setText("Eksisterende kunde");
+        jPanel1.add(jCheckBox2);
+        jCheckBox2.setBounds(20, 200, 250, 23);
+        jPanel1.add(jTextField13);
+        jTextField13.setBounds(20, 230, 160, 20);
+
+        jButton6.setText("Vælg");
+        jPanel1.add(jButton6);
+        jButton6.setBounds(190, 230, 80, 23);
+
+        jList6.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane13.setViewportView(jList6);
+
+        jPanel1.add(jScrollPane13);
+        jScrollPane13.setBounds(20, 250, 160, 130);
+
+        jLabel97.setText("Sagsnavn");
+        jPanel1.add(jLabel97);
+        jLabel97.setBounds(20, 400, 160, 14);
+        jPanel1.add(jTextField14);
+        jTextField14.setBounds(20, 420, 160, 20);
+
+        jLabel98.setText("Sags beskrivelse");
+        jPanel1.add(jLabel98);
+        jLabel98.setBounds(20, 460, 160, 14);
+        jPanel1.add(jTextField15);
+        jTextField15.setBounds(20, 480, 160, 20);
+
+        jLabel99.setText("Tilbuds nr.");
+        jPanel1.add(jLabel99);
+        jLabel99.setBounds(20, 520, 160, 14);
+        jPanel1.add(jTextField16);
+        jTextField16.setBounds(20, 540, 160, 20);
+
+        jSeparator17.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jPanel1.add(jSeparator17);
+        jSeparator17.setBounds(280, 200, 10, 470);
+
+        jButton7.setText("Ny genstand");
+        jPanel1.add(jButton7);
+        jButton7.setBounds(290, 200, 120, 23);
+
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Genstands type" }));
+        jPanel1.add(jComboBox6);
+        jComboBox6.setBounds(420, 200, 140, 20);
+
+        jLabel100.setText("Antal genstande");
+        jPanel1.add(jLabel100);
+        jLabel100.setBounds(300, 250, 100, 14);
+
+        jLabel101.setText("Kons nr.");
+        jPanel1.add(jLabel101);
+        jLabel101.setBounds(300, 280, 100, 14);
+
+        jLabel102.setText("Museums nr.");
+        jPanel1.add(jLabel102);
+        jLabel102.setBounds(300, 310, 100, 14);
+        jPanel1.add(jTextField17);
+        jTextField17.setBounds(420, 250, 120, 20);
+        jPanel1.add(jTextField18);
+        jTextField18.setBounds(420, 280, 120, 20);
+        jPanel1.add(jTextField19);
+        jTextField19.setBounds(420, 310, 120, 20);
+
+        jLabel103.setText("Genstands beskrivelse");
+        jPanel1.add(jLabel103);
+        jLabel103.setBounds(300, 360, 220, 14);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane14.setViewportView(jTextArea1);
+
+        jPanel1.add(jScrollPane14);
+        jScrollPane14.setBounds(300, 390, 220, 96);
+
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Placering" }));
+        jPanel1.add(jComboBox7);
+        jComboBox7.setBounds(750, 200, 110, 20);
+
+        jButton8.setText("Ny Placering");
+        jPanel1.add(jButton8);
+        jButton8.setBounds(633, 200, 110, 23);
+
+        jButton9.setText("Ny opgave");
+        jPanel1.add(jButton9);
+        jButton9.setBounds(630, 240, 110, 23);
+
+        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Opgaver" }));
+        jPanel1.add(jComboBox8);
+        jComboBox8.setBounds(750, 240, 110, 20);
+
+        jLabel104.setText("Opgave beskrivelse");
+        jPanel1.add(jLabel104);
+        jLabel104.setBounds(630, 290, 230, 14);
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane15.setViewportView(jTextArea2);
+
+        jPanel1.add(jScrollPane15);
+        jScrollPane15.setBounds(630, 310, 230, 100);
+
+        jButton10.setText("Tilføj");
+        jPanel1.add(jButton10);
+        jButton10.setBounds(780, 420, 80, 23);
+
+        jList7.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane16.setViewportView(jList7);
+
+        jPanel1.add(jScrollPane16);
+        jScrollPane16.setBounds(910, 200, 100, 210);
+
+        jButton11.setText("Opret sag");
+        jPanel1.add(jButton11);
+        jButton11.setBounds(1260, 650, 90, 23);
 
         tabbedPane.addTab("tab6", jPanel1);
 
@@ -2344,18 +2620,35 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane finishedCasesScrollPane;
     private javax.swing.JPanel finishedCasesTab;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
     private javax.swing.JComboBox jComboBox4;
+    private javax.swing.JComboBox<String> jComboBox5;
+    private javax.swing.JComboBox<String> jComboBox6;
+    private javax.swing.JComboBox<String> jComboBox7;
+    private javax.swing.JComboBox<String> jComboBox8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel100;
+    private javax.swing.JLabel jLabel101;
+    private javax.swing.JLabel jLabel102;
+    private javax.swing.JLabel jLabel103;
+    private javax.swing.JLabel jLabel104;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -2436,16 +2729,40 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel81;
     private javax.swing.JLabel jLabel82;
     private javax.swing.JLabel jLabel83;
+    private javax.swing.JLabel jLabel84;
+    private javax.swing.JLabel jLabel85;
+    private javax.swing.JLabel jLabel86;
+    private javax.swing.JLabel jLabel87;
+    private javax.swing.JLabel jLabel88;
+    private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel90;
+    private javax.swing.JLabel jLabel91;
+    private javax.swing.JLabel jLabel92;
+    private javax.swing.JLabel jLabel93;
+    private javax.swing.JLabel jLabel94;
+    private javax.swing.JLabel jLabel95;
+    private javax.swing.JLabel jLabel96;
+    private javax.swing.JLabel jLabel97;
+    private javax.swing.JLabel jLabel98;
+    private javax.swing.JLabel jLabel99;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JList jList2;
     private javax.swing.JList jList3;
     private javax.swing.JList jList4;
     private javax.swing.JList jList5;
+    private javax.swing.JList<String> jList6;
+    private javax.swing.JList<String> jList7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
+    private javax.swing.JScrollPane jScrollPane15;
+    private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -2456,10 +2773,13 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator15;
+    private javax.swing.JSeparator jSeparator16;
+    private javax.swing.JSeparator jSeparator17;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -2469,8 +2789,27 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField12;
+    private javax.swing.JTextField jTextField13;
+    private javax.swing.JTextField jTextField14;
+    private javax.swing.JTextField jTextField15;
+    private javax.swing.JTextField jTextField16;
+    private javax.swing.JTextField jTextField17;
+    private javax.swing.JTextField jTextField18;
+    private javax.swing.JTextField jTextField19;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField konsNmbField;
     private javax.swing.JTextField lastUpdatedField;
     private javax.swing.JButton logButton;
