@@ -134,6 +134,7 @@ public class GUI extends javax.swing.JFrame {
         jTextField4.setText(c.getCaseName());
         adressCostumerLabel.setText(c.getCustomer().getAddress());
         zipCodeCostumerLabel.setText(c.getCustomer().getCityOfZip());
+        editCaseOfferNmbField.setText(""+c.getOfferNmb());
     }
 
     public CardLayout getCl() {
@@ -241,6 +242,8 @@ public class GUI extends javax.swing.JFrame {
         jLabel78 = new javax.swing.JLabel();
         jScrollPane11 = new javax.swing.JScrollPane();
         newContactList = new javax.swing.JList<>();
+        jLabel81 = new javax.swing.JLabel();
+        newCaseOfferNmbField = new javax.swing.JTextField();
         customerListPanel = new javax.swing.JPanel();
         customerListScrollPane = new javax.swing.JScrollPane();
         showAllCustomerPanel = new javax.swing.JPanel();
@@ -390,6 +393,8 @@ public class GUI extends javax.swing.JFrame {
         lastUpdatedField = new javax.swing.JTextField();
         editPanelBackButton = new javax.swing.JButton();
         addToMyCasesCheckBox = new javax.swing.JCheckBox();
+        editCaseOfferNmbField = new javax.swing.JTextField();
+        jLabel82 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -463,7 +468,7 @@ public class GUI extends javax.swing.JFrame {
         );
         NewestCasesTabLayout.setVerticalGroup(
             NewestCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(newestCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE)
+            .addComponent(newestCasesScrollPane)
         );
 
         caseDisplayPane.addTab("Nye sager", NewestCasesTab);
@@ -691,6 +696,8 @@ public class GUI extends javax.swing.JFrame {
 
         jScrollPane11.setViewportView(newContactList);
 
+        jLabel81.setText("Tilbuds nr.");
+
         javax.swing.GroupLayout newCasePanelLayout = new javax.swing.GroupLayout(newCasePanel);
         newCasePanel.setLayout(newCasePanelLayout);
         newCasePanelLayout.setHorizontalGroup(
@@ -703,15 +710,19 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1309, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(newCasePanelLayout.createSequentialGroup()
                                 .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(existingCostumerCheckBox)
-                                    .addComponent(findCostumerField, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(costScrollSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel19)
-                                    .addComponent(caseCreationNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel20)
-                                    .addComponent(newCaseDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(6, 6, 6)
-                                .addComponent(selectCostumerButton)
+                                    .addGroup(newCasePanelLayout.createSequentialGroup()
+                                        .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(existingCostumerCheckBox)
+                                            .addComponent(findCostumerField, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(costScrollSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel19)
+                                            .addComponent(caseCreationNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel20)
+                                            .addComponent(newCaseDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(6, 6, 6)
+                                        .addComponent(selectCostumerButton))
+                                    .addComponent(jLabel81)
+                                    .addComponent(newCaseOfferNmbField, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(6, 6, 6)
@@ -754,7 +765,7 @@ public class GUI extends javax.swing.JFrame {
                                     .addGroup(newCasePanelLayout.createSequentialGroup()
                                         .addGap(18, 18, 18)
                                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(92, Short.MAX_VALUE))
                     .addGroup(newCasePanelLayout.createSequentialGroup()
                         .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(addContactButton)
@@ -870,7 +881,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(addContactButton))))
                 .addGap(6, 6, 6)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
+                .addGap(3, 3, 3)
                 .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(newCasePanelLayout.createSequentialGroup()
                         .addComponent(existingCostumerCheckBox)
@@ -885,7 +896,11 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(11, 11, 11)
                         .addComponent(jLabel20)
                         .addGap(11, 11, 11)
-                        .addComponent(newCaseDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(newCaseDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel81)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(newCaseOfferNmbField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(newCasePanelLayout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(selectCostumerButton))
@@ -978,6 +993,8 @@ public class GUI extends javax.swing.JFrame {
         findCustomerEdibleCheckBox.setText("Ændre kundens oplysninger");
 
         findCustomerSaveInfoButton.setText("Gem");
+
+        jScrollPane10.setHorizontalScrollBar(null);
 
         jList5.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -1288,7 +1305,7 @@ public class GUI extends javax.swing.JFrame {
         );
         employeeListPanelLayout.setVerticalGroup(
             employeeListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 447, Short.MAX_VALUE)
+            .addGap(0, 449, Short.MAX_VALUE)
         );
 
         jScrollPane8.setViewportView(employeeListPanel);
@@ -1466,7 +1483,7 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(logButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
+                            .addComponent(jScrollPane8)
                             .addGroup(adminPanelLayout.createSequentialGroup()
                                 .addComponent(resetPasswordButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1628,6 +1645,8 @@ public class GUI extends javax.swing.JFrame {
 
         addToMyCasesCheckBox.setText("Tilføj til mine sager");
 
+        jLabel82.setText("Tilbuds nr.");
+
         javax.swing.GroupLayout editCasePanelLayout = new javax.swing.GroupLayout(editCasePanel);
         editCasePanel.setLayout(editCasePanelLayout);
         editCasePanelLayout.setHorizontalGroup(
@@ -1684,6 +1703,10 @@ public class GUI extends javax.swing.JFrame {
                                                         .addGap(0, 0, Short.MAX_VALUE))
                                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editCasePanelLayout.createSequentialGroup()
                                                         .addGap(0, 0, Short.MAX_VALUE)
+                                                        .addComponent(jLabel82)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addComponent(editCaseOfferNmbField, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(32, 32, 32)
                                                         .addComponent(jLabel39)))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(caseNmbEditPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1754,7 +1777,7 @@ public class GUI extends javax.swing.JFrame {
                                                 .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(addToMyCasesCheckBox)
                                                     .addComponent(jCheckBox4))
-                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                                .addGap(0, 104, Short.MAX_VALUE)))
                                         .addContainerGap())))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editCasePanelLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1775,7 +1798,9 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jLabel39)
                     .addComponent(caseNmbEditPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel40)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editCaseOfferNmbField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel82))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(editCasePanelLayout.createSequentialGroup()
@@ -1876,7 +1901,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(addToMyCasesCheckBox)
                                 .addGap(3, 3, 3)
                                 .addComponent(jCheckBox4)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel42)
                             .addComponent(lastUpdatedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1973,7 +1998,7 @@ public class GUI extends javax.swing.JFrame {
     private void createCaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseButtonActionPerformed
         if (existingCostumerCheckBox.isSelected()) {
             try {
-                Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), 0, caseCreationNameField.getText(), newCaseDescription.getText(), newCaseArticles, false, cal.getTime(), cal.getTime(), costSearchSelected);
+                Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), Integer.parseInt(newCaseOfferNmbField.getText()), caseCreationNameField.getText(), newCaseDescription.getText(), newCaseArticles, false, cal.getTime(), cal.getTime(), costSearchSelected);
                 CaseHandler.getInstance().saveCase(newCase, employee, true);
             } catch (SQLException ex) {
                 Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -1983,7 +2008,7 @@ public class GUI extends javax.swing.JFrame {
                 //ArrayList af contacts
                 //Oprette kontaker til kunden? ContactHandler
                 Costumer costumer = new Costumer(CostumerHandler.getInstance().generateCostumerID(), newCaseNameField.getText(), "museums akronym", 11/*museums nummer*/, Integer.parseInt(newCasePhoneField.getText()), newCaseEmailField.getText(), "Addresse", "4700 zip", newCaseContacts);
-                Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), 0, caseCreationNameField.getText(), newCaseDescription.getText(), newCaseArticles, false, cal.getTime(), cal.getTime(), costumer);
+                Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), Integer.parseInt(newCaseOfferNmbField.getText()), caseCreationNameField.getText(), newCaseDescription.getText(), newCaseArticles, false, cal.getTime(), cal.getTime(), costumer);
                 CaseHandler.getInstance().saveCase(newCase, employee, false);
             } catch (SQLException ex) {
                 Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -2267,6 +2292,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField dbUrlField;
     private javax.swing.JTextField dbUserField;
     private javax.swing.JButton deactiveEmployee;
+    private javax.swing.JTextField editCaseOfferNmbField;
     private javax.swing.JPanel editCasePanel;
     private javax.swing.JTextField editEmailField;
     private javax.swing.JButton editPanelBackButton;
@@ -2378,6 +2404,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel80;
+    private javax.swing.JLabel jLabel81;
+    private javax.swing.JLabel jLabel82;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JList jList2;
     private javax.swing.JList jList3;
@@ -2424,6 +2452,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField newCaseDescription;
     private javax.swing.JTextField newCaseEmailField;
     private javax.swing.JTextField newCaseNameField;
+    private javax.swing.JTextField newCaseOfferNmbField;
     private javax.swing.JPanel newCasePanel;
     private javax.swing.JTextField newCasePhoneField;
     private javax.swing.JTextField newCaseZipCodeField;
