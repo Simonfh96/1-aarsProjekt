@@ -841,7 +841,7 @@ public class GUI extends javax.swing.JFrame {
         newCasePanel.add(costScrollSearch);
         costScrollSearch.setBounds(20, 250, 160, 130);
 
-        tabbedPane.addTab("tab6", newCasePanel);
+        tabbedPane.addTab("Opret sag", newCasePanel);
 
         customerListScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
