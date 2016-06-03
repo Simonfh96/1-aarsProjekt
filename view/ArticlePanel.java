@@ -105,19 +105,19 @@ public class ArticlePanel extends javax.swing.JPanel {
 
     private void articlePanelCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_articlePanelCheckBoxActionPerformed
         if (articlePanelCheckBox.isSelected() == true) {
-            this.setBackground(Color.BLUE);
+            setBackground(Color.BLUE);
         } else {
-            this.setBackground(normal);
+            setBackground(normal);
         }
     }//GEN-LAST:event_articlePanelCheckBoxActionPerformed
 
     private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
-        this.setBackground(Color.BLUE);
+        setBackground(Color.BLUE);
     }//GEN-LAST:event_formMouseEntered
 
     private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
         if (articlePanelCheckBox.isSelected() == false) {
-            this.setBackground(normal);
+            setBackground(normal);
         }
     }//GEN-LAST:event_formMouseExited
 

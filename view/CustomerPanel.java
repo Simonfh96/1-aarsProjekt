@@ -14,10 +14,11 @@ import model.Costumer;
  * @author Tanja
  */
 public class CustomerPanel extends javax.swing.JPanel {
-
+    //Sikre at kun en kan være selected af gangen
+    //eller løb panelerne igennem for at tjekke om en anden er selected
     private Costumer c;
     private JTextField[] textFields;
-
+    private boolean selected;
     /**
      * Creates new form customerPanel
      *
@@ -28,6 +29,7 @@ public class CustomerPanel extends javax.swing.JPanel {
         setBackground(Color.white);
         this.c = c;
         this.textFields = textFields;
+        this.selected = false;
         customerNameLabel.setText(c.getCostumerName());
 
     }
@@ -44,6 +46,12 @@ public class CustomerPanel extends javax.swing.JPanel {
         customerNameLabel = new javax.swing.JLabel();
 
         addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                formMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                formMouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 formMousePressed(evt);
             }
@@ -67,7 +75,9 @@ public class CustomerPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        if (selected == false) {
         setBackground(Color.BLUE);
+        selected = true;
         for (int i = 0; i < textFields.length; i++) {
             switch (i) {
                 case 0:
@@ -89,10 +99,51 @@ public class CustomerPanel extends javax.swing.JPanel {
                 case 4:
                     textFields[i].setText(c.getCityOfZip());
                     break;
+                case 5:
+                    textFields[i].setText(c.getAddress());
+                    break;
 
             }
         }
+        } else {
+            setBackground(Color.WHITE);
+            selected = false;
+            for (int i = 0; i < textFields.length; i++) {
+            switch (i) {
+                case 0:
+                    textFields[i].setText("");
+                    break;
+                case 1:
+                    textFields[i].setText("");
+                    break;
+                case 2:
+                    textFields[i].setText("");
+                    break;
+                case 3:
+                    textFields[i].setText("");
+                    break;
+                case 4:
+                    textFields[i].setText("");
+                    break;
+                case 5:
+                    textFields[i].setText("");
+                    break;
+
+            }
+        }
+        }
+        
     }//GEN-LAST:event_formMousePressed
+
+    private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
+        setBackground(Color.BLUE);
+    }//GEN-LAST:event_formMouseEntered
+
+    private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
+         if (selected == false) {
+            setBackground(Color.WHITE);
+        }
+    }//GEN-LAST:event_formMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
