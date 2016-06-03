@@ -25,9 +25,9 @@ public class LogWindow extends javax.swing.JPanel {
     /**
      * Creates new form LogWindow
      */
-    public LogWindow(ArrayList<Log> logs, Case c, JPanel panel) {
+    public LogWindow(Case c, JPanel panel) {
         initComponents();
-        this.logs = logs;
+        logs = c.getLogs();
         this.c = c;
         this.panel = panel;
         this.setBounds(100, 100, 600, 480);
