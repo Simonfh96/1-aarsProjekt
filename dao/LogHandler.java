@@ -33,7 +33,7 @@ public class LogHandler implements Runnable {
     public ArrayList<Log> getCaseLogs(int logID) throws SQLException {
         ArrayList<Log> logs = new ArrayList<>();
         PreparedStatement ps = null;
-        String getLogs = "SELECT * FROM logs WHERE log_id = ?";
+        String getLogs = "SELECT * FROM log WHERE log_id = ?";
         ps = DBHandler.getInstance().getConn().prepareStatement(getLogs);
         ps.setInt(1, logID);
         ResultSet rs = ps.executeQuery();
