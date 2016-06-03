@@ -84,7 +84,7 @@ public class GUI extends javax.swing.JFrame {
         listModel = new DefaultListModel();
         listModelObjects = new DefaultListModel();
         list = new JList(listModel);
-        list.setSize(206, 163);
+        list.setSize(160, 130);
         list.setVisible(false);
         costScrollSearch.add(list);
         costScrollSearch.setVisible(true);
@@ -118,7 +118,6 @@ public class GUI extends javax.swing.JFrame {
     public void editCaseSetup() {
         listModelObjects.clear();
         PanelFactory.getInstance().createPanels(c.getArticles(), articleDisplayPanel, this, "ArticlePanel");
-        System.out.println("1");
         if (employee.checkAddedMyCases(c) == true) {
             addToMyCasesCheckBox.setSelected(true);
         } else {
@@ -184,132 +183,71 @@ public class GUI extends javax.swing.JFrame {
         jLabel60 = new javax.swing.JLabel();
         searchOfferNmbField = new javax.swing.JTextField();
         jLabel83 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        newCasePanel = new javax.swing.JPanel();
         jLabel84 = new javax.swing.JLabel();
         jLabel85 = new javax.swing.JLabel();
         jLabel86 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        newCaseNameField = new javax.swing.JTextField();
         jLabel87 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        newCaseContactField = new javax.swing.JTextField();
         jLabel88 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        newCasePhoneField = new javax.swing.JTextField();
+        newCaseEmailField = new javax.swing.JTextField();
+        newCaseAddressField = new javax.swing.JTextField();
         jLabel89 = new javax.swing.JLabel();
         jLabel90 = new javax.swing.JLabel();
         jLabel91 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        newCaseZipCodeField = new javax.swing.JTextField();
         jLabel92 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        newCaseAcroField = new javax.swing.JTextField();
+        costumerTypeBox = new javax.swing.JComboBox<>();
         jSeparator11 = new javax.swing.JSeparator();
         jSeparator16 = new javax.swing.JSeparator();
         jLabel93 = new javax.swing.JLabel();
         jLabel94 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        addContactNameField = new javax.swing.JTextField();
         jLabel95 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
+        addContactPhoneField = new javax.swing.JTextField();
         jLabel96 = new javax.swing.JLabel();
-        jTextField12 = new javax.swing.JTextField();
+        addContactEmailField = new javax.swing.JTextField();
         jScrollPane12 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jButton4 = new javax.swing.JButton();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jTextField13 = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
-        jScrollPane13 = new javax.swing.JScrollPane();
-        jList6 = new javax.swing.JList<>();
+        newContactList = new javax.swing.JList<>();
+        addContactButton = new javax.swing.JButton();
+        existingCostumerCheckBox = new javax.swing.JCheckBox();
+        findCostumerField = new javax.swing.JTextField();
+        selectCostumerButton = new javax.swing.JButton();
         jLabel97 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
+        caseCreationNameField = new javax.swing.JTextField();
         jLabel98 = new javax.swing.JLabel();
-        jTextField15 = new javax.swing.JTextField();
+        newCaseDescription = new javax.swing.JTextField();
         jLabel99 = new javax.swing.JLabel();
-        jTextField16 = new javax.swing.JTextField();
+        newCaseOfferNmbField = new javax.swing.JTextField();
         jSeparator17 = new javax.swing.JSeparator();
-        jButton7 = new javax.swing.JButton();
-        jComboBox6 = new javax.swing.JComboBox<>();
+        newArticleButton = new javax.swing.JButton();
+        newArticleTypeBox = new javax.swing.JComboBox<>();
         jLabel100 = new javax.swing.JLabel();
         jLabel101 = new javax.swing.JLabel();
         jLabel102 = new javax.swing.JLabel();
-        jTextField17 = new javax.swing.JTextField();
-        jTextField18 = new javax.swing.JTextField();
-        jTextField19 = new javax.swing.JTextField();
+        articleAmountField = new javax.swing.JTextField();
+        createArticleConsNmbField = new javax.swing.JTextField();
+        createCaseMuseumsNmbField = new javax.swing.JTextField();
         jLabel103 = new javax.swing.JLabel();
         jScrollPane14 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jComboBox7 = new javax.swing.JComboBox<>();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jComboBox8 = new javax.swing.JComboBox<>();
+        createCaseArticleDescriptionArea = new javax.swing.JTextArea();
+        createCaseLocationBox = new javax.swing.JComboBox<>();
+        newLocationButton = new javax.swing.JButton();
+        createLocationButton = new javax.swing.JButton();
+        createCaseTaskBox = new javax.swing.JComboBox<>();
         jLabel104 = new javax.swing.JLabel();
         jScrollPane15 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jButton10 = new javax.swing.JButton();
-        jScrollPane16 = new javax.swing.JScrollPane();
-        jList7 = new javax.swing.JList<>();
-        jButton11 = new javax.swing.JButton();
-        newCasePanel = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        newCaseNameField = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        newCaseContactField = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        newCasePhoneField = new javax.swing.JTextField();
-        newCaseEmailField = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        newCaseAddressField = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
-        newCaseZipCodeField = new javax.swing.JTextField();
-        costumerTypeBox = new javax.swing.JComboBox();
-        existingCostumerCheckBox = new javax.swing.JCheckBox();
-        findCostumerField = new javax.swing.JTextField();
-        newObjectTypeBox = new javax.swing.JComboBox();
-        newObjectButton = new javax.swing.JButton();
-        jLabel18 = new javax.swing.JLabel();
-        objectAmountField = new javax.swing.JTextField();
-        costScrollSearch = new javax.swing.JScrollPane();
-        selectCostumerButton = new javax.swing.JButton();
-        createCaseButton = new javax.swing.JButton();
-        caseCreationNameField = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        newCaseDescription = new javax.swing.JTextField();
-        createTaskConsNumberField = new javax.swing.JTextField();
-        jLabel61 = new javax.swing.JLabel();
-        createCaseMuseumsNrField = new javax.swing.JTextField();
-        jLabel62 = new javax.swing.JLabel();
-        createCaseLocationBox = new javax.swing.JComboBox<>();
-        newObjectNameField = new javax.swing.JTextField();
-        jLabel63 = new javax.swing.JLabel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        createCaseObjectDescriptionArea = new javax.swing.JTextArea();
-        jLabel64 = new javax.swing.JLabel();
-        createCaseTaskBox = new javax.swing.JComboBox<>();
-        createCaseAddTaskButton = new javax.swing.JButton();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        createCaseTaskList = new javax.swing.JList<>();
-        jSeparator14 = new javax.swing.JSeparator();
-        jSeparator15 = new javax.swing.JSeparator();
-        newCaseAcroField = new javax.swing.JTextField();
-        jLabel74 = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
         taskDescriptionArea = new javax.swing.JTextArea();
-        jLabel75 = new javax.swing.JLabel();
-        addContactNameField = new javax.swing.JTextField();
-        jLabel76 = new javax.swing.JLabel();
-        addContactPhoneField = new javax.swing.JTextField();
-        jLabel77 = new javax.swing.JLabel();
-        addContactEmailField = new javax.swing.JTextField();
-        addContactButton = new javax.swing.JButton();
-        jLabel78 = new javax.swing.JLabel();
-        jScrollPane11 = new javax.swing.JScrollPane();
-        newContactList = new javax.swing.JList<>();
-        jLabel81 = new javax.swing.JLabel();
-        newCaseOfferNmbField = new javax.swing.JTextField();
+        createCaseAddTaskButton = new javax.swing.JButton();
+        jScrollPane16 = new javax.swing.JScrollPane();
+        createCaseTaskList = new javax.swing.JList<>();
+        createCasebutton = new javax.swing.JButton();
+        jLabel105 = new javax.swing.JLabel();
+        newArticleNameField = new javax.swing.JTextField();
+        costScrollSearch = new javax.swing.JScrollPane();
         customerListPanel = new javax.swing.JPanel();
         customerListScrollPane = new javax.swing.JScrollPane();
         showAllCustomerPanel = new javax.swing.JPanel();
@@ -461,7 +399,7 @@ public class GUI extends javax.swing.JFrame {
         addToMyCasesCheckBox = new javax.swing.JCheckBox();
         editCaseOfferNmbField = new javax.swing.JTextField();
         jLabel82 = new javax.swing.JLabel();
-        jButton12 = new javax.swing.JButton();
+        editCaseLogButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -505,7 +443,7 @@ public class GUI extends javax.swing.JFrame {
         );
         myCasesTabLayout.setVerticalGroup(
             myCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(myCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+            .addComponent(myCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
 
         caseDisplayPane.addTab("Mine sager", myCasesTab);
@@ -537,7 +475,7 @@ public class GUI extends javax.swing.JFrame {
         );
         NewestCasesTabLayout.setVerticalGroup(
             NewestCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(newestCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+            .addComponent(newestCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
 
         caseDisplayPane.addTab("Nye sager", NewestCasesTab);
@@ -563,7 +501,7 @@ public class GUI extends javax.swing.JFrame {
         );
         finishedCasesTabLayout.setVerticalGroup(
             finishedCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(finishedCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+            .addComponent(finishedCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
 
         caseDisplayPane.addTab("Afsluttede sager", finishedCasesTab);
@@ -596,7 +534,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel60)
                             .addComponent(jLabel83))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 493, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 494, Short.MAX_VALUE)
                 .addComponent(caseDisplayPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -605,7 +543,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(caseHandlingPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(caseDisplayPane, javax.swing.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
+                    .addComponent(caseDisplayPane)
                     .addGroup(caseHandlingPanelLayout.createSequentialGroup()
                         .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(caseNmbSField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -638,250 +576,105 @@ public class GUI extends javax.swing.JFrame {
 
         tabbedPane.addTab("Sagsliste", caseHandlingPanel);
 
-        jPanel1.setLayout(null);
+        newCasePanel.setLayout(null);
 
         jLabel84.setFont(new java.awt.Font("Sylfaen", 0, 24)); // NOI18N
         jLabel84.setText("Opret ny sag");
-        jPanel1.add(jLabel84);
+        newCasePanel.add(jLabel84);
         jLabel84.setBounds(10, 10, 140, 30);
 
         jLabel85.setText("Ny kunde");
-        jPanel1.add(jLabel85);
+        newCasePanel.add(jLabel85);
         jLabel85.setBounds(20, 50, 110, 14);
 
         jLabel86.setText("Navn");
-        jPanel1.add(jLabel86);
+        newCasePanel.add(jLabel86);
         jLabel86.setBounds(20, 80, 150, 14);
-        jPanel1.add(jTextField2);
-        jTextField2.setBounds(20, 100, 150, 20);
+        newCasePanel.add(newCaseNameField);
+        newCaseNameField.setBounds(20, 100, 150, 20);
 
         jLabel87.setText("Kontaktperson");
-        jPanel1.add(jLabel87);
+        newCasePanel.add(jLabel87);
         jLabel87.setBounds(20, 140, 150, 14);
-        jPanel1.add(jTextField3);
-        jTextField3.setBounds(20, 160, 150, 20);
+        newCasePanel.add(newCaseContactField);
+        newCaseContactField.setBounds(20, 160, 150, 20);
 
         jLabel88.setText("Tlf. nummer");
-        jPanel1.add(jLabel88);
+        newCasePanel.add(jLabel88);
         jLabel88.setBounds(200, 80, 150, 14);
-        jPanel1.add(jTextField5);
-        jTextField5.setBounds(200, 100, 150, 20);
-        jPanel1.add(jTextField6);
-        jTextField6.setBounds(200, 160, 150, 20);
-        jPanel1.add(jTextField7);
-        jTextField7.setBounds(380, 100, 150, 20);
+        newCasePanel.add(newCasePhoneField);
+        newCasePhoneField.setBounds(200, 100, 150, 20);
+        newCasePanel.add(newCaseEmailField);
+        newCaseEmailField.setBounds(200, 160, 150, 20);
+        newCasePanel.add(newCaseAddressField);
+        newCaseAddressField.setBounds(380, 100, 150, 20);
 
         jLabel89.setText("Email");
-        jPanel1.add(jLabel89);
+        newCasePanel.add(jLabel89);
         jLabel89.setBounds(200, 140, 150, 14);
 
         jLabel90.setText("Adresse");
-        jPanel1.add(jLabel90);
+        newCasePanel.add(jLabel90);
         jLabel90.setBounds(380, 80, 150, 14);
 
         jLabel91.setText("Postnummer");
-        jPanel1.add(jLabel91);
+        newCasePanel.add(jLabel91);
         jLabel91.setBounds(380, 140, 80, 14);
-        jPanel1.add(jTextField8);
-        jTextField8.setBounds(380, 160, 80, 20);
+        newCasePanel.add(newCaseZipCodeField);
+        newCaseZipCodeField.setBounds(380, 160, 80, 20);
 
         jLabel92.setText("Akronym");
-        jPanel1.add(jLabel92);
+        newCasePanel.add(jLabel92);
         jLabel92.setBounds(480, 140, 70, 14);
-        jPanel1.add(jTextField9);
-        jTextField9.setBounds(480, 160, 70, 20);
+        newCasePanel.add(newCaseAcroField);
+        newCaseAcroField.setBounds(480, 160, 70, 20);
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kundetype" }));
-        jPanel1.add(jComboBox5);
-        jComboBox5.setBounds(476, 10, 100, 20);
-        jPanel1.add(jSeparator11);
+        costumerTypeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kundetype" }));
+        newCasePanel.add(costumerTypeBox);
+        costumerTypeBox.setBounds(476, 10, 100, 20);
+        newCasePanel.add(jSeparator11);
         jSeparator11.setBounds(20, 190, 1330, 10);
 
         jSeparator16.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jPanel1.add(jSeparator16);
+        newCasePanel.add(jSeparator16);
         jSeparator16.setBounds(620, 10, 10, 170);
 
         jLabel93.setFont(new java.awt.Font("Sylfaen", 0, 24)); // NOI18N
         jLabel93.setText("Tilføj kontakt");
-        jPanel1.add(jLabel93);
+        newCasePanel.add(jLabel93);
         jLabel93.setBounds(630, 10, 150, 30);
 
         jLabel94.setText("Navn");
-        jPanel1.add(jLabel94);
+        newCasePanel.add(jLabel94);
         jLabel94.setBounds(630, 80, 100, 14);
-        jPanel1.add(jTextField10);
-        jTextField10.setBounds(630, 100, 100, 20);
+        newCasePanel.add(addContactNameField);
+        addContactNameField.setBounds(630, 100, 100, 20);
 
         jLabel95.setText("Tlf. nummer");
-        jPanel1.add(jLabel95);
+        newCasePanel.add(jLabel95);
         jLabel95.setBounds(630, 140, 100, 14);
-        jPanel1.add(jTextField11);
-        jTextField11.setBounds(630, 160, 100, 20);
+        newCasePanel.add(addContactPhoneField);
+        addContactPhoneField.setBounds(630, 160, 100, 20);
 
         jLabel96.setText("Email");
-        jPanel1.add(jLabel96);
+        newCasePanel.add(jLabel96);
         jLabel96.setBounds(750, 140, 160, 14);
-        jPanel1.add(jTextField12);
-        jTextField12.setBounds(750, 160, 160, 20);
+        newCasePanel.add(addContactEmailField);
+        addContactEmailField.setBounds(750, 160, 160, 20);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        newContactList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane12.setViewportView(jList1);
+        jScrollPane12.setViewportView(newContactList);
 
-        jPanel1.add(jScrollPane12);
+        newCasePanel.add(jScrollPane12);
         jScrollPane12.setBounds(1020, 30, 120, 150);
 
-        jButton4.setText("Tilføj");
-        jPanel1.add(jButton4);
-        jButton4.setBounds(930, 159, 80, 23);
-
-        jCheckBox2.setText("Eksisterende kunde");
-        jPanel1.add(jCheckBox2);
-        jCheckBox2.setBounds(20, 200, 250, 23);
-        jPanel1.add(jTextField13);
-        jTextField13.setBounds(20, 230, 160, 20);
-
-        jButton6.setText("Vælg");
-        jPanel1.add(jButton6);
-        jButton6.setBounds(180, 229, 80, 23);
-
-        jList6.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane13.setViewportView(jList6);
-
-        jPanel1.add(jScrollPane13);
-        jScrollPane13.setBounds(20, 250, 160, 130);
-
-        jLabel97.setText("Sagsnavn");
-        jPanel1.add(jLabel97);
-        jLabel97.setBounds(20, 400, 160, 14);
-        jPanel1.add(jTextField14);
-        jTextField14.setBounds(20, 420, 160, 20);
-
-        jLabel98.setText("Sags beskrivelse");
-        jPanel1.add(jLabel98);
-        jLabel98.setBounds(20, 460, 160, 14);
-        jPanel1.add(jTextField15);
-        jTextField15.setBounds(20, 480, 160, 20);
-
-        jLabel99.setText("Tilbuds nr.");
-        jPanel1.add(jLabel99);
-        jLabel99.setBounds(20, 520, 160, 14);
-        jPanel1.add(jTextField16);
-        jTextField16.setBounds(20, 540, 160, 20);
-
-        jSeparator17.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jPanel1.add(jSeparator17);
-        jSeparator17.setBounds(280, 200, 10, 470);
-
-        jButton7.setText("Ny genstand");
-        jPanel1.add(jButton7);
-        jButton7.setBounds(290, 200, 120, 23);
-
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Genstands type" }));
-        jPanel1.add(jComboBox6);
-        jComboBox6.setBounds(420, 201, 140, 20);
-
-        jLabel100.setText("Antal genstande");
-        jPanel1.add(jLabel100);
-        jLabel100.setBounds(300, 250, 100, 14);
-
-        jLabel101.setText("Kons nr.");
-        jPanel1.add(jLabel101);
-        jLabel101.setBounds(300, 280, 100, 14);
-
-        jLabel102.setText("Museums nr.");
-        jPanel1.add(jLabel102);
-        jLabel102.setBounds(300, 310, 100, 14);
-        jPanel1.add(jTextField17);
-        jTextField17.setBounds(420, 250, 120, 20);
-        jPanel1.add(jTextField18);
-        jTextField18.setBounds(420, 280, 120, 20);
-        jPanel1.add(jTextField19);
-        jTextField19.setBounds(420, 310, 120, 20);
-
-        jLabel103.setText("Genstands beskrivelse");
-        jPanel1.add(jLabel103);
-        jLabel103.setBounds(300, 360, 220, 14);
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane14.setViewportView(jTextArea1);
-
-        jPanel1.add(jScrollPane14);
-        jScrollPane14.setBounds(300, 390, 220, 96);
-
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Placering" }));
-        jPanel1.add(jComboBox7);
-        jComboBox7.setBounds(750, 201, 110, 20);
-
-        jButton8.setText("Ny Placering");
-        jPanel1.add(jButton8);
-        jButton8.setBounds(630, 200, 110, 23);
-
-        jButton9.setText("Ny opgave");
-        jPanel1.add(jButton9);
-        jButton9.setBounds(630, 240, 110, 23);
-
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Opgaver" }));
-        jPanel1.add(jComboBox8);
-        jComboBox8.setBounds(750, 241, 110, 20);
-
-        jLabel104.setText("Opgave beskrivelse");
-        jPanel1.add(jLabel104);
-        jLabel104.setBounds(630, 290, 230, 14);
-
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane15.setViewportView(jTextArea2);
-
-        jPanel1.add(jScrollPane15);
-        jScrollPane15.setBounds(630, 310, 230, 100);
-
-        jButton10.setText("Tilføj");
-        jPanel1.add(jButton10);
-        jButton10.setBounds(780, 420, 80, 23);
-
-        jList7.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane16.setViewportView(jList7);
-
-        jPanel1.add(jScrollPane16);
-        jScrollPane16.setBounds(910, 200, 100, 210);
-
-        jButton11.setText("Opret sag");
-        jPanel1.add(jButton11);
-        jButton11.setBounds(1260, 650, 90, 23);
-
-        tabbedPane.addTab("tab6", jPanel1);
-
-        jLabel5.setFont(new java.awt.Font("LiSong Pro", 0, 36)); // NOI18N
-        jLabel5.setText("Opret ny sag");
-
-        jLabel6.setText("Ny kunde");
-
-        jLabel7.setText("Navn");
-
-        jLabel8.setText("Kontaktperson");
-
-        jLabel9.setText("Tlf. Nummer");
-
-        jLabel10.setText("Email");
-
-        jLabel16.setText("Adresse");
-
-        jLabel17.setText("Postnummer");
-
-        costumerTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kunde Type", "Privat", "Museum", "Offentlig" }));
+        addContactButton.setText("Tilføj");
+        newCasePanel.add(addContactButton);
+        addContactButton.setBounds(930, 159, 80, 23);
 
         existingCostumerCheckBox.setText("Eksisterende kunde");
         existingCostumerCheckBox.addActionListener(new java.awt.event.ActionListener() {
@@ -889,33 +682,16 @@ public class GUI extends javax.swing.JFrame {
                 existingCostumerCheckBoxActionPerformed(evt);
             }
         });
+        newCasePanel.add(existingCostumerCheckBox);
+        existingCostumerCheckBox.setBounds(20, 200, 250, 23);
 
-        findCostumerField.setText("Find kunde her...");
-        findCostumerField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                findCostumerFieldMousePressed(evt);
-            }
-        });
         findCostumerField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 findCostumerFieldKeyReleased(evt);
             }
         });
-
-        newObjectTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Genstands type", "Maleri", "Arkæologi" }));
-
-        newObjectButton.setText("Ny Genstand");
-        newObjectButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newObjectButtonActionPerformed(evt);
-            }
-        });
-
-        jLabel18.setText("Antal genstande:");
-
-        objectAmountField.setText("1");
-
-        costScrollSearch.setHorizontalScrollBar(null);
+        newCasePanel.add(findCostumerField);
+        findCostumerField.setBounds(20, 230, 160, 20);
 
         selectCostumerButton.setText("Vælg");
         selectCostumerButton.addActionListener(new java.awt.event.ActionListener() {
@@ -923,39 +699,111 @@ public class GUI extends javax.swing.JFrame {
                 selectCostumerButtonActionPerformed(evt);
             }
         });
+        newCasePanel.add(selectCostumerButton);
+        selectCostumerButton.setBounds(180, 229, 80, 23);
 
-        createCaseButton.setText("Opret sag");
-        createCaseButton.addActionListener(new java.awt.event.ActionListener() {
+        jLabel97.setText("Sagsnavn");
+        newCasePanel.add(jLabel97);
+        jLabel97.setBounds(20, 400, 160, 14);
+        newCasePanel.add(caseCreationNameField);
+        caseCreationNameField.setBounds(20, 420, 160, 20);
+
+        jLabel98.setText("Sags beskrivelse");
+        newCasePanel.add(jLabel98);
+        jLabel98.setBounds(20, 460, 160, 14);
+        newCasePanel.add(newCaseDescription);
+        newCaseDescription.setBounds(20, 480, 160, 20);
+
+        jLabel99.setText("Tilbuds nr.");
+        newCasePanel.add(jLabel99);
+        jLabel99.setBounds(20, 520, 160, 14);
+        newCasePanel.add(newCaseOfferNmbField);
+        newCaseOfferNmbField.setBounds(20, 540, 160, 20);
+
+        jSeparator17.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        newCasePanel.add(jSeparator17);
+        jSeparator17.setBounds(280, 200, 10, 470);
+
+        newArticleButton.setText("Ny genstand");
+        newArticleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createCaseButtonActionPerformed(evt);
+                newArticleButtonActionPerformed(evt);
             }
         });
+        newCasePanel.add(newArticleButton);
+        newArticleButton.setBounds(290, 200, 120, 23);
 
-        jLabel19.setText("Sagsnavn");
+        newArticleTypeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Genstands type" }));
+        newCasePanel.add(newArticleTypeBox);
+        newArticleTypeBox.setBounds(420, 201, 140, 20);
 
-        jLabel20.setText("Beskrivelse");
+        jLabel100.setText("Antal genstande");
+        newCasePanel.add(jLabel100);
+        jLabel100.setBounds(300, 290, 100, 14);
 
-        newCaseDescription.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                newCaseDescriptionMousePressed(evt);
-            }
-        });
+        jLabel101.setText("Kons nr.");
+        newCasePanel.add(jLabel101);
+        jLabel101.setBounds(300, 320, 100, 14);
 
-        jLabel61.setText("Kons nr.");
+        jLabel102.setText("Museums nr.");
+        newCasePanel.add(jLabel102);
+        jLabel102.setBounds(300, 350, 100, 14);
 
-        jLabel62.setText("Genstands navn");
+        articleAmountField.setText("1");
+        newCasePanel.add(articleAmountField);
+        articleAmountField.setBounds(420, 290, 120, 20);
+        newCasePanel.add(createArticleConsNmbField);
+        createArticleConsNmbField.setBounds(420, 320, 120, 20);
+        newCasePanel.add(createCaseMuseumsNmbField);
+        createCaseMuseumsNmbField.setBounds(420, 350, 120, 20);
+
+        jLabel103.setText("Genstands beskrivelse");
+        newCasePanel.add(jLabel103);
+        jLabel103.setBounds(300, 420, 220, 14);
+
+        createCaseArticleDescriptionArea.setColumns(20);
+        createCaseArticleDescriptionArea.setRows(5);
+        jScrollPane14.setViewportView(createCaseArticleDescriptionArea);
+
+        newCasePanel.add(jScrollPane14);
+        jScrollPane14.setBounds(300, 450, 220, 96);
 
         createCaseLocationBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Placering" }));
+        newCasePanel.add(createCaseLocationBox);
+        createCaseLocationBox.setBounds(420, 241, 140, 20);
 
-        jLabel63.setText("Museums nr.");
+        newLocationButton.setText("Ny Placering");
+        newLocationButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newLocationButtonActionPerformed(evt);
+            }
+        });
+        newCasePanel.add(newLocationButton);
+        newLocationButton.setBounds(290, 240, 120, 23);
 
-        createCaseObjectDescriptionArea.setColumns(20);
-        createCaseObjectDescriptionArea.setRows(5);
-        jScrollPane6.setViewportView(createCaseObjectDescriptionArea);
-
-        jLabel64.setText("Genstandsbeskrivelse");
+        createLocationButton.setText("Ny opgave");
+        createLocationButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createLocationButtonActionPerformed(evt);
+            }
+        });
+        newCasePanel.add(createLocationButton);
+        createLocationButton.setBounds(630, 200, 110, 23);
 
         createCaseTaskBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Opgaver" }));
+        newCasePanel.add(createCaseTaskBox);
+        createCaseTaskBox.setBounds(750, 201, 110, 20);
+
+        jLabel104.setText("Opgave beskrivelse");
+        newCasePanel.add(jLabel104);
+        jLabel104.setBounds(630, 250, 230, 14);
+
+        taskDescriptionArea.setColumns(20);
+        taskDescriptionArea.setRows(5);
+        jScrollPane15.setViewportView(taskDescriptionArea);
+
+        newCasePanel.add(jScrollPane15);
+        jScrollPane15.setBounds(630, 270, 230, 100);
 
         createCaseAddTaskButton.setText("Tilføj");
         createCaseAddTaskButton.addActionListener(new java.awt.event.ActionListener() {
@@ -963,305 +811,37 @@ public class GUI extends javax.swing.JFrame {
                 createCaseAddTaskButtonActionPerformed(evt);
             }
         });
+        newCasePanel.add(createCaseAddTaskButton);
+        createCaseAddTaskButton.setBounds(780, 388, 80, 23);
 
         createCaseTaskList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "liste med", "det valgte", "opgaver" };
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane7.setViewportView(createCaseTaskList);
+        jScrollPane16.setViewportView(createCaseTaskList);
 
-        jSeparator14.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        newCasePanel.add(jScrollPane16);
+        jScrollPane16.setBounds(910, 200, 100, 210);
 
-        jSeparator15.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-        jLabel74.setText("Akronym");
-
-        taskDescriptionArea.setColumns(20);
-        taskDescriptionArea.setRows(5);
-        jScrollPane5.setViewportView(taskDescriptionArea);
-
-        jLabel75.setText("Navn");
-
-        jLabel76.setText("Tlf.");
-
-        jLabel77.setText("Email");
-
-        addContactButton.setText("Tilføj");
-        addContactButton.addActionListener(new java.awt.event.ActionListener() {
+        createCasebutton.setText("Opret sag");
+        createCasebutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addContactButtonActionPerformed(evt);
+                createCasebuttonActionPerformed(evt);
             }
         });
+        newCasePanel.add(createCasebutton);
+        createCasebutton.setBounds(1260, 650, 90, 23);
 
-        jLabel78.setFont(new java.awt.Font("Sylfaen", 0, 24)); // NOI18N
-        jLabel78.setText("Tilføj kontakt");
+        jLabel105.setText("Genstands navn");
+        newCasePanel.add(jLabel105);
+        jLabel105.setBounds(300, 380, 110, 14);
+        newCasePanel.add(newArticleNameField);
+        newArticleNameField.setBounds(420, 380, 120, 20);
+        newCasePanel.add(costScrollSearch);
+        costScrollSearch.setBounds(20, 250, 160, 130);
 
-        jScrollPane11.setViewportView(newContactList);
-
-        jLabel81.setText("Tilbuds nr.");
-
-        javax.swing.GroupLayout newCasePanelLayout = new javax.swing.GroupLayout(newCasePanel);
-        newCasePanel.setLayout(newCasePanelLayout);
-        newCasePanelLayout.setHorizontalGroup(
-            newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(newCasePanelLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                        .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(newCasePanelLayout.createSequentialGroup()
-                                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                                        .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(existingCostumerCheckBox)
-                                            .addComponent(findCostumerField, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(costScrollSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel19)
-                                            .addComponent(caseCreationNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel20)
-                                            .addComponent(newCaseDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(6, 6, 6)
-                                        .addComponent(selectCostumerButton))
-                                    .addComponent(jLabel81)
-                                    .addComponent(newCaseOfferNmbField, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                                        .addComponent(newObjectButton)
-                                        .addGap(6, 6, 6)
-                                        .addComponent(newObjectTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel18)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(objectAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel61)
-                                        .addGap(61, 61, 61)
-                                        .addComponent(createTaskConsNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel63)
-                                        .addGap(40, 40, 40)
-                                        .addComponent(createCaseMuseumsNrField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel62)
-                                        .addGap(23, 23, 23)
-                                        .addComponent(newObjectNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel64)
-                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(141, 141, 141)
-                                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                                        .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(createCaseLocationBox, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(createCaseTaskBox, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(6, 6, 6)
-                                        .addComponent(createCaseAddTaskButton))
-                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                                        .addGap(339, 339, 339)
-                                        .addComponent(createCaseButton))
-                                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(91, Short.MAX_VALUE))
-                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                        .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(addContactButton)
-                            .addGroup(newCasePanelLayout.createSequentialGroup()
-                                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7)
-                                    .addComponent(newCaseNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8)
-                                    .addComponent(newCaseContactField, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(17, 17, 17)
-                                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9)
-                                    .addComponent(newCasePhoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel10)
-                                    .addComponent(newCaseEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel16)
-                                    .addComponent(newCaseAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel17)
-                                        .addGap(67, 67, 67)
-                                        .addComponent(jLabel74))
-                                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                                        .addComponent(newCaseZipCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(36, 36, 36)
-                                        .addComponent(newCaseAcroField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(33, 33, 33)
-                                .addComponent(costumerTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(jSeparator15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                                        .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel75)
-                                            .addComponent(addContactNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                                            .addComponent(jLabel76)
-                                            .addComponent(addContactPhoneField))
-                                        .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(newCasePanelLayout.createSequentialGroup()
-                                                .addGap(15, 15, 15)
-                                                .addComponent(jLabel77))
-                                            .addGroup(newCasePanelLayout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(addContactEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addComponent(jLabel78))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90))))
-        );
-        newCasePanelLayout.setVerticalGroup(
-            newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(newCasePanelLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(11, 11, 11)
-                        .addComponent(jLabel6)
-                        .addGap(11, 11, 11)
-                        .addComponent(jLabel7)
-                        .addGap(6, 6, 6)
-                        .addComponent(newCaseNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel8)
-                        .addGap(6, 6, 6)
-                        .addComponent(newCaseContactField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(costumerTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator15, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(newCasePanelLayout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(6, 6, 6)
-                                .addComponent(newCasePhoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel10)
-                                .addGap(6, 6, 6)
-                                .addComponent(newCaseEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(newCasePanelLayout.createSequentialGroup()
-                                .addComponent(jLabel16)
-                                .addGap(6, 6, 6)
-                                .addComponent(newCaseAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jLabel74))
-                                .addGap(6, 6, 6)
-                                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(newCaseZipCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(newCaseAcroField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jScrollPane11)
-                        .addGroup(newCasePanelLayout.createSequentialGroup()
-                            .addComponent(jLabel78)
-                            .addGap(24, 24, 24)
-                            .addComponent(jLabel75)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(addContactNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel76)
-                                .addComponent(jLabel77))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(addContactPhoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(addContactEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(addContactButton))))
-                .addGap(6, 6, 6)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                        .addComponent(existingCostumerCheckBox)
-                        .addGap(3, 3, 3)
-                        .addComponent(findCostumerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(costScrollSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel19)
-                        .addGap(7, 7, 7)
-                        .addComponent(caseCreationNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
-                        .addComponent(jLabel20)
-                        .addGap(11, 11, 11)
-                        .addComponent(newCaseDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel81)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(newCaseOfferNmbField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(selectCostumerButton))
-                    .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(171, 171, 171)
-                        .addComponent(createCaseButton))
-                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                        .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(newCasePanelLayout.createSequentialGroup()
-                                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(newObjectButton)
-                                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                                        .addGap(1, 1, 1)
-                                        .addComponent(newObjectTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(6, 6, 6)
-                                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addComponent(jLabel18))
-                                    .addComponent(objectAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addComponent(jLabel61))
-                                    .addComponent(createTaskConsNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(11, 11, 11)
-                                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addComponent(jLabel63))
-                                    .addComponent(createCaseMuseumsNrField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(13, 13, 13)
-                                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addComponent(jLabel62))
-                                    .addComponent(newObjectNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(35, 35, 35)
-                                .addComponent(jLabel64))
-                            .addGroup(newCasePanelLayout.createSequentialGroup()
-                                .addGroup(newCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                                        .addGap(26, 26, 26)
-                                        .addComponent(createCaseAddTaskButton))
-                                    .addGroup(newCasePanelLayout.createSequentialGroup()
-                                        .addComponent(createCaseLocationBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(7, 7, 7)
-                                        .addComponent(createCaseTaskBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(11, 11, 11)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-        );
-
-        tabbedPane.addTab("Opret sag", newCasePanel);
+        tabbedPane.addTab("tab6", newCasePanel);
 
         customerListScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -1372,7 +952,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(customerListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel72)
                     .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(352, Short.MAX_VALUE))
+                .addContainerGap(353, Short.MAX_VALUE))
         );
         customerListPanelLayout.setVerticalGroup(
             customerListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1491,7 +1071,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(editEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(editPhoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(savePersonalInfoButton))))
-                .addContainerGap(885, Short.MAX_VALUE))
+                .addContainerGap(886, Short.MAX_VALUE))
         );
         employeeSettingsPanelLayout.setVerticalGroup(
             employeeSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1711,7 +1291,7 @@ public class GUI extends javax.swing.JFrame {
                                             .addComponent(jLabel80, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(resetPasswordButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(deactiveEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                        .addGap(0, 134, Short.MAX_VALUE))
+                        .addGap(0, 135, Short.MAX_VALUE))
                     .addComponent(jSeparator2))
                 .addContainerGap())
         );
@@ -1790,7 +1370,7 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(logButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
                             .addGroup(adminPanelLayout.createSequentialGroup()
                                 .addComponent(resetPasswordButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1954,7 +1534,12 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel82.setText("Tilbuds nr.");
 
-        jButton12.setText("Log");
+        editCaseLogButton.setText("Log");
+        editCaseLogButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editCaseLogButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout editCasePanelLayout = new javax.swing.GroupLayout(editCasePanel);
         editCasePanel.setLayout(editCasePanelLayout);
@@ -2084,7 +1669,7 @@ public class GUI extends javax.swing.JFrame {
                                         .addGap(2, 2, 2)
                                         .addComponent(saveChangesEditCaseButton)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton12)
+                                        .addComponent(editCaseLogButton)
                                         .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editCasePanelLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2221,7 +1806,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jLabel41)
                             .addComponent(employeeLastUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(saveChangesEditCaseButton)
-                            .addComponent(jButton12))))
+                            .addComponent(editCaseLogButton))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2256,92 +1841,6 @@ public class GUI extends javax.swing.JFrame {
         DBHandler.getInstance().setConfig(dbUrlField.getText(), dbUserField.getText(), dbPasswordField.getText());
     }//GEN-LAST:event_changeDbButtonActionPerformed
 
-    private void findCostumerFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_findCostumerFieldKeyReleased
-        String search = findCostumerField.getText();
-        if (!(search.equals(""))) {
-            costScrollSearch.setVisible(true);
-            list.setVisible(true);
-            if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
-                SearchListListener sl = new SearchListListener(findCostumerField, list);
-            } else {
-                try {
-                    listModel.clear();
-                    ArrayList<Costumer> costumers = CostumerHandler.getInstance().searchCostumerName(search);
-                    if (costumers.size() > 0) {
-                        findCostumerField.setText(search + costumers.get(0).getCostumerName().substring(search.length()));
-                        findCostumerField.setSelectionStart(search.length());
-                    }
-                    for (Costumer costumer : costumers) {
-                        listModel.addElement(costumer);
-                    }
-                    listModel.trimToSize();
-                    costScrollSearch.setBounds(6, 300, 206, costumers.size() * 25);
-                    costScrollSearch.setViewportView(list);
-                    costScrollSearch.setVisible(true);
-                    list.setVisible(true);
-                    list.revalidate();
-                    list.repaint();
-                    list.ensureIndexIsVisible(0);
-                } catch (SQLException ex) {
-                    Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        } else {
-            costScrollSearch.setVisible(false);
-            list.setVisible(false);
-        }
-
-    }//GEN-LAST:event_findCostumerFieldKeyReleased
-
-    private void selectCostumerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectCostumerButtonActionPerformed
-        costSearchSelected = (Costumer) listModel.getElementAt(list.getSelectedIndex());
-    }//GEN-LAST:event_selectCostumerButtonActionPerformed
-
-    private void findCostumerFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_findCostumerFieldMousePressed
-        if (findCostumerField.getText().equalsIgnoreCase("Find kunde her...")) {
-            findCostumerField.setText("");
-        } else {
-            findCostumerField.setSelectionStart(0);
-        }
-    }//GEN-LAST:event_findCostumerFieldMousePressed
-
-    private void createCaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseButtonActionPerformed
-        if (existingCostumerCheckBox.isSelected()) {
-            try {
-                Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), Integer.parseInt(newCaseOfferNmbField.getText()), caseCreationNameField.getText(), newCaseDescription.getText(), newCaseArticles, false, cal.getTime(), cal.getTime(), costSearchSelected);
-                CaseHandler.getInstance().saveCase(newCase, employee, true);
-            } catch (SQLException ex) {
-                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            try {
-                //ArrayList af contacts
-                //Oprette kontaker til kunden? ContactHandler
-                Costumer costumer = new Costumer(CostumerHandler.getInstance().generateCostumerID(), newCaseNameField.getText(), "museums akronym", 11/*museums nummer*/, Integer.parseInt(newCasePhoneField.getText()), newCaseEmailField.getText(), "Addresse", "4700 zip", newCaseContacts);
-                Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), Integer.parseInt(newCaseOfferNmbField.getText()), caseCreationNameField.getText(), newCaseDescription.getText(), newCaseArticles, false, cal.getTime(), cal.getTime(), costumer);
-                CaseHandler.getInstance().saveCase(newCase, employee, false);
-            } catch (SQLException ex) {
-                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-        }
-        newCaseArticles.clear();
-        newCaseContacts.clear();
-        costSearchSelected = null;
-    }//GEN-LAST:event_createCaseButtonActionPerformed
-
-    private void newCaseDescriptionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newCaseDescriptionMousePressed
-        for (Component comp : newCasePanel.getComponents()) {
-            comp.setVisible(false);
-            comp.setEnabled(false);
-        }
-        DescriptionBox dBox = new DescriptionBox(newCasePanel, newCaseDescription);
-        dBox.setBounds(100, 100, 600, 480);
-        newCasePanel.add(dBox);
-        repaint();
-        revalidate();
-    }//GEN-LAST:event_newCaseDescriptionMousePressed
-
     private void editPanelBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editPanelBackButtonActionPerformed
         c = null;
         cl.previous(cardPanel);
@@ -2356,7 +1855,8 @@ public class GUI extends javax.swing.JFrame {
          employee.getName() + "\t" + tingen de foretager sig + komponentet/erne, som de foretager ændriger på
          + tidspunket ændringerne er foretaget
          */
-
+        
+        //Problem i CaseHandler eller check my cases 
         if (addToMyCasesCheckBox.isSelected()) {
             try {
                 if (employee.checkAddedMyCases(c) == false) {
@@ -2384,21 +1884,9 @@ public class GUI extends javax.swing.JFrame {
         try {
             EmployeeHandler.getInstance().changePasswordAndUsername(newUsernameField.getText(), newPasswordField2.getText(), employee);
         } catch (SQLException ex) {
-            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getLocalizedMessage());
         }
     }//GEN-LAST:event_saveLoginInfoButtonActionPerformed
-
-    private void newObjectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newObjectButtonActionPerformed
-        //Articles kan ikke få adgang til casens kons nr før, derfor bruges nul som startværdi,
-        //Der derefter bruger en setter til at hente sagens kons nr, når der trykkes på opret sag
-        //Det samme gøres med selve Article objekts kons nr, der genereres ved at tage sagens kons nr
-        //Og kører ArrayList'en igennem og lægger iterator til sagens kons nr
-        //Tasks skal sættes efter oprettelse af den Article, som de skal knyttes til
-        //Det gøres ved at tage den sidste index fra ArrayList'en, så man har den sidst oprettede Article
-        ArrayList<Task> tasks = new ArrayList<>();
-        Article article = new Article(newObjectNameField.getText(), 0, (String) newObjectTypeBox.getSelectedItem(), 0, tasks);
-        newCaseArticles.add(article);
-    }//GEN-LAST:event_newObjectButtonActionPerformed
 
     private void selectAllArticlesBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAllArticlesBoxActionPerformed
         if (selectAllArticlesBox.isSelected() == true) {
@@ -2440,47 +1928,6 @@ public class GUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_createNewEmployeeButtonActionPerformed
 
-    private void createCaseAddTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseAddTaskButtonActionPerformed
-        Task task = new Task("Endnu ikke påbegyndt", taskDescriptionArea.getText());
-        Article article = (Article)newCaseArticles.get(newCaseArticles.size());
-        article.addTask(task);
-    }//GEN-LAST:event_createCaseAddTaskButtonActionPerformed
-
-    private void addContactButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addContactButtonActionPerformed
-        Contact contact = new Contact(addContactNameField.getText(), Integer.parseInt(addContactPhoneField.getText()), addContactEmailField.getText());
-        newCaseContacts.add(contact);
-    }//GEN-LAST:event_addContactButtonActionPerformed
-
-    private void existingCostumerCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_existingCostumerCheckBoxActionPerformed
-        if (existingCostumerCheckBox.isSelected()) {
-            newCaseNameField.setEnabled(false);
-            newCaseContactField.setEnabled(false);
-            newCasePhoneField.setEnabled(false);
-            newCaseEmailField.setEnabled(false);
-            newCaseAddressField.setEnabled(false);
-            newCaseZipCodeField.setEnabled(false);
-            newCaseAcroField.setEnabled(false);
-            addContactNameField.setEnabled(false);
-            addContactPhoneField.setEnabled(false);
-            addContactEmailField.setEnabled(false);
-            addContactButton.setEnabled(false);
-            costumerTypeBox.setEnabled(false);
-        } else {
-            newCaseNameField.setEnabled(true);
-            newCaseContactField.setEnabled(true);
-            newCasePhoneField.setEnabled(true);
-            newCaseEmailField.setEnabled(true);
-            newCaseAddressField.setEnabled(true);
-            newCaseZipCodeField.setEnabled(true);
-            newCaseAcroField.setEnabled(true);
-            addContactNameField.setEnabled(true);
-            addContactPhoneField.setEnabled(true);
-            addContactEmailField.setEnabled(true);
-            addContactButton.setEnabled(true);
-            costumerTypeBox.setEnabled(true);
-        }
-    }//GEN-LAST:event_existingCostumerCheckBoxActionPerformed
-
     private void resetPasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetPasswordButtonActionPerformed
         Employee employeePReset = null;
         for (Component comp : employeeListPanel.getComponents()) {
@@ -2517,6 +1964,137 @@ public class GUI extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_deactiveEmployeeActionPerformed
+
+    private void editCaseLogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editCaseLogButtonActionPerformed
+        LogWindow logWindow = new LogWindow();
+        logWindow.setVisible(true);
+        logWindow.setBounds(10, 10, 400, 500);
+        editCasePanel.add(logWindow);
+        repaint();
+        revalidate();
+    }//GEN-LAST:event_editCaseLogButtonActionPerformed
+
+    private void createCaseAddTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseAddTaskButtonActionPerformed
+        Task task = new Task("Endnu ikke påbegyndt", taskDescriptionArea.getText());
+        Article article = (Article)newCaseArticles.get(newCaseArticles.size());
+        article.addTask(task);
+    }//GEN-LAST:event_createCaseAddTaskButtonActionPerformed
+
+    private void createCasebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCasebuttonActionPerformed
+        if (existingCostumerCheckBox.isSelected()) {
+            try {
+                Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), Integer.parseInt(newCaseOfferNmbField.getText()), caseCreationNameField.getText(), newCaseDescription.getText(), newCaseArticles, false, cal.getTime(), cal.getTime(), costSearchSelected);
+                CaseHandler.getInstance().saveCase(newCase, employee, true);
+            } catch (SQLException ex) {
+                System.out.println(ex.getLocalizedMessage());
+            }
+        } else {
+            try {
+                //ArrayList af contacts
+                //Oprette kontaker til kunden? ContactHandler
+                Costumer costumer = new Costumer(CostumerHandler.getInstance().generateCostumerID(), newCaseNameField.getText(), "museums akronym", 11/*museums nummer*/, Integer.parseInt(newCasePhoneField.getText()), newCaseEmailField.getText(), "Addresse", "4700 zip", newCaseContacts);
+                Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), Integer.parseInt(newCaseOfferNmbField.getText()), caseCreationNameField.getText(), newCaseDescription.getText(), newCaseArticles, false, cal.getTime(), cal.getTime(), costumer);
+                CaseHandler.getInstance().saveCase(newCase, employee, false);
+            } catch (SQLException ex) {
+                System.out.println(ex.getLocalizedMessage());
+            }
+            
+        }
+        newCaseArticles.clear();
+        newCaseContacts.clear();
+        costSearchSelected = null;
+    }//GEN-LAST:event_createCasebuttonActionPerformed
+
+    private void existingCostumerCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_existingCostumerCheckBoxActionPerformed
+        if (existingCostumerCheckBox.isSelected()) {
+            newCaseNameField.setEnabled(false);
+            newCaseContactField.setEnabled(false);
+            newCasePhoneField.setEnabled(false);
+            newCaseEmailField.setEnabled(false);
+            newCaseAddressField.setEnabled(false);
+            newCaseZipCodeField.setEnabled(false);
+            newCaseAcroField.setEnabled(false);
+            addContactNameField.setEnabled(false);
+            addContactPhoneField.setEnabled(false);
+            addContactEmailField.setEnabled(false);
+            addContactButton.setEnabled(false);
+            costumerTypeBox.setEnabled(false);
+        } else {
+            newCaseNameField.setEnabled(true);
+            newCaseContactField.setEnabled(true);
+            newCasePhoneField.setEnabled(true);
+            newCaseEmailField.setEnabled(true);
+            newCaseAddressField.setEnabled(true);
+            newCaseZipCodeField.setEnabled(true);
+            newCaseAcroField.setEnabled(true);
+            addContactNameField.setEnabled(true);
+            addContactPhoneField.setEnabled(true);
+            addContactEmailField.setEnabled(true);
+            addContactButton.setEnabled(true);
+            costumerTypeBox.setEnabled(true);
+        }
+    }//GEN-LAST:event_existingCostumerCheckBoxActionPerformed
+
+    private void selectCostumerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectCostumerButtonActionPerformed
+            costSearchSelected = (Costumer) listModel.getElementAt(list.getSelectedIndex());
+    }//GEN-LAST:event_selectCostumerButtonActionPerformed
+
+    private void newArticleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newArticleButtonActionPerformed
+        //Articles kan ikke få adgang til casens kons nr før, derfor bruges nul som startværdi,
+        //Der derefter bruger en setter til at hente sagens kons nr, når der trykkes på opret sag
+        //Det samme gøres med selve Article objekts kons nr, der genereres ved at tage sagens kons nr
+        //Og kører ArrayList'en igennem og lægger iterator til sagens kons nr
+        //Tasks skal sættes efter oprettelse af den Article, som de skal knyttes til
+        //Det gøres ved at tage den sidste index fra ArrayList'en, så man har den sidst oprettede Article
+        ArrayList<Task> tasks = new ArrayList<>();
+        Article article = new Article(newArticleNameField.getText(), 0, (String) newArticleTypeBox.getSelectedItem(), 0, tasks);
+        newCaseArticles.add(article);
+    }//GEN-LAST:event_newArticleButtonActionPerformed
+
+    private void newLocationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newLocationButtonActionPerformed
+        // JDialog der kommer op og spørger om navnet på placering, hvorefter den gemmer i databasen
+        
+    }//GEN-LAST:event_newLocationButtonActionPerformed
+
+    private void createLocationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createLocationButtonActionPerformed
+        // Samme som newLocationButton
+    }//GEN-LAST:event_createLocationButtonActionPerformed
+
+    private void findCostumerFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_findCostumerFieldKeyReleased
+        String search = findCostumerField.getText();
+        if (!(search.equals(""))) {
+            costScrollSearch.setVisible(true);
+            list.setVisible(true);
+            if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
+                SearchListListener sl = new SearchListListener(findCostumerField, list);
+            } else {
+                try {
+                    listModel.clear();
+                    ArrayList<Costumer> costumers = CostumerHandler.getInstance().searchCostumerName(search);
+                    if (costumers.size() > 0) {
+                        findCostumerField.setText(search + costumers.get(0).getCostumerName().substring(search.length()));
+                        findCostumerField.setSelectionStart(search.length());
+                    }
+                    for (Costumer costumer : costumers) {
+                        listModel.addElement(costumer);
+                    }
+                    listModel.trimToSize();
+                    costScrollSearch.setBounds(20, 250, 160, costumers.size() * 25);
+                    costScrollSearch.setViewportView(list);
+                    costScrollSearch.setVisible(true);
+                    list.setVisible(true);
+                    list.revalidate();
+                    list.repaint();
+                    list.ensureIndexIsVisible(0);
+                } catch (SQLException ex) {
+                    System.out.println(ex.getLocalizedMessage());
+                }
+            }
+        } else {
+            costScrollSearch.setVisible(false);
+            list.setVisible(false);
+        }
+    }//GEN-LAST:event_findCostumerFieldKeyReleased
 
     /**
      * @param args the command line arguments
@@ -2568,6 +2146,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JCheckBox addToMyCasesCheckBox;
     private javax.swing.JPanel adminPanel;
     private javax.swing.JLabel adressCostumerLabel;
+    private javax.swing.JTextField articleAmountField;
     private javax.swing.JPanel articleDisplayPanel;
     private javax.swing.JPanel cardPanel;
     private javax.swing.JLabel caseBeginDateLabel;
@@ -2584,16 +2163,17 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel contactPersonCostumerLabel;
     private javax.swing.JScrollPane costScrollSearch;
     private javax.swing.JLabel costumerNameLabel;
-    private javax.swing.JComboBox costumerTypeBox;
+    private javax.swing.JComboBox<String> costumerTypeBox;
+    private javax.swing.JTextField createArticleConsNmbField;
     private javax.swing.JButton createCaseAddTaskButton;
-    private javax.swing.JButton createCaseButton;
+    private javax.swing.JTextArea createCaseArticleDescriptionArea;
     private javax.swing.JComboBox<String> createCaseLocationBox;
-    private javax.swing.JTextField createCaseMuseumsNrField;
-    private javax.swing.JTextArea createCaseObjectDescriptionArea;
+    private javax.swing.JTextField createCaseMuseumsNmbField;
     private javax.swing.JComboBox<String> createCaseTaskBox;
     private javax.swing.JList<String> createCaseTaskList;
+    private javax.swing.JButton createCasebutton;
+    private javax.swing.JButton createLocationButton;
     private javax.swing.JButton createNewEmployeeButton;
-    private javax.swing.JTextField createTaskConsNumberField;
     private javax.swing.JPanel customerListPanel;
     private javax.swing.JScrollPane customerListScrollPane;
     private javax.swing.JCheckBox dbInfoCheckBox;
@@ -2601,6 +2181,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField dbUrlField;
     private javax.swing.JTextField dbUserField;
     private javax.swing.JButton deactiveEmployee;
+    private javax.swing.JButton editCaseLogButton;
     private javax.swing.JTextField editCaseOfferNmbField;
     private javax.swing.JPanel editCasePanel;
     private javax.swing.JTextField editEmailField;
@@ -2624,47 +2205,29 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane finishedCasesScrollPane;
     private javax.swing.JPanel finishedCasesTab;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
     private javax.swing.JComboBox jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JComboBox<String> jComboBox7;
-    private javax.swing.JComboBox<String> jComboBox8;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;
     private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
     private javax.swing.JLabel jLabel103;
     private javax.swing.JLabel jLabel104;
+    private javax.swing.JLabel jLabel105;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -2696,7 +2259,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
@@ -2707,31 +2269,18 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
-    private javax.swing.JLabel jLabel61;
-    private javax.swing.JLabel jLabel62;
-    private javax.swing.JLabel jLabel63;
-    private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel73;
-    private javax.swing.JLabel jLabel74;
-    private javax.swing.JLabel jLabel75;
-    private javax.swing.JLabel jLabel76;
-    private javax.swing.JLabel jLabel77;
-    private javax.swing.JLabel jLabel78;
     private javax.swing.JLabel jLabel79;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel80;
-    private javax.swing.JLabel jLabel81;
     private javax.swing.JLabel jLabel82;
     private javax.swing.JLabel jLabel83;
     private javax.swing.JLabel jLabel84;
@@ -2740,7 +2289,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel87;
     private javax.swing.JLabel jLabel88;
     private javax.swing.JLabel jLabel89;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel90;
     private javax.swing.JLabel jLabel91;
     private javax.swing.JLabel jLabel92;
@@ -2751,38 +2299,26 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel97;
     private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JList jList2;
     private javax.swing.JList jList3;
     private javax.swing.JList jList4;
     private javax.swing.JList jList5;
-    private javax.swing.JList<String> jList6;
-    private javax.swing.JList<String> jList7;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
-    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
-    private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator13;
-    private javax.swing.JSeparator jSeparator14;
-    private javax.swing.JSeparator jSeparator15;
     private javax.swing.JSeparator jSeparator16;
     private javax.swing.JSeparator jSeparator17;
     private javax.swing.JSeparator jSeparator2;
@@ -2794,33 +2330,17 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
-    private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField konsNmbField;
     private javax.swing.JTextField lastUpdatedField;
     private javax.swing.JButton logButton;
     private javax.swing.JPanel myCasesPanel;
     private javax.swing.JScrollPane myCasesScrollPane;
     private javax.swing.JPanel myCasesTab;
+    private javax.swing.JButton newArticleButton;
+    private javax.swing.JTextField newArticleNameField;
+    private javax.swing.JComboBox<String> newArticleTypeBox;
     private javax.swing.JTextField newCaseAcroField;
     private javax.swing.JTextField newCaseAddressField;
     private javax.swing.JTextField newCaseContactField;
@@ -2841,15 +2361,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField newEmployeePhoneField;
     private javax.swing.JComboBox newEmployeeTypeBox;
     private javax.swing.JTextField newEmployeeUsernameField;
-    private javax.swing.JButton newObjectButton;
-    private javax.swing.JTextField newObjectNameField;
-    private javax.swing.JComboBox newObjectTypeBox;
+    private javax.swing.JButton newLocationButton;
     private javax.swing.JTextField newPasswordField1;
     private javax.swing.JTextField newPasswordField2;
     private javax.swing.JTextField newUsernameField;
     private javax.swing.JPanel newestCasesPanel;
     private javax.swing.JScrollPane newestCasesScrollPane;
-    private javax.swing.JTextField objectAmountField;
     private javax.swing.JTextField objectTypeSField;
     private javax.swing.JTextField ownerSField;
     private javax.swing.JLabel phoneCostumerLabel;

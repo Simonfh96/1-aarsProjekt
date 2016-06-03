@@ -7,6 +7,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -18,17 +19,29 @@ import javax.swing.JTextField;
 public class DescriptionBox extends javax.swing.JPanel {
     private JPanel panel;
     private JTextField field;
+    
     /**
      * Creates new form DescriptionBox
      * @param panel the JPanel from which the box will be removed, once the description is saved
      * @param field the chosen field, which will be filled with the description when saved
      */
-    public DescriptionBox(JPanel panel,JTextField field) {
+    public DescriptionBox(JPanel panel, JTextField field) {
         initComponents();
+        this.setVisible(true);
         this.panel = panel;
         this.field = field;
         this.setBorder(BorderFactory.createLineBorder(Color.black));
         descriptionArea.setText(field.getText());
+        this.setBounds(100, 100, 600, 480);
+        setComponentsVisible(false);
+        panel.add(this);
+    }
+    
+    public void setComponentsVisible( boolean visible) {
+        for (Component comp : panel.getComponents()) {
+            comp.setVisible(visible);
+            comp.setEnabled(visible);
+        }
     }
 
     /**
@@ -86,11 +99,9 @@ public class DescriptionBox extends javax.swing.JPanel {
     private void saveDescriptionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveDescriptionButtonActionPerformed
         String description = descriptionArea.getText();
         field.setText(description);
+        setComponentsVisible(true);
+        this.setVisible(false);
         panel.remove(this);
-        for (Component comp : panel.getComponents()) {
-            comp.setVisible(true);
-            comp.setEnabled(true);
-        }
         panel.repaint();
         panel.revalidate();
     }//GEN-LAST:event_saveDescriptionButtonActionPerformed
