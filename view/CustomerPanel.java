@@ -16,6 +16,7 @@ import model.Costumer;
 public class CustomerPanel extends javax.swing.JPanel {
     //Sikre at kun en kan være selected af gangen
     //eller løb panelerne igennem for at tjekke om en anden er selected
+    
     private Costumer c;
     private JTextField[] textFields;
     private boolean selected;
