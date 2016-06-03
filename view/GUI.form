@@ -683,14 +683,14 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="20" y="380" width="160" height="-1"/>
+                      <AbsoluteConstraints x="20" y="310" width="160" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JTextField" name="caseCreationNameField">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="20" y="400" width="160" height="-1"/>
+                      <AbsoluteConstraints x="20" y="330" width="160" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -700,14 +700,14 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="20" y="440" width="160" height="-1"/>
+                      <AbsoluteConstraints x="20" y="370" width="160" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JTextField" name="newCaseDescription">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="20" y="460" width="160" height="-1"/>
+                      <AbsoluteConstraints x="20" y="390" width="160" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -717,14 +717,14 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="20" y="500" width="160" height="-1"/>
+                      <AbsoluteConstraints x="20" y="430" width="160" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JTextField" name="newCaseOfferNmbField">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="20" y="520" width="160" height="-1"/>
+                      <AbsoluteConstraints x="20" y="450" width="160" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -1018,7 +1018,7 @@
                 <Container class="javax.swing.JScrollPane" name="costScrollSearch">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="20" y="250" width="160" height="130"/>
+                      <AbsoluteConstraints x="20" y="250" width="160" height="40"/>
                     </Constraint>
                   </Constraints>
 

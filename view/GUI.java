@@ -87,7 +87,7 @@ public class GUI extends javax.swing.JFrame {
         list.setSize(160, 130);
         list.setVisible(false);
         costScrollSearch.add(list);
-        costScrollSearch.setVisible(true);
+        costScrollSearch.setVisible(false);
         cal = Calendar.getInstance();
         cl = (CardLayout) cardPanel.getLayout();
         try {
@@ -704,21 +704,21 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel97.setText("Sagsnavn");
         newCasePanel.add(jLabel97);
-        jLabel97.setBounds(20, 380, 160, 14);
+        jLabel97.setBounds(20, 310, 160, 14);
         newCasePanel.add(caseCreationNameField);
-        caseCreationNameField.setBounds(20, 400, 160, 20);
+        caseCreationNameField.setBounds(20, 330, 160, 20);
 
         jLabel98.setText("Sags beskrivelse");
         newCasePanel.add(jLabel98);
-        jLabel98.setBounds(20, 440, 160, 14);
+        jLabel98.setBounds(20, 370, 160, 14);
         newCasePanel.add(newCaseDescription);
-        newCaseDescription.setBounds(20, 460, 160, 20);
+        newCaseDescription.setBounds(20, 390, 160, 20);
 
         jLabel99.setText("Tilbuds nr.");
         newCasePanel.add(jLabel99);
-        jLabel99.setBounds(20, 500, 160, 14);
+        jLabel99.setBounds(20, 430, 160, 14);
         newCasePanel.add(newCaseOfferNmbField);
-        newCaseOfferNmbField.setBounds(20, 520, 160, 20);
+        newCaseOfferNmbField.setBounds(20, 450, 160, 20);
 
         jSeparator17.setOrientation(javax.swing.SwingConstants.VERTICAL);
         newCasePanel.add(jSeparator17);
@@ -839,7 +839,7 @@ public class GUI extends javax.swing.JFrame {
         newCasePanel.add(newArticleNameField);
         newArticleNameField.setBounds(420, 380, 120, 20);
         newCasePanel.add(costScrollSearch);
-        costScrollSearch.setBounds(20, 250, 160, 130);
+        costScrollSearch.setBounds(20, 250, 160, 40);
 
         tabbedPane.addTab("Opret sag", newCasePanel);
 
