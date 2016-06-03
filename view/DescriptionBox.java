@@ -37,7 +37,7 @@ public class DescriptionBox extends javax.swing.JPanel {
         panel.add(this);
     }
     
-    public void setComponentsVisible( boolean visible) {
+    public void setComponentsVisible(boolean visible) {
         for (Component comp : panel.getComponents()) {
             comp.setVisible(visible);
             comp.setEnabled(visible);
