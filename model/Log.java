@@ -13,7 +13,8 @@ import java.sql.Date;
  * @author pdysted
  */
 public class Log {
-    private static ArrayList<Log> logs;
+    //Log klassen skal indeholde en integer log id, som skal bruges til at referere til
+    //ArrayListen med logs, når en case gemmes i databasen
     private final Employee employee;
     private final String actionMade;
     private final String componentName;

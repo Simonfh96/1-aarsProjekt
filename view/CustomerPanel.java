@@ -20,6 +20,7 @@ public class CustomerPanel extends javax.swing.JPanel {
     private Costumer c;
     private JTextField[] textFields;
     private boolean selected;
+    
     /**
      * Creates new form customerPanel
      *

@@ -5,17 +5,16 @@
  */
 package dao;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.CallableStatement;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JTextArea;
+import model.Case;
 import model.Employee;
 import model.Log;
 
@@ -31,11 +30,28 @@ public class LogHandler implements Runnable {
 
     }
 
+    public ArrayList<Log> getCaseLogs(int logID) throws SQLException {
+        ArrayList<Log> logs = new ArrayList<>();
+        PreparedStatement ps = null;
+        String getLogs = "SELECT * FROM logs WHERE log_id = ?";
+        ps = DBHandler.getInstance().getConn().prepareStatement(getLogs);
+        ps.setInt(1, logID);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Employee employee = EmployeeHandler.getInstance().getEmployee(rs.getInt("employee_id"));
+            Log log = new Log(employee, rs.getString("actionMade"), rs.getString("componentName"),
+                    rs.getString("changedFrom"), rs.getString("changedTo"), rs.getDate("timeMade"));
+            logs.add(log);
+        }
+        return logs;
+
+    }
+
     public ArrayList<Log> gatherLogs(java.util.Date from, java.util.Date to, JTextArea logTextArea) throws SQLException {
         ArrayList<Log> logs = null;
         PreparedStatement ps = null;
         java.sql.Date sqlFrom = new java.sql.Date(from.getTime());
-        java.sql.Date sqlTo = new java.sql.Date(to.getTime()); 
+        java.sql.Date sqlTo = new java.sql.Date(to.getTime());
         String gatherLogs = "SELECT * FROM logs LEFT JOIN employee ON log.employee_id = employee.employee_id "
                 + "WHERE timeMade BETWEEN '?' AND '?'";
         ps = DBHandler.getInstance().conn.prepareStatement(gatherLogs);

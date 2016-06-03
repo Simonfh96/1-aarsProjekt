@@ -31,6 +31,7 @@ import model.Case;
 import model.Contact;
 import model.Costumer;
 import model.Employee;
+import model.Log;
 import model.Task;
 
 /**
@@ -1983,9 +1984,10 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_createCaseAddTaskButtonActionPerformed
 
     private void createCasebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCasebuttonActionPerformed
+        ArrayList<Log> logs = new ArrayList<>();
         if (existingCostumerCheckBox.isSelected()) {
             try {
-                Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), Integer.parseInt(newCaseOfferNmbField.getText()), caseCreationNameField.getText(), newCaseDescription.getText(), newCaseArticles, false, cal.getTime(), cal.getTime(), costSearchSelected);
+                Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), Integer.parseInt(newCaseOfferNmbField.getText()), caseCreationNameField.getText(), newCaseDescription.getText(), newCaseArticles, false, cal.getTime(), cal.getTime(), costSearchSelected, logs);
                 CaseHandler.getInstance().saveCase(newCase, employee, true);
             } catch (SQLException ex) {
                 System.out.println(ex.getLocalizedMessage());
@@ -1995,7 +1997,7 @@ public class GUI extends javax.swing.JFrame {
                 //ArrayList af contacts
                 //Oprette kontaker til kunden? ContactHandler
                 Costumer costumer = new Costumer(CostumerHandler.getInstance().generateCostumerID(), newCaseNameField.getText(), "museums akronym", 11/*museums nummer*/, Integer.parseInt(newCasePhoneField.getText()), newCaseEmailField.getText(), "Addresse", "4700 zip", newCaseContacts);
-                Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), Integer.parseInt(newCaseOfferNmbField.getText()), caseCreationNameField.getText(), newCaseDescription.getText(), newCaseArticles, false, cal.getTime(), cal.getTime(), costumer);
+                Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), Integer.parseInt(newCaseOfferNmbField.getText()), caseCreationNameField.getText(), newCaseDescription.getText(), newCaseArticles, false, cal.getTime(), cal.getTime(), costumer, logs);
                 CaseHandler.getInstance().saveCase(newCase, employee, false);
             } catch (SQLException ex) {
                 System.out.println(ex.getLocalizedMessage());

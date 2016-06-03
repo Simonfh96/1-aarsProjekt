@@ -22,12 +22,12 @@ public class TaskHandler {
         
     }
     
-    public ArrayList<Task> getTasks(int articleID) throws SQLException {
+    public ArrayList<Task> getTasks(int taskID) throws SQLException {
         ArrayList<Task> tasks = new ArrayList<>();
         PreparedStatement ps = null;
         String getTasks = "SELECT * FROM tasks WHERE object_id = ?";
         ps = DBHandler.getInstance().getConn().prepareStatement(getTasks);
-        ps.setInt(1, articleID);
+        ps.setInt(1, taskID);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             Task task = new Task(rs.getString("tStatus"), rs.getString("description"));

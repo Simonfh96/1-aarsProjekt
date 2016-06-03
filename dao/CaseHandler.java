@@ -17,6 +17,7 @@ import java.util.Calendar;
 import model.Article;
 import model.Costumer;
 import model.Employee;
+import model.Log;
 
 /**
  *
@@ -40,8 +41,9 @@ public class CaseHandler {
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
             ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
+            ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(rs.getInt("log_id"));
             Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"),rs.getString("caseName"), rs.getString("description"),
-                    articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
+                    articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer, logs);
             cases.add(c);
         }
         return cases;
@@ -56,8 +58,9 @@ public class CaseHandler {
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
             ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
+            ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(rs.getInt("log_id"));
             Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
-                    articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
+                    articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer, logs);
             cases.add(c);
         }
         return cases;
@@ -74,8 +77,9 @@ public class CaseHandler {
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
             ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
+            ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(rs.getInt("log_id"));
             Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
-                    articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
+                    articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer, logs);
             cases.add(c);
         }
         
@@ -91,8 +95,9 @@ public class CaseHandler {
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
             ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
+            ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(rs.getInt("log_id"));
             Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
-                    articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
+                    articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer, logs);
             cases.add(c);
         }
         return cases;
@@ -113,8 +118,9 @@ public class CaseHandler {
         while (rs.next()) {
             Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
             ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
+            ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(rs.getInt("log_id"));
             Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
-                    articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer);
+                    articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer, logs);
             cases.add(c);
         }
         return cases;
@@ -145,6 +151,10 @@ public class CaseHandler {
         //Husk ArrayListen af articles
         //ArticleHandler måske?
         //Customer id samt customer objekt?
+        /*
+        Insert statement skal justeres til også at gemme foreign key (log_id)
+        til cases table i databasen
+        */
         java.util.Date utilDateConvert = c.getLastUpdated();
         java.sql.Date sqlLastUpdate = new java.sql.Date(utilDateConvert.getTime());
         utilDateConvert = c.getCreatedAt();
