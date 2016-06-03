@@ -1052,17 +1052,17 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jLabel66" min="-2" max="-2" attributes="0"/>
-                                          <Component id="findCustomerNameField" pref="208" max="32767" attributes="0"/>
+                                          <Component id="customerListNameField" pref="208" max="32767" attributes="0"/>
                                           <Component id="jLabel67" min="-2" max="-2" attributes="0"/>
-                                          <Component id="findCustomerContactInfoField" max="32767" attributes="0"/>
+                                          <Component id="customerListContactfield" max="32767" attributes="0"/>
                                           <Component id="jLabel68" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="findCustomerPhoneField" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="customerListPhoneField" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jLabel69" min="-2" max="-2" attributes="0"/>
-                                          <Component id="findCustomerEmailField" max="32767" attributes="0"/>
+                                          <Component id="customerListEmailField" max="32767" attributes="0"/>
                                           <Component id="jLabel70" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="findCustomerZipCodeField" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="customerListZipCodeField" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jLabel71" min="-2" max="-2" attributes="0"/>
-                                          <Component id="findCustomerAdressField" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="customerListAddressField" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                       <Component id="findCustomerEdibleCheckBox" min="-2" max="-2" attributes="0"/>
                                       <Component id="findCustomerSaveInfoButton" min="-2" max="-2" attributes="0"/>
@@ -1105,27 +1105,27 @@
                                           <EmptySpace min="22" pref="22" max="-2" attributes="0"/>
                                           <Component id="jLabel66" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="findCustomerNameField" min="-2" max="-2" attributes="0"/>
+                                          <Component id="customerListNameField" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="jLabel67" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="findCustomerContactInfoField" min="-2" max="-2" attributes="0"/>
+                                          <Component id="customerListContactfield" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="jLabel68" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="findCustomerPhoneField" min="-2" max="-2" attributes="0"/>
+                                          <Component id="customerListPhoneField" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="jLabel69" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="findCustomerEmailField" min="-2" max="-2" attributes="0"/>
+                                          <Component id="customerListEmailField" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="jLabel70" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="findCustomerZipCodeField" min="-2" max="-2" attributes="0"/>
+                                          <Component id="customerListZipCodeField" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="jLabel71" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="findCustomerAdressField" min="-2" max="-2" attributes="0"/>
+                                          <Component id="customerListAddressField" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="findCustomerEdibleCheckBox" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
@@ -1186,42 +1186,42 @@
                     <Property name="text" type="java.lang.String" value="Navn"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="findCustomerNameField">
+                <Component class="javax.swing.JTextField" name="customerListNameField">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel67">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Kontaktperson"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="findCustomerContactInfoField">
+                <Component class="javax.swing.JTextField" name="customerListContactfield">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel68">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Tlf."/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="findCustomerPhoneField">
+                <Component class="javax.swing.JTextField" name="customerListPhoneField">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel69">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Email"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="findCustomerEmailField">
+                <Component class="javax.swing.JTextField" name="customerListEmailField">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel70">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Postnummer"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="findCustomerZipCodeField">
+                <Component class="javax.swing.JTextField" name="customerListZipCodeField">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel71">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Adresse"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="findCustomerAdressField">
+                <Component class="javax.swing.JTextField" name="customerListAddressField">
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="findCustomerEdibleCheckBox">
                   <Properties>

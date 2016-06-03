@@ -20,12 +20,11 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import listeners.SearchListListener;
 import model.Article;
 import model.Case;
@@ -56,6 +55,7 @@ public class GUI extends javax.swing.JFrame {
     private JList list;
     private boolean loggedIn = false;
     private LoginView lw;
+    private JTextField[] customerFields;
 
     /**
      * Creates new form GUI
@@ -76,6 +76,8 @@ public class GUI extends javax.swing.JFrame {
             System.out.println("not");
         }
         System.out.println("now");
+        JTextField[] textFields = {customerListNameField, customerListContactfield, customerListPhoneField, customerListEmailField, customerListZipCodeField, customerListAddressField};
+        customerFields = textFields;
         int adminTab = tabbedPane.indexOfTab("Admin");
         tabbedPane.setEnabledAt(adminTab, false);
         if (employee.isAdmin()) {
@@ -92,11 +94,11 @@ public class GUI extends javax.swing.JFrame {
         cl = (CardLayout) cardPanel.getLayout();
         try {
             cases = CaseHandler.getInstance().getCasesNewest();
-            PanelFactory.getInstance().createPanels(cases, newestCasesPanel, this, "CasePanel");
-            PanelFactory.getInstance().createPanels(CaseHandler.getInstance().getMyCases(employee), myCasesPanel, this, "CasePanel");
-            PanelFactory.getInstance().createPanels(CaseHandler.getInstance().getFinishedCases(), finishedCasesPanel, this, "CasePanel");
-            PanelFactory.getInstance().createPanels(CostumerHandler.getInstance().selectAllCostumer(), showAllCustomerPanel, this, "CostumerPanel");
-            PanelFactory.getInstance().createPanels(EmployeeHandler.getInstance().selectAllEmployees(), employeeListPanel, this, "EmployeePanel");
+            PanelFactory.getInstance().createPanels(cases, newestCasesPanel, this, "CasePanel", customerFields);
+            PanelFactory.getInstance().createPanels(CaseHandler.getInstance().getMyCases(employee), myCasesPanel, this, "CasePanel", customerFields);
+            PanelFactory.getInstance().createPanels(CaseHandler.getInstance().getFinishedCases(), finishedCasesPanel, this, "CasePanel", customerFields);
+            PanelFactory.getInstance().createPanels(CostumerHandler.getInstance().selectAllCostumer(), showAllCustomerPanel, this, "CostumerPanel", customerFields);
+            PanelFactory.getInstance().createPanels(EmployeeHandler.getInstance().selectAllEmployees(), employeeListPanel, this, "EmployeePanel", customerFields);
             repaint();
             revalidate();
         } catch (SQLException ex) {
@@ -117,7 +119,7 @@ public class GUI extends javax.swing.JFrame {
     
     public void editCaseSetup() {
         listModelObjects.clear();
-        PanelFactory.getInstance().createPanels(c.getArticles(), articleDisplayPanel, this, "ArticlePanel");
+        PanelFactory.getInstance().createPanels(c.getArticles(), articleDisplayPanel, this, "ArticlePanel", customerFields);
         if (employee.checkAddedMyCases(c) == true) {
             addToMyCasesCheckBox.setSelected(true);
         } else {
@@ -254,17 +256,17 @@ public class GUI extends javax.swing.JFrame {
         jLabel65 = new javax.swing.JLabel();
         jSeparator12 = new javax.swing.JSeparator();
         jLabel66 = new javax.swing.JLabel();
-        findCustomerNameField = new javax.swing.JTextField();
+        customerListNameField = new javax.swing.JTextField();
         jLabel67 = new javax.swing.JLabel();
-        findCustomerContactInfoField = new javax.swing.JTextField();
+        customerListContactfield = new javax.swing.JTextField();
         jLabel68 = new javax.swing.JLabel();
-        findCustomerPhoneField = new javax.swing.JTextField();
+        customerListPhoneField = new javax.swing.JTextField();
         jLabel69 = new javax.swing.JLabel();
-        findCustomerEmailField = new javax.swing.JTextField();
+        customerListEmailField = new javax.swing.JTextField();
         jLabel70 = new javax.swing.JLabel();
-        findCustomerZipCodeField = new javax.swing.JTextField();
+        customerListZipCodeField = new javax.swing.JTextField();
         jLabel71 = new javax.swing.JLabel();
-        findCustomerAdressField = new javax.swing.JTextField();
+        customerListAddressField = new javax.swing.JTextField();
         findCustomerEdibleCheckBox = new javax.swing.JCheckBox();
         findCustomerSaveInfoButton = new javax.swing.JButton();
         jScrollPane9 = new javax.swing.JScrollPane();
@@ -932,17 +934,17 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(customerListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(customerListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel66)
-                                .addComponent(findCustomerNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                                .addComponent(customerListNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
                                 .addComponent(jLabel67)
-                                .addComponent(findCustomerContactInfoField)
+                                .addComponent(customerListContactfield)
                                 .addComponent(jLabel68)
-                                .addComponent(findCustomerPhoneField)
+                                .addComponent(customerListPhoneField)
                                 .addComponent(jLabel69)
-                                .addComponent(findCustomerEmailField)
+                                .addComponent(customerListEmailField)
                                 .addComponent(jLabel70)
-                                .addComponent(findCustomerZipCodeField)
+                                .addComponent(customerListZipCodeField)
                                 .addComponent(jLabel71)
-                                .addComponent(findCustomerAdressField))
+                                .addComponent(customerListAddressField))
                             .addComponent(findCustomerEdibleCheckBox)
                             .addComponent(findCustomerSaveInfoButton))
                         .addGap(121, 121, 121)
@@ -975,27 +977,27 @@ public class GUI extends javax.swing.JFrame {
                                 .addGap(22, 22, 22)
                                 .addComponent(jLabel66)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(findCustomerNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(customerListNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel67)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(findCustomerContactInfoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(customerListContactfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel68)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(findCustomerPhoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(customerListPhoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel69)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(findCustomerEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(customerListEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel70)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(findCustomerZipCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(customerListZipCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel71)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(findCustomerAdressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(customerListAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(findCustomerEdibleCheckBox)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1830,7 +1832,7 @@ public class GUI extends javax.swing.JFrame {
         try {
             newestCasesPanel.removeAll();
             cases = CaseHandler.getInstance().searchCases(Integer.parseInt(caseNmbSField.getText()), caseNameSField.getText());
-            PanelFactory.getInstance().createPanels(cases, newestCasesPanel, this, "CasePanel");
+            PanelFactory.getInstance().createPanels(cases, newestCasesPanel, this, "CasePanel", customerFields);
         } catch (SQLException ex) {
             //JOptionPane.showMessageDialog(rootPane, ex, title, HEIGHT);
             //Eller label med rød tekst
@@ -2174,8 +2176,14 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton createCasebutton;
     private javax.swing.JButton createLocationButton;
     private javax.swing.JButton createNewEmployeeButton;
+    private javax.swing.JTextField customerListAddressField;
+    private javax.swing.JTextField customerListContactfield;
+    private javax.swing.JTextField customerListEmailField;
+    private javax.swing.JTextField customerListNameField;
     private javax.swing.JPanel customerListPanel;
+    private javax.swing.JTextField customerListPhoneField;
     private javax.swing.JScrollPane customerListScrollPane;
+    private javax.swing.JTextField customerListZipCodeField;
     private javax.swing.JCheckBox dbInfoCheckBox;
     private javax.swing.JTextField dbPasswordField;
     private javax.swing.JTextField dbUrlField;
@@ -2193,14 +2201,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel employeeSettingsPanel;
     private javax.swing.JCheckBox existingCostumerCheckBox;
     private javax.swing.JTextField findCostumerField;
-    private javax.swing.JTextField findCustomerAdressField;
-    private javax.swing.JTextField findCustomerContactInfoField;
     private javax.swing.JCheckBox findCustomerEdibleCheckBox;
-    private javax.swing.JTextField findCustomerEmailField;
-    private javax.swing.JTextField findCustomerNameField;
-    private javax.swing.JTextField findCustomerPhoneField;
     private javax.swing.JButton findCustomerSaveInfoButton;
-    private javax.swing.JTextField findCustomerZipCodeField;
     private javax.swing.JPanel finishedCasesPanel;
     private javax.swing.JScrollPane finishedCasesScrollPane;
     private javax.swing.JPanel finishedCasesTab;

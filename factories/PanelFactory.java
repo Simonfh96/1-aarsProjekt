@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import model.Article;
 import model.Case;
 import model.Costumer;
@@ -43,7 +44,7 @@ public class PanelFactory {
     }
 
     //den skal oprette en af de fire typer panels alt efter værdien i switchen
-    public void createPanels(ArrayList<PanelInterface> panels, JPanel displayPanel, GUI gui, String type) {
+    public void createPanels(ArrayList<PanelInterface> panels, JPanel displayPanel, GUI gui, String type, JTextField[] textFields) {
         System.out.println("switch");
         switch (type) {
             case "CasePanel":
@@ -72,7 +73,7 @@ public class PanelFactory {
                 
             case "CostumerPanel":
                 for (int i = 0; i < panels.size(); i++) {
-                    CustomerPanel cp = new CustomerPanel((Costumer) panels.get(i));
+                    CustomerPanel cp = new CustomerPanel((Costumer) panels.get(i), textFields);
                     cp.setBounds(0, 31 * i, displayPanel.getWidth(), 29);
                     cp.setBorder(BorderFactory.createLineBorder(Color.black));
                     displayPanel.add(cp);

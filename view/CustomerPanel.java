@@ -5,29 +5,32 @@
  */
 package view;
 
-
 import java.awt.Color;
+import javax.swing.JTextField;
 import model.Costumer;
 
 /**
  *
  * @author Tanja
  */
-public class CustomerPanel extends javax.swing.JPanel{
+public class CustomerPanel extends javax.swing.JPanel {
+
     private Costumer c;
-    
+    private JTextField[] textFields;
+
     /**
      * Creates new form customerPanel
-     * @param c 
+     *
+     * @param c
      */
-    public CustomerPanel(Costumer c) {
+    public CustomerPanel(Costumer c, JTextField[] textFields) {
         initComponents();
         setBackground(Color.white);
         this.c = c;
+        this.textFields = textFields;
         customerNameLabel.setText(c.getCostumerName());
-        
-    }
 
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,17 +42,15 @@ public class CustomerPanel extends javax.swing.JPanel{
     private void initComponents() {
 
         customerNameLabel = new javax.swing.JLabel();
-        selectCustomerButton = new javax.swing.JButton();
+
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
 
         customerNameLabel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         customerNameLabel.setText("Kundenavn");
-
-        selectCustomerButton.setText("Vælg");
-        selectCustomerButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectCustomerButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -57,25 +58,44 @@ public class CustomerPanel extends javax.swing.JPanel{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(customerNameLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 237, Short.MAX_VALUE)
-                .addComponent(selectCustomerButton)
-                .addContainerGap())
+                .addContainerGap(304, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(customerNameLabel)
-                .addComponent(selectCustomerButton))
+            .addComponent(customerNameLabel)
         );
     }// </editor-fold>//GEN-END:initComponents
-        
-    private void selectCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectCustomerButtonActionPerformed
 
-    }//GEN-LAST:event_selectCustomerButtonActionPerformed
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        setBackground(Color.BLUE);
+        for (int i = 0; i < textFields.length; i++) {
+            switch (i) {
+                case 0:
+                    textFields[i].setText(c.getCostumerName());
+                    break;
+                case 1:
+                    if (c.getContacts().size() > 0) {
+                        textFields[i].setText(c.getContacts().get(0).getConName());
+                    } else {
+                        textFields[i].setText("");
+                    }
+                    break;
+                case 2:
+                    textFields[i].setText("" + c.getPhone());
+                    break;
+                case 3:
+                    textFields[i].setText(c.getEmail());
+                    break;
+                case 4:
+                    textFields[i].setText(c.getCityOfZip());
+                    break;
+
+            }
+        }
+    }//GEN-LAST:event_formMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel customerNameLabel;
-    private javax.swing.JButton selectCustomerButton;
     // End of variables declaration//GEN-END:variables
 }
