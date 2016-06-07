@@ -75,12 +75,13 @@ public class GUI extends javax.swing.JFrame {
         this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         this.control = control;
         employee = null;
-        System.out.println(articleDisplayPanel.getWidth());
         while (!loggedIn) {
-            
+            System.out.println("1");
         }
         try {
+            System.out.println("Attempting to create CustomerPanels...");
             PanelFactory.getInstance().createPanels(CostumerHandler.getInstance().selectAllCostumer(), showAllCustomerPanel, this, "CostumerPanel", customerFields);
+            System.out.println("Panels created!");
         } catch (SQLException ex) {
             System.out.println(ex.getLocalizedMessage());
         }
@@ -103,7 +104,7 @@ public class GUI extends javax.swing.JFrame {
         cl = (CardLayout) cardPanel.getLayout();
         try {
 //            PanelFactory.getInstance().createPanels(CostumerHandler.getInstance().selectAllCostumer(), showAllCustomerPanel, this, "CostumerPanel", customerFields);
-//            cases = CaseHandler.getInstance().getCasesNewest();
+            cases = CaseHandler.getInstance().getCasesNewest();
             PanelFactory.getInstance().createPanels(cases, newestCasesPanel, this, "CasePanel", customerFields);
             PanelFactory.getInstance().createPanels(CaseHandler.getInstance().getMyCases(employee), myCasesPanel, this, "CasePanel", customerFields);
 //            PanelFactory.getInstance().createPanels(CaseHandler.getInstance().getFinishedCases(), finishedCasesPanel, this, "CasePanel", customerFields);
