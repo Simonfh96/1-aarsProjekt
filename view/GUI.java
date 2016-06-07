@@ -20,6 +20,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JList;
@@ -77,6 +79,11 @@ public class GUI extends javax.swing.JFrame {
         while (!loggedIn) {
             
         }
+        try {
+            PanelFactory.getInstance().createPanels(CostumerHandler.getInstance().selectAllCostumer(), showAllCustomerPanel, this, "CostumerPanel", customerFields);
+        } catch (SQLException ex) {
+            System.out.println(ex.getLocalizedMessage());
+        }
         System.out.println("now");
         JTextField[] textFields = {customerListNameField, customerListContactfield, customerListPhoneField, customerListEmailField, customerListZipCodeField, customerListAddressField};
         customerFields = textFields;
@@ -95,11 +102,12 @@ public class GUI extends javax.swing.JFrame {
         cal = Calendar.getInstance();
         cl = (CardLayout) cardPanel.getLayout();
         try {
+//            PanelFactory.getInstance().createPanels(CostumerHandler.getInstance().selectAllCostumer(), showAllCustomerPanel, this, "CostumerPanel", customerFields);
 //            cases = CaseHandler.getInstance().getCasesNewest();
             PanelFactory.getInstance().createPanels(cases, newestCasesPanel, this, "CasePanel", customerFields);
             PanelFactory.getInstance().createPanels(CaseHandler.getInstance().getMyCases(employee), myCasesPanel, this, "CasePanel", customerFields);
 //            PanelFactory.getInstance().createPanels(CaseHandler.getInstance().getFinishedCases(), finishedCasesPanel, this, "CasePanel", customerFields);
-            PanelFactory.getInstance().createPanels(CostumerHandler.getInstance().selectAllCostumer(), showAllCustomerPanel, this, "CostumerPanel", customerFields);
+//            PanelFactory.getInstance().createPanels(CostumerHandler.getInstance().selectAllCostumer(), showAllCustomerPanel, this, "CostumerPanel", customerFields);
             PanelFactory.getInstance().createPanels(EmployeeHandler.getInstance().selectAllEmployees(), employeeListPanel, this, "EmployeePanel", customerFields);
             repaint();
             revalidate();
@@ -121,7 +129,11 @@ public class GUI extends javax.swing.JFrame {
     
     public void editCaseSetup() {
         listModelObjects.clear();
-        PanelFactory.getInstance().createPanels(c.getArticles(), articleDisplayPanel, this, "ArticlePanel", customerFields);
+        try {
+            PanelFactory.getInstance().createPanels(c.getArticles(), articleDisplayPanel, this, "ArticlePanel", customerFields);
+        } catch (SQLException ex) {
+            System.out.println(ex.getLocalizedMessage());
+        }
         if (employee.checkAddedMyCases(c) == true) {
             addToMyCasesCheckBox.setSelected(true);
         } else {
@@ -1837,14 +1849,14 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void caseSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caseSearchButtonActionPerformed
-//        try {
-//            newestCasesPanel.removeAll();
-//            cases = CaseHandler.getInstance().searchCases(Integer.parseInt(caseNmbSField.getText()), caseNameSField.getText());
-//            PanelFactory.getInstance().createPanels(cases, newestCasesPanel, this, "CasePanel", customerFields);
-//        } catch (SQLException ex) {
-//            //JOptionPane.showMessageDialog(rootPane, ex, title, HEIGHT);
-//            //Eller label med rød tekst
-//        }
+        try {
+            newestCasesPanel.removeAll();
+            cases = CaseHandler.getInstance().searchCases(Integer.parseInt(caseNmbSField.getText()), caseNameSField.getText());
+            PanelFactory.getInstance().createPanels(cases, newestCasesPanel, this, "CasePanel", customerFields);
+        } catch (SQLException ex) {
+            //JOptionPane.showMessageDialog(rootPane, ex, title, HEIGHT);
+            //Eller label med rød tekst
+        }
     }//GEN-LAST:event_caseSearchButtonActionPerformed
 
     private void changeDbButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeDbButtonActionPerformed

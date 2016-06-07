@@ -152,30 +152,36 @@ public class CaseHandler {
 //        return cases;
 //    }
 
-//    public ArrayList<PanelInterface> searchCases(int konsNmb, String caseName) throws SQLException {
-//        ArrayList<PanelInterface> cases = new ArrayList<>();
-////        PreparedStatement ps = null;
-////	String selectSQL = "SELECT * FROM cases WHERE konsNr = ? AND caseName LIKE '?%'";
-////        ps = DBHandler.getInstance().conn.prepareStatement(selectSQL);
-////        ps.setInt(1, konsNmb);
-////        ps.setString(2, caseName);
-////        ResultSet rs = ps.executeQuery();
-//        String statement;
-//        statement = "SELECT * FROM cases WHERE konsNr = "
-//                + konsNmb + " OR caseName LIKE '" + caseName + "%';";
-//        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
-//        while (rs.next()) {
-//            Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
-//            ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
-//            ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(rs.getInt("log_id"));
-//            Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
-//                    articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer, logs);
-//            cases.add(c);
-//        }
-//        rs.close();
-//        return cases;
-//
-//    }
+    public ArrayList<PanelInterface> searchCases(int konsNmb, String caseName) throws SQLException {
+        ArrayList<PanelInterface> cases = new ArrayList<>();
+//        PreparedStatement ps = null;
+//	String selectSQL = "SELECT * FROM cases WHERE konsNr = ? AND caseName LIKE '?%'";
+//        ps = DBHandler.getInstance().conn.prepareStatement(selectSQL);
+//        ps.setInt(1, konsNmb);
+//        ps.setString(2, caseName);
+//        ResultSet rs = ps.executeQuery();
+        String statement;
+        statement = "SELECT * FROM cases WHERE konsNr = "
+                + konsNmb + " OR caseName LIKE '" + caseName + "%';";
+        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+        while (rs.next()) {
+            Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
+                    null, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), null, null);
+            cases.add(c);
+        }
+        rs.close();
+        for (int i = 0; i < cases.size(); i++) {
+            Case aCase = (Case) cases.get(i);
+            Costumer costumer = CostumerHandler.getInstance().getCostumer(getCustomerId(aCase));
+            aCase.setCustomer(costumer);
+            ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(aCase);
+            aCase.setArticles(articles);
+            ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(getLogId(aCase));
+            aCase.setLogs(logs);
+        }
+        return cases;
+
+    }
 
     //Skal benyttes, når man trykker sig ind på et nyt panel via rediger knappen
     public void editCase(Case c) throws SQLException {
@@ -252,7 +258,7 @@ public class CaseHandler {
         ps.setInt(1, e.getEmployeeID());
         ps.setInt(1, 2/*CASE ID - Sags nr*/);
         ps.execute();
-        DBHandler.getInstance().conn.close();
+        
     }
 
     /*Metoden må kun benyttes på de sager, som er under fanen mine sager,

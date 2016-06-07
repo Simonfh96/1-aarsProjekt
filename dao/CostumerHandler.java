@@ -65,15 +65,19 @@ public class CostumerHandler {
         statement = "SELECT * FROM costumer LEFT JOIN zipCodes ON costumer.zipCode = zipCodes.zipCode";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
+            System.out.println("213");
             Costumer costumer = new Costumer(rs.getInt("costumer_id"), rs.getString("costumerName"), rs.getString("acronym"),
                     rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"),
                     rs.getString("address"), rs.getString("zipCode") + ", " + rs.getString("cityName"), null);
+            System.out.println(costumer.toString());
             costumers.add(costumer);
 
         }
         for (PanelInterface c : costumers) {
             Costumer costumer = (Costumer) c;
+            System.out.println(costumer.toString());
             ArrayList<Contact> contacts = ContactHandler.getInstance().getContacts(costumer);
+            costumer.setContacts(contacts);
         }
         rs.close();
         return costumers;
@@ -108,6 +112,7 @@ public class CostumerHandler {
         if (rs.next()) {
             costumerID = rs.getInt("costumer_id") + 1;
         }
+        rs.close();
         return costumerID;
     }
 

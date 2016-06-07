@@ -7,6 +7,7 @@ package factories;
 
 import interfaces.PanelInterface;
 import java.awt.Color;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
@@ -44,7 +45,7 @@ public class PanelFactory {
     }
 
     //den skal oprette en af de fire typer panels alt efter værdien i switchen
-    public void createPanels(ArrayList<PanelInterface> panels, JPanel displayPanel, GUI gui, String type, JTextField[] textFields) {
+    public void createPanels(ArrayList<PanelInterface> panels, JPanel displayPanel, GUI gui, String type, JTextField[] textFields) throws SQLException {
         System.out.println("switch");
         switch (type) {
             case "CasePanel":
