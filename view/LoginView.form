@@ -94,13 +94,16 @@
   <SubComponents>
     <Component class="javax.swing.JPasswordField" name="passwordField">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&apos;&apos;&apos;&apos;&apos;&apos;&apos;&apos;"/>
+        <Property name="text" type="java.lang.String" value="grete12345"/>
       </Properties>
       <Events>
         <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="passwordFieldMousePressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="usernameField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="grete123"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>

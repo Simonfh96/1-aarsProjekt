@@ -79,6 +79,18 @@ public class Case implements PanelInterface{
         return offerNmb;
     }
 
+    public void setArticles(ArrayList<PanelInterface> articles) {
+        this.articles = articles;
+    }
+
+    public void setCustomer(Costumer customer) {
+        this.customer = customer;
+    }
+
+    public void setLogs(ArrayList<Log> logs) {
+        this.logs = logs;
+    }
+
     
     
     

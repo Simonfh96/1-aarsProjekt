@@ -25,16 +25,17 @@ public class ArticleHandler {
         
     }
     
-      public ArrayList<PanelInterface> getArticles(int caseKonsNmb) throws SQLException {
+      public ArrayList<PanelInterface> getArticles(Case c) throws SQLException {
         ArrayList<PanelInterface> articles = new ArrayList<>();
         String statement;
-        statement = "SELECT * FROM objects WHERE caseKonsNmb = '" + caseKonsNmb + "';";
+        statement = "SELECT * FROM objects WHERE caseKonsNmb = '" + c.getKonsNmb() + "';";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             ArrayList<Task> tasks = TaskHandler.getInstance().getTasks(rs.getInt("objects_id"));
-            Article article = new Article(rs.getString("objectName"), caseKonsNmb, rs.getString("objectType"), rs.getInt("konsNr"), tasks);
+            Article article = new Article(rs.getString("objectName"), c.getKonsNmb(), rs.getString("objectType"), rs.getInt("konsNr"), tasks);
             articles.add(article);
         }
+        rs.close();
         return articles;
     }
       
@@ -53,6 +54,7 @@ public class ArticleHandler {
                  TaskHandler.getInstance().saveTask(t);
                  }
              }
+             
      }
     
     public static ArticleHandler getInstance() {

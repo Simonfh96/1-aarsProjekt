@@ -34,6 +34,7 @@ public class ContactHandler {
             Contact contact = new Contact(rs.getString("contactName"), rs.getInt("phone"), rs.getString("email"));
             contacts.add(contact);
         }
+        rs.close();
         return contacts;
     }
      
@@ -50,7 +51,7 @@ public class ContactHandler {
              ps.setString(4, contacts.get(i).getConEmail());
              ps.execute(); 
          }
-         DBHandler.getInstance().conn.close();
+         
      }
     
     public static ContactHandler getInstance() {

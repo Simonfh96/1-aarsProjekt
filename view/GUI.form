@@ -87,7 +87,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="494" max="32767" attributes="0"/>
+                          <EmptySpace pref="493" max="32767" attributes="0"/>
                           <Component id="caseDisplayPane" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -98,7 +98,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="caseDisplayPane" max="32767" attributes="0"/>
+                              <Component id="caseDisplayPane" pref="670" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="caseNmbSField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -197,7 +197,7 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="myCasesScrollPane" alignment="0" pref="700" max="32767" attributes="0"/>
+                              <Component id="myCasesScrollPane" alignment="0" pref="642" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -247,7 +247,7 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="newestCasesScrollPane" alignment="0" pref="700" max="32767" attributes="0"/>
+                              <Component id="newestCasesScrollPane" alignment="0" pref="642" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -302,7 +302,7 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="finishedCasesScrollPane" alignment="0" pref="700" max="32767" attributes="0"/>
+                              <Component id="finishedCasesScrollPane" alignment="0" pref="642" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -705,6 +705,9 @@
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JTextField" name="newCaseDescription">
+                  <Events>
+                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="newCaseDescriptionMousePressed"/>
+                  </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="20" y="390" width="160" height="-1"/>
@@ -1077,7 +1080,7 @@
                               <Component id="jLabel72" min="-2" max="-2" attributes="0"/>
                               <Component id="jScrollPane9" min="-2" pref="290" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="353" max="32767" attributes="0"/>
+                          <EmptySpace pref="352" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1363,7 +1366,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="886" max="32767" attributes="0"/>
+                          <EmptySpace pref="885" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1609,7 +1612,7 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="0" pref="135" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="134" max="32767" attributes="0"/>
                               </Group>
                               <Component id="jSeparator2" max="32767" attributes="0"/>
                           </Group>
@@ -1704,7 +1707,7 @@
                                   <Component id="logButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jScrollPane8" pref="450" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane8" pref="392" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Component id="resetPasswordButton" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>

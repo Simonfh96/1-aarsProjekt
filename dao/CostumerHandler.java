@@ -36,7 +36,7 @@ public class CostumerHandler {
                     rs.getString("address"), rs.getString("zipCode") + ", " + rs.getString("cityName"), contacts);
             costumers.add(costumer);
         }
-
+        rs.close();
         return costumers;
     }
 
@@ -46,11 +46,13 @@ public class CostumerHandler {
         statement = "SELECT * FROM costumer LEFT JOIN zipCodes ON costumer.zipCode = zipCodes.zipCode WHERE costumer_id = '" + costumerID + "';";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
-            ArrayList<Contact> contacts = ContactHandler.getInstance().getContacts(costumerID);
             costumer = new Costumer(rs.getInt("costumer_id"), rs.getString("costumerName"), rs.getString("acronym"),
                     rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"),
-                    rs.getString("address"), rs.getString("zipCode") + ", " + rs.getString("cityName"), contacts);
+                    rs.getString("address"), rs.getString("zipCode") + ", " + rs.getString("cityName"), null);
         }
+        ArrayList<Contact> contacts = ContactHandler.getInstance().getContacts(costumerID);
+        costumer.setContacts(contacts);
+        rs.close();
         return costumer;
     }
     
@@ -67,6 +69,7 @@ public class CostumerHandler {
             costumers.add(costumer);
 
         }
+        rs.close();
         return costumers;
     }
 
@@ -88,6 +91,7 @@ public class CostumerHandler {
         if (c.getContacts().size() > 0) {
             ContactHandler.getInstance().saveContacts(c);
         }
+        
     }
     
     public int generateCostumerID() throws SQLException {

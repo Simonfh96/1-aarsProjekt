@@ -33,6 +33,7 @@ public class TaskHandler {
             Task task = new Task(rs.getString("tStatus"), rs.getString("description"));
             tasks.add(task);
         }
+        rs.close();
         return tasks;
     }
     

@@ -106,6 +106,10 @@ public class Costumer implements PanelInterface {
     public ArrayList<Contact> getContacts() {
         return contacts;
     }
+
+    public void setContacts(ArrayList<Contact> contacts) {
+        this.contacts = contacts;
+    }
     
     
     

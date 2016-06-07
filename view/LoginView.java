@@ -57,12 +57,14 @@ public class LoginView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
-        passwordField.setText("''''''''");
+        passwordField.setText("grete12345");
         passwordField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 passwordFieldMousePressed(evt);
             }
         });
+
+        usernameField.setText("grete123");
 
         jLabel2.setFont(new java.awt.Font("LiSong Pro", 0, 18)); // NOI18N
         jLabel2.setText("Brugernavn");

@@ -19,7 +19,7 @@ import model.Log;
  */
 public class LogWindow extends javax.swing.JPanel {
     private DateFormat dateFormat = new SimpleDateFormat("YYYY/MM/DD HH:mm:ss");
-    private ArrayList<Log> logs;
+//    private ArrayList<Log> logs;
     private Case c;
     private JPanel panel;
     /**
@@ -27,16 +27,16 @@ public class LogWindow extends javax.swing.JPanel {
      */
     public LogWindow(Case c, JPanel panel) {
         initComponents();
-        logs = c.getLogs();
+//        logs = c.getLogs();
         this.c = c;
         this.panel = panel;
         this.setBounds(100, 100, 600, 480);
         this.setVisible(true);
         setComponentsVisible(false);
         logCaseNmbLabel.setText(""+c.getKonsNmb()); //Skal erstattes med Case sagsnr i stedet for kons nr
-        for (Log log : logs) {
-          logDisplayTextArea.append(log.toString());
-        }
+//        for (Log log : logs) {
+//          logDisplayTextArea.append(log.toString());
+//        }
         panel.add(this);
         
     }
@@ -115,8 +115,6 @@ public class LogWindow extends javax.swing.JPanel {
         setComponentsVisible(true);
         this.setVisible(false);
         panel.remove(this);
-        panel.repaint();
-        panel.revalidate();
     }//GEN-LAST:event_logPrintButtonActionPerformed
 
 

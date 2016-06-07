@@ -32,19 +32,36 @@ public class LogHandler implements Runnable {
 
     public ArrayList<Log> getCaseLogs(int logID) throws SQLException {
         ArrayList<Log> logs = new ArrayList<>();
+        System.out.println(logID);
         PreparedStatement ps = null;
         String getLogs = "SELECT * FROM log WHERE log_id = ?";
         ps = DBHandler.getInstance().getConn().prepareStatement(getLogs);
         ps.setInt(1, logID);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
-            Employee employee = EmployeeHandler.getInstance().getEmployee(rs.getInt("employee_id"));
-            Log log = new Log(employee, rs.getString("actionMade"), rs.getString("componentName"),
+            Log log = new Log(null, rs.getString("actionMade"), rs.getString("componentName"),
                     rs.getString("changedFrom"), rs.getString("changedTo"), rs.getDate("timeMade"));
             logs.add(log);
         }
+        rs.close();
+        for (Log log : logs) {
+            Employee employee = EmployeeHandler.getInstance().getEmployee(getEmployeeID());
+            log.setEmployee(employee);
+        }
+        
         return logs;
 
+    }
+    
+    public int getEmployeeID() throws SQLException {
+        int employeeID = 0;
+        String statement;
+        statement = "SELECT employee_id FROM employee ORDER BY employee_id DESC LIMIT 1;";
+        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+        if (rs.next()) {
+            employeeID = rs.getInt("employee_id");
+        }
+        return employeeID;
     }
 
     public ArrayList<Log> gatherLogs(java.util.Date from, java.util.Date to, JTextArea logTextArea) throws SQLException {
@@ -65,6 +82,7 @@ public class LogHandler implements Runnable {
             logTextArea.append(log.toString() + "\n");
             logs.add(log);
         }
+        rs.close();
         return logs;
     }
 

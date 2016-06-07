@@ -14,6 +14,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Article;
 import model.Costumer;
 import model.Employee;
@@ -33,99 +35,147 @@ public class CaseHandler {
         cal = Calendar.getInstance();
     }
 
-    public ArrayList<Case> getCases() throws SQLException {
-        ArrayList<Case> cases = new ArrayList<>();
-        String statement;
-        statement = "SELECT * FROM cases;";
-        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
-        while (rs.next()) {
-            Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
-            ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
-            ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(rs.getInt("log_id"));
-            Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"),rs.getString("caseName"), rs.getString("description"),
-                    articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer, logs);
-            cases.add(c);
-        }
-        return cases;
-    }
-    
+//    public ArrayList<Case> getCases() throws SQLException {
+//        ArrayList<Case> cases = new ArrayList<>();
+//        String statement;
+//        statement = "SELECT * FROM cases;";
+//        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+//        while (rs.next()) {
+//            Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
+//            ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
+//            ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(rs.getInt("log_id"));
+//            Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
+//                    articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer, logs);
+//            cases.add(c);;
+//        }
+//        rs.close();
+//        return cases;
+//    }
+
     //PanelInteface som datatype volder problemer
-    public ArrayList<PanelInterface> getCasesNewest() throws SQLException {
-        ArrayList<PanelInterface> cases = new ArrayList<>();
-        String statement;
-        statement = "SELECT * FROM cases ORDER BY lastUpdated DESC LIMIT 10;";
-        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
-        while (rs.next()) {
-            Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
-            ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
-            ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(rs.getInt("log_id"));
-            Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
-                    articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer, logs);
-            cases.add(c);
-        }
-        return cases;
-    }
-    
+//    public ArrayList<PanelInterface> getCasesNewest() throws SQLException {
+//        ArrayList<PanelInterface> cases = new ArrayList<>();
+//        String statement;
+//        statement = "SELECT * FROM cases ORDER BY lastUpdated DESC LIMIT 10;";
+//        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+//        while (rs.next()) {
+//            Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
+//            ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
+//            ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(rs.getInt("log_id"));
+//            Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
+//                    articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer, logs);
+//            cases.add(c);
+//        }
+//        rs.close();
+//        return cases;
+//    }
+
     public ArrayList<PanelInterface> getMyCases(Employee e) throws SQLException {
         ArrayList<PanelInterface> cases = new ArrayList<>();
         int employeeID = e.getEmployeeID();
         PreparedStatement ps = null;
-	String selectSQL = "SELECT * FROM myCases LEFT JOIN cases ON myCases.cases_id = cases.case_id WHERE employee_id = ?";
+        String selectSQL = "SELECT * FROM myCases LEFT JOIN cases ON myCases.cases_id = cases.case_id WHERE employee_id = ?";
         ps = DBHandler.getInstance().conn.prepareStatement(selectSQL);
         ps.setInt(1, employeeID);
         ResultSet rs = ps.executeQuery();
+  
         while (rs.next()) {
-            Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
-            ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
-            ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(rs.getInt("log_id"));
+            
             Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
-                    articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer, logs);
+                    null, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), null, null);
             cases.add(c);
+            
+            System.out.println("Case: "+c.getCaseName());
         }
-        
-        return cases;
-    }
-
-    public ArrayList<PanelInterface> getFinishedCases() throws SQLException {
-        ArrayList<PanelInterface> cases = new ArrayList<>();
-        String statement;
-        //and finished = 0;
-        statement = "SELECT * FROM cases WHERE finished = 1;";
-        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
-        while (rs.next()) {
-            Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
-            ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
-            ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(rs.getInt("log_id"));
-            Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
-                    articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer, logs);
-            cases.add(c);
+        rs.close();
+        for (int i = 0; i < cases.size(); i++) {
+            Case aCase = (Case) cases.get(i);
+            Costumer costumer = CostumerHandler.getInstance().getCostumer(getCustomerId(aCase));
+            aCase.setCustomer(costumer);
+            ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(aCase);
+            aCase.setArticles(articles);
+            ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(getLogId(aCase));
+            aCase.setLogs(logs);
         }
         return cases;
     }
-
-    public ArrayList<PanelInterface> searchCases(int konsNmb, String caseName) throws SQLException {
-        ArrayList<PanelInterface> cases = new ArrayList<>();
-//        PreparedStatement ps = null;
-//	String selectSQL = "SELECT * FROM cases WHERE konsNr = ? AND caseName LIKE '?%'";
-//        ps = DBHandler.getInstance().conn.prepareStatement(selectSQL);
-//        ps.setInt(1, konsNmb);
-//        ps.setString(2, caseName);
-//        ResultSet rs = ps.executeQuery();
-        String statement;
-        statement = "SELECT * FROM cases WHERE konsNr = "
-                + konsNmb + " OR caseName LIKE '" + caseName + "%';";
-        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
-        while (rs.next()) {
-            Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
-            ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
-            ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(rs.getInt("log_id"));
-            Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
-                    articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer, logs);
-            cases.add(c);
+    
+    public int getLogId(Case aCase){
+       int result = -1;
+        try {
+            String statement;
+            //and finished = 0;
+            statement = "SELECT log_id FROM cases WHERE konsNr = "+aCase.getKonsNmb()+";";
+            ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+            while (rs.next()) {
+                result = rs.getInt("log_id");
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CaseHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return cases;
-
+        return result;
     }
+    
+    public int getCustomerId(Case aCase){
+       int result = -1;
+        try {
+            String statement;
+            //and finished = 0;
+            statement = "SELECT costumer_id FROM cases WHERE konsNr = "+aCase.getKonsNmb()+";";
+            ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+            while (rs.next()) {
+                result = rs.getInt("costumer_id");
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CaseHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
+
+//    public ArrayList<PanelInterface> getFinishedCases() throws SQLException {
+//        ArrayList<PanelInterface> cases = new ArrayList<>();
+//        String statement;
+//        //and finished = 0;
+//        statement = "SELECT * FROM cases WHERE finished = 1;";
+//        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+//        while (rs.next()) {
+//            Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
+//            ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(c);
+//            ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(rs.getInt("log_id"));
+//            Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
+//                    articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer, logs);
+//            cases.add(c);
+//        }
+//        rs.close();
+//        return cases;
+//    }
+
+//    public ArrayList<PanelInterface> searchCases(int konsNmb, String caseName) throws SQLException {
+//        ArrayList<PanelInterface> cases = new ArrayList<>();
+////        PreparedStatement ps = null;
+////	String selectSQL = "SELECT * FROM cases WHERE konsNr = ? AND caseName LIKE '?%'";
+////        ps = DBHandler.getInstance().conn.prepareStatement(selectSQL);
+////        ps.setInt(1, konsNmb);
+////        ps.setString(2, caseName);
+////        ResultSet rs = ps.executeQuery();
+//        String statement;
+//        statement = "SELECT * FROM cases WHERE konsNr = "
+//                + konsNmb + " OR caseName LIKE '" + caseName + "%';";
+//        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+//        while (rs.next()) {
+//            Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
+//            ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
+//            ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(rs.getInt("log_id"));
+//            Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
+//                    articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer, logs);
+//            cases.add(c);
+//        }
+//        rs.close();
+//        return cases;
+//
+//    }
 
     //Skal benyttes, når man trykker sig ind på et nyt panel via rediger knappen
     public void editCase(Case c) throws SQLException {
@@ -154,7 +204,7 @@ public class CaseHandler {
         /*
         Insert statement skal justeres til også at gemme foreign key (log_id)
         til cases table i databasen
-        */
+         */
         java.util.Date utilDateConvert = c.getLastUpdated();
         java.sql.Date sqlLastUpdate = new java.sql.Date(utilDateConvert.getTime());
         utilDateConvert = c.getCreatedAt();

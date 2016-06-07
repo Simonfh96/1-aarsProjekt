@@ -15,7 +15,7 @@ import java.sql.Date;
 public class Log {
     //Log klassen skal indeholde en integer log id, som skal bruges til at referere til
     //ArrayListen med logs, når en case gemmes i databasen
-    private final Employee employee;
+    private Employee employee;
     private final String actionMade;
     private final String componentName;
     private final String changedFrom;
@@ -37,6 +37,10 @@ public class Log {
                 + " " + changedFrom + " " + changedTo + " " + date + "\n"; 
     }
 
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+    
     public Employee getEmployee() {
         return employee;
     }
