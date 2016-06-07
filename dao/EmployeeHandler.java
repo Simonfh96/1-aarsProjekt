@@ -129,11 +129,15 @@ public class EmployeeHandler {
         statement = "SELECT * FROM employee;";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
-            ArrayList<PanelInterface> myCases = new ArrayList<>();
             Employee employee = new Employee(rs.getInt("employee_id"), rs.getString("username"), rs.getString("userPassword"),
                     rs.getString("firstName"), rs.getString("lastName"),
-                    rs.getInt("phone"), rs.getString("email"), rs.getBoolean("admin"), rs.getBoolean("partTime"), rs.getBoolean("active"), myCases);
+                    rs.getInt("phone"), rs.getString("email"), rs.getBoolean("admin"), rs.getBoolean("partTime"), rs.getBoolean("active"), null);
             employees.add(employee);
+        }
+        for (PanelInterface employee : employees) {
+            Employee e = (Employee) employee;
+            ArrayList<PanelInterface> myCases = CaseHandler.getInstance().getMyCases(e);
+            e.setMyCases(myCases);
         }
         rs.close();
         return employees;
@@ -147,6 +151,7 @@ public class EmployeeHandler {
         if (rs.next()) {
             employeeID = rs.getInt("employee_id") + 1;
         }
+        rs.close();
         return employeeID;
     }
 
