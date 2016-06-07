@@ -30,11 +30,14 @@ public class CostumerHandler {
         statement = "SELECT * FROM costumer LEFT JOIN zipCodes ON costumer.zipCode = zipCodes.zipCode WHERE costumerName LIKE '" + name + "%';";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
-            ArrayList<Contact> contacts = ContactHandler.getInstance().getContacts(rs.getInt("costumer_id"));
             Costumer costumer = new Costumer(rs.getInt("costumer_id"), rs.getString("costumerName"), rs.getString("acronym"),
                     rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"),
-                    rs.getString("address"), rs.getString("zipCode") + ", " + rs.getString("cityName"), contacts);
+                    rs.getString("address"), rs.getString("zipCode") + ", " + rs.getString("cityName"), null);
             costumers.add(costumer);
+        }
+        for (Costumer costumer : costumers) {
+            ArrayList<Contact> contacts = ContactHandler.getInstance().getContacts(costumer);
+            costumer.setContacts(contacts);
         }
         rs.close();
         return costumers;
@@ -50,7 +53,7 @@ public class CostumerHandler {
                     rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"),
                     rs.getString("address"), rs.getString("zipCode") + ", " + rs.getString("cityName"), null);
         }
-        ArrayList<Contact> contacts = ContactHandler.getInstance().getContacts(costumerID);
+        ArrayList<Contact> contacts = ContactHandler.getInstance().getContacts(costumer);
         costumer.setContacts(contacts);
         rs.close();
         return costumer;
@@ -62,12 +65,15 @@ public class CostumerHandler {
         statement = "SELECT * FROM costumer LEFT JOIN zipCodes ON costumer.zipCode = zipCodes.zipCode";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
-            ArrayList<Contact> contacts = ContactHandler.getInstance().getContacts(rs.getInt("costumer_id"));
             Costumer costumer = new Costumer(rs.getInt("costumer_id"), rs.getString("costumerName"), rs.getString("acronym"),
                     rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"),
-                    rs.getString("address"), rs.getString("zipCode") + ", " + rs.getString("cityName"), contacts);
+                    rs.getString("address"), rs.getString("zipCode") + ", " + rs.getString("cityName"), null);
             costumers.add(costumer);
 
+        }
+        for (PanelInterface c : costumers) {
+            Costumer costumer = (Costumer) c;
+            ArrayList<Contact> contacts = ContactHandler.getInstance().getContacts(costumer);
         }
         rs.close();
         return costumers;

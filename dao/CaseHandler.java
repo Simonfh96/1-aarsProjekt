@@ -241,6 +241,7 @@ public class CaseHandler {
         if (rs.next()) {
             konsNmb = rs.getInt("konsNr") + 1;
         }
+        rs.close();
         return konsNmb;
     }
 

@@ -90,6 +90,8 @@ public class Case implements PanelInterface{
     public void setLogs(ArrayList<Log> logs) {
         this.logs = logs;
     }
+    
+    
 
     
     

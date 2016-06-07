@@ -61,6 +61,7 @@ public class LogHandler implements Runnable {
         if (rs.next()) {
             employeeID = rs.getInt("employee_id");
         }
+        rs.close();
         return employeeID;
     }
 

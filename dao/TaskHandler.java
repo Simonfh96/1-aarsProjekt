@@ -48,7 +48,6 @@ public class TaskHandler {
         ps.setString(1, task.getStatus());
         ps.setString(2, task.getDescription());
         ps.execute();
-        DBHandler.getInstance().conn.close();
     }
     
     public static TaskHandler getInstance() {

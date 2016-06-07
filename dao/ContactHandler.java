@@ -23,12 +23,12 @@ public class ContactHandler {
 
     }
     
-     public ArrayList<Contact> getContacts(int costumerID) throws SQLException {
+     public ArrayList<Contact> getContacts(Costumer costumer) throws SQLException {
         ArrayList<Contact> contacts = new ArrayList<>();
         PreparedStatement ps = null;
         String getContacts = "SELECT * FROM contacts WHERE customer_id = ?";
         ps = DBHandler.getInstance().getConn().prepareStatement(getContacts);
-        ps.setInt(1, costumerID);
+        ps.setInt(1, costumer.getCostumerID());
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             Contact contact = new Contact(rs.getString("contactName"), rs.getInt("phone"), rs.getString("email"));
