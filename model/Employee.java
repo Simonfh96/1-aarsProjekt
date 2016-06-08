@@ -33,7 +33,7 @@ public class Employee implements PanelInterface {
         this.firstName = firstName;
         this.lastName = lastName;
         fullName = firstName + " " + lastName;
-        initials = "GH";
+        initials = "GH"; //Skal ændres til get intials i handler
         this.phone = phone;
         this.email = email;
         this.admin = admin;

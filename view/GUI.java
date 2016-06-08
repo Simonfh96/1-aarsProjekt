@@ -88,6 +88,7 @@ public class GUI extends javax.swing.JFrame {
         list = new JList(listModel);
         list.setSize(160, 130);
         list.setVisible(false);
+        caseResponsibleList = new JList(listModel);
         costScrollSearch.add(list);
         costScrollSearch.setVisible(false);
         cal = Calendar.getInstance();
@@ -123,6 +124,10 @@ public class GUI extends javax.swing.JFrame {
             PanelFactory.getInstance().createPanels(c.getArticles(), articleDisplayPanel, this, "ArticlePanel", customerFields);
         } catch (SQLException ex) {
             System.out.println(ex.getLocalizedMessage());
+        }
+        for (PanelInterface emp : c.CaseResponsible()) {
+            Employee e = (Employee) emp;
+            
         }
         if (employee.checkAddedMyCases(c) == true) {
             addToMyCasesCheckBox.setSelected(true);
@@ -357,7 +362,7 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jList3 = new javax.swing.JList();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jList4 = new javax.swing.JList();
+        caseResponsibleList = new javax.swing.JList();
         jButton3 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
@@ -1451,12 +1456,12 @@ public class GUI extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jList3);
 
-        jList4.setModel(new javax.swing.AbstractListModel() {
+        caseResponsibleList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "her skal de valgte", "ansatte på denne", "sag stå", "man vælger ved ", "at dobbeltklikke" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane4.setViewportView(jList4);
+        jScrollPane4.setViewportView(caseResponsibleList);
 
         jButton3.setText("Tilføj");
 
@@ -2182,6 +2187,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField caseNameSField;
     private javax.swing.JTextField caseNmbEditPanel;
     private javax.swing.JTextField caseNmbSField;
+    private javax.swing.JList caseResponsibleList;
     private javax.swing.JButton caseSearchButton;
     private javax.swing.JButton changeDbButton;
     private javax.swing.JLabel contactPersonCostumerLabel;
@@ -2326,7 +2332,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel99;
     private javax.swing.JList jList2;
     private javax.swing.JList jList3;
-    private javax.swing.JList jList4;
     private javax.swing.JList jList5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
