@@ -39,7 +39,7 @@ public class Costumer implements PanelInterface {
     
     @Override
     public String toString() {
-        return costumerID +"\t"+ costumerName +"\t"+  mAcro +"\t"+ mNumb +"\t"+ phone +"\t"+ email + "\t" +address +"\t" +cityOfZip;
+        return costumerName;
     }
 
     public ArrayList<Costumer> getCustomers() {

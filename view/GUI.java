@@ -1029,7 +1029,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel43.setText("Mine indstillinger");
 
         jLabel44.setFont(new java.awt.Font("LiSong Pro", 0, 18)); // NOI18N
-        jLabel44.setText("Lod ind");
+        jLabel44.setText("Log ind");
 
         jLabel45.setText("Nyt brugernavn");
 
