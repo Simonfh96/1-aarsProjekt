@@ -42,6 +42,12 @@ public class Employee implements PanelInterface {
         this.myCases = myCases;
     }
     
+    public Employee(int employeeID, String fullName, String initials) {
+        this.employeeID = employeeID;
+        this.fullName = fullName;
+        this.initials = initials;
+    }
+    
     public boolean checkAddedMyCases(Case c) {
         boolean added = false;
         for (PanelInterface myCase :  myCases) {

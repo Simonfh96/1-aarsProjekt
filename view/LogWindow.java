@@ -5,12 +5,16 @@
  */
 package view;
 
+import dao.CaseHandler;
 import java.awt.Color;
 import java.awt.Component;
 import java.beans.PropertyEditorManager;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import model.Case;
@@ -86,6 +90,11 @@ public class LogWindow extends javax.swing.JPanel {
         });
 
         cancelLastActionButton.setText("Fortryd");
+        cancelLastActionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelLastActionButtonActionPerformed(evt);
+            }
+        });
 
         backButton.setText("Tilbage");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -144,6 +153,14 @@ public class LogWindow extends javax.swing.JPanel {
         panel.repaint();
         panel.revalidate();
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void cancelLastActionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelLastActionButtonActionPerformed
+        try {
+            CaseHandler.getInstance().cancelLastAction();
+        } catch (SQLException ex) {
+            Logger.getLogger(LogWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_cancelLastActionButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -78,6 +78,22 @@ public class EmployeeHandler {
 
         return employee;
     }
+    
+    public ArrayList<PanelInterface> getCaseResponsibles(Case c) throws SQLException {
+        PreparedStatement ps = null;
+        String getEmployee = "SELECT * FROM caseResponsible LEFT JOIN employee ON caseResponsible.employee_id = employee.employee_id WHERE employee_id = ?";
+        ps = DBHandler.getInstance().getConn().prepareStatement(getEmployee);
+        ps.setInt(1, c.getCaseID());
+        ResultSet rs = ps.executeQuery();
+        ArrayList<PanelInterface> employees = new ArrayList<>();
+        while (rs.next()) {
+            Employee employee = new Employee(rs.getInt("employee_id"), rs.getString("firstName")
+                    + " " + rs.getString("lastName"), rs.getString("initials"));                    
+            employees.add(employee);
+        }
+        rs.close();
+        return employees;
+    }
 
     public void changePasswordAndUsername(String username, String password, Employee e) throws SQLException {
         PreparedStatement ps = null;

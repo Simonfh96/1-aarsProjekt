@@ -14,6 +14,7 @@ import java.util.Date;
  * @author Simon
  */
 public class Case implements PanelInterface{
+    private int caseID;
     private int konsNmb;
     private int offerNmb;
     private String caseName;
@@ -26,7 +27,8 @@ public class Case implements PanelInterface{
     private ArrayList<Log> logs;
 
     //Sagsnr skal tilføjes, så det kan søges på (Case tables PK)
-    public Case(int konsNmb, int offerNmb, String caseName, String description, ArrayList<PanelInterface> articles, boolean finished, Date lastUpdated, Date createdAt, Costumer customer, ArrayList<Log> logs) {
+    public Case(int caseID, int konsNmb, int offerNmb, String caseName, String description, ArrayList<PanelInterface> articles, boolean finished, Date lastUpdated, Date createdAt, Costumer customer, ArrayList<Log> logs) {
+        this.caseID = caseID;
         this.konsNmb = konsNmb;
         this.offerNmb = offerNmb;
         this.caseName = caseName;
@@ -39,6 +41,10 @@ public class Case implements PanelInterface{
         this.logs = logs;
     }
 
+    public int getCaseID() {
+        return caseID;
+    }
+    
     public int getKonsNmb() {
         return konsNmb;
     }
@@ -89,6 +95,18 @@ public class Case implements PanelInterface{
 
     public void setLogs(ArrayList<Log> logs) {
         this.logs = logs;
+    }
+
+    public void setCaseName(String caseName) {
+        this.caseName = caseName;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setFinished(boolean finished) {
+        this.finished = finished;
     }
     
     

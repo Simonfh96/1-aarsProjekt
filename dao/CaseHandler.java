@@ -57,7 +57,7 @@ public class CaseHandler {
         statement = "SELECT * FROM cases ORDER BY lastUpdated DESC LIMIT 10;";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
-            Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
+            Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
                     null, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), null, null);
             cases.add(c);
         }
@@ -84,7 +84,7 @@ public class CaseHandler {
         ResultSet rs = ps.executeQuery();
 
         while (rs.next()) {
-            Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
+            Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
                     null, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), null, null);
             cases.add(c);
         }
@@ -139,7 +139,7 @@ public class CaseHandler {
         statement = "SELECT * FROM cases WHERE finished = 1;";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
-            Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
+            Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
                     null, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), null, null);
             cases.add(c);
         }
@@ -169,7 +169,7 @@ public class CaseHandler {
                 + konsNmb + " OR caseName LIKE '" + caseName + "%';";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
-            Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
+            Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
                     null, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), null, null);
             cases.add(c);
         }
@@ -276,14 +276,13 @@ public class CaseHandler {
     }
 
     public void cancelLastAction() throws SQLException {
-        String stmt = "rollback;";
-        PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(stmt);
+        String stmt;
+        stmt = "rollback;";
         System.out.println(stmt);
-        ps.executeUpdate();
+        DBHandler.getInstance().conn.createStatement().executeUpdate(stmt);
     }
 
-
-public static CaseHandler getInstance() {
+    public static CaseHandler getInstance() {
         if (instance == null) {
             instance = new CaseHandler();
         }

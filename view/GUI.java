@@ -20,8 +20,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JList;
@@ -33,7 +31,6 @@ import model.Case;
 import model.Contact;
 import model.Costumer;
 import model.Employee;
-import model.Log;
 import model.Task;
 
 /**
@@ -1874,21 +1871,25 @@ public class GUI extends javax.swing.JFrame {
         //Problem i CaseHandler eller check my cases 
         if (addToMyCasesCheckBox.isSelected()) {
             try {
-                if (employee.checkAddedMyCases(c) == false) {
-                CaseHandler.getInstance().addToMyCases(employee, c);
+//                if (employee.checkAddedMyCases(c) == false) {
+//                CaseHandler.getInstance().addToMyCases(employee, c);
+                c.setCaseName(jTextField4.getText());
+                CaseHandler.getInstance().editCase(c);
                 employeeLastUpdateField.setText(employee.getFullName());
                 lastUpdatedField.setText("" + dateFormat.format(cal.getTime()));
-                }
+//                }
             } catch (SQLException ex) {
                 System.out.println(ex.getLocalizedMessage());
             }
         } else {
             try {
-                if (employee.checkAddedMyCases(c)) {
-                CaseHandler.getInstance().deleteMyCase(c.getKonsNmb(), employee.getEmployeeID());
+//                if (employee.checkAddedMyCases(c)) {
+//                CaseHandler.getInstance().deleteMyCase(c.getKonsNmb(), employee.getEmployeeID());
+                c.setCaseName(jTextField4.getText());
+                CaseHandler.getInstance().editCase(c);
                 employeeLastUpdateField.setText(employee.getFullName());
                 lastUpdatedField.setText("" + dateFormat.format(cal.getTime()));
-                }
+//                }
             } catch (SQLException ex) {
                 System.out.println(ex.getLocalizedMessage());
             }
