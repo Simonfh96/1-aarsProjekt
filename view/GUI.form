@@ -2014,16 +2014,14 @@
                                                           <Component id="jSeparator3" alignment="0" min="-2" pref="248" max="-2" attributes="0"/>
                                                           <Group type="102" alignment="0" attributes="0">
                                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                                                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                                                                      <Component id="jScrollPane3" min="-2" pref="115" max="-2" attributes="0"/>
-                                                                  </Group>
                                                                   <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                                  <Component id="jButton3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                                  <Component id="jScrollPane3" min="-2" pref="115" max="-2" attributes="0"/>
                                                               </Group>
                                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                                               <Group type="103" groupAlignment="0" attributes="0">
                                                                   <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="jScrollPane4" min="-2" pref="115" max="-2" attributes="0"/>
+                                                                  <Component id="jScrollPane5" min="-2" pref="115" max="-2" attributes="0"/>
                                                               </Group>
                                                           </Group>
                                                       </Group>
@@ -2251,9 +2249,9 @@
                                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jScrollPane4" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jScrollPane3" max="32767" attributes="0"/>
+                                          <Component id="jScrollPane5" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -2276,19 +2274,17 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jScrollPane1" min="-2" pref="570" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="editPanelBackButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel42" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lastUpdatedField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel41" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="employeeLastUpdateField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="saveChangesEditCaseButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="editCaseLogButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="jScrollPane1" min="-2" pref="570" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="editPanelBackButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel42" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lastUpdatedField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel41" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="employeeLastUpdateField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="saveChangesEditCaseButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="editCaseLogButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="118" max="32767" attributes="0"/>
                   </Group>
@@ -2417,28 +2413,6 @@
                       <StringArray count="2">
                         <StringItem index="0" value="Her st&#xe5;r alle"/>
                         <StringItem index="1" value="ansatte"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane4">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JList" name="caseResponsibleList">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                      <StringArray count="5">
-                        <StringItem index="0" value="her skal de valgte"/>
-                        <StringItem index="1" value="ansatte p&#xe5; denne"/>
-                        <StringItem index="2" value="sag st&#xe5;"/>
-                        <StringItem index="3" value="man v&#xe6;lger ved "/>
-                        <StringItem index="4" value="at dobbeltklikke"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -2688,6 +2662,10 @@
                 <Property name="text" type="java.lang.String" value="Medarbejder"/>
               </Properties>
             </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane5">
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+            </Container>
           </SubComponents>
         </Container>
       </SubComponents>

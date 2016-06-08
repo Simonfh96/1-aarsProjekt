@@ -88,7 +88,6 @@ public class GUI extends javax.swing.JFrame {
         list = new JList(listModel);
         list.setSize(160, 130);
         list.setVisible(false);
-        caseResponsibleList = new JList(listModel);
         costScrollSearch.add(list);
         costScrollSearch.setVisible(false);
         cal = Calendar.getInstance();
@@ -361,8 +360,6 @@ public class GUI extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jList3 = new javax.swing.JList();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        caseResponsibleList = new javax.swing.JList();
         jButton3 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
@@ -412,6 +409,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel82 = new javax.swing.JLabel();
         editCaseLogButton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1456,13 +1454,6 @@ public class GUI extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jList3);
 
-        caseResponsibleList.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "her skal de valgte", "ansatte på denne", "sag stå", "man vælger ved ", "at dobbeltklikke" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane4.setViewportView(caseResponsibleList);
-
         jButton3.setText("Tilføj");
 
         jLabel25.setText("Genstandsbeskrivelse");
@@ -1622,14 +1613,13 @@ public class GUI extends javax.swing.JFrame {
                                                     .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addGroup(editCasePanelLayout.createSequentialGroup()
                                                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                .addComponent(jButton3)
-                                                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                            .addComponent(jLabel5))
+                                                            .addComponent(jLabel5)
+                                                            .addComponent(jButton3)
+                                                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                         .addGap(18, 18, 18)
                                                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                             .addComponent(jLabel24)
-                                                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                                 .addGap(0, 0, Short.MAX_VALUE))
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editCasePanelLayout.createSequentialGroup()
                                                 .addGap(0, 0, Short.MAX_VALUE)
@@ -1803,9 +1793,9 @@ public class GUI extends javax.swing.JFrame {
                                     .addComponent(jLabel24)
                                     .addComponent(jLabel5))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane3)
+                                    .addComponent(jScrollPane5)))
                             .addGroup(editCasePanelLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1821,17 +1811,16 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(jCheckBox4)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3))
-                    .addGroup(editCasePanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(editPanelBackButton)
-                            .addComponent(jLabel42)
-                            .addComponent(lastUpdatedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel41)
-                            .addComponent(employeeLastUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(saveChangesEditCaseButton)
-                            .addComponent(editCaseLogButton))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editPanelBackButton)
+                    .addComponent(jLabel42)
+                    .addComponent(lastUpdatedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel41)
+                    .addComponent(employeeLastUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(saveChangesEditCaseButton)
+                    .addComponent(editCaseLogButton))
                 .addContainerGap(118, Short.MAX_VALUE))
         );
 
@@ -2187,7 +2176,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField caseNameSField;
     private javax.swing.JTextField caseNmbEditPanel;
     private javax.swing.JTextField caseNmbSField;
-    private javax.swing.JList caseResponsibleList;
     private javax.swing.JButton caseSearchButton;
     private javax.swing.JButton changeDbButton;
     private javax.swing.JLabel contactPersonCostumerLabel;
@@ -2342,7 +2330,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator10;
