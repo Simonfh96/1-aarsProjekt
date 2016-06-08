@@ -62,7 +62,6 @@ public class EmployeeHandler {
         ps = DBHandler.getInstance().getConn().prepareStatement(getEmployee);
         ps.setInt(1, employeeID);
         ResultSet rs = ps.executeQuery();
-        System.out.println("Trying to load empId "+employeeID);
         ArrayList<PanelInterface> myCases = new ArrayList<>();
         if (rs.next()) {
 
