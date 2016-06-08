@@ -1982,8 +1982,6 @@ public class GUI extends javax.swing.JFrame {
 
     private void editCaseLogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editCaseLogButtonActionPerformed
         LogWindow logWindow = new LogWindow(c, editCasePanel);
-        repaint();
-        revalidate();
     }//GEN-LAST:event_editCaseLogButtonActionPerformed
 
     private void createCaseAddTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseAddTaskButtonActionPerformed
