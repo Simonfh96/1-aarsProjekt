@@ -25,9 +25,10 @@ public class Case implements PanelInterface{
     private Date createdAt;
     private Costumer customer;
     private ArrayList<Log> logs;
+    private ArrayList<PanelInterface> caseResponsible;
 
     //Sagsnr skal tilføjes, så det kan søges på (Case tables PK)
-    public Case(int caseID, int konsNmb, int offerNmb, String caseName, String description, ArrayList<PanelInterface> articles, boolean finished, Date lastUpdated, Date createdAt, Costumer customer, ArrayList<Log> logs) {
+    public Case(int caseID, int konsNmb, int offerNmb, String caseName, String description, ArrayList<PanelInterface> articles, boolean finished, Date lastUpdated, Date createdAt, Costumer customer, ArrayList<Log> logs, ArrayList<PanelInterface> caseResponsibles) {
         this.caseID = caseID;
         this.konsNmb = konsNmb;
         this.offerNmb = offerNmb;
@@ -39,6 +40,7 @@ public class Case implements PanelInterface{
         this.createdAt = createdAt;
         this.customer = customer;
         this.logs = logs;
+        this.caseResponsible = caseResponsibles;
     }
 
     public int getCaseID() {
@@ -63,6 +65,10 @@ public class Case implements PanelInterface{
 
     public ArrayList<PanelInterface> getArticles() {
         return articles;
+    }
+
+    public ArrayList<PanelInterface> CaseResponsible() {
+        return caseResponsible;
     }
 
     public Date getLastUpdated() {
@@ -108,6 +114,11 @@ public class Case implements PanelInterface{
     public void setFinished(boolean finished) {
         this.finished = finished;
     }
+
+    public void setCaseResponsible(ArrayList<PanelInterface> caseResponsible) {
+        this.caseResponsible = caseResponsible;
+    }
+    
     
     
 

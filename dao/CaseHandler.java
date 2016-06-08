@@ -58,7 +58,7 @@ public class CaseHandler {
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
-                    null, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), null, null);
+                    null, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), null, null, null);
             cases.add(c);
         }
         rs.close();
@@ -70,6 +70,8 @@ public class CaseHandler {
             aCase.setArticles(articles);
             ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(getLogId(aCase));
             aCase.setLogs(logs);
+            ArrayList<PanelInterface> caseResponsible = EmployeeHandler.getInstance().getCaseResponsibles(aCase);
+            aCase.setCaseResponsible(caseResponsible);
         }
         return cases;
     }
@@ -85,7 +87,7 @@ public class CaseHandler {
 
         while (rs.next()) {
             Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
-                    null, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), null, null);
+                    null, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), null, null, null);
             cases.add(c);
         }
         rs.close();
@@ -97,6 +99,8 @@ public class CaseHandler {
             aCase.setArticles(articles);
             ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(getLogId(aCase));
             aCase.setLogs(logs);
+            ArrayList<PanelInterface> caseResponsible = EmployeeHandler.getInstance().getCaseResponsibles(aCase);
+            aCase.setCaseResponsible(caseResponsible);
         }
         return cases;
     }
@@ -140,7 +144,7 @@ public class CaseHandler {
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
-                    null, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), null, null);
+                    null, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), null, null, null);
             cases.add(c);
         }
         rs.close();
@@ -152,6 +156,8 @@ public class CaseHandler {
             aCase.setArticles(articles);
             ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(getLogId(aCase));
             aCase.setLogs(logs);
+            ArrayList<PanelInterface> caseResponsible = EmployeeHandler.getInstance().getCaseResponsibles(aCase);
+            aCase.setCaseResponsible(caseResponsible);
         }
         return cases;
     }
@@ -170,7 +176,7 @@ public class CaseHandler {
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
-                    null, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), null, null);
+                    null, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), null, null, null);
             cases.add(c);
         }
         rs.close();
@@ -182,6 +188,8 @@ public class CaseHandler {
             aCase.setArticles(articles);
             ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(getLogId(aCase));
             aCase.setLogs(logs);
+            ArrayList<PanelInterface> caseResponsible = EmployeeHandler.getInstance().getCaseResponsibles(aCase);
+            aCase.setCaseResponsible(caseResponsible);
         }
         return cases;
 
