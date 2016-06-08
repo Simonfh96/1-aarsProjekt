@@ -7,6 +7,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.beans.PropertyEditorManager;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,7 +33,8 @@ public class LogWindow extends javax.swing.JPanel {
         logs = c.getLogs();
         this.c = c;
         this.panel = panel;
-        setBounds(100, 100, 500, 350);
+        logDisplayTextArea.setEditable(false);
+        setBounds(100, 100, 600, 400);
         setBorder(BorderFactory.createLineBorder(Color.black));
         setVisible(true);
         setComponentsVisible(false);
@@ -65,6 +67,8 @@ public class LogWindow extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         logDisplayTextArea = new javax.swing.JTextArea();
         logPrintButton = new javax.swing.JButton();
+        cancelLastActionButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         jLabel1.setText("Sagsnr:");
 
@@ -81,6 +85,15 @@ public class LogWindow extends javax.swing.JPanel {
             }
         });
 
+        cancelLastActionButton.setText("Fortryd");
+
+        backButton.setText("Tilbage");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -88,14 +101,17 @@ public class LogWindow extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(logCaseNmbLabel)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(backButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cancelLastActionButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(logPrintButton)))
                 .addContainerGap())
         );
@@ -107,23 +123,32 @@ public class LogWindow extends javax.swing.JPanel {
                     .addComponent(jLabel1)
                     .addComponent(logCaseNmbLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(logPrintButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(logPrintButton)
+                    .addComponent(cancelLastActionButton)
+                    .addComponent(backButton))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void logPrintButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logPrintButtonActionPerformed
+        
+    }//GEN-LAST:event_logPrintButtonActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         setComponentsVisible(true);
         this.setVisible(false);
         panel.remove(this);
         panel.repaint();
         panel.revalidate();
-    }//GEN-LAST:event_logPrintButtonActionPerformed
+    }//GEN-LAST:event_backButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
+    private javax.swing.JButton cancelLastActionButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel logCaseNmbLabel;

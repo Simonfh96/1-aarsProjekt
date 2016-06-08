@@ -51,7 +51,6 @@ public class CaseHandler {
 //        rs.close();
 //        return cases;
 //    }
-
     public ArrayList<PanelInterface> getCasesNewest() throws SQLException {
         ArrayList<PanelInterface> cases = new ArrayList<>();
         String statement;
@@ -83,7 +82,7 @@ public class CaseHandler {
         ps = DBHandler.getInstance().conn.prepareStatement(selectSQL);
         ps.setInt(1, employeeID);
         ResultSet rs = ps.executeQuery();
-  
+
         while (rs.next()) {
             Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
                     null, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), null, null);
@@ -101,12 +100,12 @@ public class CaseHandler {
         }
         return cases;
     }
-    
-    public int getLogId(Case aCase){
-       int result = -1;
+
+    public int getLogId(Case aCase) {
+        int result = -1;
         try {
             String statement;
-            statement = "SELECT log_id FROM cases WHERE konsNr = "+aCase.getKonsNmb()+";";
+            statement = "SELECT log_id FROM cases WHERE konsNr = " + aCase.getKonsNmb() + ";";
             ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
             while (rs.next()) {
                 result = rs.getInt("log_id");
@@ -117,12 +116,12 @@ public class CaseHandler {
         }
         return result;
     }
-    
-    public int getCustomerId(Case aCase){
-       int result = -1;
+
+    public int getCustomerId(Case aCase) {
+        int result = -1;
         try {
             String statement;
-            statement = "SELECT costumer_id FROM cases WHERE konsNr = "+aCase.getKonsNmb()+";";
+            statement = "SELECT costumer_id FROM cases WHERE konsNr = " + aCase.getKonsNmb() + ";";
             ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
             while (rs.next()) {
                 result = rs.getInt("costumer_id");
@@ -263,7 +262,7 @@ public class CaseHandler {
         ps.setInt(1, e.getEmployeeID());
         ps.setInt(1, 2/*CASE ID - Sags nr*/);
         ps.execute();
-        
+
     }
 
     /*Metoden må kun benyttes på de sager, som er under fanen mine sager,
@@ -276,7 +275,15 @@ public class CaseHandler {
         //Sikre at den ikke prøver at slette noget, som ikke er der
     }
 
-    public static CaseHandler getInstance() {
+    public void cancelLastAction() throws SQLException {
+        String stmt = "rollback;";
+        PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(stmt);
+        System.out.println(stmt);
+        ps.executeUpdate();
+    }
+
+
+public static CaseHandler getInstance() {
         if (instance == null) {
             instance = new CaseHandler();
         }
