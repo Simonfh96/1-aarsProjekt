@@ -81,7 +81,7 @@ public class EmployeeHandler {
     
     public ArrayList<PanelInterface> getCaseResponsibles(Case c) throws SQLException {
         PreparedStatement ps = null;
-        String getEmployee = "SELECT * FROM caseResponsible LEFT JOIN employee ON caseResponsible.employee_id = employee.employee_id WHERE employee_id = ?";
+        String getEmployee = "SELECT * FROM caseResponsible LEFT JOIN employee ON caseResponsible.employee_id = employee.employee_id WHERE caseResponsible.employee_id = ?";
         ps = DBHandler.getInstance().getConn().prepareStatement(getEmployee);
         ps.setInt(1, c.getCaseID());
         ResultSet rs = ps.executeQuery();
