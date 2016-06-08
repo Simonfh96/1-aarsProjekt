@@ -78,13 +78,6 @@ public class GUI extends javax.swing.JFrame {
         while (!loggedIn) {
             System.out.println("1");
         }
-        try {
-            System.out.println("Attempting to create CustomerPanels...");
-            PanelFactory.getInstance().createPanels(CostumerHandler.getInstance().selectAllCostumer(), showAllCustomerPanel, this, "CostumerPanel", customerFields);
-            System.out.println("Panels created!");
-        } catch (SQLException ex) {
-            System.out.println(ex.getLocalizedMessage());
-        }
         System.out.println("now");
         JTextField[] textFields = {customerListNameField, customerListContactfield, customerListPhoneField, customerListEmailField, customerListZipCodeField, customerListAddressField};
         customerFields = textFields;
@@ -103,12 +96,11 @@ public class GUI extends javax.swing.JFrame {
         cal = Calendar.getInstance();
         cl = (CardLayout) cardPanel.getLayout();
         try {
-//            PanelFactory.getInstance().createPanels(CostumerHandler.getInstance().selectAllCostumer(), showAllCustomerPanel, this, "CostumerPanel", customerFields);
             cases = CaseHandler.getInstance().getCasesNewest();
             PanelFactory.getInstance().createPanels(cases, newestCasesPanel, this, "CasePanel", customerFields);
             PanelFactory.getInstance().createPanels(CaseHandler.getInstance().getMyCases(employee), myCasesPanel, this, "CasePanel", customerFields);
 //            PanelFactory.getInstance().createPanels(CaseHandler.getInstance().getFinishedCases(), finishedCasesPanel, this, "CasePanel", customerFields);
-//            PanelFactory.getInstance().createPanels(CostumerHandler.getInstance().selectAllCostumer(), showAllCustomerPanel, this, "CostumerPanel", customerFields);
+            PanelFactory.getInstance().createPanels(CostumerHandler.getInstance().selectAllCostumer(), showAllCustomerPanel, this, "CostumerPanel", customerFields);
             PanelFactory.getInstance().createPanels(EmployeeHandler.getInstance().selectAllEmployees(), employeeListPanel, this, "EmployeePanel", customerFields);
             repaint();
             revalidate();
