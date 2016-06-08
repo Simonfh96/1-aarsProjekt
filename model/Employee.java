@@ -52,7 +52,7 @@ public class Employee implements PanelInterface {
         boolean added = false;
         for (PanelInterface myCase :  myCases) {
             Case mc = (Case) myCase;
-            if (c.getKonsNmb()  == mc.getKonsNmb()) {
+            if (c.getCaseID()  == mc.getCaseID()) {
                 added = true;
             }
         }
