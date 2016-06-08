@@ -99,7 +99,7 @@ public class GUI extends javax.swing.JFrame {
             cases = CaseHandler.getInstance().getCasesNewest();
             PanelFactory.getInstance().createPanels(cases, newestCasesPanel, this, "CasePanel", customerFields);
             PanelFactory.getInstance().createPanels(CaseHandler.getInstance().getMyCases(employee), myCasesPanel, this, "CasePanel", customerFields);
-//            PanelFactory.getInstance().createPanels(CaseHandler.getInstance().getFinishedCases(), finishedCasesPanel, this, "CasePanel", customerFields);
+            PanelFactory.getInstance().createPanels(CaseHandler.getInstance().getFinishedCases(), finishedCasesPanel, this, "CasePanel", customerFields);
             PanelFactory.getInstance().createPanels(CostumerHandler.getInstance().selectAllCostumer(), showAllCustomerPanel, this, "CostumerPanel", customerFields);
             PanelFactory.getInstance().createPanels(EmployeeHandler.getInstance().selectAllEmployees(), employeeListPanel, this, "EmployeePanel", customerFields);
             repaint();

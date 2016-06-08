@@ -52,7 +52,6 @@ public class CaseHandler {
 //        return cases;
 //    }
 
-    //PanelInteface som datatype volder problemer
     public ArrayList<PanelInterface> getCasesNewest() throws SQLException {
         ArrayList<PanelInterface> cases = new ArrayList<>();
         String statement;
@@ -89,7 +88,6 @@ public class CaseHandler {
             Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
                     null, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), null, null);
             cases.add(c);
-            System.out.println("Case: "+c.getCaseName());
         }
         rs.close();
         for (int i = 0; i < cases.size(); i++) {
@@ -108,7 +106,6 @@ public class CaseHandler {
        int result = -1;
         try {
             String statement;
-            //and finished = 0;
             statement = "SELECT log_id FROM cases WHERE konsNr = "+aCase.getKonsNmb()+";";
             ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
             while (rs.next()) {
@@ -125,7 +122,6 @@ public class CaseHandler {
        int result = -1;
         try {
             String statement;
-            //and finished = 0;
             statement = "SELECT costumer_id FROM cases WHERE konsNr = "+aCase.getKonsNmb()+";";
             ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
             while (rs.next()) {
@@ -138,23 +134,28 @@ public class CaseHandler {
         return result;
     }
 
-//    public ArrayList<PanelInterface> getFinishedCases() throws SQLException {
-//        ArrayList<PanelInterface> cases = new ArrayList<>();
-//        String statement;
-//        //and finished = 0;
-//        statement = "SELECT * FROM cases WHERE finished = 1;";
-//        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
-//        while (rs.next()) {
-//            Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
-//            ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(c);
-//            ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(rs.getInt("log_id"));
-//            Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
-//                    articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer, logs);
-//            cases.add(c);
-//        }
-//        rs.close();
-//        return cases;
-//    }
+    public ArrayList<PanelInterface> getFinishedCases() throws SQLException {
+        ArrayList<PanelInterface> cases = new ArrayList<>();
+        String statement;
+        statement = "SELECT * FROM cases WHERE finished = 1;";
+        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+        while (rs.next()) {
+            Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
+                    null, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), null, null);
+            cases.add(c);
+        }
+        rs.close();
+        for (int i = 0; i < cases.size(); i++) {
+            Case aCase = (Case) cases.get(i);
+            Costumer costumer = CostumerHandler.getInstance().getCostumer(getCustomerId(aCase));
+            aCase.setCustomer(costumer);
+            ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(aCase);
+            aCase.setArticles(articles);
+            ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(getLogId(aCase));
+            aCase.setLogs(logs);
+        }
+        return cases;
+    }
 
     public ArrayList<PanelInterface> searchCases(int konsNmb, String caseName) throws SQLException {
         ArrayList<PanelInterface> cases = new ArrayList<>();
