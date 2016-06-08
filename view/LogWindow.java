@@ -32,7 +32,7 @@ public class LogWindow extends javax.swing.JPanel {
         logs = c.getLogs();
         this.c = c;
         this.panel = panel;
-        setBounds(100, 100, 600, 480);
+        setBounds(100, 100, 500, 350);
         setBorder(BorderFactory.createLineBorder(Color.black));
         setVisible(true);
         setComponentsVisible(false);
@@ -88,7 +88,7 @@ public class LogWindow extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -107,8 +107,8 @@ public class LogWindow extends javax.swing.JPanel {
                     .addComponent(jLabel1)
                     .addComponent(logCaseNmbLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(logPrintButton)
                 .addContainerGap())
         );
