@@ -394,7 +394,7 @@ public class GUI extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel24 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        allEmployeesAddButton = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
@@ -444,7 +444,7 @@ public class GUI extends javax.swing.JFrame {
         editCaseLogButton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         caseResponsibleScrollPane = new javax.swing.JScrollPane();
-        jButton4 = new javax.swing.JButton();
+        caseResponsibleRemoveButton = new javax.swing.JButton();
         allEmployeesScrollPane = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1483,7 +1483,12 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel24.setText("Sags ansvarlige");
 
-        jButton3.setText("Tilføj");
+        allEmployeesAddButton.setText("Tilføj");
+        allEmployeesAddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                allEmployeesAddButtonActionPerformed(evt);
+            }
+        });
 
         jLabel25.setText("Genstandsbeskrivelse");
 
@@ -1581,7 +1586,12 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel5.setText("Medarbejder");
 
-        jButton4.setText("Fjern");
+        caseResponsibleRemoveButton.setText("Fjern");
+        caseResponsibleRemoveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseResponsibleRemoveButtonActionPerformed(evt);
+            }
+        });
 
         allEmployeesScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -1647,13 +1657,13 @@ public class GUI extends javax.swing.JFrame {
                                                     .addGroup(editCasePanelLayout.createSequentialGroup()
                                                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                             .addComponent(jLabel5)
-                                                            .addComponent(jButton3)
+                                                            .addComponent(allEmployeesAddButton)
                                                             .addComponent(allEmployeesScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                         .addGap(18, 18, 18)
                                                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                             .addComponent(jLabel24)
                                                             .addComponent(caseResponsibleScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(jButton4))))
+                                                            .addComponent(caseResponsibleRemoveButton))))
                                                 .addGap(0, 0, Short.MAX_VALUE))
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editCasePanelLayout.createSequentialGroup()
                                                 .addGap(0, 0, Short.MAX_VALUE)
@@ -1845,8 +1855,8 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(caseFinishedCheckBox)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3)
-                            .addComponent(jButton4)))
+                            .addComponent(allEmployeesAddButton)
+                            .addComponent(caseResponsibleRemoveButton)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -2150,6 +2160,16 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_newCaseDescriptionMousePressed
 
+    private void caseResponsibleRemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caseResponsibleRemoveButtonActionPerformed
+        allEmployeesListModel.addElement(caseResponsibleList.getSelectedValue());
+        caseResponsibleListModel.remove(caseResponsibleList.getSelectedIndex());
+    }//GEN-LAST:event_caseResponsibleRemoveButtonActionPerformed
+
+    private void allEmployeesAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allEmployeesAddButtonActionPerformed
+        caseResponsibleListModel.addElement(allEmployeesList.getSelectedValue());
+        allEmployeesListModel.remove(allEmployeesList.getSelectedIndex());
+    }//GEN-LAST:event_allEmployeesAddButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2200,6 +2220,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JCheckBox addToMyCasesCheckBox;
     private javax.swing.JPanel adminPanel;
     private javax.swing.JLabel adressCostumerLabel;
+    private javax.swing.JButton allEmployeesAddButton;
     private javax.swing.JScrollPane allEmployeesScrollPane;
     private javax.swing.JTextField articleAmountField;
     private javax.swing.JPanel articleDisplayPanel;
@@ -2214,6 +2235,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField caseNameSField;
     private javax.swing.JTextField caseNmbEditPanel;
     private javax.swing.JTextField caseNmbSField;
+    private javax.swing.JButton caseResponsibleRemoveButton;
     private javax.swing.JScrollPane caseResponsibleScrollPane;
     private javax.swing.JButton caseSearchButton;
     private javax.swing.JButton changeDbButton;
@@ -2263,8 +2285,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel finishedCasesTab;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox3;
