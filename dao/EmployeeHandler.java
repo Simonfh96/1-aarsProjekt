@@ -137,6 +137,11 @@ public class EmployeeHandler {
         cs.setBoolean(10, e.isActive());
         cs.execute();
     }
+    
+    public void saveCaseResponsibles(PanelInterface[] eCRs) {
+        //Stored procedure maybe?
+       //Eller bare normalt statement 
+    } 
 
     public ArrayList<PanelInterface> selectAllEmployees() throws SQLException {
         ArrayList<PanelInterface> employees = new ArrayList<>();

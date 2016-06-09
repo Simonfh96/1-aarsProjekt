@@ -1915,7 +1915,8 @@ public class GUI extends javax.swing.JFrame {
          employee.getName() + "\t" + tingen de foretager sig + komponentet/erne, som de foretager ændriger på
          + tidspunket ændringerne er foretaget
          */
-
+        PanelInterface[] eCRs = (PanelInterface[]) caseResponsibleListModel.toArray();
+        EmployeeHandler.getInstance().saveCaseResponsibles(eCRs);
         //Problem i CaseHandler eller check my cases 
         if (addToMyCasesCheckBox.isSelected()) {
             try {
