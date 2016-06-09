@@ -2105,7 +2105,7 @@
                                                       <EmptySpace max="32767" attributes="0"/>
                                                       <Group type="103" groupAlignment="0" attributes="0">
                                                           <Component id="addToMyCasesCheckBox" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jCheckBox4" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="caseFinishedCheckBox" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                       <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
                                                   </Group>
@@ -2269,7 +2269,7 @@
                                       <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                                       <Component id="addToMyCasesCheckBox" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jCheckBox4" min="-2" max="-2" attributes="0"/>
+                                      <Component id="caseFinishedCheckBox" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -2501,7 +2501,7 @@
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator5">
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox4">
+            <Component class="javax.swing.JCheckBox" name="caseFinishedCheckBox">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sagen er afsluttet"/>
               </Properties>

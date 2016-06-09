@@ -38,7 +38,7 @@ import model.Task;
  * @author Simon
  */
 public class GUI extends javax.swing.JFrame {
-    
+
     private ArrayList<PanelInterface> newCaseArticles = new ArrayList<>();
     private ArrayList<Contact> newCaseContacts = new ArrayList<>();
     private ArrayList<PanelInterface> cases;
@@ -82,7 +82,7 @@ public class GUI extends javax.swing.JFrame {
         tabbedPane.setEnabledAt(adminTab, false);
         if (employee.isAdmin()) {
             tabbedPane.setEnabledAt(adminTab, true);
-        } 
+        }
         listModel = new DefaultListModel();
         listModelObjects = new DefaultListModel();
         list = new JList(listModel);
@@ -116,7 +116,7 @@ public class GUI extends javax.swing.JFrame {
         this.requestFocus();
         loggedIn = true;
     }
-    
+
     public void editCaseSetup() {
         listModelObjects.clear();
         try {
@@ -126,12 +126,17 @@ public class GUI extends javax.swing.JFrame {
         }
         for (PanelInterface emp : c.CaseResponsible()) {
             Employee e = (Employee) emp;
-            
+
         }
         if (employee.checkAddedMyCases(c) == true) {
             addToMyCasesCheckBox.setSelected(true);
         } else {
             addToMyCasesCheckBox.setSelected(false);
+        }
+        if (c.isFinished()) {
+            caseFinishedCheckBox.setSelected(true);
+        } else {
+            caseFinishedCheckBox.setSelected(false);
         }
         caseBeginDateLabel.setText(dateFormat.format(c.getCreatedAt()));
         costumerNameLabel.setText(c.getCustomer().getCostumerName());
@@ -143,7 +148,7 @@ public class GUI extends javax.swing.JFrame {
         jTextField4.setText(c.getCaseName());
         adressCostumerLabel.setText(c.getCustomer().getAddress());
         zipCodeCostumerLabel.setText(c.getCustomer().getCityOfZip());
-        editCaseOfferNmbField.setText(""+c.getOfferNmb());
+        editCaseOfferNmbField.setText("" + c.getOfferNmb());
     }
 
     public CardLayout getCl() {
@@ -375,7 +380,7 @@ public class GUI extends javax.swing.JFrame {
         jCheckBox3 = new javax.swing.JCheckBox();
         saveChangesEditCaseButton = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JSeparator();
-        jCheckBox4 = new javax.swing.JCheckBox();
+        caseFinishedCheckBox = new javax.swing.JCheckBox();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
@@ -1482,7 +1487,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox4.setText("Sagen er afsluttet");
+        caseFinishedCheckBox.setText("Sagen er afsluttet");
 
         jLabel30.setText("Kunde oplysninger");
 
@@ -1686,7 +1691,7 @@ public class GUI extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(addToMyCasesCheckBox)
-                                                    .addComponent(jCheckBox4))
+                                                    .addComponent(caseFinishedCheckBox))
                                                 .addGap(112, 112, 112))))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editCasePanelLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1812,7 +1817,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addGap(7, 7, 7)
                                 .addComponent(addToMyCasesCheckBox)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jCheckBox4)))
+                                .addComponent(caseFinishedCheckBox)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton3)
@@ -1875,7 +1880,7 @@ public class GUI extends javax.swing.JFrame {
          employee.getName() + "\t" + tingen de foretager sig + komponentet/erne, som de foretager ændriger på
          + tidspunket ændringerne er foretaget
          */
-        
+
         //Problem i CaseHandler eller check my cases 
         if (addToMyCasesCheckBox.isSelected()) {
             try {
@@ -1929,7 +1934,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_selectAllArticlesBoxActionPerformed
 
     private void logButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logButtonActionPerformed
-        
+
     }//GEN-LAST:event_logButtonActionPerformed
 
     private void createNewEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createNewEmployeeButtonActionPerformed
@@ -1940,41 +1945,41 @@ public class GUI extends javax.swing.JFrame {
             boolean partTime = false;
             if (employeeType.equals("Admin")) {
                 admin = true;
-            } else if (employeeType.equals("Projekt ansat"))  {
+            } else if (employeeType.equals("Projekt ansat")) {
                 partTime = true;
             }
             Employee newE = new Employee(EmployeeHandler.getInstance().generateEmployeeID(), newEmployeeUsernameField.getText(), newEmployeePassword2Field.getText(), newEmployeeFirstnameField.getText(),
-            newEmployeeLastnameField.getText(), Integer.parseInt(newEmployeePhoneField.getText()), newEmployeeEmailField.getText(), admin, partTime, true, newMyCases);
+                    newEmployeeLastnameField.getText(), Integer.parseInt(newEmployeePhoneField.getText()), newEmployeeEmailField.getText(), admin, partTime, true, newMyCases);
             EmployeeHandler.getInstance().saveEmployee(newE);
         } catch (SQLException ex) {
             System.out.println(ex.getLocalizedMessage());
-        } 
-        
+        }
+
     }//GEN-LAST:event_createNewEmployeeButtonActionPerformed
 
     private void resetPasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetPasswordButtonActionPerformed
         Employee employeePReset = null;
         for (Component comp : employeeListPanel.getComponents()) {
-            EmployeePanel ep = (EmployeePanel)comp;
+            EmployeePanel ep = (EmployeePanel) comp;
             if (ep.isSelected()) {
                 employeePReset = ep.getEmployee();
             }
         }
         if (employeePReset != null) {
-            employeePReset.setPassword(employeePReset.getInitials()+"123");
+            employeePReset.setPassword(employeePReset.getInitials() + "123");
             try {
                 EmployeeHandler.getInstance().resetPassword(employeePReset);
             } catch (SQLException ex) {
                 System.out.println(ex.getLocalizedMessage());
             }
         }
-        
+
     }//GEN-LAST:event_resetPasswordButtonActionPerformed
 
     private void deactiveEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deactiveEmployeeActionPerformed
         Employee employeePReset = null;
         for (Component comp : employeeListPanel.getComponents()) {
-            EmployeePanel ep = (EmployeePanel)comp;
+            EmployeePanel ep = (EmployeePanel) comp;
             if (ep.isSelected()) {
                 employeePReset = ep.getEmployee();
             }
@@ -1995,7 +2000,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void createCaseAddTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseAddTaskButtonActionPerformed
         Task task = new Task("Endnu ikke påbegyndt", taskDescriptionArea.getText());
-        Article article = (Article)newCaseArticles.get(newCaseArticles.size());
+        Article article = (Article) newCaseArticles.get(newCaseArticles.size());
         article.addTask(task);
     }//GEN-LAST:event_createCaseAddTaskButtonActionPerformed
 
@@ -2056,7 +2061,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_existingCostumerCheckBoxActionPerformed
 
     private void selectCostumerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectCostumerButtonActionPerformed
-            costSearchSelected = (Costumer) listModel.getElementAt(list.getSelectedIndex());
+        costSearchSelected = (Costumer) listModel.getElementAt(list.getSelectedIndex());
     }//GEN-LAST:event_selectCostumerButtonActionPerformed
 
     private void newArticleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newArticleButtonActionPerformed
@@ -2073,7 +2078,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void newLocationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newLocationButtonActionPerformed
         // JDialog der kommer op og spørger om navnet på placering, hvorefter den gemmer i databasen
-        
+
     }//GEN-LAST:event_newLocationButtonActionPerformed
 
     private void createLocationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createLocationButtonActionPerformed
@@ -2155,9 +2160,9 @@ public class GUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                    new GUI(control).setVisible(true);
-                }
-            
+                new GUI(control).setVisible(true);
+            }
+
         });
     }
 
@@ -2178,6 +2183,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField caseDescriptionEditPanel;
     private javax.swing.JTabbedPane caseDisplayPane;
     private javax.swing.JLabel caseEndedDateLabel;
+    private javax.swing.JCheckBox caseFinishedCheckBox;
     private javax.swing.JPanel caseHandlingPanel;
     private javax.swing.JTextField caseNameSField;
     private javax.swing.JTextField caseNmbEditPanel;
@@ -2235,7 +2241,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
