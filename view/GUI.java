@@ -20,6 +20,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JList;
@@ -1915,8 +1917,12 @@ public class GUI extends javax.swing.JFrame {
          employee.getName() + "\t" + tingen de foretager sig + komponentet/erne, som de foretager ændriger på
          + tidspunket ændringerne er foretaget
          */
-        PanelInterface[] eCRs = (PanelInterface[]) caseResponsibleListModel.toArray();
-        EmployeeHandler.getInstance().saveCaseResponsibles(eCRs);
+        Employee[] eCRs = (Employee[]) caseResponsibleListModel.toArray();
+        try {
+            EmployeeHandler.getInstance().saveCaseResponsibles(eCRs, c);
+        } catch (SQLException ex) {
+            System.out.println(ex.getLocalizedMessage());
+        }
         //Problem i CaseHandler eller check my cases 
         if (addToMyCasesCheckBox.isSelected()) {
             try {
