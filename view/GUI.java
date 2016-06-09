@@ -137,18 +137,28 @@ public class GUI extends javax.swing.JFrame {
         listModelObjects.clear();
         try {
             PanelFactory.getInstance().createPanels(c.getArticles(), articleDisplayPanel, this, "ArticlePanel", customerFields);
+
+            for (PanelInterface emp : c.getCaseResponsible()) {
+                Employee e = (Employee) emp;
+                caseResponsibleListModel.addElement(e);
+            }
+            ArrayList<PanelInterface> allEmps = EmployeeHandler.getInstance().selectAllEmployees();
+            ArrayList<PanelInterface> allEmpsSorted = new ArrayList<>();
+            for (PanelInterface emp : allEmps) {
+                Employee e = (Employee) emp;
+                if(!(Employee.compareCRTo(c.getCaseResponsible(), e) == 0)) {
+                    allEmpsSorted.add(e);
+                }
+            }
+            for (PanelInterface emp : allEmpsSorted) {
+                Employee e = (Employee) emp;
+                allEmployeesListModel.addElement(e);
+            }
             
-        for (PanelInterface emp : EmployeeHandler.getInstance().selectAllEmployees()) {
-            Employee e = (Employee) emp;
-            allEmployeesListModel.addElement(e);
-        }
         } catch (SQLException ex) {
             System.out.println(ex.getLocalizedMessage());
         }
-        for (PanelInterface emp : c.CaseResponsible()) {
-            Employee e = (Employee) emp;
-            caseResponsibleListModel.addElement(e);
-        }
+
         if (employee.checkAddedMyCases(c) == true) {
             addToMyCasesCheckBox.setSelected(true);
         } else {
