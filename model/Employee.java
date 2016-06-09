@@ -58,6 +58,11 @@ public class Employee implements PanelInterface {
         }
         return added;
     }
+    
+    @Override
+    public String toString() {
+        return fullName;
+    } 
 
     public String getFullName() {
         return fullName;

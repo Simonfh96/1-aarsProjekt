@@ -2021,7 +2021,7 @@
                                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                                               <Group type="103" groupAlignment="0" attributes="0">
                                                                   <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="jScrollPane5" min="-2" pref="115" max="-2" attributes="0"/>
+                                                                  <Component id="caseResponsibleScrollPane" min="-2" pref="115" max="-2" attributes="0"/>
                                                                   <Component id="jButton4" min="-2" max="-2" attributes="0"/>
                                                               </Group>
                                                           </Group>
@@ -2252,7 +2252,7 @@
                                       <EmptySpace min="-2" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jScrollPane3" max="32767" attributes="0"/>
-                                          <Component id="jScrollPane5" max="32767" attributes="0"/>
+                                          <Component id="caseResponsibleScrollPane" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -2666,7 +2666,7 @@
                 <Property name="text" type="java.lang.String" value="Medarbejder"/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane5">
+            <Container class="javax.swing.JScrollPane" name="caseResponsibleScrollPane">
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
             </Container>
