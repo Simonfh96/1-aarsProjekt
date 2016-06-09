@@ -53,8 +53,7 @@ public class CaseHandler {
 //    }
     public ArrayList<PanelInterface> getCasesNewest() throws SQLException {
         ArrayList<PanelInterface> cases = new ArrayList<>();
-        String statement;
-        statement = "SELECT * FROM cases ORDER BY lastUpdated DESC LIMIT 10;";
+        String statement = "SELECT * FROM cases ORDER BY lastUpdated DESC LIMIT 10;";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
@@ -108,8 +107,7 @@ public class CaseHandler {
     public int getLogId(Case aCase) {
         int result = -1;
         try {
-            String statement;
-            statement = "SELECT log_id FROM cases WHERE konsNr = " + aCase.getKonsNmb() + ";";
+            String statement = "SELECT log_id FROM cases WHERE konsNr = " + aCase.getKonsNmb() + ";";
             ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
             while (rs.next()) {
                 result = rs.getInt("log_id");
@@ -124,8 +122,7 @@ public class CaseHandler {
     public int getCustomerId(Case aCase) {
         int result = -1;
         try {
-            String statement;
-            statement = "SELECT costumer_id FROM cases WHERE konsNr = " + aCase.getKonsNmb() + ";";
+            String statement = "SELECT costumer_id FROM cases WHERE konsNr = " + aCase.getKonsNmb() + ";";
             ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
             while (rs.next()) {
                 result = rs.getInt("costumer_id");
@@ -139,8 +136,7 @@ public class CaseHandler {
 
     public ArrayList<PanelInterface> getFinishedCases() throws SQLException {
         ArrayList<PanelInterface> cases = new ArrayList<>();
-        String statement;
-        statement = "SELECT * FROM cases WHERE finished = 1;";
+        String statement = "SELECT * FROM cases WHERE finished = 1;";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
@@ -170,8 +166,7 @@ public class CaseHandler {
 //        ps.setInt(1, konsNmb);
 //        ps.setString(2, caseName);
 //        ResultSet rs = ps.executeQuery();
-        String statement;
-        statement = "SELECT * FROM cases WHERE konsNr = "
+        String statement = "SELECT * FROM cases WHERE konsNr = "
                 + konsNmb + " OR caseName LIKE '" + caseName + "%';";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
@@ -197,13 +192,10 @@ public class CaseHandler {
 
     //Skal benyttes, når man trykker sig ind på et nyt panel via rediger knappen
     public void editCase(Case c) throws SQLException {
-        String stmt1;
-        String stmt2;
-        String stmt3;
-        stmt1 = "begin;";
-        stmt2 = "update cases set caseName = '" + c.getCaseName() + "', lastUpdated = '"
+        String stmt1 = "begin;";
+        String stmt2 = "update cases set caseName = '" + c.getCaseName() + "', lastUpdated = '"
                 + dateFormat.format(cal.getTime()) + "' where konsNr = " + c.getKonsNmb() + ";";
-        stmt3 = "commit;";
+        String stmt3 = "commit;";
         System.out.println(stmt1 + "\n" + stmt2 + "\n" + stmt3);
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt1);
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt2);
@@ -227,8 +219,8 @@ public class CaseHandler {
         java.sql.Date sqlLastUpdate = new java.sql.Date(utilDateConvert.getTime());
         utilDateConvert = c.getCreatedAt();
         java.sql.Date sqlCreatedAt = new java.sql.Date(utilDateConvert.getTime());
-        String saveCase;
-        saveCase = "INSERT INTO cases (konsNr, offerNmb, caseName, description, finished, lastUpdated, updateBy, createdAt, costumer_id)"
+        String saveCase = "INSERT INTO cases (konsNr, offerNmb, caseName, description, finished,"
+                + "lastUpdated, updateBy, createdAt, costumer_id)"
                 + " values (?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(saveCase);
         ps.setInt(1, c.getKonsNmb());
@@ -252,9 +244,8 @@ public class CaseHandler {
 
     public int generateKonsNmb() throws SQLException {
         int konsNmb = 0;
-        String statement;
+        String statement = "SELECT konsNr FROM cases ORDER BY konsNr DESC LIMIT 1;";
         //Eller det her statement SELECT MAX(konsNr) FROM cases;
-        statement = "SELECT konsNr FROM cases ORDER BY konsNr DESC LIMIT 1;";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         if (rs.next()) {
             konsNmb = rs.getInt("konsNr") + 1;
@@ -277,15 +268,13 @@ public class CaseHandler {
     * da det kun bruges til referencer
      */
     public void deleteMyCase(int employeeID, int caseID) throws SQLException {
-        String stmt1;
-        stmt1 = "DELETE FROM mycases WHERE employee_id = " + employeeID + " AND cases_id = " + caseID + ";";
+        String stmt1 = "DELETE FROM mycases WHERE employee_id = " + employeeID + " AND cases_id = " + caseID + ";";
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt1);
         //Sikre at den ikke prøver at slette noget, som ikke er der
     }
 
     public void cancelLastAction() throws SQLException {
-        String stmt;
-        stmt = "rollback;";
+        String stmt  = "rollback;";
         System.out.println(stmt);
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt);
     }
