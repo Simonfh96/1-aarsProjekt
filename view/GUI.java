@@ -2032,7 +2032,7 @@ public class GUI extends javax.swing.JFrame {
 //                if (employee.checkAddedMyCases(c) == false) {
 //                CaseHandler.getInstance().addToMyCases(employee, c);
                 c.setCaseName(jTextField4.getText());
-                CaseHandler.getInstance().editCase(c);
+//                CaseHandler.getInstance().editCase(c);
                 CaseHandler.getInstance().completeTransaction();
                 employeeLastUpdateField.setText(employee.getFullName());
                 lastUpdatedField.setText("" + dateFormat.format(cal.getTime()));
@@ -2045,7 +2045,7 @@ public class GUI extends javax.swing.JFrame {
 //                if (employee.checkAddedMyCases(c)) {
 //                CaseHandler.getInstance().deleteMyCase(c.getKonsNmb(), employee.getEmployeeID());
                 c.setCaseName(jTextField4.getText());
-                CaseHandler.getInstance().editCase(c);
+//                CaseHandler.getInstance().editCase(c);
                 CaseHandler.getInstance().completeTransaction();
                 employeeLastUpdateField.setText(employee.getFullName());
                 lastUpdatedField.setText("" + dateFormat.format(cal.getTime()));
