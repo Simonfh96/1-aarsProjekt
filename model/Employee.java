@@ -60,9 +60,7 @@ public class Employee implements Comparable, PanelInterface {
         }
         return added;
     }
-
     
-
     @Override
     public int compareTo(Object o) {
         int result;
