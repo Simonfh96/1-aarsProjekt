@@ -194,10 +194,10 @@ public class CaseHandler {
     //Skal benyttes, når man trykker sig ind på et nyt panel via rediger knappen
     public void editCase(Case c) throws SQLException {
         String stmt = "SET autocommit = 0;";
-        String stmt1 = "begin;";
+        String stmt1 = "begin ";
         String stmt2 = "update cases set caseName = '" + c.getCaseName() + "', lastUpdated = '"
-                + dateFormat.format(cal.getTime()) + "' where konsNr = " + c.getKonsNmb() + ";";
-//        String stmt3 = "commit;";
+                + dateFormat.format(cal.getTime()) + "' where konsNr = " + c.getKonsNmb() + "; ";
+        String stmt3 = "end;";
         System.out.println(stmt1 + "\n" + stmt2 + "\n" );
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt);
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt1);

@@ -1916,6 +1916,8 @@ public class GUI extends javax.swing.JFrame {
          employee.getName() + "\t" + tingen de foretager sig + komponentet/erne, som de foretager ændriger på
          + tidspunket ændringerne er foretaget
          */
+        //Undo "setters" til objektets oprindelige tilstand - Command --
+        //Ændringerne skal gemmes, inden man trykker okay
         int choice = JOptionPane.showConfirmDialog(this, "Er du sikker på, at du vil gemme?", "Gem ændringer", 2);
         if (choice == JOptionPane.OK_OPTION) {
         Object[] eCRs = caseResponsibleListModel.toArray();
@@ -1931,6 +1933,7 @@ public class GUI extends javax.swing.JFrame {
 //                CaseHandler.getInstance().addToMyCases(employee, c);
                 c.setCaseName(jTextField4.getText());
                 CaseHandler.getInstance().editCase(c);
+                CaseHandler.getInstance().completeTransaction();
                 employeeLastUpdateField.setText(employee.getFullName());
                 lastUpdatedField.setText("" + dateFormat.format(cal.getTime()));
 //                }
@@ -1943,6 +1946,7 @@ public class GUI extends javax.swing.JFrame {
 //                CaseHandler.getInstance().deleteMyCase(c.getKonsNmb(), employee.getEmployeeID());
                 c.setCaseName(jTextField4.getText());
                 CaseHandler.getInstance().editCase(c);
+                CaseHandler.getInstance().completeTransaction();
                 employeeLastUpdateField.setText(employee.getFullName());
                 lastUpdatedField.setText("" + dateFormat.format(cal.getTime()));
 //                }
