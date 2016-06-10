@@ -61,28 +61,19 @@ public class Employee implements Comparable, PanelInterface {
         return added;
     }
 
-    public static int compareCRTo(ArrayList<PanelInterface> employeesCR, Employee e) {
-        int result = -1;
-        for (PanelInterface empCR : employeesCR) {
-            Employee eCR = (Employee) empCR;
-            if (e.compareTo(eCR) == 0) {
-                result = 0;
-                System.out.println("same");
-            }
-            System.out.println("not");
-        }
-        return result;
-    }
+    
 
     @Override
     public int compareTo(Object o) {
+        int result;
         if (this.employeeID == ((Employee) o).employeeID) {
-            return 0;
+            result = 0;
         } else if ((this.employeeID) > ((Employee) o).employeeID) {
-            return 1;
+            result = 1;
         } else {
-            return -1;
+            result = -1;
         }
+        return result;
     }
 
     @Override

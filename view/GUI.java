@@ -79,7 +79,11 @@ public class GUI extends javax.swing.JFrame {
         this.control = control;
         employee = null;
         while (!loggedIn) {
-            System.out.println("1");
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException ex) {
+               
+            }
         }
         System.out.println("now");
         JTextField[] textFields = {customerListNameField, customerListContactfield, customerListPhoneField, customerListEmailField, customerListZipCodeField, customerListAddressField};
@@ -144,15 +148,9 @@ public class GUI extends javax.swing.JFrame {
                 Employee e = (Employee) emp;
                 caseResponsibleListModel.addElement(e);
             }
-            ArrayList<PanelInterface> allEmps = EmployeeHandler.getInstance().selectAllEmployees();
-            ArrayList<PanelInterface> allEmpsSorted = new ArrayList<>();
+            ArrayList<PanelInterface> allEmps = EmployeeHandler.getInstance().selectAllEmployeesSorted(c.getCaseResponsible());
+           
             for (PanelInterface emp : allEmps) {
-                Employee e = (Employee) emp;
-                if(!(Employee.compareCRTo(c.getCaseResponsible(), e) == 0)) {
-                    allEmpsSorted.add(e);
-                }
-            }
-            for (PanelInterface emp : allEmpsSorted) {
                 Employee e = (Employee) emp;
                 allEmployeesListModel.addElement(e);
             }

@@ -275,9 +275,10 @@ public class CaseHandler {
     }
 
     public void cancelLastAction() throws SQLException {
-        String stmt  = "rollback;";
-        System.out.println(stmt);
-        DBHandler.getInstance().conn.createStatement().executeUpdate(stmt);
+        DBHandler.getInstance().conn.setAutoCommit(false);
+        DBHandler.getInstance().conn.rollback();
+//        System.out.println(stmt);
+//        DBHandler.getInstance().conn.createStatement().executeUpdate(stmt);
     }
     
     public void completeTransaction() throws SQLException {

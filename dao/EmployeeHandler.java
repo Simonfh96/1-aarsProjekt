@@ -68,7 +68,7 @@ public class EmployeeHandler {
             employee = new Employee(rs.getInt("employee_id"), rs.getString("username"), rs.getString("userPassword"),
                     rs.getString("firstName"), rs.getString("lastName"),
                     rs.getInt("phone"), rs.getString("email"), rs.getBoolean("admin"), rs.getBoolean("partTime"), rs.getBoolean("active"), myCases);
-            System.out.println("Name: "+ employee.getFirstName());
+            System.out.println("Name: " + employee.getFirstName());
         }
         rs.close();
 
@@ -77,7 +77,7 @@ public class EmployeeHandler {
 
         return employee;
     }
-    
+
     public ArrayList<PanelInterface> getCaseResponsibles(Case c) throws SQLException {
         PreparedStatement ps = null;
         String getEmployee = "SELECT * FROM caseResponsible LEFT JOIN employee ON caseResponsible.employee_id = employee.employee_id WHERE caseResponsible.employee_id = ?";
@@ -87,7 +87,7 @@ public class EmployeeHandler {
         ArrayList<PanelInterface> employees = new ArrayList<>();
         while (rs.next()) {
             Employee employee = new Employee(rs.getInt("employee_id"), rs.getString("firstName")
-                    + " " + rs.getString("lastName"), rs.getString("initials"));                    
+                    + " " + rs.getString("lastName"), rs.getString("initials"));
             employees.add(employee);
         }
         rs.close();
@@ -137,16 +137,16 @@ public class EmployeeHandler {
         cs.setBoolean(10, e.isActive());
         cs.execute();
     }
-    
+
     public void saveCaseResponsibles(Employee[] eCRs, Case c) throws SQLException {
-       CallableStatement cs = null;
+        CallableStatement cs = null;
         for (Employee eCR : eCRs) {
-        cs = DBHandler.getInstance().conn.prepareCall("{CALL AddCaseResponsibles(?, ?)}");
-        cs.setInt(1, c.getCaseID());
-        cs.setInt(2, eCR.getEmployeeID());
-        cs.execute();
+            cs = DBHandler.getInstance().conn.prepareCall("{CALL AddCaseResponsibles(?, ?)}");
+            cs.setInt(1, c.getCaseID());
+            cs.setInt(2, eCR.getEmployeeID());
+            cs.execute();
         }
-    } 
+    }
 
     public ArrayList<PanelInterface> selectAllEmployees() throws SQLException {
         ArrayList<PanelInterface> employees = new ArrayList<>();
@@ -166,6 +166,31 @@ public class EmployeeHandler {
         }
         rs.close();
         return employees;
+    }
+
+    public int compareCRTo(ArrayList<PanelInterface> employeesCR, Employee e) {
+        int result = -1;
+        for (PanelInterface empCR : employeesCR) {
+            Employee eCR = (Employee) empCR;
+            if (e.compareTo(eCR) == 0) {
+                result = 0;
+                System.out.println("same");
+            }
+            System.out.println("not");
+        }
+        return result;
+    }
+    
+    public ArrayList<PanelInterface> selectAllEmployeesSorted(ArrayList<PanelInterface> caseResponsibles) throws SQLException {
+        ArrayList<PanelInterface> allEmps = selectAllEmployees();
+        ArrayList<PanelInterface> allEmpsSorted = new ArrayList<>();
+        for (PanelInterface emp : allEmps) {
+            Employee e = (Employee) emp;
+            if (!(compareCRTo(caseResponsibles, e) == 0)) {
+                allEmpsSorted.add(e);
+            }
+        }
+        return allEmpsSorted;
     }
 
     public int generateEmployeeID() throws SQLException {
