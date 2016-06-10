@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import model.Article;
 import model.Costumer;
 import model.Employee;
@@ -275,6 +276,12 @@ public class CaseHandler {
 
     public void cancelLastAction() throws SQLException {
         String stmt  = "rollback;";
+        System.out.println(stmt);
+        DBHandler.getInstance().conn.createStatement().executeUpdate(stmt);
+    }
+    
+    public void completeTransaction() throws SQLException {
+        String stmt = "commit;";
         System.out.println(stmt);
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt);
     }
