@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Case;
 import model.Log;
@@ -71,7 +72,6 @@ public class LogWindow extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         logDisplayTextArea = new javax.swing.JTextArea();
         logPrintButton = new javax.swing.JButton();
-        cancelLastActionButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
 
         jLabel1.setText("Sagsnr:");
@@ -86,13 +86,6 @@ public class LogWindow extends javax.swing.JPanel {
         logPrintButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logPrintButtonActionPerformed(evt);
-            }
-        });
-
-        cancelLastActionButton.setText("Fortryd");
-        cancelLastActionButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelLastActionButtonActionPerformed(evt);
             }
         });
 
@@ -119,8 +112,6 @@ public class LogWindow extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(backButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cancelLastActionButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(logPrintButton)))
                 .addContainerGap())
         );
@@ -136,7 +127,6 @@ public class LogWindow extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(logPrintButton)
-                    .addComponent(cancelLastActionButton)
                     .addComponent(backButton))
                 .addContainerGap())
         );
@@ -154,18 +144,9 @@ public class LogWindow extends javax.swing.JPanel {
         panel.revalidate();
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void cancelLastActionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelLastActionButtonActionPerformed
-        try {
-            CaseHandler.getInstance().cancelLastAction();
-        } catch (SQLException ex) {
-            Logger.getLogger(LogWindow.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_cancelLastActionButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
-    private javax.swing.JButton cancelLastActionButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel logCaseNmbLabel;

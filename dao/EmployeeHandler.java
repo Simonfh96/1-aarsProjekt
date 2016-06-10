@@ -138,12 +138,13 @@ public class EmployeeHandler {
         cs.execute();
     }
 
-    public void saveCaseResponsibles(Employee[] eCRs, Case c) throws SQLException {
+    public void saveCaseResponsibles(Object[] eCRs, Case c) throws SQLException {
         CallableStatement cs = null;
-        for (Employee eCR : eCRs) {
+        for (Object eCR : eCRs) {
+            Employee e = (Employee) eCR;
             cs = DBHandler.getInstance().conn.prepareCall("{CALL AddCaseResponsibles(?, ?)}");
             cs.setInt(1, c.getCaseID());
-            cs.setInt(2, eCR.getEmployeeID());
+            cs.setInt(2, e.getEmployeeID());
             cs.execute();
         }
     }

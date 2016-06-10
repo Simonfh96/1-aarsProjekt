@@ -25,6 +25,7 @@ import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import listeners.SearchListListener;
@@ -1915,7 +1916,9 @@ public class GUI extends javax.swing.JFrame {
          employee.getName() + "\t" + tingen de foretager sig + komponentet/erne, som de foretager ændriger på
          + tidspunket ændringerne er foretaget
          */
-        Employee[] eCRs = (Employee[]) caseResponsibleListModel.toArray();
+        JOptionPane.showConfirmDialog(this, "Er du sikker på, at du vil gemme?", "Gem ændringer", 2);
+        
+        Object[] eCRs = caseResponsibleListModel.toArray();
         try {
             EmployeeHandler.getInstance().saveCaseResponsibles(eCRs, c);
         } catch (SQLException ex) {
