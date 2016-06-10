@@ -159,21 +159,25 @@ public class CaseHandler {
         return cases;
     }
 
-    public ArrayList<PanelInterface> searchCases(int caseIDParam, String caseNameParam,/*String articleType*/ int konsNmbParam, int offerNmb) throws SQLException {
+    public ArrayList<PanelInterface> searchCases(String caseIDParam, String caseNameParam,/*String articleType*/ String konsNmbParam, String offerNmbParam) throws SQLException {
         ArrayList<PanelInterface> cases = new ArrayList<>();
         String statement;
         statement = "SELECT * FROM cases WHERE ";
         
-        if (caseIDParam > 0) {
+        if (Integer.parseInt(caseIDParam) > 0 && !(caseIDParam.isEmpty()) && caseIDParam.matches("[0-9]")) {
             statement += "case_id = " + caseIDParam + " AND ";
         }
         
-        if (caseNameParam.matches("[a-zA-Z]+")) {
+        if (caseNameParam.matches("[a-zA-Z]+") && !(caseNameParam.isEmpty())) {
             statement += "caseName = " + caseNameParam + " AND ";
         }
         
-         if (konsNmbParam > 0) {
+         if (Integer.parseInt(konsNmbParam) > 0 && !(konsNmbParam.isEmpty()) && konsNmbParam.matches("[0-9]")) {
             statement += "konsNr = " + konsNmbParam + " AND ";
+        }
+         
+        if (Integer.parseInt(offerNmbParam) > 0 && !(offerNmbParam.isEmpty()) && offerNmbParam.matches("[0-9]")) {
+            statement += "offerNmb = " + offerNmbParam + " AND ";
         }
         
         //AND caseName LIKE '" + caseName + "%';";
