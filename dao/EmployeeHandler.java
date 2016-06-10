@@ -137,6 +137,16 @@ public class EmployeeHandler {
         cs.setBoolean(10, e.isActive());
         cs.execute();
     }
+    
+    public void saveCaseResponsibles(Employee[] eCRs, Case c) throws SQLException {
+       CallableStatement cs = null;
+        for (Employee eCR : eCRs) {
+        cs = DBHandler.getInstance().conn.prepareCall("{CALL AddCaseResponsibles(?, ?)}");
+        cs.setInt(1, c.getCaseID());
+        cs.setInt(2, eCR.getEmployeeID());
+        cs.execute();
+        }
+    } 
 
     public ArrayList<PanelInterface> selectAllEmployees() throws SQLException {
         ArrayList<PanelInterface> employees = new ArrayList<>();

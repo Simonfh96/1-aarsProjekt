@@ -2015,14 +2015,14 @@
                                                           <Group type="102" alignment="0" attributes="0">
                                                               <Group type="103" groupAlignment="0" attributes="0">
                                                                   <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="jButton3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="jScrollPane4" min="-2" pref="115" max="-2" attributes="0"/>
+                                                                  <Component id="allEmployeesAddButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                                  <Component id="allEmployeesScrollPane" min="-2" pref="115" max="-2" attributes="0"/>
                                                               </Group>
                                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                                               <Group type="103" groupAlignment="0" attributes="0">
                                                                   <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                                                                   <Component id="caseResponsibleScrollPane" min="-2" pref="115" max="-2" attributes="0"/>
-                                                                  <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                                                                  <Component id="caseResponsibleRemoveButton" min="-2" max="-2" attributes="0"/>
                                                               </Group>
                                                           </Group>
                                                       </Group>
@@ -2252,7 +2252,7 @@
                                       <EmptySpace min="-2" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="caseResponsibleScrollPane" pref="140" max="32767" attributes="0"/>
-                                          <Component id="jScrollPane4" max="32767" attributes="0"/>
+                                          <Component id="allEmployeesScrollPane" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -2274,8 +2274,8 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                                  <Component id="allEmployeesAddButton" min="-2" max="-2" attributes="0"/>
+                                  <Component id="caseResponsibleRemoveButton" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="jScrollPane1" min="-2" pref="570" max="-2" attributes="0"/>
@@ -2404,10 +2404,13 @@
                 <Property name="text" type="java.lang.String" value="Sags ansvarlige"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton3">
+            <Component class="javax.swing.JButton" name="allEmployeesAddButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tilf&#xf8;j"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="allEmployeesAddButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField1">
             </Component>
@@ -2651,12 +2654,18 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
             </Container>
-            <Component class="javax.swing.JButton" name="jButton4">
+            <Component class="javax.swing.JButton" name="caseResponsibleRemoveButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Fjern"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="caseResponsibleRemoveButtonActionPerformed"/>
+              </Events>
             </Component>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+            <Container class="javax.swing.JScrollPane" name="allEmployeesScrollPane">
+              <Properties>
+                <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
+              </Properties>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
             </Container>

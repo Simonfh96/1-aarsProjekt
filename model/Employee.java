@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package model;
+
 import interfaces.PanelInterface;
 import java.util.ArrayList;
 
@@ -11,7 +12,8 @@ import java.util.ArrayList;
  *
  * @author pdyst
  */
-public class Employee implements PanelInterface {
+public class Employee implements Comparable, PanelInterface {
+
     private int employeeID;
     private String username;
     private String password;
@@ -26,7 +28,7 @@ public class Employee implements PanelInterface {
     private boolean active;
     private ArrayList<PanelInterface> myCases;
 
-    public Employee(int employeeID, String username, String password, String firstName, String lastName, int phone, String email, boolean admin, boolean partTime, boolean active,ArrayList<PanelInterface> myCases) {
+    public Employee(int employeeID, String username, String password, String firstName, String lastName, int phone, String email, boolean admin, boolean partTime, boolean active, ArrayList<PanelInterface> myCases) {
         this.employeeID = employeeID;
         this.username = username;
         this.password = password;
@@ -41,28 +43,52 @@ public class Employee implements PanelInterface {
         this.active = active;
         this.myCases = myCases;
     }
-    
+
     public Employee(int employeeID, String fullName, String initials) {
         this.employeeID = employeeID;
         this.fullName = fullName;
         this.initials = initials;
     }
-    
+
     public boolean checkAddedMyCases(Case c) {
         boolean added = false;
-        for (PanelInterface myCase :  myCases) {
+        for (PanelInterface myCase : myCases) {
             Case mc = (Case) myCase;
-            if (c.getCaseID()  == mc.getCaseID()) {
+            if (c.getCaseID() == mc.getCaseID()) {
                 added = true;
             }
         }
         return added;
     }
-    
+
+    public static int compareCRTo(ArrayList<PanelInterface> employeesCR, Employee e) {
+        int result = -1;
+        for (PanelInterface empCR : employeesCR) {
+            Employee eCR = (Employee) empCR;
+            if (e.compareTo(eCR) == 0) {
+                result = 0;
+                System.out.println("same");
+            }
+            System.out.println("not");
+        }
+        return result;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        if (this.employeeID == ((Employee) o).employeeID) {
+            return 0;
+        } else if ((this.employeeID) > ((Employee) o).employeeID) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
+
     @Override
     public String toString() {
         return fullName;
-    } 
+    }
 
     public String getFullName() {
         return fullName;
@@ -83,7 +109,6 @@ public class Employee implements PanelInterface {
     public String getEmail() {
         return email;
     }
-    
 
     public int getEmployeeID() {
         return employeeID;
@@ -128,8 +153,5 @@ public class Employee implements PanelInterface {
     public String getInitials() {
         return initials;
     }
-    
-    
-    
-    
+
 }

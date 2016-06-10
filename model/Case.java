@@ -67,7 +67,7 @@ public class Case implements PanelInterface{
         return articles;
     }
 
-    public ArrayList<PanelInterface> CaseResponsible() {
+    public ArrayList<PanelInterface> getCaseResponsible() {
         return caseResponsible;
     }
 
