@@ -159,25 +159,30 @@ public class CaseHandler {
         return cases;
     }
 
-    public ArrayList<PanelInterface> searchCases(int caseIDParam, String caseNameParam,/*String articleType*/ int konsNmbParam, int offerNmb) throws SQLException {
+    public ArrayList<PanelInterface> searchCases(String caseIDParam, String caseNameParam,/*String articleType*/ String konsNmbParam, String offerNmbParam) throws SQLException {
         ArrayList<PanelInterface> cases = new ArrayList<>();
         String statement;
         statement = "SELECT * FROM cases WHERE ";
         
-        if (caseIDParam > 0) {
+        if (Integer.parseInt(caseIDParam) > 0 && !(caseIDParam.isEmpty()) && caseIDParam.matches("[0-9]")) {
             statement += "case_id = " + caseIDParam + " AND ";
         }
         
-        if (caseNameParam.matches("[a-zA-Z]+")) {
-            statement += "caseName = " + caseNameParam + " AND ";
+        if (caseNameParam.matches("[a-zA-Z]+") && !(caseNameParam.isEmpty())) {
+            statement += "caseName LIKE '" + caseNameParam + "%' AND ";
         }
         
-         if (konsNmbParam > 0) {
+         if (Integer.parseInt(konsNmbParam) > 0 && !(konsNmbParam.isEmpty()) && konsNmbParam.matches("[0-9]")) {
             statement += "konsNr = " + konsNmbParam + " AND ";
         }
+         
+        if (Integer.parseInt(offerNmbParam) > 0 && !(offerNmbParam.isEmpty()) && offerNmbParam.matches("[0-9]")) {
+            statement += "offerNmb = " + offerNmbParam + " AND ";
+        }
         
-        //AND caseName LIKE '" + caseName + "%';";
+        statement = statement.substring(0, (statement.length() - 5)) + ";";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+        System.out.println(statement);
         while (rs.next()) {
             Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
                     null, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), null, null, null);
@@ -200,11 +205,11 @@ public class CaseHandler {
     }
 
     //Skal benyttes, når man trykker sig ind på et nyt panel via rediger knappen
-    public void editCase(Case c) throws SQLException {
+    public void editCase(Employee e, Case c) throws SQLException {
         String stmt = "SET autocommit = 0;";
         String stmt1 = "begin ";
-        String stmt2 = "update cases set caseName = '" + c.getCaseName() + "', lastUpdated = '"
-                + dateFormat.format(cal.getTime()) + "' where konsNr = " + c.getKonsNmb() + "; ";
+        String stmt2 = "update cases set caseName = '" + c.getCaseName() + "', descripiton = '" + c.getDescription() + "', lastUpdated = '"
+                + dateFormat.format(cal.getTime()) + "', updateBy = '" + e.getFullName() + "' WHERE case_id = " + c.getCaseID() + "; ";
         String stmt3 = "end;";
         System.out.println(stmt1 + "\n" + stmt2 + "\n" );
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt);
@@ -219,6 +224,7 @@ public class CaseHandler {
     må have 2 forskellige customer id'er, hvorimod articles skal gemmes tilsvarende Case objektets primary key
      */
     public void saveCase(Case c, Employee e, boolean existingCostumer) throws SQLException {
+        boolean succeeded = true;
         //Husk ArrayListen af articles
         //ArticleHandler måske?
         //Customer id samt customer objekt?
@@ -226,17 +232,33 @@ public class CaseHandler {
         Insert statement skal justeres til også at gemme foreign key (log_id)
         til cases table i databasen
          */
+        String konsNmb = c.getKonsNmb()+"";
+        if (Integer.parseInt(konsNmb) < 0 || konsNmb.isEmpty() || !(konsNmb.matches("[0-9]"))) {
+            succeeded = false;
+        }
+        
+        String offerNmb = c.getOfferNmb() + "";
+        if (Integer.parseInt(offerNmb) < 0 || offerNmb.isEmpty() || !(offerNmb.matches("[0-9]"))) {
+            succeeded = false;
+        }
+        
+        String caseName = c.getCaseName();
+        if (!(caseName.matches("[a-zA-Z]+") && !(caseName.isEmpty()))) {
+            succeeded = false;
+        }
+        
         java.util.Date utilDateConvert = c.getLastUpdated();
         java.sql.Date sqlLastUpdate = new java.sql.Date(utilDateConvert.getTime());
         utilDateConvert = c.getCreatedAt();
         java.sql.Date sqlCreatedAt = new java.sql.Date(utilDateConvert.getTime());
+        if (succeeded) {
         String saveCase = "INSERT INTO cases (konsNr, offerNmb, caseName, description, finished,"
                 + "lastUpdated, updateBy, createdAt, costumer_id)"
                 + " values (?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(saveCase);
-        ps.setInt(1, c.getKonsNmb());
-        ps.setInt(2, c.getOfferNmb());
-        ps.setString(3, c.getCaseName());
+        ps.setInt(1, Integer.parseInt(konsNmb));
+        ps.setInt(2, Integer.parseInt(offerNmb));
+        ps.setString(3, caseName);
         ps.setString(4, c.getDescription());
         ps.setBoolean(5, c.isFinished());
         ps.setDate(6, sqlLastUpdate);
@@ -250,6 +272,10 @@ public class CaseHandler {
                 Article a = (Article) article;
                 ArticleHandler.getInstance().saveArticle(a, c);
             }
+        }
+        } else {
+            //JOptionPane.showConfirmDialog(parentComponent, "Ikke gyldige input");
+            //Returner int -1, og kald optionpane i gui?
         }
     }
 
