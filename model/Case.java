@@ -11,9 +11,9 @@ import java.util.Date;
 
 /**
  *
- * @author Simon
+ * @author Philip
  */
-public class Case implements PanelInterface{
+public class Case implements PanelInterface, Comparable{
     private int caseID;
     private int konsNmb;
     private int offerNmb;
@@ -41,6 +41,19 @@ public class Case implements PanelInterface{
         this.customer = customer;
         this.logs = logs;
         this.caseResponsible = caseResponsibles;
+    }
+    
+    @Override
+    public int compareTo(Object o) {
+        int result;
+        if (this.caseID == ((Case) o).caseID) {
+            result = 0;
+        } else if ((this.caseID) > ((Case) o).caseID) {
+            result = 1;
+        } else {
+            result = -1;
+        }
+        return result;
     }
 
     public int getCaseID() {
@@ -118,6 +131,8 @@ public class Case implements PanelInterface{
     public void setCaseResponsible(ArrayList<PanelInterface> caseResponsible) {
         this.caseResponsible = caseResponsible;
     }
+
+    
     
     
     

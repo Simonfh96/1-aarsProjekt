@@ -169,7 +169,7 @@ public class CaseHandler {
         }
         
         if (caseNameParam.matches("[a-zA-Z]+") && !(caseNameParam.isEmpty())) {
-            statement += "caseName = " + caseNameParam + " AND ";
+            statement += "caseName LIKE '" + caseNameParam + "%' AND ";
         }
         
          if (Integer.parseInt(konsNmbParam) > 0 && !(konsNmbParam.isEmpty()) && konsNmbParam.matches("[0-9]")) {
@@ -180,7 +180,7 @@ public class CaseHandler {
             statement += "offerNmb = " + offerNmbParam + " AND ";
         }
         
-        //AND caseName LIKE '" + caseName + "%';";
+        
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),

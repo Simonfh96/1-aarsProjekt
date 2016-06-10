@@ -54,7 +54,7 @@ public class Employee implements Comparable, PanelInterface {
         boolean added = false;
         for (PanelInterface myCase : myCases) {
             Case mc = (Case) myCase;
-            if (c.getCaseID() == mc.getCaseID()) {
+            if (c.compareTo(mc) == 0) {
                 added = true;
             }
         }
