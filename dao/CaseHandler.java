@@ -180,7 +180,7 @@ public class CaseHandler {
             statement += "offerNmb = " + offerNmbParam + " AND ";
         }
         
-        
+        statement = statement.substring(0, (statement.length() - 5)) + ";";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
