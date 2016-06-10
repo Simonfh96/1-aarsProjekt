@@ -87,7 +87,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="494" max="32767" attributes="0"/>
+                          <EmptySpace pref="493" max="32767" attributes="0"/>
                           <Component id="caseDisplayPane" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1080,7 +1080,7 @@
                               <Component id="jLabel72" min="-2" max="-2" attributes="0"/>
                               <Component id="jScrollPane9" min="-2" pref="290" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="353" max="32767" attributes="0"/>
+                          <EmptySpace pref="352" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1366,7 +1366,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="886" max="32767" attributes="0"/>
+                          <EmptySpace pref="885" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1612,7 +1612,7 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="0" pref="135" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="134" max="32767" attributes="0"/>
                               </Group>
                               <Component id="jSeparator2" max="32767" attributes="0"/>
                           </Group>

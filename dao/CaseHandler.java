@@ -159,16 +159,24 @@ public class CaseHandler {
         return cases;
     }
 
-    public ArrayList<PanelInterface> searchCases(int konsNmb, String caseName) throws SQLException {
+    public ArrayList<PanelInterface> searchCases(int caseIDParam, String caseNameParam,/*String articleType*/ int konsNmbParam, int offerNmb) throws SQLException {
         ArrayList<PanelInterface> cases = new ArrayList<>();
-//        PreparedStatement ps = null;
-//	String selectSQL = "SELECT * FROM cases WHERE konsNr = ? AND caseName LIKE '?%'";
-//        ps = DBHandler.getInstance().conn.prepareStatement(selectSQL);
-//        ps.setInt(1, konsNmb);
-//        ps.setString(2, caseName);
-//        ResultSet rs = ps.executeQuery();
-        String statement = "SELECT * FROM cases WHERE konsNr = "
-                + konsNmb + " OR caseName LIKE '" + caseName + "%';";
+        String statement;
+        statement = "SELECT * FROM cases WHERE ";
+        
+        if (caseIDParam > 0) {
+            statement += "case_id = " + caseIDParam + " AND ";
+        }
+        
+        if (caseNameParam.matches("[a-zA-Z]+")) {
+            statement += "caseName = " + caseNameParam + " AND ";
+        }
+        
+         if (konsNmbParam > 0) {
+            statement += "konsNr = " + konsNmbParam + " AND ";
+        }
+        
+        //AND caseName LIKE '" + caseName + "%';";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),

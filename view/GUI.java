@@ -1888,14 +1888,14 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void caseSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caseSearchButtonActionPerformed
-        try {
-            newestCasesPanel.removeAll();
-            cases = CaseHandler.getInstance().searchCases(Integer.parseInt(caseNmbSField.getText()), caseNameSField.getText());
-            PanelFactory.getInstance().createPanels(cases, newestCasesPanel, this, "CasePanel", customerFields);
-        } catch (SQLException ex) {
-            //JOptionPane.showMessageDialog(rootPane, ex, title, HEIGHT);
-            //Eller label med rød tekst
-        }
+//        try {
+//            newestCasesPanel.removeAll();
+//            cases = CaseHandler.getInstance().searchCases(Integer.parseInt(caseNmbSField.getText()), caseNameSField.getText());
+//            PanelFactory.getInstance().createPanels(cases, newestCasesPanel, this, "CasePanel", customerFields);
+//        } catch (SQLException ex) {
+//            //JOptionPane.showMessageDialog(rootPane, ex, title, HEIGHT);
+//            //Eller label med rød tekst
+//        }
     }//GEN-LAST:event_caseSearchButtonActionPerformed
 
     private void changeDbButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeDbButtonActionPerformed
