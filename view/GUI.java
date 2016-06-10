@@ -739,7 +739,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         newCasePanel.add(findCostumerField);
-        findCostumerField.setBounds(20, 230, 160, 20);
+        findCostumerField.setBounds(20, 230, 160, 24);
 
         selectCostumerButton.setText("Vælg");
         selectCostumerButton.addActionListener(new java.awt.event.ActionListener() {
