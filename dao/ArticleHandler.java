@@ -32,7 +32,7 @@ public class ArticleHandler {
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             ArrayList<Task> tasks = TaskHandler.getInstance().getTasks(rs.getInt("objects_id"));
-            Article article = new Article(rs.getString("objectName"), c.getKonsNmb(), rs.getString("objectType"), rs.getInt("konsNr"), tasks);
+            Article article = new Article(rs.getInt("objects_id"), rs.getString("objectName"), c.getKonsNmb(), rs.getString("objectType"), rs.getInt("konsNr"), tasks);
             articles.add(article);
         }
         rs.close();
@@ -41,13 +41,14 @@ public class ArticleHandler {
       
     public void saveArticle(Article a, Case c) throws SQLException {
              String saveArticles;
-             saveArticles = "INSERT INTO articles (caseKonsNmb, objectName, objectType, konsNr)"
-                + " values (?, ?, ?, ?)";
+             saveArticles = "INSERT INTO articles (caseKonsNmb, objectName, objectType, konsNr, task_id)"
+                + " values (?, ?, ?, ?, ?)";
              PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(saveArticles);
              ps.setInt(1, c.getKonsNmb());
              ps.setString(2, a.getName());
              ps.setString(3, a.getObjectType());
              ps.setInt(4, a.getKonsNmb());
+             ps.setInt(5, a.getArticleID());
              ps.execute(); 
              if (a.getTasks().size() > 0) {
                  for (Task t : a.getTasks()) {
@@ -56,6 +57,17 @@ public class ArticleHandler {
              }
              
      }
+    
+    public int generateArticleID() throws SQLException {
+        int articleID = 0;
+        String statement = "SELECT objects_id FROM objects ORDER BY objects_id DESC LIMIT 1;";
+        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+        if (rs.next()) {
+            articleID = rs.getInt("objects_id") + 1;
+        }
+        rs.close();
+        return articleID;
+    }
     
     public static ArticleHandler getInstance() {
         if (instance == null) {

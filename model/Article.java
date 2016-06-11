@@ -13,15 +13,16 @@ import java.util.ArrayList;
  * @author pdysted
  */
 public class Article implements PanelInterface {
+    private int articleID;
     private String name;
     //Udskift med den tilhørende case's kons nr
     private int caseKonsNmb;
     private String objectType;
-    //private String owner;
     private int konsNmb;
     private ArrayList<Task> tasks;
 
-    public Article(String name, int caseKonsNmb, String objectType, /*owner*/ int konsNmb, ArrayList<Task> tasks) {
+    public Article(int articleID, String name, int caseKonsNmb, String objectType, /*owner*/ int konsNmb, ArrayList<Task> tasks) {
+        this.articleID = articleID;
         this.name = name;
         this.caseKonsNmb = caseKonsNmb;
         this.objectType = objectType;
@@ -51,14 +52,6 @@ public class Article implements PanelInterface {
     public void setObjectType(String objectType) {
         this.objectType = objectType;
     }
-//
-//    public String getOwner() {
-//        return owner;
-//    }
-//
-//    public void setOwner(String owner) {
-//        this.owner = owner;
-//    }
 
     public void setCaseKonsNmb(int caseKonsNmb) {
         this.caseKonsNmb = caseKonsNmb;
@@ -78,6 +71,10 @@ public class Article implements PanelInterface {
 
     public ArrayList<Task> getTasks() {
         return tasks;
+    }
+
+    public int getArticleID() {
+        return articleID;
     }
 
     

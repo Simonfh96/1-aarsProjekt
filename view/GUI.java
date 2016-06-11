@@ -6,6 +6,7 @@
 package view;
 
 import control.Control;
+import dao.ArticleHandler;
 import dao.CaseHandler;
 import dao.CostumerHandler;
 import dao.DBHandler;
@@ -2207,8 +2208,15 @@ public class GUI extends javax.swing.JFrame {
         //Tasks skal sættes efter oprettelse af den Article, som de skal knyttes til
         //Det gøres ved at tage den sidste index fra ArrayList'en, så man har den sidst oprettede Article
         ArrayList<Task> tasks = new ArrayList<>();
-        Article article = new Article(newArticleNameField.getText(), 0, (String) newArticleTypeBox.getSelectedItem(), 0, tasks);
+        Article article = null;
+        try {
+            article = new Article(ArticleHandler.getInstance().generateArticleID(), newArticleNameField.getText(), 0, (String) newArticleTypeBox.getSelectedItem(), 0, tasks);
+        } catch (SQLException ex) {
+            System.out.println(ex.getLocalizedMessage());
+        }
+        if (article != null) {
         newCaseArticles.add(article);
+        }
     }//GEN-LAST:event_newArticleButtonActionPerformed
 
     private void newLocationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newLocationButtonActionPerformed
