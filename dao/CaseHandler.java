@@ -108,7 +108,7 @@ public class CaseHandler {
     public int getLogId(Case aCase) {
         int result = -1;
         try {
-            String statement = "SELECT log_id FROM cases WHERE konsNr = " + aCase.getKonsNmb() + ";";
+            String statement = "SELECT log_id FROM cases WHERE case_id = " + aCase.getCaseID() + ";";
             ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
             while (rs.next()) {
                 result = rs.getInt("log_id");
@@ -123,7 +123,7 @@ public class CaseHandler {
     public int getCustomerId(Case aCase) {
         int result = -1;
         try {
-            String statement = "SELECT costumer_id FROM cases WHERE konsNr = " + aCase.getKonsNmb() + ";";
+            String statement = "SELECT costumer_id FROM cases WHERE case_id = " + aCase.getCaseID() + ";";
             ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
             while (rs.next()) {
                 result = rs.getInt("costumer_id");
@@ -134,6 +134,7 @@ public class CaseHandler {
         }
         return result;
     }
+    
 
     public ArrayList<PanelInterface> getFinishedCases() throws SQLException {
         ArrayList<PanelInterface> cases = new ArrayList<>();
@@ -229,18 +230,14 @@ public class CaseHandler {
     public void saveCase(Case c, Employee e, boolean existingCostumer) throws SQLException {
         String errorMessage = "";
         boolean succeeded = true;
+        int caseID = getCaseID();
         /*
          Insert statement skal justeres til også at gemme foreign key (log_id)
          til cases table i databasen
          */
-        String konsNmb = c.getKonsNmb() + "";
-        if (konsNmb.isEmpty() || !(konsNmb.matches("[0-9]")) || Integer.parseInt(konsNmb) < 0) {
-            succeeded = false;
-            errorMessage = errorMessage + "Kons nr. skal indeholde et gyldigt tal.\n";
-        }
 
-        String offerNmb = c.getOfferNmb() + "";
-        if (offerNmb.isEmpty() || !(offerNmb.matches("[0-9]")) || Integer.parseInt(offerNmb) < 0) {
+        String offerNmb = String.valueOf(c.getOfferNmb());
+        if (offerNmb.isEmpty()  /*!(offerNmb.matches("[0-9]")) Integer.parseInt(offerNmb) < 0*/) {
             succeeded = false;
             errorMessage = errorMessage + "Tilbuds nr. skal indeholde et gyldigt tal.\n";
         }
@@ -256,34 +253,51 @@ public class CaseHandler {
         utilDateConvert = c.getCreatedAt();
         java.sql.Date sqlCreatedAt = new java.sql.Date(utilDateConvert.getTime());
         if (succeeded) {
-            String saveCase = "INSERT INTO cases (konsNr, offerNmb, caseName, description, objects_id, finished,"
-                    + "lastUpdated, updateBy, createdAt, costumer_id, log_id)"
-                    + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(saveCase);
-            ps.setInt(1, Integer.parseInt(konsNmb));
-            ps.setInt(2, Integer.parseInt(offerNmb));
-            ps.setString(3, caseName);
-            ps.setString(4, c.getDescription());
-            ps.setInt(5, c.getCaseID());
-            ps.setBoolean(6, c.isFinished());
-            ps.setDate(7, sqlLastUpdate);
-            ps.setString(8, e.getFullName());
-            ps.setDate(9, sqlCreatedAt);
-            ps.setInt(10, c.getCustomer().getCostumerID());
-            ps.setInt(11, c.getCaseID()); //CaseID deler værdi med både objects_id/articleID og log_id
-            ps.execute();
             CostumerHandler.getInstance().saveCostumer(c.getCustomer(), existingCostumer);
+            System.out.println("costumer suceeded");
             if (c.getArticles().size() > 0) {
                 for (PanelInterface article : c.getArticles()) {
                     Article a = (Article) article;
                     ArticleHandler.getInstance().saveArticle(a, c);
                 }
             }
+            System.out.println("article succeeded");
             LogHandler.getInstance().saveLog(c.getLogs().get(0));
+            System.out.println("log succeeded");
+            String saveCase = "INSERT INTO cases (konsNr, offerNmb, caseName, description, objects_id, finished,"
+                    + "lastUpdated, updateBy, createdAt, costumer_id, log_id)"
+                    + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(saveCase);
+            ps.setInt(1, c.getKonsNmb());
+            ps.setInt(2, Integer.parseInt(offerNmb));
+            ps.setString(3, caseName);
+            ps.setString(4, c.getDescription());
+            ps.setInt(5, caseID);
+            ps.setBoolean(6, c.isFinished());
+            ps.setDate(7, sqlLastUpdate);
+            ps.setString(8, e.getFullName());
+            ps.setDate(9, sqlCreatedAt);
+            ps.setInt(10, c.getCustomer().getCostumerID());
+            ps.setInt(11, caseID);
+            ps.execute();
+            
         } else {
             //JOptionPane.showConfirmDialog(parentComponent, errorMessage);
-            //Returner int -1, og kald optionpane i gui?
+            //Returner int -1, og kald optionpane i gui?   
+            System.out.println(errorMessage);
         }
+    }
+    
+    public int getCaseID() throws SQLException {
+        int caseID = 0;
+        String statement = "SELECT case_id FROM cases ORDER BY case_id DESC LIMIT 1;";
+        //Eller det her statement SELECT MAX(konsNr) FROM cases;
+        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+        if (rs.next()) {
+            caseID = rs.getInt("case_id") + 1;
+        }
+        rs.close();
+        return caseID;
     }
 
     public int generateKonsNmb() throws SQLException {

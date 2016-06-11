@@ -42,7 +42,7 @@ import model.Task;
  *
  * @author Simon
  */
-public class GUI extends javax.swing.JFrame {
+public class GUIView extends javax.swing.JFrame {
 
     private ArrayList<PanelInterface> newCaseArticles = new ArrayList<>();
     private ArrayList<Contact> newCaseContacts = new ArrayList<>();
@@ -71,7 +71,7 @@ public class GUI extends javax.swing.JFrame {
      *
      * @param control
      */
-    public GUI(Control control) {
+    public GUIView(Control control) {
         initComponents();
         lw = new LoginView(this);
         lw.setAlwaysOnTop(true);
@@ -89,7 +89,7 @@ public class GUI extends javax.swing.JFrame {
             }
         }
         System.out.println("now");
-        JTextField[] textFields = {customerListNameField, customerListContactfield, customerListPhoneField, customerListEmailField, customerListZipCodeField, customerListAddressField};
+        JTextField[] textFields = {customerListNameField, customerListContactfield, customerListPhoneField, customerListEmailField, customerListAddressField};
         customerFields = textFields;
         int adminTab = tabbedPane.indexOfTab("Admin");
         tabbedPane.setEnabledAt(adminTab, false);
@@ -133,7 +133,7 @@ public class GUI extends javax.swing.JFrame {
     }
 
     public void setUserControl(Control control, Employee employee) {
-        GUI.control = control;
+        GUIView.control = control;
         this.employee = employee;
         lw.dispose();
         this.setVisible(true);
@@ -183,7 +183,6 @@ public class GUI extends javax.swing.JFrame {
         caseNmbEditPanel.setText("" + c.getKonsNmb());
         jTextField4.setText(c.getCaseName());
         adressCostumerLabel.setText(c.getCustomer().getAddress());
-        zipCodeCostumerLabel.setText(c.getCustomer().getCityOfZip());
         editCaseOfferNmbField.setText("" + c.getOfferNmb());
     }
 
@@ -641,32 +640,22 @@ public class GUI extends javax.swing.JFrame {
         jLabel86.setText("Navn");
         newCasePanel.add(jLabel86);
         jLabel86.setBounds(20, 80, 150, 16);
-
-        newCaseNameField.setSize(new java.awt.Dimension(150, 24));
         newCasePanel.add(newCaseNameField);
         newCaseNameField.setBounds(20, 100, 150, 26);
 
         jLabel87.setText("Kontaktperson");
         newCasePanel.add(jLabel87);
         jLabel87.setBounds(20, 140, 150, 16);
-
-        newCaseContactField.setSize(new java.awt.Dimension(150, 24));
         newCasePanel.add(newCaseContactField);
         newCaseContactField.setBounds(20, 160, 150, 26);
 
         jLabel88.setText("Tlf. nummer");
         newCasePanel.add(jLabel88);
         jLabel88.setBounds(200, 80, 150, 16);
-
-        newCasePhoneField.setSize(new java.awt.Dimension(150, 24));
         newCasePanel.add(newCasePhoneField);
         newCasePhoneField.setBounds(200, 100, 150, 26);
-
-        newCaseEmailField.setSize(new java.awt.Dimension(150, 24));
         newCasePanel.add(newCaseEmailField);
         newCaseEmailField.setBounds(200, 160, 150, 26);
-
-        newCaseAddressField.setSize(new java.awt.Dimension(150, 24));
         newCasePanel.add(newCaseAddressField);
         newCaseAddressField.setBounds(380, 100, 150, 26);
 
@@ -681,16 +670,12 @@ public class GUI extends javax.swing.JFrame {
         jLabel91.setText("Postnummer");
         newCasePanel.add(jLabel91);
         jLabel91.setBounds(380, 140, 80, 16);
-
-        newCaseZipCodeField.setSize(new java.awt.Dimension(80, 24));
         newCasePanel.add(newCaseZipCodeField);
         newCaseZipCodeField.setBounds(380, 160, 80, 26);
 
         jLabel92.setText("Akronym");
         newCasePanel.add(jLabel92);
         jLabel92.setBounds(480, 140, 70, 16);
-
-        newCaseAcroField.setSize(new java.awt.Dimension(70, 24));
         newCasePanel.add(newCaseAcroField);
         newCaseAcroField.setBounds(480, 160, 70, 26);
 
@@ -712,24 +697,18 @@ public class GUI extends javax.swing.JFrame {
         jLabel94.setText("Navn");
         newCasePanel.add(jLabel94);
         jLabel94.setBounds(630, 80, 100, 16);
-
-        addContactNameField.setSize(new java.awt.Dimension(100, 24));
         newCasePanel.add(addContactNameField);
         addContactNameField.setBounds(630, 100, 100, 26);
 
         jLabel95.setText("Tlf. nummer");
         newCasePanel.add(jLabel95);
         jLabel95.setBounds(630, 140, 100, 16);
-
-        addContactPhoneField.setSize(new java.awt.Dimension(100, 24));
         newCasePanel.add(addContactPhoneField);
         addContactPhoneField.setBounds(630, 160, 100, 26);
 
         jLabel96.setText("Email");
         newCasePanel.add(jLabel96);
         jLabel96.setBounds(750, 140, 160, 16);
-
-        addContactEmailField.setSize(new java.awt.Dimension(160, 24));
         newCasePanel.add(addContactEmailField);
         addContactEmailField.setBounds(750, 160, 160, 26);
 
@@ -776,8 +755,6 @@ public class GUI extends javax.swing.JFrame {
         jLabel97.setText("Sagsnavn");
         newCasePanel.add(jLabel97);
         jLabel97.setBounds(20, 310, 160, 16);
-
-        caseCreationNameField.setSize(new java.awt.Dimension(160, 24));
         newCasePanel.add(caseCreationNameField);
         caseCreationNameField.setBounds(20, 330, 160, 26);
 
@@ -785,7 +762,6 @@ public class GUI extends javax.swing.JFrame {
         newCasePanel.add(jLabel98);
         jLabel98.setBounds(20, 370, 160, 16);
 
-        newCaseDescription.setSize(new java.awt.Dimension(160, 24));
         newCaseDescription.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 newCaseDescriptionMousePressed(evt);
@@ -797,8 +773,6 @@ public class GUI extends javax.swing.JFrame {
         jLabel99.setText("Tilbuds nr.");
         newCasePanel.add(jLabel99);
         jLabel99.setBounds(20, 430, 160, 16);
-
-        newCaseOfferNmbField.setSize(new java.awt.Dimension(160, 24));
         newCasePanel.add(newCaseOfferNmbField);
         newCaseOfferNmbField.setBounds(20, 450, 160, 26);
 
@@ -832,15 +806,10 @@ public class GUI extends javax.swing.JFrame {
         jLabel102.setBounds(300, 350, 100, 16);
 
         articleAmountField.setText("1");
-        articleAmountField.setSize(new java.awt.Dimension(120, 24));
         newCasePanel.add(articleAmountField);
         articleAmountField.setBounds(420, 290, 120, 26);
-
-        createArticleConsNmbField.setSize(new java.awt.Dimension(120, 24));
         newCasePanel.add(createArticleConsNmbField);
         createArticleConsNmbField.setBounds(420, 320, 120, 26);
-
-        createCaseMuseumsNmbField.setSize(new java.awt.Dimension(120, 24));
         newCasePanel.add(createCaseMuseumsNmbField);
         createCaseMuseumsNmbField.setBounds(420, 350, 120, 26);
 
@@ -918,13 +887,11 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         newCasePanel.add(createCasebutton);
-        createCasebutton.setBounds(1260, 650, 90, 29);
+        createCasebutton.setBounds(1120, 440, 90, 29);
 
         jLabel105.setText("Genstands navn");
         newCasePanel.add(jLabel105);
         jLabel105.setBounds(300, 380, 110, 16);
-
-        newArticleNameField.setSize(new java.awt.Dimension(120, 24));
         newCasePanel.add(newArticleNameField);
         newArticleNameField.setBounds(420, 380, 120, 26);
         newCasePanel.add(costScrollSearch);
@@ -2149,21 +2116,22 @@ public class GUI extends javax.swing.JFrame {
         } else {
             try {
                 customer = new Costumer(CostumerHandler.getInstance().generateCostumerID(), newCaseNameField.getText(), "museums akronym", 11/*museums nummer*/, Integer.parseInt(newCasePhoneField.getText()),
-                        newCaseEmailField.getText(), "Addresse", "4700 zip", newCaseContacts);
+                        newCaseEmailField.getText(), "Addresse", newCaseContacts);
             } catch (SQLException ex) {
                 System.out.println(ex.getLocalizedMessage());
             }
         }
             try {
                 int konsNmb = CaseHandler.getInstance().generateKonsNmb();
-                Log log = new Log(employee, "oprettede ", caseCreationNameField.getText(), "", "", new java.sql.Date(cal.getTimeInMillis()));
+                Log log = new Log(employee, CaseHandler.getInstance().getCaseID(), "oprettede ", caseCreationNameField.getText(), "", "", new java.sql.Date(cal.getTimeInMillis()));
+                System.out.println(employee.getFullName());
                 logs.add(log);
                 for (PanelInterface article : newCaseArticles) {
                     Article a = (Article) article;
                     a.setCaseKonsNmb(konsNmb);
                 }
                 Case newCase = new Case(0,  konsNmb, Integer.parseInt(newCaseOfferNmbField.getText()), caseCreationNameField.getText(), newCaseDescription.getText(), 
-                newCaseArticles, false, cal.getTime(), cal.getTime(), customer, null, null);
+                newCaseArticles, false, cal.getTime(), cal.getTime(), customer, logs, null);
                 CaseHandler.getInstance().saveCase(newCase, employee, existingCostumerCheckBox.isSelected());
             } catch (SQLException ex) {
                 System.out.println(ex.getLocalizedMessage());
@@ -2303,24 +2271,25 @@ public class GUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI.class
+            java.util.logging.Logger.getLogger(GUIView.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI.class
+            java.util.logging.Logger.getLogger(GUIView.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI.class
+            java.util.logging.Logger.getLogger(GUIView.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI.class
+            java.util.logging.Logger.getLogger(GUIView.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI(control).setVisible(true);
+                new GUIView(control).setVisible(true);
             }
 
         });

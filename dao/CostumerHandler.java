@@ -27,12 +27,12 @@ public class CostumerHandler {
     public ArrayList<Costumer> searchCostumerName(String name) throws SQLException {
         ArrayList<Costumer> costumers = new ArrayList<>();
         String statement;
-        statement = "SELECT * FROM costumer LEFT JOIN zipCodes ON costumer.zipCode = zipCodes.zipCode WHERE costumerName LIKE '" + name + "%';";
+        statement = "SELECT * FROM costumer WHERE costumerName LIKE '" + name + "%';";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Costumer costumer = new Costumer(rs.getInt("costumer_id"), rs.getString("costumerName"), rs.getString("acronym"),
                     rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"),
-                    rs.getString("address"), rs.getString("zipCode") + ", " + rs.getString("cityName"), null);
+                    rs.getString("address"), null);
             costumers.add(costumer);
         }
         for (Costumer costumer : costumers) {
@@ -46,12 +46,12 @@ public class CostumerHandler {
     public Costumer getCostumer(int costumerID) throws SQLException {
         Costumer costumer = null;
         String statement;
-        statement = "SELECT * FROM costumer LEFT JOIN zipCodes ON costumer.zipCode = zipCodes.zipCode WHERE costumer_id = '" + costumerID + "';";
+        statement = "SELECT * FROM costumer WHERE costumer_id = '" + costumerID + "';";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             costumer = new Costumer(rs.getInt("costumer_id"), rs.getString("costumerName"), rs.getString("acronym"),
                     rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"),
-                    rs.getString("address"), rs.getString("zipCode") + ", " + rs.getString("cityName"), null);
+                    rs.getString("address"), null);
         }
         ArrayList<Contact> contacts = ContactHandler.getInstance().getContacts(costumer);
         costumer.setContacts(contacts);
@@ -62,12 +62,12 @@ public class CostumerHandler {
     public ArrayList<PanelInterface> selectAllCostumer() throws SQLException {
         ArrayList<PanelInterface> costumers = new ArrayList<>();
         String statement;
-        statement = "SELECT * FROM costumer LEFT JOIN zipCodes ON costumer.zipCode = zipCodes.zipCode";
+        statement = "SELECT * FROM costumer";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Costumer costumer = new Costumer(rs.getInt("costumer_id"), rs.getString("costumerName"), rs.getString("acronym"),
                     rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"),
-                    rs.getString("address"), rs.getString("zipCode") + ", " + rs.getString("cityName"), null);
+                    rs.getString("address"),  null);
             costumers.add(costumer);
 
         }
@@ -82,22 +82,18 @@ public class CostumerHandler {
 
     public void saveCostumer(Costumer c, boolean existingCostumer) throws SQLException {
         String saveCostumer;
-        saveCostumer = "INSERT INTO costumer (costumer_id, costumerName, acronym, museumNmb, phone, email, address, zipCode, contact_id)"
-                + " values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        saveCostumer = "INSERT INTO costumer (costumerName, acronym, museumNmb, phone, email, address, contact_id)"
+                + " values (?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(saveCostumer);
-        ps.setInt(1, c.getCostumerID());
-        ps.setString(2, c.getCostumerName());
-        ps.setString(3, c.getmAcro());
-        ps.setInt(4, c.getmNumb());
-        ps.setInt(5, c.getPhone());
-        ps.setString(6, c.getEmail());
-        ps.setString(7, c.getAddress());
-        ps.setInt(8, 1); //Metode der tjekker efter zip code og returner id'et dertil
-        ps.setInt(9, c.getCostumerID());
+        ps.setString(1, c.getCostumerName());
+        ps.setString(2, c.getmAcro());
+        ps.setInt(3, c.getmNumb());
+        ps.setInt(4, c.getPhone());
+        ps.setString(5, c.getEmail());
+        ps.setString(6, c.getAddress());
+        ps.setInt(7, c.getCostumerID());
         ps.execute();
-        if (c.getContacts().size() > 0) {
-            ContactHandler.getInstance().saveContacts(c);
-        }
+        
         
     }
     

@@ -41,14 +41,14 @@ public class ArticleHandler {
       
     public void saveArticle(Article a, Case c) throws SQLException {
              String saveArticles;
-             saveArticles = "INSERT INTO articles (caseKonsNmb, objectName, objectType, konsNr, task_id)"
-                + " values (?, ?, ?, ?, ?)";
+             saveArticles = "INSERT INTO objects (caseKonsNmb, objectName, objectType, konsNr)"
+                + " values (?, ?, ?, ?)";
              PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(saveArticles);
              ps.setInt(1, c.getKonsNmb());
              ps.setString(2, a.getName());
              ps.setString(3, a.getObjectType());
              ps.setInt(4, a.getKonsNmb());
-             ps.setInt(5, a.getArticleID());
+//             ps.setInt(5, a.getArticleID());
              ps.execute(); 
              if (a.getTasks().size() > 0) {
                  for (Task t : a.getTasks()) {

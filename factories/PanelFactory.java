@@ -20,9 +20,8 @@ import view.ArticlePanel;
 import view.CasePanel;
 import view.CustomerPanel;
 import view.EmployeePanel;
-import view.GUI;
-//import view.GUI;
-
+import view.GUIView;
+//import view.GUIView;
 /**
  *
  * @author Pdysted
@@ -45,7 +44,7 @@ public class PanelFactory {
     }
 
     //den skal oprette en af de fire typer panels alt efter værdien i switchen
-    public void createPanels(ArrayList<PanelInterface> panels, JPanel displayPanel, GUI gui, String type, JTextField[] textFields) throws SQLException {
+    public void createPanels(ArrayList<PanelInterface> panels, JPanel displayPanel, GUIView gui, String type, JTextField[] textFields) throws SQLException {
         System.out.println("switch");
         switch (type) {
             case "CasePanel":

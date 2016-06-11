@@ -99,9 +99,6 @@ public class CustomerPanel extends javax.swing.JPanel {
                     textFields[i].setText(c.getEmail());
                     break;
                 case 4:
-                    textFields[i].setText(c.getCityOfZip());
-                    break;
-                case 5:
                     textFields[i].setText(c.getAddress());
                     break;
 

@@ -19,7 +19,7 @@ import model.Case;
  */
 public class CasePanel extends javax.swing.JPanel {
     private DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY");
-    private GUI gui;
+    private GUIView gui;
     private Calendar cal;
     private CardLayout cl;
     private Case c;
@@ -31,7 +31,7 @@ public class CasePanel extends javax.swing.JPanel {
      * @param c the case object which's getter methods is used to set the labels with info
      * @param gui a reference to the gui, which allows the Panel to navigate through the cardlayout
      */
-    public CasePanel(Case c, GUI gui)  {
+    public CasePanel(Case c, GUIView gui)  {
         initComponents();
         this.gui = gui;
         cal = Calendar.getInstance();

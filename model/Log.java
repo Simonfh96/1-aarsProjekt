@@ -16,14 +16,16 @@ public class Log {
     //Log klassen skal indeholde en integer log id, som skal bruges til at referere til
     //ArrayListen med logs, når en case gemmes i databasen
     private Employee employee;
+    private int caseID;
     private final String actionMade;
     private final String componentName;
     private final String changedFrom;
     private final String changedTo;
     private final Date date;
 
-    public Log(Employee employee, String actionMade, String componentName, String changedFrom, String changedTo, Date date) {
+    public Log(Employee employee, int caseID, String actionMade, String componentName, String changedFrom, String changedTo, Date date) {
         this.employee = employee;
+        this.caseID = caseID;
         this.actionMade = actionMade;
         this.componentName = componentName;
         this.changedFrom = changedFrom;
@@ -63,6 +65,10 @@ public class Log {
 
     public Date getDate() {
         return date;
+    }
+
+    public int getCaseID() {
+        return caseID;
     }
     
     

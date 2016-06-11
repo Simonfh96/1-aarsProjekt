@@ -19,13 +19,12 @@ public class Costumer implements PanelInterface {
     private int phone;
     private String email;
     private String address;
-    private String cityOfZip;
     private ArrayList<Contact> contacts;
     private int costumerID;
     //Hvad bruges customers til?
     private ArrayList<Costumer> customers;
 
-    public Costumer(int costumerID, String costumerName, String mAcro, int mNumb, int phone, String email, String address, String cityOfZip, ArrayList<Contact> contacts) {
+    public Costumer(int costumerID, String costumerName, String mAcro, int mNumb, int phone, String email, String address, ArrayList<Contact> contacts) {
         this.costumerID = costumerID;
         this.costumerName = costumerName;
         this.mAcro = mAcro;
@@ -33,7 +32,6 @@ public class Costumer implements PanelInterface {
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.cityOfZip = cityOfZip;
         this.contacts = contacts;
     }
     
@@ -93,10 +91,6 @@ public class Costumer implements PanelInterface {
 
     public String getAddress() {
         return address;
-    }
-
-    public String getCityOfZip() {
-        return cityOfZip;
     }
     
     public void addContact(Contact contact) {

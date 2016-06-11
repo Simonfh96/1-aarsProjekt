@@ -3,7 +3,7 @@ import control.Control;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import view.GUI;
+import view.GUIView;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -24,8 +24,8 @@ public class Main {
     public static void main(String[] args) {
         setTheme();
         
-        GUI gui = null;
-        gui = new GUI(control);
+        GUIView gui = null;
+        gui = new GUIView(control);
         gui.setVisible(true);
     }
     
@@ -38,7 +38,7 @@ public class Main {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI.class
+            java.util.logging.Logger.getLogger(GUIView.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }

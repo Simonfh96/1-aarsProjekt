@@ -21,14 +21,14 @@ import model.Employee;
  * @author Tanja
  */
 public class LoginView extends javax.swing.JFrame {
-    private GUI gui;
+    private GUIView gui;
     private static Control control;
     private Employee employee;
 
     /**
      * Creates new form LoginJFrame
      */
-    public LoginView(GUI gui) {
+    public LoginView(GUIView gui) {
         this.gui = gui;
         initComponents();
         errorMessageLabel.setVisible(false);

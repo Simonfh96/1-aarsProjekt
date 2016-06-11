@@ -34,12 +34,12 @@ public class LogHandler implements Runnable {
         ArrayList<Log> logs = new ArrayList<>();
         System.out.println(logID);
         PreparedStatement ps = null;
-        String getLogs = "SELECT * FROM log WHERE log_id = ?";
+        String getLogs = "SELECT * FROM log WHERE case_id = ?";
         ps = DBHandler.getInstance().getConn().prepareStatement(getLogs);
         ps.setInt(1, logID);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
-            Log log = new Log(null, rs.getString("actionMade"), rs.getString("componentName"),
+            Log log = new Log(null, rs.getInt("case_id"), rs.getString("actionMade"), rs.getString("componentName"),
                     rs.getString("changedFrom"), rs.getString("changedTo"), rs.getDate("timeMade"));
             logs.add(log);
         }
@@ -79,7 +79,7 @@ public class LogHandler implements Runnable {
 
         while (rs.next()) {
             Employee employee = EmployeeHandler.getInstance().getEmployee(rs.getInt("employee_id"));
-            Log log = new Log(employee, rs.getString("actionMade"), rs.getString("componentName"), rs.getString("changedFrom"), rs.getString("changedTo"), rs.getDate("timeMade"));
+            Log log = new Log(employee, rs.getInt("case_id"),rs.getString("actionMade"), rs.getString("componentName"), rs.getString("changedFrom"), rs.getString("changedTo"), rs.getDate("timeMade"));
             logTextArea.append(log.toString() + "\n");
             logs.add(log);
         }
@@ -103,13 +103,14 @@ public class LogHandler implements Runnable {
 
     public void saveLog(Log l) throws SQLException {
         CallableStatement cs = null;
-        cs = DBHandler.getInstance().conn.prepareCall("{CALL AddLog(?, ?, ?, ?, ?, ?)}");
+        cs = DBHandler.getInstance().conn.prepareCall("{CALL AddLog(?, ?, ?, ?, ?, ?, ?)}");
         cs.setInt(1, l.getEmployee().getEmployeeID());
-        cs.setString(2, l.getActionMade());
-        cs.setString(3, l.getComponentName());
-        cs.setString(4, l.getChangedFrom());
-        cs.setString(5, l.getChangedTo());
-        cs.setDate(6, l.getDate());
+        cs.setInt(2, l.getCaseID());
+        cs.setString(3, l.getActionMade());
+        cs.setString(4, l.getComponentName());
+        cs.setString(5, l.getChangedFrom());
+        cs.setString(6, l.getChangedTo());
+        cs.setDate(7, l.getDate());
         cs.execute();
     }
 
