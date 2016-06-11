@@ -227,6 +227,7 @@ public class CaseHandler {
      må have 2 forskellige customer id'er, hvorimod articles skal gemmes tilsvarende Case objektets primary key
      */
     public void saveCase(Case c, Employee e, boolean existingCostumer) throws SQLException {
+        String errorMessage = "";
         boolean succeeded = true;
         //Husk ArrayListen af articles
         //ArticleHandler måske?
@@ -236,18 +237,21 @@ public class CaseHandler {
          til cases table i databasen
          */
         String konsNmb = c.getKonsNmb() + "";
-        if (Integer.parseInt(konsNmb) < 0 || konsNmb.isEmpty() || !(konsNmb.matches("[0-9]"))) {
+        if (konsNmb.isEmpty() || !(konsNmb.matches("[0-9]")) || Integer.parseInt(konsNmb) < 0) {
             succeeded = false;
+            errorMessage = errorMessage + "Kons nr. skal indeholde et gyldigt tal.\n";
         }
 
         String offerNmb = c.getOfferNmb() + "";
-        if (Integer.parseInt(offerNmb) < 0 || offerNmb.isEmpty() || !(offerNmb.matches("[0-9]"))) {
+        if (offerNmb.isEmpty() || !(offerNmb.matches("[0-9]")) || Integer.parseInt(offerNmb) < 0) {
             succeeded = false;
+            errorMessage = errorMessage + "Tilbuds nr. skal indeholde et gyldigt tal.\n";
         }
 
         String caseName = c.getCaseName();
-        if (!(caseName.matches("[a-zA-Z]+") && !(caseName.isEmpty()))) {
+        if (!(caseName.matches("[a-zA-Z]+")) || caseName.isEmpty()) {
             succeeded = false;
+            errorMessage = errorMessage + "Sagsnavn må kun indeholde bogstaver.\n";
         }
 
         java.util.Date utilDateConvert = c.getLastUpdated();
@@ -277,7 +281,7 @@ public class CaseHandler {
                 }
             }
         } else {
-            //JOptionPane.showConfirmDialog(parentComponent, "Ikke gyldige input");
+            //JOptionPane.showConfirmDialog(parentComponent, errorMessage);
             //Returner int -1, og kald optionpane i gui?
         }
     }

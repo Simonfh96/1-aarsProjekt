@@ -2156,7 +2156,7 @@ public class GUI extends javax.swing.JFrame {
             try {
                 Case newCase = new Case(0, CaseHandler.getInstance().generateKonsNmb(), Integer.parseInt(newCaseOfferNmbField.getText()), caseCreationNameField.getText(), newCaseDescription.getText(), 
                 newCaseArticles, false, cal.getTime(), cal.getTime(), customer, null, null);
-                CaseHandler.getInstance().saveCase(newCase, employee, true);
+                CaseHandler.getInstance().saveCase(newCase, employee, existingCostumerCheckBox.isSelected());
             } catch (SQLException ex) {
                 System.out.println(ex.getLocalizedMessage());
             }        
