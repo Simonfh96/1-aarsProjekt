@@ -81,6 +81,7 @@ public class CostumerHandler {
     }
 
     public void saveCostumer(Costumer c, boolean existingCostumer) throws SQLException {
+        if (!existingCostumer) {
         String saveCostumer;
         saveCostumer = "INSERT INTO costumer (costumerName, acronym, museumNmb, phone, email, address, contact_id)"
                 + " values (?, ?, ?, ?, ?, ?, ?)";
@@ -93,8 +94,7 @@ public class CostumerHandler {
         ps.setString(6, c.getAddress());
         ps.setInt(7, c.getCostumerID());
         ps.execute();
-        
-        
+        }
     }
     
     public int generateCostumerID() throws SQLException {
