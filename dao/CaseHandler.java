@@ -229,9 +229,6 @@ public class CaseHandler {
     public void saveCase(Case c, Employee e, boolean existingCostumer) throws SQLException {
         String errorMessage = "";
         boolean succeeded = true;
-        //Husk ArrayListen af articles
-        //ArticleHandler måske?
-        //Customer id samt customer objekt?
         /*
          Insert statement skal justeres til også at gemme foreign key (log_id)
          til cases table i databasen
@@ -259,19 +256,21 @@ public class CaseHandler {
         utilDateConvert = c.getCreatedAt();
         java.sql.Date sqlCreatedAt = new java.sql.Date(utilDateConvert.getTime());
         if (succeeded) {
-            String saveCase = "INSERT INTO cases (konsNr, offerNmb, caseName, description, finished,"
-                    + "lastUpdated, updateBy, createdAt, costumer_id)"
-                    + " values (?, ?, ?, ?, ?, ?, ?, ?)";
+            String saveCase = "INSERT INTO cases (konsNr, offerNmb, caseName, description, objects_id, finished,"
+                    + "lastUpdated, updateBy, createdAt, costumer_id, log_id)"
+                    + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(saveCase);
             ps.setInt(1, Integer.parseInt(konsNmb));
             ps.setInt(2, Integer.parseInt(offerNmb));
             ps.setString(3, caseName);
             ps.setString(4, c.getDescription());
-            ps.setBoolean(5, c.isFinished());
-            ps.setDate(6, sqlLastUpdate);
-            ps.setString(7, e.getFullName());
-            ps.setDate(8, sqlCreatedAt);
-            ps.setInt(9, c.getCustomer().getCostumerID());
+            ps.setInt(5, c.getCaseID());
+            ps.setBoolean(6, c.isFinished());
+            ps.setDate(7, sqlLastUpdate);
+            ps.setString(8, e.getFullName());
+            ps.setDate(9, sqlCreatedAt);
+            ps.setInt(10, c.getCustomer().getCostumerID());
+            ps.setInt(11, c.getCaseID()); //CaseID deler værdi med både objects_id/articleID og log_id
             ps.execute();
             CostumerHandler.getInstance().saveCostumer(c.getCustomer(), existingCostumer);
             if (c.getArticles().size() > 0) {
@@ -280,6 +279,7 @@ public class CaseHandler {
                     ArticleHandler.getInstance().saveArticle(a, c);
                 }
             }
+            LogHandler.getInstance().saveLog(c.getLogs().get(0));
         } else {
             //JOptionPane.showConfirmDialog(parentComponent, errorMessage);
             //Returner int -1, og kald optionpane i gui?
