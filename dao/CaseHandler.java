@@ -172,7 +172,7 @@ public class CaseHandler {
             statement += "caseName LIKE '" + caseNameParam + "%' AND ";
         }
         
-         if (Integer.parseInt(konsNmbParam) > 0 && !(konsNmbParam.isEmpty()) && konsNmbParam.matches("[0-9]")) {
+        if (!(konsNmbParam.isEmpty()) && Integer.parseInt(konsNmbParam) > 0  && konsNmbParam.matches("[0-9]")) {
             statement += "konsNr = " + konsNmbParam + " AND ";
         }
          

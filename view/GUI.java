@@ -454,15 +454,9 @@ public class GUI extends javax.swing.JFrame {
 
         tabbedPane.setPreferredSize(new java.awt.Dimension(1415, 720));
 
-        caseNmbSField.setPreferredSize(new java.awt.Dimension(10, 24));
-
         jLabel1.setText("Sags nr.");
 
-        caseNameSField.setPreferredSize(new java.awt.Dimension(10, 24));
-
         jLabel2.setText("Sagsnavn");
-
-        ownerSField.setPreferredSize(new java.awt.Dimension(10, 24));
 
         jLabel3.setText("Ejer");
 
@@ -472,8 +466,6 @@ public class GUI extends javax.swing.JFrame {
                 caseSearchButtonActionPerformed(evt);
             }
         });
-
-        objectTypeSField.setPreferredSize(new java.awt.Dimension(10, 24));
 
         jLabel4.setText("Genstandstype");
 
@@ -561,11 +553,7 @@ public class GUI extends javax.swing.JFrame {
 
         caseDisplayPane.addTab("Afsluttede sager", finishedCasesTab);
 
-        konsNmbField.setPreferredSize(new java.awt.Dimension(10, 24));
-
         jLabel60.setText("Kons nr.");
-
-        searchOfferNmbField.setPreferredSize(new java.awt.Dimension(10, 24));
 
         jLabel83.setText("Tilbuds nr.");
 
@@ -579,12 +567,12 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(caseSearchButton)
                     .addGroup(caseHandlingPanelLayout.createSequentialGroup()
                         .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(searchOfferNmbField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(konsNmbField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(searchOfferNmbField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(konsNmbField, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(objectTypeSField, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                            .addComponent(ownerSField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(caseNameSField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(caseNmbSField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(ownerSField)
+                            .addComponent(caseNameSField)
+                            .addComponent(caseNmbSField))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -1579,8 +1567,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(10, 24));
-
         jLabel25.setText("Genstandsbeskrivelse");
 
         jLabel26.setText("Sags tilbud");
@@ -1588,8 +1574,6 @@ public class GUI extends javax.swing.JFrame {
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sagens status", "Tilbud sendt", "Tilbud accepteret", "Tilbud afvist" }));
 
         jLabel27.setText("Sags beskrivelse");
-
-        caseDescriptionEditPanel.setPreferredSize(new java.awt.Dimension(10, 24));
 
         jLabel28.setText("Genstandens Placering");
 
@@ -1648,11 +1632,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel39.setText("Sag nr.");
 
-        caseNmbEditPanel.setPreferredSize(new java.awt.Dimension(10, 24));
-
         jLabel40.setText("Sag Navn");
-
-        jTextField4.setPreferredSize(new java.awt.Dimension(10, 24));
 
         jLabel41.setText("af");
 
@@ -1673,8 +1653,6 @@ public class GUI extends javax.swing.JFrame {
         });
 
         addToMyCasesCheckBox.setText("Tilføj til mine sager");
-
-        editCaseOfferNmbField.setPreferredSize(new java.awt.Dimension(10, 24));
 
         jLabel82.setText("Tilbuds nr.");
 
@@ -1803,7 +1781,7 @@ public class GUI extends javax.swing.JFrame {
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                                     .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                    .addComponent(caseDescriptionEditPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                                                    .addComponent(caseDescriptionEditPanel)))
                                                             .addComponent(jSeparator5)
                                                             .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                             .addGroup(editCasePanelLayout.createSequentialGroup()
@@ -1988,14 +1966,15 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void caseSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caseSearchButtonActionPerformed
-//        try {
-//            newestCasesPanel.removeAll();
-//            cases = CaseHandler.getInstance().searchCases(Integer.parseInt(caseNmbSField.getText()), caseNameSField.getText());
-//            PanelFactory.getInstance().createPanels(cases, newestCasesPanel, this, "CasePanel", customerFields);
-//        } catch (SQLException ex) {
-//            //JOptionPane.showMessageDialog(rootPane, ex, title, HEIGHT);
-//            //Eller label med rød tekst
-//        }
+        try {
+            newestCasesPanel.removeAll();
+            cases = CaseHandler.getInstance().searchCases(caseNmbSField.getText(), caseNameSField.getText(), konsNmbField.getText(),
+            searchOfferNmbField.getText());
+            PanelFactory.getInstance().createPanels(cases, newestCasesPanel, this, "CasePanel", customerFields);
+        } catch (SQLException ex) {
+            //JOptionPane.showMessageDialog(rootPane, ex, title, HEIGHT);
+            //Eller label med rød tekst
+        }
     }//GEN-LAST:event_caseSearchButtonActionPerformed
 
     private void changeDbButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeDbButtonActionPerformed

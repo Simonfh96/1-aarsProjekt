@@ -141,11 +141,6 @@
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="caseNmbSField">
-                  <Properties>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[10, 24]"/>
-                    </Property>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel1">
                   <Properties>
@@ -153,11 +148,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="caseNameSField">
-                  <Properties>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[10, 24]"/>
-                    </Property>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel2">
                   <Properties>
@@ -165,11 +155,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="ownerSField">
-                  <Properties>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[10, 24]"/>
-                    </Property>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel3">
                   <Properties>
@@ -185,11 +170,6 @@
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="objectTypeSField">
-                  <Properties>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[10, 24]"/>
-                    </Property>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel4">
                   <Properties>
@@ -353,11 +333,6 @@
                   </SubComponents>
                 </Container>
                 <Component class="javax.swing.JTextField" name="konsNmbField">
-                  <Properties>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[10, 24]"/>
-                    </Property>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel60">
                   <Properties>
@@ -365,11 +340,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="searchOfferNmbField">
-                  <Properties>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[10, 24]"/>
-                    </Property>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel83">
                   <Properties>
@@ -2636,11 +2606,6 @@
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField1">
-              <Properties>
-                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[10, 24]"/>
-                </Property>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel25">
               <Properties>
@@ -2670,11 +2635,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="caseDescriptionEditPanel">
-              <Properties>
-                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[10, 24]"/>
-                </Property>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel28">
               <Properties>
@@ -2821,11 +2781,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="caseNmbEditPanel">
-              <Properties>
-                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[10, 24]"/>
-                </Property>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel40">
               <Properties>
@@ -2833,11 +2788,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField4">
-              <Properties>
-                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[10, 24]"/>
-                </Property>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel41">
               <Properties>
@@ -2880,11 +2830,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="editCaseOfferNmbField">
-              <Properties>
-                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[10, 24]"/>
-                </Property>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel82">
               <Properties>
