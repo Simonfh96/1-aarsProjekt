@@ -142,6 +142,8 @@ public class GUI extends javax.swing.JFrame {
 
     public void editCaseSetup() {
         listModelObjects.clear();
+        allEmployeesListModel.clear();
+        caseResponsibleListModel.clear();
         try {
             PanelFactory.getInstance().createPanels(c.getArticles(), articleDisplayPanel, this, "ArticlePanel", customerFields);
 
