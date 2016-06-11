@@ -34,6 +34,7 @@ import model.Case;
 import model.Contact;
 import model.Costumer;
 import model.Employee;
+import model.Log;
 import model.Task;
 
 /**
@@ -2140,29 +2141,28 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_createCaseAddTaskButtonActionPerformed
 
     private void createCasebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCasebuttonActionPerformed
-//        ArrayList<Log> logs = new ArrayList<>();
-//        if (existingCostumerCheckBox.isSelected()) {
-//            try {
-//                Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), Integer.parseInt(newCaseOfferNmbField.getText()), caseCreationNameField.getText(), newCaseDescription.getText(), newCaseArticles, false, cal.getTime(), cal.getTime(), costSearchSelected, );
-//                CaseHandler.getInstance().saveCase(newCase, employee, true);
-//            } catch (SQLException ex) {
-//                System.out.println(ex.getLocalizedMessage());
-//            }
-//        } else {
-//            try {
-//                //ArrayList af contacts
-//                //Oprette kontaker til kunden? ContactHandler
-//                Costumer costumer = new Costumer(CostumerHandler.getInstance().generateCostumerID(), newCaseNameField.getText(), "museums akronym", 11/*museums nummer*/, Integer.parseInt(newCasePhoneField.getText()), newCaseEmailField.getText(), "Addresse", "4700 zip", newCaseContacts);
-//                Case newCase = new Case(CaseHandler.getInstance().generateKonsNmb(), Integer.parseInt(newCaseOfferNmbField.getText()), caseCreationNameField.getText(), newCaseDescription.getText(), newCaseArticles, false, cal.getTime(), cal.getTime(), costumer);
-//                CaseHandler.getInstance().saveCase(newCase, employee, false);
-//            } catch (SQLException ex) {
-//                System.out.println(ex.getLocalizedMessage());
-//            }
-//            
-//        }
-//        newCaseArticles.clear();
-//        newCaseContacts.clear();
-//        costSearchSelected = null;
+        ArrayList<Log> logs = new ArrayList<>();
+        Costumer customer = null;
+        if (existingCostumerCheckBox.isSelected()) {
+            customer = costSearchSelected;
+        } else {
+            try {
+                customer = new Costumer(CostumerHandler.getInstance().generateCostumerID(), newCaseNameField.getText(), "museums akronym", 11/*museums nummer*/, Integer.parseInt(newCasePhoneField.getText()),
+                        newCaseEmailField.getText(), "Addresse", "4700 zip", newCaseContacts);
+            } catch (SQLException ex) {
+                System.out.println(ex.getLocalizedMessage());
+            }
+        }
+            try {
+                Case newCase = new Case(0, CaseHandler.getInstance().generateKonsNmb(), Integer.parseInt(newCaseOfferNmbField.getText()), caseCreationNameField.getText(), newCaseDescription.getText(), 
+                newCaseArticles, false, cal.getTime(), cal.getTime(), customer, null, null);
+                CaseHandler.getInstance().saveCase(newCase, employee, true);
+            } catch (SQLException ex) {
+                System.out.println(ex.getLocalizedMessage());
+            }        
+        newCaseArticles.clear();
+        newCaseContacts.clear();
+        costSearchSelected = null;
     }//GEN-LAST:event_createCasebuttonActionPerformed
 
     private void existingCostumerCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_existingCostumerCheckBoxActionPerformed
