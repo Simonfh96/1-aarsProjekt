@@ -6,7 +6,6 @@
 package dao;
 
 import interfaces.PanelInterface;
-import java.awt.ScrollPane;
 import java.sql.PreparedStatement;
 import model.Case;
 import java.sql.ResultSet;
