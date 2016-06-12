@@ -383,7 +383,6 @@ public class GUIView extends javax.swing.JFrame {
         newEmployeePassword2Field = new javax.swing.JTextField();
         createNewEmployeeButton = new javax.swing.JButton();
         jSeparator10 = new javax.swing.JSeparator();
-        logButton = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
         employeeListPanel = new javax.swing.JPanel();
         deactiveEmployee = new javax.swing.JButton();
@@ -1302,13 +1301,6 @@ public class GUIView extends javax.swing.JFrame {
 
         jSeparator10.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        logButton.setText("Log");
-        logButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logButtonActionPerformed(evt);
-            }
-        });
-
         jScrollPane8.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         javax.swing.GroupLayout employeeListPanelLayout = new javax.swing.GroupLayout(employeeListPanel);
@@ -1408,17 +1400,14 @@ public class GUIView extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(logButton)
-                                    .addGroup(adminPanelLayout.createSequentialGroup()
-                                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addGroup(adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel79, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel80, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(resetPasswordButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(deactiveEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                        .addGap(0, 134, Short.MAX_VALUE))
+                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel79, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel80, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(resetPasswordButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(deactiveEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 135, Short.MAX_VALUE))
                     .addComponent(jSeparator2))
                 .addContainerGap())
         );
@@ -1494,8 +1483,7 @@ public class GUIView extends javax.swing.JFrame {
                         .addComponent(changeDbButton)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(adminPanelLayout.createSequentialGroup()
-                        .addComponent(logButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(29, 29, 29)
                         .addGroup(adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane8)
                             .addGroup(adminPanelLayout.createSequentialGroup()
@@ -2064,10 +2052,6 @@ public class GUIView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_selectAllArticlesBoxActionPerformed
 
-    private void logButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logButtonActionPerformed
-
-    }//GEN-LAST:event_logButtonActionPerformed
-
     private void createNewEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createNewEmployeeButtonActionPerformed
         try {
             ArrayList<PanelInterface> newMyCases = new ArrayList<>();
@@ -2567,7 +2551,6 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField konsNmbField;
     private javax.swing.JTextField lastUpdatedField;
-    private javax.swing.JButton logButton;
     private javax.swing.JPanel myCasesPanel;
     private javax.swing.JScrollPane myCasesScrollPane;
     private javax.swing.JPanel myCasesTab;
