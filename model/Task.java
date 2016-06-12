@@ -15,7 +15,6 @@ public class Task {
     private String status;
     private String name;
     private String description;
-    private static ArrayList<String> standardText;
 
     public Task(String status, String name, String description) {
         this.status = status;
@@ -36,10 +35,6 @@ public class Task {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public static ArrayList<String> getStandardText() {
-        return standardText;
     }
 
     public String getName() {
