@@ -60,6 +60,7 @@ public class PanelFactory {
                 break;
 
             case "ArticlePanel":
+                displayPanel.removeAll();
                 for (int i = 0; i < panels.size(); i++) {
                     ArticlePanel ap = new ArticlePanel((Article) panels.get(i));
                     ap.setBounds(0, 52 * i, displayPanel.getWidth(), 50);
