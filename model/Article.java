@@ -15,18 +15,18 @@ import java.util.ArrayList;
 public class Article implements PanelInterface {
     private int articleID;
     private String name;
-    //Udskift med den tilhørende case's kons nr
     private int caseKonsNmb;
     private String objectType;
+    private int museumsNmb;
     private int konsNmb;
     private ArrayList<Task> tasks;
 
-    public Article(int articleID, String name, int caseKonsNmb, String objectType, /*owner*/ int konsNmb, ArrayList<Task> tasks) {
+    public Article(int articleID, String name, int caseKonsNmb, String objectType, int museumsNmb, int konsNmb, ArrayList<Task> tasks) {
         this.articleID = articleID;
         this.name = name;
         this.caseKonsNmb = caseKonsNmb;
         this.objectType = objectType;
-        /*this.owner = owner;*/
+        this.museumsNmb = museumsNmb;
         this.konsNmb = konsNmb;
         this.tasks = tasks;
     }
@@ -75,6 +75,14 @@ public class Article implements PanelInterface {
 
     public int getArticleID() {
         return articleID;
+    }
+
+    public int getMuseumsNmb() {
+        return museumsNmb;
+    }
+
+    public void setMuseumsNmb(int museumsNmb) {
+        this.museumsNmb = museumsNmb;
     }
 
     
