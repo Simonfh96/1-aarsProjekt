@@ -248,7 +248,7 @@ public class GUIView extends javax.swing.JFrame {
         jLabel89 = new javax.swing.JLabel();
         jLabel90 = new javax.swing.JLabel();
         jLabel91 = new javax.swing.JLabel();
-        newCaseZipCodeField = new javax.swing.JTextField();
+        newCaseMuseumNmbField = new javax.swing.JTextField();
         jLabel92 = new javax.swing.JLabel();
         newCaseAcroField = new javax.swing.JTextField();
         costumerTypeBox = new javax.swing.JComboBox<>();
@@ -673,11 +673,11 @@ public class GUIView extends javax.swing.JFrame {
         newCasePanel.add(jLabel90);
         jLabel90.setBounds(380, 80, 150, 14);
 
-        jLabel91.setText("Postnummer");
+        jLabel91.setText("Museums nr.");
         newCasePanel.add(jLabel91);
         jLabel91.setBounds(380, 140, 80, 14);
-        newCasePanel.add(newCaseZipCodeField);
-        newCaseZipCodeField.setBounds(380, 160, 80, 20);
+        newCasePanel.add(newCaseMuseumNmbField);
+        newCaseMuseumNmbField.setBounds(380, 160, 80, 20);
 
         jLabel92.setText("Akronym");
         newCasePanel.add(jLabel92);
@@ -2134,8 +2134,12 @@ public class GUIView extends javax.swing.JFrame {
             customer = costSearchSelected;
         } else {
             try {
-                customer = new Costumer(CostumerHandler.getInstance().generateCostumerID(), newCaseNameField.getText(), "museums akronym", 11/*museums nummer*/, Integer.parseInt(newCasePhoneField.getText()),
-                        newCaseEmailField.getText(), "Addresse", newCaseContacts);
+                String customerAcro = "";
+                if (costumerTypeBox.equals("Kvote")) {
+                    customerAcro = newCaseAcroField.getText();
+                }
+                customer = new Costumer(CostumerHandler.getInstance().generateCostumerID(), newCaseNameField.getText(), customerAcro, Integer.parseInt(newCaseMuseumNmbField.getText()), Integer.parseInt(newCasePhoneField.getText()),
+                        newCaseEmailField.getText(), newCaseAddressField.getText(), newCaseContacts);
             } catch (SQLException ex) {
                 System.out.println(ex.getLocalizedMessage());
             }
@@ -2167,7 +2171,7 @@ public class GUIView extends javax.swing.JFrame {
             newCasePhoneField.setEnabled(false);
             newCaseEmailField.setEnabled(false);
             newCaseAddressField.setEnabled(false);
-            newCaseZipCodeField.setEnabled(false);
+            newCaseMuseumNmbField.setEnabled(false);
             newCaseAcroField.setEnabled(false);
             addContactNameField.setEnabled(false);
             addContactPhoneField.setEnabled(false);
@@ -2180,7 +2184,7 @@ public class GUIView extends javax.swing.JFrame {
             newCasePhoneField.setEnabled(true);
             newCaseEmailField.setEnabled(true);
             newCaseAddressField.setEnabled(true);
-            newCaseZipCodeField.setEnabled(true);
+            newCaseMuseumNmbField.setEnabled(true);
             newCaseAcroField.setEnabled(true);
             addContactNameField.setEnabled(true);
             addContactPhoneField.setEnabled(true);
@@ -2546,11 +2550,11 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JTextField newCaseContactField;
     private javax.swing.JTextField newCaseDescription;
     private javax.swing.JTextField newCaseEmailField;
+    private javax.swing.JTextField newCaseMuseumNmbField;
     private javax.swing.JTextField newCaseNameField;
     private javax.swing.JTextField newCaseOfferNmbField;
     private javax.swing.JPanel newCasePanel;
     private javax.swing.JTextField newCasePhoneField;
-    private javax.swing.JTextField newCaseZipCodeField;
     private javax.swing.JList<String> newContactList;
     private javax.swing.JTextField newEmployeeEmailField;
     private javax.swing.JTextField newEmployeeFirstnameField;
