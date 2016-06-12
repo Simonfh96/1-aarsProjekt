@@ -27,7 +27,7 @@
                   <Group type="102" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="konsNrLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="caseNmbLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="caseNameLabel" min="-2" pref="208" max="-2" attributes="0"/>
               </Group>
@@ -58,7 +58,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="konsNrLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="caseNmbLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lastUpdateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -80,7 +80,7 @@
         <Property name="text" type="java.lang.String" value="Sags nr."/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="konsNrLabel">
+    <Component class="javax.swing.JLabel" name="caseNmbLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Sags nr."/>
       </Properties>
