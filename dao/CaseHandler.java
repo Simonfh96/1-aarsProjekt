@@ -165,15 +165,9 @@ public class CaseHandler {
         return cases;
     }
 
-    public ArrayList<PanelInterface> searchCases(JTabbedPane tabbedPane, String caseIDParam, String caseNameParam,/*String articleType*/ String konsNmbParam, String offerNmbParam) throws SQLException {
+    public ArrayList<PanelInterface> searchCases(JPanel displayPanel, String caseIDParam, String caseNameParam,/*String articleType*/ String konsNmbParam, String offerNmbParam) throws SQLException {
         ArrayList<PanelInterface> cases = new ArrayList<>();
-        JPanel selectedTab = (JPanel) tabbedPane.getSelectedComponent();
-        JScrollPane scroller = (JScrollPane) selectedTab.getComponent(0);
-        JViewport view = (JViewport) scroller.getComponent(0);
-        JPanel displayPanel = (JPanel) view.getComponent(0);
         displayPanel.removeAll();
-//        JPanel searchPanel = (JPanel) selectedTab.getSelectedComponent();
-//        selectedPanel.removeAll();
         String statement;
         statement = "SELECT * FROM cases WHERE ";
         if (!(caseIDParam.isEmpty()) && caseIDParam.matches("[0-9]")) {

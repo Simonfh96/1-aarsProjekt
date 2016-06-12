@@ -28,7 +28,9 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.JViewport;
 import listeners.SearchListListener;
 import model.Article;
 import model.Case;
@@ -1937,9 +1939,10 @@ public class GUIView extends javax.swing.JFrame {
 
     private void caseSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caseSearchButtonActionPerformed
         try {
-            cases = CaseHandler.getInstance().searchCases(caseDisplayPane, caseNmbSField.getText(), caseNameSField.getText(), konsNmbField.getText(),
+            JPanel displayPanel = PanelFactory.getInstance().getSelectedTabPanel(caseDisplayPane);
+            cases = CaseHandler.getInstance().searchCases(displayPanel, caseNmbSField.getText(), caseNameSField.getText(), konsNmbField.getText(),
             searchOfferNmbField.getText());
-            PanelFactory.getInstance().createPanels(cases, myCasesPanel, this, "CasePanel", customerFields);
+            PanelFactory.getInstance().createPanels(cases, displayPanel, this, "CasePanel", customerFields);
         } catch (SQLException ex) {
             //JOptionPane.showMessageDialog(rootPane, ex, title, HEIGHT);
             //Eller label med rød tekst

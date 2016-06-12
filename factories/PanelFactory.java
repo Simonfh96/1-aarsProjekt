@@ -11,7 +11,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
+import javax.swing.JViewport;
 import model.Article;
 import model.Case;
 import model.Costumer;
@@ -42,10 +45,17 @@ public class PanelFactory {
 
         private static final PanelFactory INSTANCE = new PanelFactory();
     }
+    
+    public JPanel getSelectedTabPanel(JTabbedPane tabbedPane) {
+        JPanel selectedTab = (JPanel) tabbedPane.getSelectedComponent();
+        JScrollPane scroller = (JScrollPane) selectedTab.getComponent(0);
+        JViewport view = (JViewport) scroller.getComponent(0);
+        JPanel displayPanel = (JPanel) view.getComponent(0);
+        return displayPanel;
+    }
 
     //den skal oprette en af de fire typer panels alt efter værdien i switchen
     public void createPanels(ArrayList<PanelInterface> panels, JPanel displayPanel, GUIView gui, String type, JTextField[] textFields) throws SQLException {
-        System.out.println("switch");
         switch (type) {
             case "CasePanel":
                 for (int i = 0; i < panels.size(); i++) {
