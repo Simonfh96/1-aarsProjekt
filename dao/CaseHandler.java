@@ -168,6 +168,7 @@ public class CaseHandler {
     public ArrayList<PanelInterface> searchCases(JPanel displayPanel, String caseIDParam, String caseNameParam,/*String articleType*/ String konsNmbParam, String offerNmbParam) throws SQLException {
         ArrayList<PanelInterface> cases = new ArrayList<>();
         displayPanel.removeAll();
+        String selectedTab = displayPanel.getName();
         String statement;
         statement = "SELECT * FROM cases WHERE ";
         if (!(caseIDParam.isEmpty()) && caseIDParam.matches("[0-9]")) {
@@ -190,9 +191,18 @@ public class CaseHandler {
         }
         }
 
-        statement = statement.substring(0, (statement.length() - 5)) + ";";
-        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+        if (selectedTab.equals("newestCasesP")) {
+           statement = statement.substring(0, (statement.length() - 5));
+           statement += " ORDER BY lastUpdated DESC;";
+        }
+       
+        if (selectedTab.equals("finishedCasesP")) {
+            statement += " finished = 1";
+        }
+
+//        statement = statement.substring(0, (statement.length() - 5));
         System.out.println(statement);
+        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
                     null, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), null, null, null);
