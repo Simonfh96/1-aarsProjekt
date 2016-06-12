@@ -369,7 +369,7 @@ public class GUIView extends javax.swing.JFrame {
         newEmployeePhoneField = new javax.swing.JTextField();
         jLabel56 = new javax.swing.JLabel();
         jLabel57 = new javax.swing.JLabel();
-        newEmployeeInitialerField = new javax.swing.JTextField();
+        newEmployeeInitialsField = new javax.swing.JTextField();
         newEmployeeUsernameField = new javax.swing.JTextField();
         jLabel58 = new javax.swing.JLabel();
         newEmployeePassword1Field = new javax.swing.JTextField();
@@ -1260,7 +1260,7 @@ public class GUIView extends javax.swing.JFrame {
 
         jLabel57.setText("Initialer");
 
-        newEmployeeInitialerField.setPreferredSize(new java.awt.Dimension(10, 24));
+        newEmployeeInitialsField.setPreferredSize(new java.awt.Dimension(10, 24));
 
         newEmployeeUsernameField.setPreferredSize(new java.awt.Dimension(10, 24));
 
@@ -1380,7 +1380,7 @@ public class GUIView extends javax.swing.JFrame {
                                             .addComponent(newEmployeeTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
                                         .addGroup(adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(newEmployeeInitialerField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(newEmployeeInitialsField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel57)))
                                     .addComponent(createNewEmployeeButton)
                                     .addComponent(jLabel56))
@@ -1423,7 +1423,7 @@ public class GUIView extends javax.swing.JFrame {
                         .addGroup(adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(newEmployeeFirstnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(newEmployeeLastnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(newEmployeeInitialerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(newEmployeeInitialsField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel54)
@@ -2059,7 +2059,7 @@ public class GUIView extends javax.swing.JFrame {
                 partTime = true;
             }
             Employee newE = new Employee(EmployeeHandler.getInstance().generateEmployeeID(), newEmployeeUsernameField.getText(), newEmployeePassword2Field.getText(), newEmployeeFirstnameField.getText(),
-                    newEmployeeLastnameField.getText(), Integer.parseInt(newEmployeePhoneField.getText()), newEmployeeEmailField.getText(), admin, partTime, true, newMyCases);
+                    newEmployeeLastnameField.getText(), newEmployeeInitialsField.getText(), Integer.parseInt(newEmployeePhoneField.getText()), newEmployeeEmailField.getText(), admin, partTime, true, newMyCases);
             EmployeeHandler.getInstance().saveEmployee(newE);
         } catch (SQLException ex) {
             System.out.println(ex.getLocalizedMessage());
@@ -2518,7 +2518,7 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JList<String> newContactList;
     private javax.swing.JTextField newEmployeeEmailField;
     private javax.swing.JTextField newEmployeeFirstnameField;
-    private javax.swing.JTextField newEmployeeInitialerField;
+    private javax.swing.JTextField newEmployeeInitialsField;
     private javax.swing.JTextField newEmployeeLastnameField;
     private javax.swing.JTextField newEmployeePassword1Field;
     private javax.swing.JTextField newEmployeePassword2Field;

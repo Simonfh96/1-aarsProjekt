@@ -28,14 +28,14 @@ public class Employee implements Comparable, PanelInterface {
     private boolean active;
     private ArrayList<PanelInterface> myCases;
 
-    public Employee(int employeeID, String username, String password, String firstName, String lastName, int phone, String email, boolean admin, boolean partTime, boolean active, ArrayList<PanelInterface> myCases) {
+    public Employee(int employeeID, String username, String password, String firstName, String initials, String lastName, int phone, String email, boolean admin, boolean partTime, boolean active, ArrayList<PanelInterface> myCases) {
         this.employeeID = employeeID;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         fullName = firstName + " " + lastName;
-        initials = "GH"; //Skal ændres til get intials i handler
+        this.initials = initials;
         this.phone = phone;
         this.email = email;
         this.admin = admin;

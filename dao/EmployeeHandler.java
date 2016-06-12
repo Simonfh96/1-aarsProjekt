@@ -66,7 +66,7 @@ public class EmployeeHandler {
         if (rs.next()) {
 
             employee = new Employee(rs.getInt("employee_id"), rs.getString("username"), rs.getString("userPassword"),
-                    rs.getString("firstName"), rs.getString("lastName"),
+                    rs.getString("firstName"), rs.getString("lastName"), rs.getString("initials"),
                     rs.getInt("phone"), rs.getString("email"), rs.getBoolean("admin"), rs.getBoolean("partTime"), rs.getBoolean("active"), myCases);
             System.out.println("Name: " + employee.getFirstName());
         }
@@ -124,17 +124,18 @@ public class EmployeeHandler {
 
     public void saveEmployee(Employee e) throws SQLException {
         CallableStatement cs = null;
-        cs = DBHandler.getInstance().conn.prepareCall("{CALL AddEmployee(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}");
+        cs = DBHandler.getInstance().conn.prepareCall("{CALL AddEmployee(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}");
         cs.setInt(1, e.getEmployeeID());
         cs.setString(2, e.getUsername());
         cs.setString(3, e.getPassword());
         cs.setString(4, e.getFirstName());
         cs.setString(5, e.getLastName());
-        cs.setInt(6, e.getPhone());
-        cs.setString(7, e.getEmail());
-        cs.setBoolean(8, e.isAdmin());
-        cs.setBoolean(9, e.isPartTime());
-        cs.setBoolean(10, e.isActive());
+        cs.setString(6, e.getInitials());
+        cs.setInt(7, e.getPhone());
+        cs.setString(8, e.getEmail());
+        cs.setBoolean(9, e.isAdmin());
+        cs.setBoolean(10, e.isPartTime());
+        cs.setBoolean(11, e.isActive());
         cs.execute();
     }
 
@@ -156,7 +157,7 @@ public class EmployeeHandler {
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Employee employee = new Employee(rs.getInt("employee_id"), rs.getString("username"), rs.getString("userPassword"),
-                    rs.getString("firstName"), rs.getString("lastName"),
+                    rs.getString("firstName"), rs.getString("lastName"), rs.getString("initials"),
                     rs.getInt("phone"), rs.getString("email"), rs.getBoolean("admin"), rs.getBoolean("partTime"), rs.getBoolean("active"), null);
             employees.add(employee);
         }
