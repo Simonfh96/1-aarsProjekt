@@ -2154,7 +2154,7 @@
                                                       <EmptySpace max="-2" attributes="0"/>
                                                       <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="jTextField4" min="-2" pref="159" max="-2" attributes="0"/>
+                                                      <Component id="caseNameEditField" min="-2" pref="159" max="-2" attributes="0"/>
                                                       <EmptySpace max="32767" attributes="0"/>
                                                       <Group type="103" groupAlignment="0" attributes="0">
                                                           <Group type="102" alignment="1" attributes="0">
@@ -2253,7 +2253,7 @@
                           <Component id="jLabel39" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="caseNmbEditPanel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel40" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="caseNameEditField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="editCaseOfferNmbField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel82" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -2704,7 +2704,7 @@
                 <Property name="text" type="java.lang.String" value="Sag Navn"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField4">
+            <Component class="javax.swing.JTextField" name="caseNameEditField">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel41">
               <Properties>

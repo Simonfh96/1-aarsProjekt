@@ -159,7 +159,6 @@ public class GUIView extends javax.swing.JFrame {
                 Employee e = (Employee) emp;
                 allEmployeesListModel.addElement(e);
             }
-            
         } catch (SQLException ex) {
             System.out.println(ex.getLocalizedMessage());
         }
@@ -181,7 +180,7 @@ public class GUIView extends javax.swing.JFrame {
         lastUpdatedField.setText(dateFormat.format(c.getLastUpdated()));
         caseDescriptionEditPanel.setText(c.getDescription());
         caseNmbEditPanel.setText("" + c.getKonsNmb());
-        jTextField4.setText(c.getCaseName());
+        caseNameEditField.setText(c.getCaseName());
         adressCostumerLabel.setText(c.getCustomer().getAddress());
         editCaseOfferNmbField.setText("" + c.getOfferNmb());
     }
@@ -436,7 +435,7 @@ public class GUIView extends javax.swing.JFrame {
         jLabel39 = new javax.swing.JLabel();
         caseNmbEditPanel = new javax.swing.JTextField();
         jLabel40 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        caseNameEditField = new javax.swing.JTextField();
         jLabel41 = new javax.swing.JLabel();
         employeeLastUpdateField = new javax.swing.JTextField();
         jLabel42 = new javax.swing.JLabel();
@@ -1729,7 +1728,7 @@ public class GUIView extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jLabel40)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(caseNameEditField, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editCasePanelLayout.createSequentialGroup()
@@ -1800,7 +1799,7 @@ public class GUIView extends javax.swing.JFrame {
                     .addComponent(jLabel39)
                     .addComponent(caseNmbEditPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel40)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(caseNameEditField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editCaseOfferNmbField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel82))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1938,10 +1937,9 @@ public class GUIView extends javax.swing.JFrame {
 
     private void caseSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caseSearchButtonActionPerformed
         try {
-            newestCasesPanel.removeAll();
-            cases = CaseHandler.getInstance().searchCases(caseNmbSField.getText(), caseNameSField.getText(), konsNmbField.getText(),
+            cases = CaseHandler.getInstance().searchCases(caseDisplayPane, caseNmbSField.getText(), caseNameSField.getText(), konsNmbField.getText(),
             searchOfferNmbField.getText());
-            PanelFactory.getInstance().createPanels(cases, newestCasesPanel, this, "CasePanel", customerFields);
+            PanelFactory.getInstance().createPanels(cases, myCasesPanel, this, "CasePanel", customerFields);
         } catch (SQLException ex) {
             //JOptionPane.showMessageDialog(rootPane, ex, title, HEIGHT);
             //Eller label med rød tekst
@@ -1981,7 +1979,7 @@ public class GUIView extends javax.swing.JFrame {
             try {
 //                if (employee.checkAddedMyCases(c) == false) {
 //                CaseHandler.getInstance().addToMyCases(employee, c);
-                c.setCaseName(jTextField4.getText());
+                c.setCaseName(caseNameEditField.getText());
 //                CaseHandler.getInstance().editCase(c);
                 CaseHandler.getInstance().completeTransaction();
                 employeeLastUpdateField.setText(employee.getFullName());
@@ -1994,7 +1992,7 @@ public class GUIView extends javax.swing.JFrame {
             try {
 //                if (employee.checkAddedMyCases(c)) {
 //                CaseHandler.getInstance().deleteMyCase(c.getKonsNmb(), employee.getEmployeeID());
-                c.setCaseName(jTextField4.getText());
+                c.setCaseName(caseNameEditField.getText());
 //                CaseHandler.getInstance().editCase(c);
                 CaseHandler.getInstance().completeTransaction();
                 employeeLastUpdateField.setText(employee.getFullName());
@@ -2316,6 +2314,7 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JLabel caseEndedDateLabel;
     private javax.swing.JCheckBox caseFinishedCheckBox;
     private javax.swing.JPanel caseHandlingPanel;
+    private javax.swing.JTextField caseNameEditField;
     private javax.swing.JTextField caseNameSField;
     private javax.swing.JTextField caseNmbEditPanel;
     private javax.swing.JTextField caseNmbSField;
@@ -2489,7 +2488,6 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField konsNmbField;
     private javax.swing.JTextField lastUpdatedField;
     private javax.swing.JButton logButton;

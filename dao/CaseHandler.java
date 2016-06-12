@@ -6,6 +6,7 @@
 package dao;
 
 import interfaces.PanelInterface;
+import java.awt.ScrollPane;
 import java.sql.PreparedStatement;
 import model.Case;
 import java.sql.ResultSet;
@@ -17,6 +18,10 @@ import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JViewport;
 import model.Article;
 import model.Costumer;
 import model.Employee;
@@ -160,8 +165,15 @@ public class CaseHandler {
         return cases;
     }
 
-    public ArrayList<PanelInterface> searchCases(String caseIDParam, String caseNameParam,/*String articleType*/ String konsNmbParam, String offerNmbParam) throws SQLException {
+    public ArrayList<PanelInterface> searchCases(JTabbedPane tabbedPane, String caseIDParam, String caseNameParam,/*String articleType*/ String konsNmbParam, String offerNmbParam) throws SQLException {
         ArrayList<PanelInterface> cases = new ArrayList<>();
+        JPanel selectedTab = (JPanel) tabbedPane.getSelectedComponent();
+        JScrollPane scroller = (JScrollPane) selectedTab.getComponent(0);
+        JViewport view = (JViewport) scroller.getComponent(0);
+        JPanel displayPanel = (JPanel) view.getComponent(0);
+        displayPanel.removeAll();
+//        JPanel searchPanel = (JPanel) selectedTab.getSelectedComponent();
+//        selectedPanel.removeAll();
         String statement;
         statement = "SELECT * FROM cases WHERE ";
         if (!(caseIDParam.isEmpty()) && caseIDParam.matches("[0-9]")) {
