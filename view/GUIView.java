@@ -1945,7 +1945,7 @@ public class GUIView extends javax.swing.JFrame {
     private void caseSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caseSearchButtonActionPerformed
         try {
             JPanel displayPanel = PanelFactory.getInstance().getSelectedTabPanel(caseDisplayPane);
-            cases = CaseHandler.getInstance().searchCases(displayPanel, caseNmbSField.getText(), caseNameSField.getText(), konsNmbField.getText(),
+            cases = CaseHandler.getInstance().searchCases(employee, displayPanel, caseNmbSField.getText(), caseNameSField.getText(), konsNmbField.getText(),
             searchOfferNmbField.getText());
             PanelFactory.getInstance().createPanels(cases, displayPanel, this, "CasePanel", customerFields);
         } catch (SQLException ex) {

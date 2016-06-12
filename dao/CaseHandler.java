@@ -165,7 +165,7 @@ public class CaseHandler {
         return cases;
     }
 
-    public ArrayList<PanelInterface> searchCases(JPanel displayPanel, String caseIDParam, String caseNameParam,/*String articleType*/ String konsNmbParam, String offerNmbParam) throws SQLException {
+    public ArrayList<PanelInterface> searchCases(Employee e, JPanel displayPanel, String caseIDParam, String caseNameParam,/*String articleType*/ String konsNmbParam, String offerNmbParam) throws SQLException {
         ArrayList<PanelInterface> cases = new ArrayList<>();
         displayPanel.removeAll();
         String selectedTab = displayPanel.getName();
@@ -190,7 +190,7 @@ public class CaseHandler {
             statement += "offerNmb = " + offerNmbParam + " AND ";
         }
         }
-
+        //EKSKLUDER HVOR FINISHED ER LIG MED 1 SÅ FINISHED = 0 PÅ DEN
         if (selectedTab.equals("newestCasesP")) {
            statement = statement.substring(0, (statement.length() - 5));
            statement += " ORDER BY lastUpdated DESC;";
@@ -199,14 +199,23 @@ public class CaseHandler {
         if (selectedTab.equals("finishedCasesP")) {
             statement += " finished = 1";
         }
+        
+        if (selectedTab.equals("myCasesP")) {
+            statement = statement.substring(0, (statement.length() - 5));
+        }
 
-//        statement = statement.substring(0, (statement.length() - 5));
         System.out.println(statement);
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
                     null, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), null, null, null);
-            cases.add(c);
+            if (!(selectedTab.equals("myCasesP"))) {
+                cases.add(c);
+            } else {
+                if (e.checkAddedMyCases(c)) {
+                    cases.add(c);
+                }
+            }
         }
         rs.close();
         for (int i = 0; i < cases.size(); i++) {
