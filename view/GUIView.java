@@ -728,11 +728,6 @@ public class GUIView extends javax.swing.JFrame {
         newCasePanel.add(addContactEmailField);
         addContactEmailField.setBounds(750, 160, 160, 20);
 
-        newContactList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane12.setViewportView(newContactList);
 
         newCasePanel.add(jScrollPane12);
@@ -891,11 +886,6 @@ public class GUIView extends javax.swing.JFrame {
         newCasePanel.add(createCaseAddTaskButton);
         createCaseAddTaskButton.setBounds(780, 388, 80, 23);
 
-        createCaseTaskList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane16.setViewportView(createCaseTaskList);
 
         newCasePanel.add(jScrollPane16);
@@ -977,11 +967,6 @@ public class GUIView extends javax.swing.JFrame {
 
         jScrollPane10.setHorizontalScrollBar(null);
 
-        jList5.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane10.setViewportView(jList5);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
