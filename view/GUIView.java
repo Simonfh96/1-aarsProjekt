@@ -2135,10 +2135,12 @@ public class GUIView extends javax.swing.JFrame {
         } else {
             try {
                 String customerAcro = "";
+                int museumsNmb = 0;
                 if (costumerTypeBox.getSelectedItem().equals("Kvote")) {
                     customerAcro = newCaseAcroField.getText();
+                    museumsNmb = Integer.parseInt(newCaseMuseumNmbField.getText());
                 }
-                customer = new Costumer(CostumerHandler.getInstance().generateCostumerID(), newCaseNameField.getText(), customerAcro, Integer.parseInt(newCaseMuseumNmbField.getText()), Integer.parseInt(newCasePhoneField.getText()),
+                customer = new Costumer(CostumerHandler.getInstance().generateCostumerID(), newCaseNameField.getText(), customerAcro, museumsNmb, Integer.parseInt(newCasePhoneField.getText()),
                         newCaseEmailField.getText(), newCaseAddressField.getText(), newCaseContacts);
             } catch (SQLException ex) {
                 System.out.println(ex.getLocalizedMessage());
