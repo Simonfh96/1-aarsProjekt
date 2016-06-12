@@ -2044,7 +2044,7 @@ public class GUIView extends javax.swing.JFrame {
         try {
             EmployeeHandler.getInstance().changePasswordAndUsername(newUsernameField.getText(), newPasswordField2.getText(), employee);
         } catch (SQLException ex) {
-            System.out.println(ex.getLocalizedMessage());
+            JOptionPane.showMessageDialog(this, "Kunne ikke ændre kodeord og/eller brugernavn");
         }
     }//GEN-LAST:event_saveLoginInfoButtonActionPerformed
 
