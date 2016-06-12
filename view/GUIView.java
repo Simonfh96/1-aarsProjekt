@@ -2135,7 +2135,7 @@ public class GUIView extends javax.swing.JFrame {
         } else {
             try {
                 String customerAcro = "";
-                if (costumerTypeBox.equals("Kvote")) {
+                if (costumerTypeBox.getSelectedItem().equals("Kvote")) {
                     customerAcro = newCaseAcroField.getText();
                 }
                 customer = new Costumer(CostumerHandler.getInstance().generateCostumerID(), newCaseNameField.getText(), customerAcro, Integer.parseInt(newCaseMuseumNmbField.getText()), Integer.parseInt(newCasePhoneField.getText()),
