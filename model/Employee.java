@@ -28,7 +28,7 @@ public class Employee implements Comparable, PanelInterface {
     private boolean active;
     private ArrayList<PanelInterface> myCases;
 
-    public Employee(int employeeID, String username, String password, String firstName, String initials, String lastName, int phone, String email, boolean admin, boolean partTime, boolean active, ArrayList<PanelInterface> myCases) {
+    public Employee(int employeeID, String username, String password, String firstName, String lastName, String initials, int phone, String email, boolean admin, boolean partTime, boolean active, ArrayList<PanelInterface> myCases) {
         this.employeeID = employeeID;
         this.username = username;
         this.password = password;

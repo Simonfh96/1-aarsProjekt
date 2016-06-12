@@ -68,7 +68,6 @@ public class EmployeeHandler {
             employee = new Employee(rs.getInt("employee_id"), rs.getString("username"), rs.getString("userPassword"),
                     rs.getString("firstName"), rs.getString("lastName"), rs.getString("initials"),
                     rs.getInt("phone"), rs.getString("email"), rs.getBoolean("admin"), rs.getBoolean("partTime"), rs.getBoolean("active"), myCases);
-            System.out.println("Name: " + employee.getFirstName());
         }
         rs.close();
 
@@ -130,6 +129,7 @@ public class EmployeeHandler {
         cs.setString(3, e.getPassword());
         cs.setString(4, e.getFirstName());
         cs.setString(5, e.getLastName());
+        System.out.println(e.getInitials());
         cs.setString(6, e.getInitials());
         cs.setInt(7, e.getPhone());
         cs.setString(8, e.getEmail());
