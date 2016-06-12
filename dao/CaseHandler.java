@@ -171,6 +171,12 @@ public class CaseHandler {
         String selectedTab = displayPanel.getName();
         String statement;
         statement = "SELECT * FROM cases WHERE ";
+        if (selectedTab.equals("finishedCasesP")) {
+            statement += "finished = 1 AND ";
+        } else {
+            statement += "finished = 0 AND ";
+        }
+        
         if (!(caseIDParam.isEmpty()) && caseIDParam.matches("[0-9]")) {
             if (Integer.parseInt(caseIDParam) > 0) {
                 statement += "case_id = " + caseIDParam + " AND ";
@@ -190,18 +196,12 @@ public class CaseHandler {
             statement += "offerNmb = " + offerNmbParam + " AND ";
         }
         }
-        //EKSKLUDER HVOR FINISHED ER LIG MED 1 SÅ FINISHED = 0 PÅ DEN
-        if (selectedTab.equals("newestCasesP")) {
-           statement = statement.substring(0, (statement.length() - 5));
-           statement += " ORDER BY lastUpdated DESC;";
-        }
-       
-        if (selectedTab.equals("finishedCasesP")) {
-            statement += " finished = 1";
-        }
         
-        if (selectedTab.equals("myCasesP")) {
-            statement = statement.substring(0, (statement.length() - 5));
+        statement = statement.substring(0, (statement.length() - 5));
+        if (selectedTab.equals("newestCasesP")) {
+           statement += " ORDER BY lastUpdated DESC;";
+        } else {
+            statement += ";";
         }
 
         System.out.println(statement);
