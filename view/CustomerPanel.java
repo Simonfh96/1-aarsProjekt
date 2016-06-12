@@ -36,6 +36,16 @@ public class CustomerPanel extends javax.swing.JPanel {
 
     }
 
+    public Costumer getCustomer() {
+        return c;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+    
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

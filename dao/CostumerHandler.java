@@ -79,6 +79,17 @@ public class CostumerHandler {
         rs.close();
         return costumers;
     }
+    
+    public void editCustomer(Costumer c) throws SQLException {
+        PreparedStatement ps = null;
+        String setActive = "UPDATE costumer SET costumerName = ?, phone = ?, email = ?, address = ? WHERE costumer_id = " + c.getCostumerID();
+        ps = DBHandler.getInstance().conn.prepareStatement(setActive);
+        ps.setString(1, c.getCostumerName());
+        ps.setInt(2, c.getPhone());
+        ps.setString(3, c.getEmail());
+        ps.setString(4, c.getAddress());
+        ps.executeUpdate();
+    }
 
     public void saveCostumer(Costumer c, boolean existingCostumer) throws SQLException {
         if (!existingCostumer) {

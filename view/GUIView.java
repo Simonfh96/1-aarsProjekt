@@ -967,6 +967,11 @@ public class GUIView extends javax.swing.JFrame {
         findCustomerEdibleCheckBox.setText("Ændre kundens oplysninger");
 
         findCustomerSaveInfoButton.setText("Gem");
+        findCustomerSaveInfoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findCustomerSaveInfoButtonActionPerformed(evt);
+            }
+        });
 
         jScrollPane9.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -2312,6 +2317,27 @@ public class GUIView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Kunne ikke ændre personlige indstillinger.");
         }
     }//GEN-LAST:event_savePersonalInfoButtonActionPerformed
+
+    private void findCustomerSaveInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findCustomerSaveInfoButtonActionPerformed
+    Costumer customerToEdit = null;
+        for (Component customerPanel : showAllCustomerPanel.getComponents()) {
+            CustomerPanel cp = (CustomerPanel) customerPanel;
+            if (cp.isSelected()) {
+                customerToEdit = cp.getCustomer();
+            }
+        }
+      if (customerToEdit != null) {
+      customerToEdit.setCostumerName(customerListNameField.getText());
+      customerToEdit.setPhone(Integer.parseInt(customerListPhoneField.getText()));
+      customerToEdit.setEmail(customerListEmailField.getText());
+      customerToEdit.setAddress(customerListAddressField.getText());
+        try {
+            CostumerHandler.getInstance().editCustomer(customerToEdit);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Kunne ikke redigere i kundens oplysninger");
+        }
+      }
+    }//GEN-LAST:event_findCustomerSaveInfoButtonActionPerformed
 
     /**
      * @param args the command line arguments
