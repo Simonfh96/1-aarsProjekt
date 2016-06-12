@@ -287,7 +287,7 @@ public class GUIView extends javax.swing.JFrame {
         jLabel102 = new javax.swing.JLabel();
         articleAmountField = new javax.swing.JTextField();
         createArticleConsNmbField = new javax.swing.JTextField();
-        createCaseMuseumsNmbField = new javax.swing.JTextField();
+        newArticleMuseumsNmbField = new javax.swing.JTextField();
         jLabel103 = new javax.swing.JLabel();
         jScrollPane14 = new javax.swing.JScrollPane();
         createCaseArticleDescriptionArea = new javax.swing.JTextArea();
@@ -827,8 +827,8 @@ public class GUIView extends javax.swing.JFrame {
         articleAmountField.setBounds(420, 290, 120, 20);
         newCasePanel.add(createArticleConsNmbField);
         createArticleConsNmbField.setBounds(420, 320, 120, 20);
-        newCasePanel.add(createCaseMuseumsNmbField);
-        createCaseMuseumsNmbField.setBounds(420, 350, 120, 20);
+        newCasePanel.add(newArticleMuseumsNmbField);
+        newArticleMuseumsNmbField.setBounds(420, 350, 120, 20);
 
         jLabel103.setText("Genstands beskrivelse");
         newCasePanel.add(jLabel103);
@@ -2216,7 +2216,8 @@ public class GUIView extends javax.swing.JFrame {
         ArrayList<Task> tasks = new ArrayList<>();
         Article article = null;
         try {
-            article = new Article(ArticleHandler.getInstance().generateArticleID(), newArticleNameField.getText(), 0, (String) newArticleTypeBox.getSelectedItem(), 0, tasks);
+            article = new Article(ArticleHandler.getInstance().generateArticleID(), newArticleNameField.getText(), 0, 
+                    (String) newArticleTypeBox.getSelectedItem(), Integer.parseInt(newArticleMuseumsNmbField.getText()), 0, tasks);
         } catch (SQLException ex) {
             System.out.println(ex.getLocalizedMessage());
         }
@@ -2392,7 +2393,6 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JButton createCaseAddTaskButton;
     private javax.swing.JTextArea createCaseArticleDescriptionArea;
     private javax.swing.JComboBox<String> createCaseLocationBox;
-    private javax.swing.JTextField createCaseMuseumsNmbField;
     private javax.swing.JComboBox<String> createCaseTaskBox;
     private javax.swing.JList<String> createCaseTaskList;
     private javax.swing.JButton createCasebutton;
@@ -2557,6 +2557,7 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JScrollPane myCasesScrollPane;
     private javax.swing.JPanel myCasesTab;
     private javax.swing.JButton newArticleButton;
+    private javax.swing.JTextField newArticleMuseumsNmbField;
     private javax.swing.JTextField newArticleNameField;
     private javax.swing.JComboBox<String> newArticleTypeBox;
     private javax.swing.JTextField newCaseAcroField;
