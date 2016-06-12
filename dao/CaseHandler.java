@@ -39,23 +39,7 @@ public class CaseHandler {
     private CaseHandler() {
         cal = Calendar.getInstance();
     }
-
-//    public ArrayList<Case> getCases() throws SQLException {
-//        ArrayList<Case> cases = new ArrayList<>();
-//        String statement;
-//        statement = "SELECT * FROM cases;";
-//        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
-//        while (rs.next()) {
-//            Costumer costumer = CostumerHandler.getInstance().getCostumer(rs.getInt("costumer_id"));
-//            ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(rs.getInt("konsNr"));
-//            ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(rs.getInt("log_id"));
-//            Case c = new Case(rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
-//                    articles, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), costumer, logs);
-//            cases.add(c);;
-//        }
-//        rs.close();
-//        return cases;
-//    }
+    
     public ArrayList<PanelInterface> getCasesNewest() throws SQLException {
         ArrayList<PanelInterface> cases = new ArrayList<>();
         String statement = "SELECT * FROM cases ORDER BY lastUpdated DESC LIMIT 10;";
