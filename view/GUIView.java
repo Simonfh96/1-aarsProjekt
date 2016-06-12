@@ -853,6 +853,11 @@ public class GUIView extends javax.swing.JFrame {
         createLocationButton.setBounds(630, 200, 110, 23);
 
         createCaseTaskBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Opgaver" }));
+        createCaseTaskBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createCaseTaskBoxActionPerformed(evt);
+            }
+        });
         newCasePanel.add(createCaseTaskBox);
         createCaseTaskBox.setBounds(750, 201, 110, 20);
 
@@ -2109,9 +2114,12 @@ public class GUIView extends javax.swing.JFrame {
     }//GEN-LAST:event_editCaseLogButtonActionPerformed
 
     private void createCaseAddTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseAddTaskButtonActionPerformed
-        Task task = new Task("Endnu ikke påbegyndt", taskDescriptionArea.getText());
+        String taskName = (String) createCaseTaskBox.getSelectedItem();
+        if (!(taskName.equals("Opgaver"))) {
+        Task task = new Task("Endnu ikke påbegyndt", taskName, taskDescriptionArea.getText());
         Article article = (Article) newCaseArticles.get(newCaseArticles.size());
-        article.addTask(task);
+        article.addTask(task);    
+        }
     }//GEN-LAST:event_createCaseAddTaskButtonActionPerformed
 
     private void createCasebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCasebuttonActionPerformed
@@ -2258,6 +2266,10 @@ public class GUIView extends javax.swing.JFrame {
         caseResponsibleListModel.addElement(allEmployeesList.getSelectedValue());
         allEmployeesListModel.remove(allEmployeesList.getSelectedIndex());
     }//GEN-LAST:event_allEmployeesAddButtonActionPerformed
+
+    private void createCaseTaskBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseTaskBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_createCaseTaskBoxActionPerformed
 
     /**
      * @param args the command line arguments

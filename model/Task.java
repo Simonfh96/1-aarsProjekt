@@ -13,10 +13,11 @@ import java.util.ArrayList;
  */
 public class Task {
     private String status;
+    private String name;
     private String description;
     private static ArrayList<String> standardText;
 
-    public Task(String status, String description) {
+    public Task(String status, String name, String description) {
         this.status = status;
         this.description = description;
     }
@@ -39,6 +40,14 @@ public class Task {
 
     public static ArrayList<String> getStandardText() {
         return standardText;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
     
     

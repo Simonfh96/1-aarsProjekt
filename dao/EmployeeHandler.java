@@ -129,7 +129,6 @@ public class EmployeeHandler {
         cs.setString(3, e.getPassword());
         cs.setString(4, e.getFirstName());
         cs.setString(5, e.getLastName());
-        System.out.println(e.getInitials());
         cs.setString(6, e.getInitials());
         cs.setInt(7, e.getPhone());
         cs.setString(8, e.getEmail());
