@@ -63,6 +63,14 @@ public class TaskHandler {
         ps.execute();
     }
     
+    public void saveTaskName(String taskName) throws SQLException {
+        String insertTask = "INSERT INTO taskNames (tName)"
+                + " values (?)";
+        PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(insertTask);
+        ps.setString(1, taskName);
+        ps.execute();
+    }
+    
     public static TaskHandler getInstance() {
         if (instance == null) {
             instance = new TaskHandler();

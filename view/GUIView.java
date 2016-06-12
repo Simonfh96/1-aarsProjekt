@@ -293,7 +293,7 @@ public class GUIView extends javax.swing.JFrame {
         createCaseArticleDescriptionArea = new javax.swing.JTextArea();
         createCaseLocationBox = new javax.swing.JComboBox<>();
         newLocationButton = new javax.swing.JButton();
-        createLocationButton = new javax.swing.JButton();
+        createTaskNameButton = new javax.swing.JButton();
         createCaseTaskBox = new javax.swing.JComboBox<>();
         jLabel104 = new javax.swing.JLabel();
         jScrollPane15 = new javax.swing.JScrollPane();
@@ -854,14 +854,14 @@ public class GUIView extends javax.swing.JFrame {
         newCasePanel.add(newLocationButton);
         newLocationButton.setBounds(290, 240, 120, 23);
 
-        createLocationButton.setText("Ny opgave");
-        createLocationButton.addActionListener(new java.awt.event.ActionListener() {
+        createTaskNameButton.setText("Ny opgave");
+        createTaskNameButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createLocationButtonActionPerformed(evt);
+                createTaskNameButtonActionPerformed(evt);
             }
         });
-        newCasePanel.add(createLocationButton);
-        createLocationButton.setBounds(630, 200, 110, 23);
+        newCasePanel.add(createTaskNameButton);
+        createTaskNameButton.setBounds(630, 200, 110, 23);
 
         createCaseTaskBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Opgaver" }));
         createCaseTaskBox.addActionListener(new java.awt.event.ActionListener() {
@@ -2230,9 +2230,15 @@ public class GUIView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_newLocationButtonActionPerformed
 
-    private void createLocationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createLocationButtonActionPerformed
-        // Samme som newLocationButton
-    }//GEN-LAST:event_createLocationButtonActionPerformed
+    private void createTaskNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createTaskNameButtonActionPerformed
+        String newTaskName = JOptionPane.showInputDialog(this, "Angiv et navn til den nye opgave");
+        try {
+            createCaseTaskBox.addItem(newTaskName);
+            TaskHandler.getInstance().saveTaskName(newTaskName);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Kunne ikke gemme den nye opgave til databasen.");
+        }
+    }//GEN-LAST:event_createTaskNameButtonActionPerformed
 
     private void findCostumerFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_findCostumerFieldKeyReleased
         String search = findCostumerField.getText();
@@ -2390,8 +2396,8 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> createCaseTaskBox;
     private javax.swing.JList<String> createCaseTaskList;
     private javax.swing.JButton createCasebutton;
-    private javax.swing.JButton createLocationButton;
     private javax.swing.JButton createNewEmployeeButton;
+    private javax.swing.JButton createTaskNameButton;
     private javax.swing.JTextField customerListAddressField;
     private javax.swing.JTextField customerListContactfield;
     private javax.swing.JTextField customerListEmailField;
