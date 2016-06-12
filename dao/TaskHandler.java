@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JComboBox;
 import model.Task;
 
 /**
@@ -20,6 +21,17 @@ public class TaskHandler {
     
     private TaskHandler() {
         
+    }
+    
+    public void fillTaskNameBox(JComboBox comboBox) throws SQLException {
+        PreparedStatement ps = null;
+        String getTasks = "SELECT * FROM taskNames";
+        ps = DBHandler.getInstance().getConn().prepareStatement(getTasks);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+             comboBox.addItem((String) rs.getString("tName"));
+        }
+        rs.close();  
     }
     
     public ArrayList<Task> getTasks(int taskID) throws SQLException {

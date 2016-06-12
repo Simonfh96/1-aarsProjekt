@@ -11,6 +11,7 @@ import dao.CaseHandler;
 import dao.CostumerHandler;
 import dao.DBHandler;
 import dao.EmployeeHandler;
+import dao.TaskHandler;
 import factories.PanelFactory;
 import interfaces.PanelInterface;
 import java.awt.CardLayout;
@@ -130,6 +131,11 @@ public class GUIView extends javax.swing.JFrame {
             revalidate();
         } catch (SQLException ex) {
             System.out.println(ex.getLocalizedMessage());
+        }
+        try {
+            TaskHandler.getInstance().fillTaskNameBox(createCaseTaskBox);
+        } catch (SQLException ex) {
+            JOptionPane.showConfirmDialog(this, "Kunne ikke hente opgave listen.");
         }
         costScrollSearch.setDoubleBuffered(false);
     }
@@ -2279,7 +2285,7 @@ public class GUIView extends javax.swing.JFrame {
     }//GEN-LAST:event_allEmployeesAddButtonActionPerformed
 
     private void createCaseTaskBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseTaskBoxActionPerformed
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_createCaseTaskBoxActionPerformed
 
     private void costumerTypeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_costumerTypeBoxActionPerformed
