@@ -1137,6 +1137,11 @@ public class GUIView extends javax.swing.JFrame {
         editPhoneField.setPreferredSize(new java.awt.Dimension(10, 24));
 
         savePersonalInfoButton.setText("Gem");
+        savePersonalInfoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                savePersonalInfoButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout employeeSettingsPanelLayout = new javax.swing.GroupLayout(employeeSettingsPanel);
         employeeSettingsPanel.setLayout(employeeSettingsPanelLayout);
@@ -2313,6 +2318,16 @@ public class GUIView extends javax.swing.JFrame {
             newContactList.setEnabled(true);
         }
     }//GEN-LAST:event_costumerTypeBoxActionPerformed
+
+    private void savePersonalInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savePersonalInfoButtonActionPerformed
+        employee.setEmail(editEmailField.getText());
+        employee.setPhone(Integer.parseInt(editPhoneField.getText()));
+        try {
+            EmployeeHandler.getInstance().changePersonalInfo(employee);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Kunne ikke ændre personlige indstillinger.");
+        }
+    }//GEN-LAST:event_savePersonalInfoButtonActionPerformed
 
     /**
      * @param args the command line arguments

@@ -143,4 +143,14 @@ public class Employee implements Comparable, PanelInterface {
         return initials;
     }
 
+    public void setPhone(int phone) {
+        this.phone = phone;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    
+
 }

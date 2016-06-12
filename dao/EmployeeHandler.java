@@ -120,6 +120,15 @@ public class EmployeeHandler {
         ps.setBoolean(1, e.isActive());
         ps.executeUpdate();
     }
+    
+    public void changePersonalInfo(Employee e) throws SQLException {
+        PreparedStatement ps = null;
+        String setActive = "UPDATE employee SET email = ?, phone = ? WHERE employee_id = " + e.getEmployeeID();
+        ps = DBHandler.getInstance().conn.prepareStatement(setActive);
+        ps.setString(1, e.getEmail());
+        ps.setInt(2, e.getPhone());
+        ps.executeUpdate();
+    }
 
     public void saveEmployee(Employee e) throws SQLException {
         CallableStatement cs = null;
