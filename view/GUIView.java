@@ -685,7 +685,12 @@ public class GUIView extends javax.swing.JFrame {
         newCasePanel.add(newCaseAcroField);
         newCaseAcroField.setBounds(480, 160, 70, 20);
 
-        costumerTypeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kundetype" }));
+        costumerTypeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kundetype", "Privat", "Kvote" }));
+        costumerTypeBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                costumerTypeBoxActionPerformed(evt);
+            }
+        });
         newCasePanel.add(costumerTypeBox);
         costumerTypeBox.setBounds(476, 10, 100, 20);
         newCasePanel.add(jSeparator11);
@@ -2270,6 +2275,25 @@ public class GUIView extends javax.swing.JFrame {
     private void createCaseTaskBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseTaskBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_createCaseTaskBoxActionPerformed
+
+    private void costumerTypeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_costumerTypeBoxActionPerformed
+        String costumerType = (String) costumerTypeBox.getSelectedItem();
+        if (costumerType.equals("Privat")) {
+            newCaseAcroField.setEnabled(false);
+            addContactNameField.setEnabled(false);
+            addContactPhoneField.setEnabled(false);
+            addContactEmailField.setEnabled(false);
+            addContactButton.setEnabled(false);
+            newContactList.setEnabled(false);
+        } else {
+            newCaseAcroField.setEnabled(true);
+            addContactNameField.setEnabled(true);
+            addContactPhoneField.setEnabled(true);
+            addContactEmailField.setEnabled(true);
+            addContactButton.setEnabled(true);
+            newContactList.setEnabled(true);
+        }
+    }//GEN-LAST:event_costumerTypeBoxActionPerformed
 
     /**
      * @param args the command line arguments
