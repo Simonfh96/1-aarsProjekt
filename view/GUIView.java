@@ -2278,7 +2278,7 @@ public class GUIView extends javax.swing.JFrame {
     }//GEN-LAST:event_findCostumerFieldKeyReleased
 
     private void newCaseDescriptionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newCaseDescriptionMousePressed
-        // TODO add your handling code here:
+        DescriptionBox dBox = new DescriptionBox(newCasePanel, newCaseDescription);
     }//GEN-LAST:event_newCaseDescriptionMousePressed
 
     private void caseResponsibleRemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caseResponsibleRemoveButtonActionPerformed
