@@ -14,13 +14,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JViewport;
 import model.Article;
 import model.Costumer;
 import model.Employee;
@@ -119,6 +113,7 @@ public class CaseHandler {
 
     public ArrayList<PanelInterface> searchCases(Employee e, JPanel displayPanel, String caseIDParam, String caseNameParam, String konsNmbParam, String offerNmbParam) throws SQLException {
         ArrayList<PanelInterface> cases = new ArrayList<>();
+        String errorMessage = "";
         displayPanel.removeAll();
         String selectedTab = displayPanel.getName();
         String statement;
@@ -132,6 +127,8 @@ public class CaseHandler {
         if (!(caseIDParam.isEmpty()) && caseIDParam.matches("[0-9]")) {
             if (Integer.parseInt(caseIDParam) > 0) {
                 statement += "case_id = " + caseIDParam + " AND ";
+            } else {
+                errorMessage += "Må ikke indeholde negative værdier";
             }
         }
 
@@ -186,6 +183,7 @@ public class CaseHandler {
     }
 
     //Skal benyttes, når man trykker sig ind på et nyt panel via rediger knappen
+    //Virker i teorien men skal tilpasses rollback
     public void editCase(Employee e, Case c) throws SQLException {
         String stmt = "SET autocommit = 0;";
         String stmt1 = "begin ";
@@ -198,12 +196,7 @@ public class CaseHandler {
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt2);
 //        DBHandler.getInstance().conn.createStatement().executeUpdate(stmt3);
     }
-
-    /*CustomerHandler og ArticleHandler der kalder en saveCustomer(Costumer customer) 
-     og saveArticles(ArrayList<Article> articles) inde i saveCase(Case c). En getter henter customerid fra
-     det Costumer objekt, som Case objektet indeholder, da kunden sagtens kan optræde 2 gange og ikke
-     må have 2 forskellige customer id'er, hvorimod articles skal gemmes tilsvarende Case objektets primary key
-     */
+    
     public void saveCase(Case c, Employee e, boolean existingCostumer) throws SQLException {
         String errorMessage = "";
         boolean succeeded = true;
@@ -234,9 +227,7 @@ public class CaseHandler {
                     ArticleHandler.getInstance().saveArticle(a, c);
                 }
             }
-            System.out.println("article succeeded");
             LogHandler.getInstance().saveLog(c.getLogs().get(0));
-            System.out.println("log succeeded");
             String saveCase = "INSERT INTO cases (konsNr, offerNmb, caseName, description, objects_id, finished,"
                     + "lastUpdated, updateBy, createdAt, costumer_id, log_id)"
                     + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -290,13 +281,14 @@ public class CaseHandler {
                 + " values (?, ?)";
         PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(addCase);
         ps.setInt(1, e.getEmployeeID());
-        ps.setInt(1, 2/*CASE ID - Sags nr*/);
+        ps.setInt(1, c.getCaseID());
         ps.execute();
 
     }
 
     /*Metoden må kun benyttes på de sager, som er under fanen mine sager,
-     * da det kun bruges til referencer
+     *da det kun bruges til referencer
+     *
      */
     public void deleteMyCase(int employeeID, int caseID) throws SQLException {
         String stmt1 = "DELETE FROM mycases WHERE employee_id = " + employeeID + " AND cases_id = " + caseID + ";";
@@ -326,7 +318,7 @@ public class CaseHandler {
             }
             rs.close();
         } catch (SQLException ex) {
-            Logger.getLogger(CaseHandler.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getLocalizedMessage());
         }
         return result;
     }
@@ -341,7 +333,7 @@ public class CaseHandler {
             }
             rs.close();
         } catch (SQLException ex) {
-            Logger.getLogger(CaseHandler.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getLocalizedMessage());
         }
         return result;
     }

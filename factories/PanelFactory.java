@@ -24,7 +24,7 @@ import view.CasePanel;
 import view.CustomerPanel;
 import view.EmployeePanel;
 import view.GUIView;
-//import view.GUIView;
+
 /**
  *
  * @author Pdysted

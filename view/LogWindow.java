@@ -5,18 +5,12 @@
  */
 package view;
 
-import dao.CaseHandler;
 import java.awt.Color;
 import java.awt.Component;
-import java.beans.PropertyEditorManager;
-import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.BorderFactory;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Case;
 import model.Log;

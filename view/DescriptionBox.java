@@ -7,7 +7,6 @@ package view;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JTextField;

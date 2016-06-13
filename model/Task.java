@@ -5,8 +5,6 @@
  */
 package model;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author pdysted

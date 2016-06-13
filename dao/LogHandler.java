@@ -14,7 +14,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JTextArea;
-import model.Case;
 import model.Employee;
 import model.Log;
 

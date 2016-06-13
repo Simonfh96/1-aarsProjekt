@@ -1,11 +1,9 @@
 package view;
 
-import interfaces.PanelInterface;
 import java.awt.CardLayout;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import model.Article;
 import model.Case;
 
 /*

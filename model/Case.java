@@ -27,7 +27,7 @@ public class Case implements PanelInterface, Comparable{
     private ArrayList<Log> logs;
     private ArrayList<PanelInterface> caseResponsible;
 
-    //Sagsnr skal tilføjes, så det kan søges på (Case tables PK)
+    
     public Case(int caseID, int konsNmb, int offerNmb, String caseName, String description, ArrayList<PanelInterface> articles, boolean finished, Date lastUpdated, Date createdAt, Costumer customer, ArrayList<Log> logs, ArrayList<PanelInterface> caseResponsibles) {
         this.caseID = caseID;
         this.konsNmb = konsNmb;

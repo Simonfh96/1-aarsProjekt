@@ -5,7 +5,6 @@
  */
 package model;
 
-import java.util.ArrayList;
 import java.sql.Date;
 
 /**
@@ -13,8 +12,6 @@ import java.sql.Date;
  * @author pdysted
  */
 public class Log {
-    //Log klassen skal indeholde en integer log id, som skal bruges til at referere til
-    //ArrayListen med logs, når en case gemmes i databasen
     private Employee employee;
     private int caseID;
     private final String actionMade;
