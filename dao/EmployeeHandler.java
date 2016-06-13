@@ -64,7 +64,6 @@ public class EmployeeHandler {
         ResultSet rs = ps.executeQuery();
         ArrayList<PanelInterface> myCases = new ArrayList<>();
         if (rs.next()) {
-
             employee = new Employee(rs.getInt("employee_id"), rs.getString("username"), rs.getString("userPassword"),
                     rs.getString("firstName"), rs.getString("lastName"), rs.getString("initials"),
                     rs.getInt("phone"), rs.getString("email"), rs.getBoolean("admin"), rs.getBoolean("partTime"), rs.getBoolean("active"), myCases);
@@ -96,7 +95,8 @@ public class EmployeeHandler {
     public void changePasswordAndUsername(String username, String password, Employee e) throws SQLException {
         PreparedStatement ps = null;
         int employeeID = e.getEmployeeID();
-        String updateLoginInfo = "UPDATE employee SET userName = ?, userPassword = ? WHERE employee_id = " + employeeID;
+        String updateLoginInfo = "UPDATE employee SET userName = ?, "
+                + "userPassword = ? WHERE employee_id = " + employeeID;
         ps = DBHandler.getInstance().conn.prepareStatement(updateLoginInfo);
         ps.setString(1, username);
         ps.setString(2, password);

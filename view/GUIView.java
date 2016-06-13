@@ -1944,12 +1944,11 @@ public class GUIView extends javax.swing.JFrame {
     private void caseSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caseSearchButtonActionPerformed
         try {
             JPanel displayPanel = PanelFactory.getInstance().getSelectedTabPanel(caseDisplayPane);
-            cases = CaseHandler.getInstance().searchCases(employee, displayPanel, caseNmbSField.getText(), caseNameSField.getText(), konsNmbField.getText(),
-            searchOfferNmbField.getText());
+            cases = CaseHandler.getInstance().searchCases(employee, displayPanel, caseNmbSField.getText(), 
+                    caseNameSField.getText(), konsNmbField.getText(), searchOfferNmbField.getText());
             PanelFactory.getInstance().createPanels(cases, displayPanel, this, "CasePanel", customerFields);
         } catch (SQLException ex) {
-            //JOptionPane.showMessageDialog(rootPane, ex, title, HEIGHT);
-            //Eller label med rød tekst
+            JOptionPane.showMessageDialog(this, "Kunne ikke foretage søgningen.");
         }
     }//GEN-LAST:event_caseSearchButtonActionPerformed
 

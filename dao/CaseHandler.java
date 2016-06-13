@@ -117,7 +117,7 @@ public class CaseHandler {
         return cases;
     }
 
-    public ArrayList<PanelInterface> searchCases(Employee e, JPanel displayPanel, String caseIDParam, String caseNameParam,/*String articleType*/ String konsNmbParam, String offerNmbParam) throws SQLException {
+    public ArrayList<PanelInterface> searchCases(Employee e, JPanel displayPanel, String caseIDParam, String caseNameParam, String konsNmbParam, String offerNmbParam) throws SQLException {
         ArrayList<PanelInterface> cases = new ArrayList<>();
         displayPanel.removeAll();
         String selectedTab = displayPanel.getName();

@@ -43,7 +43,7 @@ public class Employee implements Comparable, PanelInterface {
         this.active = active;
         this.myCases = myCases;
     }
-
+    
     public Employee(int employeeID, String fullName, String initials) {
         this.employeeID = employeeID;
         this.fullName = fullName;
