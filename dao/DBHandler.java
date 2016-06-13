@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  * @author Simon
  */
 public class DBHandler {
-
+    //Skal ikke initialiseres i static block, men derimod hentes fra tekstfilen
     private static DBHandler instance;
     private String url = "jdbc:mysql://localhost:3306";
     private String user = "root";
