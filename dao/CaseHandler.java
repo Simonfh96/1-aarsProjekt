@@ -93,37 +93,6 @@ public class CaseHandler {
         return cases;
     }
 
-    public int getLogId(Case aCase) {
-        int result = -1;
-        try {
-            String statement = "SELECT log_id FROM cases WHERE case_id = " + aCase.getCaseID() + ";";
-            ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
-            while (rs.next()) {
-                result = rs.getInt("log_id");
-            }
-            rs.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CaseHandler.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return result;
-    }
-
-    public int getCustomerId(Case aCase) {
-        int result = -1;
-        try {
-            String statement = "SELECT costumer_id FROM cases WHERE case_id = " + aCase.getCaseID() + ";";
-            ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
-            while (rs.next()) {
-                result = rs.getInt("costumer_id");
-            }
-            rs.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CaseHandler.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return result;
-    }
-    
-
     public ArrayList<PanelInterface> getFinishedCases() throws SQLException {
         ArrayList<PanelInterface> cases = new ArrayList<>();
         String statement = "SELECT * FROM cases WHERE finished = 1;";
@@ -345,6 +314,36 @@ public class CaseHandler {
         String stmt = "commit;";
         System.out.println(stmt);
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt);
+    }
+    
+    public int getLogId(Case aCase) {
+        int result = -1;
+        try {
+            String statement = "SELECT log_id FROM cases WHERE case_id = " + aCase.getCaseID() + ";";
+            ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+            while (rs.next()) {
+                result = rs.getInt("log_id");
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CaseHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
+
+    public int getCustomerId(Case aCase) {
+        int result = -1;
+        try {
+            String statement = "SELECT costumer_id FROM cases WHERE case_id = " + aCase.getCaseID() + ";";
+            ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+            while (rs.next()) {
+                result = rs.getInt("costumer_id");
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CaseHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
     }
 
     public static CaseHandler getInstance() {
