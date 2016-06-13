@@ -110,7 +110,10 @@ public class CaseHandler {
         }
         return cases;
     }
-
+    /*Fejl i JUnit test:
+    *-boolean failed, der afgør om statementet eksekveres?
+    *-JOptionPane, der ved fejl rydder søgeresultaterne?
+    */
     public ArrayList<PanelInterface> searchCases(Employee e, JPanel displayPanel, String caseIDParam, String caseNameParam, String konsNmbParam, String offerNmbParam) throws SQLException {
         ArrayList<PanelInterface> cases = new ArrayList<>();
         String errorMessage = "";
