@@ -15,10 +15,13 @@ public class Task {
     private String status;
     private String name;
     private String description;
+    private int articleID;
 
-    public Task(String status, String name, String description) {
+    public Task(String status, String name, String description, int articleID) {
         this.status = status;
+        this.name = name;
         this.description = description;
+        this.articleID = articleID;
     }
 
     public String getStatus() {
@@ -43,6 +46,14 @@ public class Task {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getArticleID() {
+        return articleID;
+    }
+
+    public void setArticleID(int articleID) {
+        this.articleID = articleID;
     }
     
     

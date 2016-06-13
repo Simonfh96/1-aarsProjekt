@@ -239,10 +239,6 @@ public class CaseHandler {
         String errorMessage = "";
         boolean succeeded = true;
         int caseID = getCaseID();
-        /*
-         Insert statement skal justeres til også at gemme foreign key (log_id)
-         til cases table i databasen
-         */
 
         String offerNmb = String.valueOf(c.getOfferNmb());
         if (offerNmb.isEmpty()  /*!(offerNmb.matches("[0-9]")) Integer.parseInt(offerNmb) < 0*/) {

@@ -2105,10 +2105,9 @@ public class GUIView extends javax.swing.JFrame {
 
     private void createCaseAddTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseAddTaskButtonActionPerformed
         String taskName = (String) createCaseTaskBox.getSelectedItem();
-        if (!(taskName.equals("Opgaver"))) {
-        Task task = new Task("Endnu ikke påbegyndt", taskName, taskDescriptionArea.getText());
-        Article article = (Article) newCaseArticles.get(newCaseArticles.size());
-        article.addTask(task);    
+        if (!(taskName.equalsIgnoreCase("Opgaver"))) {
+        Task task = new Task("Endnu ikke påbegyndt", taskName, taskDescriptionArea.getText(), ((Article)newCaseArticles.get(newCaseArticles.size() - 1)).getArticleID());
+        ((Article)newCaseArticles.get(newCaseArticles.size() - 1)).addTask(task);   
         }
     }//GEN-LAST:event_createCaseAddTaskButtonActionPerformed
 

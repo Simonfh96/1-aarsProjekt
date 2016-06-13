@@ -42,7 +42,7 @@ public class TaskHandler {
         ps.setInt(1, taskID);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
-            Task task = new Task(rs.getString("tStatus"), rs.getString("tName"), rs.getString("description"));
+            Task task = new Task(rs.getString("tStatus"), rs.getString("tName"), rs.getString("description"), rs.getInt("object_id"));
             tasks.add(task);
         }
         rs.close();
@@ -54,12 +54,13 @@ public class TaskHandler {
     }
     
     public void saveTask(Task task) throws SQLException {
-        String insertTask = "INSERT INTO tasks (tStatus, tName, description)"
-                + " values (?, ?)";
+        String insertTask = "INSERT INTO tasks (tStatus, tName, description, object_id)"
+                + " values (?, ?, ?, ?)";
         PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(insertTask);
         ps.setString(1, task.getStatus());
         ps.setString(2, task.getName());
         ps.setString(3, task.getDescription());
+        ps.setInt(4, task.getArticleID());
         ps.execute();
     }
     
