@@ -84,7 +84,7 @@ public class GUIView extends javax.swing.JFrame {
             try {
                 Thread.sleep(10);
             } catch (InterruptedException ex) {
-               
+
             }
         }
         System.out.println("now");
@@ -158,7 +158,7 @@ public class GUIView extends javax.swing.JFrame {
                 caseResponsibleListModel.addElement(e);
             }
             ArrayList<PanelInterface> allEmps = EmployeeHandler.getInstance().selectAllEmployeesSorted(c.getCaseResponsible());
-           
+
             for (PanelInterface emp : allEmps) {
                 Employee e = (Employee) emp;
                 allEmployeesListModel.addElement(e);
@@ -1940,9 +1940,11 @@ public class GUIView extends javax.swing.JFrame {
     private void caseSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caseSearchButtonActionPerformed
         try {
             JPanel displayPanel = PanelFactory.getInstance().getSelectedTabPanel(caseDisplayPane);
-            cases = CaseHandler.getInstance().searchCases(employee, displayPanel, caseNmbSField.getText(), 
+            cases = CaseHandler.getInstance().searchCases(employee, displayPanel, caseNmbSField.getText(),
                     caseNameSField.getText(), konsNmbField.getText(), searchOfferNmbField.getText());
-            PanelFactory.getInstance().createPanels(cases, displayPanel, this, "CasePanel", customerFields);
+            if (cases != null) {
+                PanelFactory.getInstance().createPanels(cases, displayPanel, this, "CasePanel", customerFields);
+            }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Kunne ikke foretage søgningen.");
         }
@@ -1970,40 +1972,40 @@ public class GUIView extends javax.swing.JFrame {
         //Ændringerne skal gemmes, inden man trykker okay
         int choice = JOptionPane.showConfirmDialog(this, "Er du sikker på, at du vil gemme?", "Gem ændringer", 2);
         if (choice == JOptionPane.OK_OPTION) {
-        Object[] eCRs = caseResponsibleListModel.toArray();
-        try {
-            EmployeeHandler.getInstance().saveCaseResponsibles(eCRs, c);
-        } catch (SQLException ex) {
-            System.out.println(ex.getLocalizedMessage());
-        }
-        //Problem i CaseHandler eller check my cases 
-        if (addToMyCasesCheckBox.isSelected()) {
+            Object[] eCRs = caseResponsibleListModel.toArray();
             try {
+                EmployeeHandler.getInstance().saveCaseResponsibles(eCRs, c);
+            } catch (SQLException ex) {
+                System.out.println(ex.getLocalizedMessage());
+            }
+            //Problem i CaseHandler eller check my cases 
+            if (addToMyCasesCheckBox.isSelected()) {
+                try {
 //                if (employee.checkAddedMyCases(c) == false) {
 //                CaseHandler.getInstance().addToMyCases(employee, c);
-                c.setCaseName(caseNameEditField.getText());
+                    c.setCaseName(caseNameEditField.getText());
 //                CaseHandler.getInstance().editCase(c);
-                CaseHandler.getInstance().completeTransaction();
-                employeeLastUpdateField.setText(employee.getFullName());
-                lastUpdatedField.setText("" + dateFormat.format(cal.getTime()));
+                    CaseHandler.getInstance().completeTransaction();
+                    employeeLastUpdateField.setText(employee.getFullName());
+                    lastUpdatedField.setText("" + dateFormat.format(cal.getTime()));
 //                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getLocalizedMessage());
-            }
-        } else {
-            try {
+                } catch (SQLException ex) {
+                    System.out.println(ex.getLocalizedMessage());
+                }
+            } else {
+                try {
 //                if (employee.checkAddedMyCases(c)) {
 //                CaseHandler.getInstance().deleteMyCase(c.getKonsNmb(), employee.getEmployeeID());
-                c.setCaseName(caseNameEditField.getText());
+                    c.setCaseName(caseNameEditField.getText());
 //                CaseHandler.getInstance().editCase(c);
-                CaseHandler.getInstance().completeTransaction();
-                employeeLastUpdateField.setText(employee.getFullName());
-                lastUpdatedField.setText("" + dateFormat.format(cal.getTime()));
+                    CaseHandler.getInstance().completeTransaction();
+                    employeeLastUpdateField.setText(employee.getFullName());
+                    lastUpdatedField.setText("" + dateFormat.format(cal.getTime()));
 //                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getLocalizedMessage());
+                } catch (SQLException ex) {
+                    System.out.println(ex.getLocalizedMessage());
+                }
             }
-        }
         } else {
             try {
                 CaseHandler.getInstance().cancelLastAction();
@@ -2101,8 +2103,8 @@ public class GUIView extends javax.swing.JFrame {
     private void createCaseAddTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseAddTaskButtonActionPerformed
         String taskName = (String) createCaseTaskBox.getSelectedItem();
         if (!(taskName.equalsIgnoreCase("Opgaver"))) {
-        Task task = new Task("Endnu ikke påbegyndt", taskName, taskDescriptionArea.getText(), ((Article)newCaseArticles.get(newCaseArticles.size() - 1)).getArticleID());
-        ((Article)newCaseArticles.get(newCaseArticles.size() - 1)).addTask(task);   
+            Task task = new Task("Endnu ikke påbegyndt", taskName, taskDescriptionArea.getText(), ((Article) newCaseArticles.get(newCaseArticles.size() - 1)).getArticleID());
+            ((Article) newCaseArticles.get(newCaseArticles.size() - 1)).addTask(task);
         }
     }//GEN-LAST:event_createCaseAddTaskButtonActionPerformed
 
@@ -2125,21 +2127,21 @@ public class GUIView extends javax.swing.JFrame {
                 System.out.println(ex.getLocalizedMessage());
             }
         }
-            try {
-                int konsNmb = CaseHandler.getInstance().generateKonsNmb();
-                Log log = new Log(employee, CaseHandler.getInstance().getCaseID(), "oprettede ", caseCreationNameField.getText(), "", "", new java.sql.Date(cal.getTimeInMillis()));
-                System.out.println(employee.getFullName());
-                logs.add(log);
-                for (PanelInterface article : newCaseArticles) {
-                    Article a = (Article) article;
-                    a.setCaseKonsNmb(konsNmb);
-                }
-                Case newCase = new Case(0,  konsNmb, Integer.parseInt(newCaseOfferNmbField.getText()), caseCreationNameField.getText(), newCaseDescription.getText(), 
-                newCaseArticles, false, cal.getTime(), cal.getTime(), customer, logs, null);
-                CaseHandler.getInstance().saveCase(newCase, employee, existingCostumerCheckBox.isSelected());
-            } catch (SQLException ex) {
-                System.out.println(ex.getLocalizedMessage());
-            }        
+        try {
+            int konsNmb = CaseHandler.getInstance().generateKonsNmb();
+            Log log = new Log(employee, CaseHandler.getInstance().getCaseID(), "oprettede ", caseCreationNameField.getText(), "", "", new java.sql.Date(cal.getTimeInMillis()));
+            System.out.println(employee.getFullName());
+            logs.add(log);
+            for (PanelInterface article : newCaseArticles) {
+                Article a = (Article) article;
+                a.setCaseKonsNmb(konsNmb);
+            }
+            Case newCase = new Case(0, konsNmb, Integer.parseInt(newCaseOfferNmbField.getText()), caseCreationNameField.getText(), newCaseDescription.getText(),
+                    newCaseArticles, false, cal.getTime(), cal.getTime(), customer, logs, null);
+            CaseHandler.getInstance().saveCase(newCase, employee, existingCostumerCheckBox.isSelected());
+        } catch (SQLException ex) {
+            System.out.println(ex.getLocalizedMessage());
+        }
         newCaseArticles.clear();
         newCaseContacts.clear();
         costSearchSelected = null;
@@ -2189,13 +2191,13 @@ public class GUIView extends javax.swing.JFrame {
         ArrayList<Task> tasks = new ArrayList<>();
         Article article = null;
         try {
-            article = new Article(ArticleHandler.getInstance().generateArticleID(), newArticleNameField.getText(), 0, 
+            article = new Article(ArticleHandler.getInstance().generateArticleID(), newArticleNameField.getText(), 0,
                     (String) newArticleTypeBox.getSelectedItem(), Integer.parseInt(newArticleMuseumsNmbField.getText()), 0, tasks);
         } catch (SQLException ex) {
             System.out.println(ex.getLocalizedMessage());
         }
         if (article != null) {
-        newCaseArticles.add(article);
+            newCaseArticles.add(article);
         }
     }//GEN-LAST:event_newArticleButtonActionPerformed
 
@@ -2265,7 +2267,7 @@ public class GUIView extends javax.swing.JFrame {
     }//GEN-LAST:event_allEmployeesAddButtonActionPerformed
 
     private void createCaseTaskBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseTaskBoxActionPerformed
-      
+
     }//GEN-LAST:event_createCaseTaskBoxActionPerformed
 
     private void costumerTypeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_costumerTypeBoxActionPerformed
@@ -2298,24 +2300,24 @@ public class GUIView extends javax.swing.JFrame {
     }//GEN-LAST:event_savePersonalInfoButtonActionPerformed
 
     private void findCustomerSaveInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findCustomerSaveInfoButtonActionPerformed
-    Costumer customerToEdit = null;
+        Costumer customerToEdit = null;
         for (Component customerPanel : showAllCustomerPanel.getComponents()) {
             CustomerPanel cp = (CustomerPanel) customerPanel;
             if (cp.isSelected()) {
                 customerToEdit = cp.getCustomer();
             }
         }
-      if (customerToEdit != null) {
-      customerToEdit.setCostumerName(customerListNameField.getText());
-      customerToEdit.setPhone(Integer.parseInt(customerListPhoneField.getText()));
-      customerToEdit.setEmail(customerListEmailField.getText());
-      customerToEdit.setAddress(customerListAddressField.getText());
-        try {
-            CostumerHandler.getInstance().editCustomer(customerToEdit);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Kunne ikke redigere i kundens oplysninger");
+        if (customerToEdit != null) {
+            customerToEdit.setCostumerName(customerListNameField.getText());
+            customerToEdit.setPhone(Integer.parseInt(customerListPhoneField.getText()));
+            customerToEdit.setEmail(customerListEmailField.getText());
+            customerToEdit.setAddress(customerListAddressField.getText());
+            try {
+                CostumerHandler.getInstance().editCustomer(customerToEdit);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Kunne ikke redigere i kundens oplysninger");
+            }
         }
-      }
     }//GEN-LAST:event_findCustomerSaveInfoButtonActionPerformed
 
     /**

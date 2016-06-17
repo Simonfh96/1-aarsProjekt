@@ -210,7 +210,7 @@ public class CaseHandler {
             }
         } else {
             JOptionPane.showMessageDialog(displayPanel, errorMessage);
-            System.out.println("failed");
+            cases = null;
         }
         return cases;
 
