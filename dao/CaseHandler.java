@@ -111,9 +111,10 @@ public class CaseHandler {
         }
         return cases;
     }
-    
-    public ArrayList<PanelInterface> searchCases(Employee e, JPanel displayPanel, String caseIDParam, String caseNameParam, String konsNmbParam, String offerNmbParam) throws SQLException {
+
+    public ArrayList<PanelInterface> searchCases(Employee e, JPanel displayPanel, String caseIDParam, String caseNameParam, String konsNmbParam, String offerNmbParam, String articleTypeParam) throws SQLException {
         ArrayList<PanelInterface> cases = new ArrayList<>();
+        ArrayList<PanelInterface> newCases = new ArrayList<>();
         boolean failed = false;
         String errorMessage = "";
         displayPanel.removeAll();
@@ -121,7 +122,7 @@ public class CaseHandler {
         String statement;
         statement = "SELECT * FROM cases WHERE ";
         if (selectedTab.equals("myCasesP")) {
-        statement = "SELECT * FROM myCases LEFT JOIN cases ON myCases.cases_id = cases.case_id WHERE employee_id = " + e.getEmployeeID() + " AND ";
+            statement = "SELECT * FROM myCases LEFT JOIN cases ON myCases.cases_id = cases.case_id WHERE employee_id = " + e.getEmployeeID() + " AND ";
         }
         if (selectedTab.equals("finishedCasesP")) {
             statement += "finished = 1 AND ";
@@ -160,7 +161,7 @@ public class CaseHandler {
                 errorMessage += "Konsnr. må ikke indeholde negative værdier.\n";
             }
         }
-        
+
         if (!(offerNmbParam.isEmpty())) {
             if (offerNmbParam.matches("[0-9]")) {
                 if (Integer.parseInt(offerNmbParam) > 0) {
@@ -202,6 +203,24 @@ public class CaseHandler {
                 aCase.setLogs(logs);
                 ArrayList<PanelInterface> caseResponsible = EmployeeHandler.getInstance().getCaseResponsibles(aCase);
                 aCase.setCaseResponsible(caseResponsible);
+                if (!(articleTypeParam.isEmpty())) {
+                    boolean match = false;
+                    if (aCase.getArticles().size() > 0) {
+                        for (PanelInterface article : aCase.getArticles()) {
+                            Article a = (Article) article;
+                            if (a.getObjectType().equalsIgnoreCase(articleTypeParam)) {
+                                match = true;
+                            }
+                        }
+                    }
+                    if (match) {
+                            System.out.println(aCase.getCaseName() + "Does not match");
+                            newCases.add(aCase);
+                        }
+                }
+            }
+            if (!(articleTypeParam.isEmpty())) {
+             cases = newCases;
             }
         } else {
             JOptionPane.showMessageDialog(displayPanel, errorMessage);
@@ -210,9 +229,9 @@ public class CaseHandler {
         return cases;
 
     }
-
     //Skal benyttes, når man trykker sig ind på et nyt panel via rediger knappen
     //Virker i teorien men skal tilpasses rollback
+
     public void editCase(Employee e, Case c) throws SQLException {
         String stmt = "SET autocommit = 0;";
         String stmt1 = "begin ";

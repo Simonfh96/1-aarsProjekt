@@ -71,7 +71,7 @@
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="searchOfferNmbField" alignment="0" max="32767" attributes="0"/>
                                       <Component id="konsNmbField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="objectTypeSField" pref="75" max="32767" attributes="0"/>
+                                      <Component id="articleTypeSField" pref="75" max="32767" attributes="0"/>
                                       <Component id="ownerSField" max="32767" attributes="0"/>
                                       <Component id="caseNameSField" max="32767" attributes="0"/>
                                       <Component id="caseNmbSField" max="32767" attributes="0"/>
@@ -116,7 +116,7 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="objectTypeSField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="articleTypeSField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -169,7 +169,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="caseSearchButtonActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="objectTypeSField">
+                <Component class="javax.swing.JTextField" name="articleTypeSField">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel4">
                   <Properties>

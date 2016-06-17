@@ -220,7 +220,7 @@ public class GUIView extends javax.swing.JFrame {
         ownerSField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         caseSearchButton = new javax.swing.JButton();
-        objectTypeSField = new javax.swing.JTextField();
+        articleTypeSField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         caseDisplayPane = new javax.swing.JTabbedPane();
         myCasesTab = new javax.swing.JPanel();
@@ -579,7 +579,7 @@ public class GUIView extends javax.swing.JFrame {
                         .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(searchOfferNmbField, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(konsNmbField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(objectTypeSField, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                            .addComponent(articleTypeSField, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
                             .addComponent(ownerSField)
                             .addComponent(caseNameSField)
                             .addComponent(caseNmbSField))
@@ -615,7 +615,7 @@ public class GUIView extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(objectTypeSField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(articleTypeSField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1941,7 +1941,7 @@ public class GUIView extends javax.swing.JFrame {
         try {
             JPanel displayPanel = PanelFactory.getInstance().getSelectedTabPanel(caseDisplayPane);
             cases = CaseHandler.getInstance().searchCases(employee, displayPanel, caseNmbSField.getText(),
-                    caseNameSField.getText(), konsNmbField.getText(), searchOfferNmbField.getText());
+                    caseNameSField.getText(), konsNmbField.getText(), searchOfferNmbField.getText(), articleTypeSField.getText());
             if (cases != null) {
                 PanelFactory.getInstance().createPanels(cases, displayPanel, this, "CasePanel", customerFields);
             }
@@ -2375,6 +2375,7 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JScrollPane allEmployeesScrollPane;
     private javax.swing.JTextField articleAmountField;
     private javax.swing.JPanel articleDisplayPanel;
+    private javax.swing.JTextField articleTypeSField;
     private javax.swing.JPanel cardPanel;
     private javax.swing.JLabel caseBeginDateLabel;
     private javax.swing.JTextField caseCreationNameField;
@@ -2591,7 +2592,6 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JTextField newUsernameField;
     private javax.swing.JPanel newestCasesPanel;
     private javax.swing.JScrollPane newestCasesScrollPane;
-    private javax.swing.JTextField objectTypeSField;
     private javax.swing.JTextField ownerSField;
     private javax.swing.JLabel phoneCostumerLabel;
     private javax.swing.JButton resetPasswordButton;
