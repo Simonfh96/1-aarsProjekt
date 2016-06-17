@@ -36,7 +36,7 @@ public class CaseHandler {
     
     public ArrayList<PanelInterface> getCasesNewest() throws SQLException {
         ArrayList<PanelInterface> cases = new ArrayList<>();
-        String statement = "SELECT * FROM cases ORDER BY lastUpdated DESC LIMIT 10;";
+        String statement = "SELECT * FROM cases WHERE finished = 0 ORDER BY lastUpdated DESC LIMIT 10;";
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
@@ -62,7 +62,7 @@ public class CaseHandler {
         ArrayList<PanelInterface> cases = new ArrayList<>();
         int employeeID = e.getEmployeeID();
         PreparedStatement ps = null;
-        String selectSQL = "SELECT * FROM myCases LEFT JOIN cases ON myCases.cases_id = cases.case_id WHERE employee_id = ?";
+        String selectSQL = "SELECT * FROM myCases LEFT JOIN cases ON myCases.cases_id = cases.case_id WHERE employee_id = ? AND finished = 0";
         ps = DBHandler.getInstance().conn.prepareStatement(selectSQL);
         ps.setInt(1, employeeID);
         ResultSet rs = ps.executeQuery();
