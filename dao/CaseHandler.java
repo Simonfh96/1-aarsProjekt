@@ -34,7 +34,7 @@ public class CaseHandler {
     private CaseHandler() {
         cal = Calendar.getInstance();
     }
-    
+
     public ArrayList<PanelInterface> getCasesNewest() throws SQLException {
         ArrayList<PanelInterface> cases = new ArrayList<>();
         String statement = "SELECT * FROM cases WHERE finished = 0 ORDER BY lastUpdated DESC LIMIT 10;";
@@ -111,10 +111,11 @@ public class CaseHandler {
         }
         return cases;
     }
+
     /*Fejl i JUnit test:
     *-boolean failed, der afgør om statementet eksekveres?
     *-JOptionPane, der ved fejl rydder søgeresultaterne?
-    */
+     */
     public ArrayList<PanelInterface> searchCases(Employee e, JPanel displayPanel, String caseIDParam, String caseNameParam, String konsNmbParam, String offerNmbParam) throws SQLException {
         ArrayList<PanelInterface> cases = new ArrayList<>();
         boolean failed = false;
@@ -128,7 +129,7 @@ public class CaseHandler {
         } else {
             statement += "finished = 0 AND ";
         }
-        
+
         if (!(caseIDParam.isEmpty()) && caseIDParam.matches("[0-9]")) {
             if (Integer.parseInt(caseIDParam) > 0) {
                 statement += "case_id = " + caseIDParam + " AND ";
@@ -138,27 +139,34 @@ public class CaseHandler {
                 errorMessage += "Sagsnr. kan ikke være nul";
             }
         } else {
-                failed = true;
-                errorMessage += "Må ikke indeholde negative værdier";
-            }
+            failed = true;
+            errorMessage += "Sagsnr. må ikke indeholde negative værdier";
+        }
 
         if (caseNameParam.matches("[a-zA-Z]+") && !(caseNameParam.isEmpty())) {
             statement += "caseName LIKE '" + caseNameParam + "%' AND ";
         }
+
         if (!(konsNmbParam.isEmpty()) && konsNmbParam.matches("[0-9]")) {
             if (Integer.parseInt(konsNmbParam) > 0) {
                 statement += "konsNr = " + konsNmbParam + " AND ";
+            } else {
+                failed = true;
+                errorMessage += "Konsnr. kan ikke være nul";
             }
+        } else {
+            failed = true;
+            errorMessage += "Konsnr. må ikke indeholde negative værdier";
         }
         if (!(offerNmbParam.isEmpty()) && offerNmbParam.matches("[0-9]")) {
-        if (Integer.parseInt(offerNmbParam) > 0) {
-            statement += "offerNmb = " + offerNmbParam + " AND ";
+            if (Integer.parseInt(offerNmbParam) > 0) {
+                statement += "offerNmb = " + offerNmbParam + " AND ";
+            }
         }
-        }
-        
+
         statement = statement.substring(0, (statement.length() - 5));
         if (selectedTab.equals("newestCasesP")) {
-           statement += " ORDER BY lastUpdated DESC;";
+            statement += " ORDER BY lastUpdated DESC;";
         } else {
             statement += ";";
         }
@@ -166,30 +174,28 @@ public class CaseHandler {
         System.out.println(statement);
         if (!failed) {
             System.out.println("not failed");
-        ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
-        while (rs.next()) {
-            Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
-                    null, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), null, null, null);
-            if (!(selectedTab.equals("myCasesP"))) {
-                cases.add(c);
-            } else {
-                if (e.checkAddedMyCases(c)) {
+            ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+            while (rs.next()) {
+                Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
+                        null, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), null, null, null);
+                if (!(selectedTab.equals("myCasesP"))) {
+                    cases.add(c);
+                } else if (e.checkAddedMyCases(c)) {
                     cases.add(c);
                 }
             }
-        }
-        rs.close();
-        for (int i = 0; i < cases.size(); i++) {
-            Case aCase = (Case) cases.get(i);
-            Costumer costumer = CostumerHandler.getInstance().getCostumer(getCustomerId(aCase));
-            aCase.setCustomer(costumer);
-            ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(aCase);
-            aCase.setArticles(articles);
-            ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(getLogId(aCase));
-            aCase.setLogs(logs);
-            ArrayList<PanelInterface> caseResponsible = EmployeeHandler.getInstance().getCaseResponsibles(aCase);
-            aCase.setCaseResponsible(caseResponsible);
-        }
+            rs.close();
+            for (int i = 0; i < cases.size(); i++) {
+                Case aCase = (Case) cases.get(i);
+                Costumer costumer = CostumerHandler.getInstance().getCostumer(getCustomerId(aCase));
+                aCase.setCustomer(costumer);
+                ArrayList<PanelInterface> articles = ArticleHandler.getInstance().getArticles(aCase);
+                aCase.setArticles(articles);
+                ArrayList<Log> logs = LogHandler.getInstance().getCaseLogs(getLogId(aCase));
+                aCase.setLogs(logs);
+                ArrayList<PanelInterface> caseResponsible = EmployeeHandler.getInstance().getCaseResponsibles(aCase);
+                aCase.setCaseResponsible(caseResponsible);
+            }
         } else {
             JOptionPane.showMessageDialog(displayPanel, errorMessage);
             System.out.println("failed");
@@ -212,14 +218,14 @@ public class CaseHandler {
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt2);
 //        DBHandler.getInstance().conn.createStatement().executeUpdate(stmt3);
     }
-    
+
     public void saveCase(Case c, Employee e, boolean existingCostumer) throws SQLException {
         String errorMessage = "";
         boolean succeeded = true;
         int caseID = getCaseID();
 
         String offerNmb = String.valueOf(c.getOfferNmb());
-        if (offerNmb.isEmpty()  /*!(offerNmb.matches("[0-9]")) Integer.parseInt(offerNmb) < 0*/) {
+        if (offerNmb.isEmpty() /*!(offerNmb.matches("[0-9]")) Integer.parseInt(offerNmb) < 0*/) {
             succeeded = false;
             errorMessage = errorMessage + "Tilbuds nr. skal indeholde et gyldigt tal.\n";
         }
@@ -260,14 +266,14 @@ public class CaseHandler {
             ps.setInt(10, c.getCustomer().getCostumerID());
             ps.setInt(11, caseID);
             ps.execute();
-            
+
         } else {
             //JOptionPane.showConfirmDialog(parentComponent, errorMessage);
             //Returner int -1, og kald optionpane i gui?   
             System.out.println(errorMessage);
         }
     }
-    
+
     public int getCaseID() throws SQLException {
         int caseID = 0;
         String statement = "SELECT case_id FROM cases ORDER BY case_id DESC LIMIT 1;";
@@ -323,7 +329,7 @@ public class CaseHandler {
         System.out.println(stmt);
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt);
     }
-    
+
     public int getLogId(Case aCase) {
         int result = -1;
         try {
