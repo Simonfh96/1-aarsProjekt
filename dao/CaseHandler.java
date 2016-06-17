@@ -120,6 +120,9 @@ public class CaseHandler {
         String selectedTab = displayPanel.getName();
         String statement;
         statement = "SELECT * FROM cases WHERE ";
+        if (selectedTab.equals("myCasesP")) {
+        statement = "SELECT * FROM myCases LEFT JOIN cases ON myCases.cases_id = cases.case_id WHERE employee_id = " + e.getEmployeeID() + " AND ";
+        }
         if (selectedTab.equals("finishedCasesP")) {
             statement += "finished = 1 AND ";
         } else {
@@ -186,11 +189,7 @@ public class CaseHandler {
             while (rs.next()) {
                 Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
                         null, rs.getBoolean("finished"), rs.getDate("lastUpdated"), rs.getDate("createdAt"), null, null, null);
-                if (!(selectedTab.equals("myCasesP"))) {
-                    cases.add(c);
-                } else if (e.checkAddedMyCases(c)) {
-                    cases.add(c);
-                }
+                cases.add(c);
             }
             rs.close();
             for (int i = 0; i < cases.size(); i++) {
