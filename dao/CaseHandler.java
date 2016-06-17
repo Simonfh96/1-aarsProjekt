@@ -14,6 +14,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Article;
 import model.Costumer;
@@ -116,6 +117,7 @@ public class CaseHandler {
     */
     public ArrayList<PanelInterface> searchCases(Employee e, JPanel displayPanel, String caseIDParam, String caseNameParam, String konsNmbParam, String offerNmbParam) throws SQLException {
         ArrayList<PanelInterface> cases = new ArrayList<>();
+        boolean failed = false;
         String errorMessage = "";
         displayPanel.removeAll();
         String selectedTab = displayPanel.getName();
@@ -130,10 +132,15 @@ public class CaseHandler {
         if (!(caseIDParam.isEmpty()) && caseIDParam.matches("[0-9]")) {
             if (Integer.parseInt(caseIDParam) > 0) {
                 statement += "case_id = " + caseIDParam + " AND ";
+                System.out.println("works?");
             } else {
+                failed = true;
+                errorMessage += "Sagsnr. kan ikke være nul";
+            }
+        } else {
+                failed = true;
                 errorMessage += "Må ikke indeholde negative værdier";
             }
-        }
 
         if (caseNameParam.matches("[a-zA-Z]+") && !(caseNameParam.isEmpty())) {
             statement += "caseName LIKE '" + caseNameParam + "%' AND ";
@@ -157,6 +164,8 @@ public class CaseHandler {
         }
 
         System.out.println(statement);
+        if (!failed) {
+            System.out.println("not failed");
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
@@ -180,6 +189,10 @@ public class CaseHandler {
             aCase.setLogs(logs);
             ArrayList<PanelInterface> caseResponsible = EmployeeHandler.getInstance().getCaseResponsibles(aCase);
             aCase.setCaseResponsible(caseResponsible);
+        }
+        } else {
+            JOptionPane.showMessageDialog(displayPanel, errorMessage);
+            System.out.println("failed");
         }
         return cases;
 
