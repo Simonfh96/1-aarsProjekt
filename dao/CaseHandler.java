@@ -161,9 +161,17 @@ public class CaseHandler {
                 errorMessage += "Konsnr. må ikke indeholde negative værdier.\n";
             }
         }
-        if (!(offerNmbParam.isEmpty()) && offerNmbParam.matches("[0-9]")) {
-            if (Integer.parseInt(offerNmbParam) > 0) {
-                statement += "offerNmb = " + offerNmbParam + " AND ";
+        if (!(offerNmbParam.isEmpty())) {
+            if (offerNmbParam.matches("[0-9]")) {
+                if (Integer.parseInt(offerNmbParam) > 0) {
+                    statement += "offerNmb = " + offerNmbParam + " AND ";
+                } else {
+                    failed = true;
+                    errorMessage += "Tilbuds nr. kan ikke være nul.\n";
+                }
+            } else {
+                failed = true;
+                errorMessage += "Tilbuds nr. må ikke indeholde negative værdier.\n";
             }
         }
 
