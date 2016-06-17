@@ -161,6 +161,7 @@ public class CaseHandler {
                 errorMessage += "Konsnr. må ikke indeholde negative værdier.\n";
             }
         }
+        
         if (!(offerNmbParam.isEmpty())) {
             if (offerNmbParam.matches("[0-9]")) {
                 if (Integer.parseInt(offerNmbParam) > 0) {
