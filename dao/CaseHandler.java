@@ -130,33 +130,36 @@ public class CaseHandler {
             statement += "finished = 0 AND ";
         }
 
-        if (!(caseIDParam.isEmpty()) && caseIDParam.matches("[0-9]")) {
-            if (Integer.parseInt(caseIDParam) > 0) {
-                statement += "case_id = " + caseIDParam + " AND ";
-                System.out.println("works?");
+        if (!(caseIDParam.isEmpty())) {
+            if (caseIDParam.matches("[0-9]")) {
+                if (Integer.parseInt(caseIDParam) > 0) {
+                    statement += "case_id = " + caseIDParam + " AND ";
+                } else {
+                    failed = true;
+                    errorMessage += "Sagsnr. kan ikke være nul.\n";
+                }
             } else {
                 failed = true;
-                errorMessage += "Sagsnr. kan ikke være nul";
+                errorMessage += "Sagsnr. må ikke indeholde negative værdier.\n";
             }
-        } else {
-            failed = true;
-            errorMessage += "Sagsnr. må ikke indeholde negative værdier";
         }
 
         if (caseNameParam.matches("[a-zA-Z]+") && !(caseNameParam.isEmpty())) {
             statement += "caseName LIKE '" + caseNameParam + "%' AND ";
         }
 
-        if (!(konsNmbParam.isEmpty()) && konsNmbParam.matches("[0-9]")) {
-            if (Integer.parseInt(konsNmbParam) > 0) {
-                statement += "konsNr = " + konsNmbParam + " AND ";
+        if (!(konsNmbParam.isEmpty())) {
+            if (konsNmbParam.matches("[0-9]")) {
+                if (Integer.parseInt(konsNmbParam) > 0) {
+                    statement += "konsNr = " + konsNmbParam + " AND ";
+                } else {
+                    failed = true;
+                    errorMessage += "Konsnr. kan ikke være nul.\n";
+                }
             } else {
                 failed = true;
-                errorMessage += "Konsnr. kan ikke være nul";
+                errorMessage += "Konsnr. må ikke indeholde negative værdier.\n";
             }
-        } else {
-            failed = true;
-            errorMessage += "Konsnr. må ikke indeholde negative værdier";
         }
         if (!(offerNmbParam.isEmpty()) && offerNmbParam.matches("[0-9]")) {
             if (Integer.parseInt(offerNmbParam) > 0) {
