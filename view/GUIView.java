@@ -1571,6 +1571,12 @@ public class GUIView extends javax.swing.JFrame {
 
         jLabel27.setText("Sags beskrivelse");
 
+        caseDescriptionEditPanel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseDescriptionEditPanelActionPerformed(evt);
+            }
+        });
+
         jLabel28.setText("Genstandens Placering");
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Vælg placering", " " }));
@@ -2374,6 +2380,10 @@ public class GUIView extends javax.swing.JFrame {
         editArticleTaskList.repaint();
         }
     }//GEN-LAST:event_editAddTaskButtonActionPerformed
+
+    private void caseDescriptionEditPanelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caseDescriptionEditPanelActionPerformed
+        DescriptionBox dBox = new DescriptionBox(editCasePanel, caseDescriptionEditPanel);
+    }//GEN-LAST:event_caseDescriptionEditPanelActionPerformed
 
     /**
      * @param args the command line arguments
