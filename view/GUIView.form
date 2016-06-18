@@ -2562,7 +2562,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="caseDescriptionEditPanel">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="caseDescriptionEditPanelActionPerformed"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="caseDescriptionEditPanelMousePressed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel28">

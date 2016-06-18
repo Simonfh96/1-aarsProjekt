@@ -1571,9 +1571,9 @@ public class GUIView extends javax.swing.JFrame {
 
         jLabel27.setText("Sags beskrivelse");
 
-        caseDescriptionEditPanel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                caseDescriptionEditPanelActionPerformed(evt);
+        caseDescriptionEditPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                caseDescriptionEditPanelMousePressed(evt);
             }
         });
 
@@ -2381,9 +2381,9 @@ public class GUIView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_editAddTaskButtonActionPerformed
 
-    private void caseDescriptionEditPanelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caseDescriptionEditPanelActionPerformed
+    private void caseDescriptionEditPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_caseDescriptionEditPanelMousePressed
         DescriptionBox dBox = new DescriptionBox(editCasePanel, caseDescriptionEditPanel);
-    }//GEN-LAST:event_caseDescriptionEditPanelActionPerformed
+    }//GEN-LAST:event_caseDescriptionEditPanelMousePressed
 
     /**
      * @param args the command line arguments
