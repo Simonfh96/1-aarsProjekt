@@ -322,7 +322,7 @@ public class GUIView extends javax.swing.JFrame {
         customerListZipCodeField = new javax.swing.JTextField();
         jLabel71 = new javax.swing.JLabel();
         customerListAddressField = new javax.swing.JTextField();
-        findCustomerEdibleCheckBox = new javax.swing.JCheckBox();
+        findCustomerEditableCheckBox = new javax.swing.JCheckBox();
         findCustomerSaveInfoButton = new javax.swing.JButton();
         jScrollPane9 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
@@ -937,18 +937,22 @@ public class GUIView extends javax.swing.JFrame {
 
         jLabel66.setText("Navn");
 
+        customerListNameField.setEditable(false);
         customerListNameField.setPreferredSize(new java.awt.Dimension(10, 24));
 
         jLabel67.setText("Kontaktperson");
 
+        customerListContactfield.setEditable(false);
         customerListContactfield.setPreferredSize(new java.awt.Dimension(10, 24));
 
         jLabel68.setText("Tlf.");
 
+        customerListPhoneField.setEditable(false);
         customerListPhoneField.setPreferredSize(new java.awt.Dimension(10, 24));
 
         jLabel69.setText("Email");
 
+        customerListEmailField.setEditable(false);
         customerListEmailField.setPreferredSize(new java.awt.Dimension(10, 24));
 
         jLabel70.setText("Postnummer");
@@ -957,9 +961,15 @@ public class GUIView extends javax.swing.JFrame {
 
         jLabel71.setText("Adresse");
 
+        customerListAddressField.setEditable(false);
         customerListAddressField.setPreferredSize(new java.awt.Dimension(10, 24));
 
-        findCustomerEdibleCheckBox.setText("Ændre kundens oplysninger");
+        findCustomerEditableCheckBox.setText("Ændre kundens oplysninger");
+        findCustomerEditableCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findCustomerEditableCheckBoxActionPerformed(evt);
+            }
+        });
 
         findCustomerSaveInfoButton.setText("Gem");
         findCustomerSaveInfoButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1027,7 +1037,7 @@ public class GUIView extends javax.swing.JFrame {
                                 .addComponent(customerListZipCodeField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel71)
                                 .addComponent(customerListAddressField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(findCustomerEdibleCheckBox)
+                            .addComponent(findCustomerEditableCheckBox)
                             .addComponent(findCustomerSaveInfoButton))
                         .addGap(121, 121, 121)
                         .addComponent(jSeparator13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1081,7 +1091,7 @@ public class GUIView extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(customerListAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(findCustomerEdibleCheckBox)
+                                .addComponent(findCustomerEditableCheckBox)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(findCustomerSaveInfoButton))))
                     .addGroup(customerListPanelLayout.createSequentialGroup()
@@ -2390,6 +2400,22 @@ public class GUIView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_dbInfoCheckBoxActionPerformed
 
+    private void findCustomerEditableCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findCustomerEditableCheckBoxActionPerformed
+        if (findCustomerEditableCheckBox.isSelected()) {
+            customerListNameField.setEditable(true);
+            customerListContactfield.setEditable(true);
+            customerListPhoneField.setEditable(true);
+            customerListEmailField.setEditable(true);
+            customerListAddressField.setEditable(true);
+        } else {
+            customerListNameField.setEditable(false);
+            customerListContactfield.setEditable(false);
+            customerListPhoneField.setEditable(false);
+            customerListEmailField.setEditable(false);
+            customerListAddressField.setEditable(false);
+        }
+    }//GEN-LAST:event_findCustomerEditableCheckBoxActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2505,7 +2531,7 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JPanel employeeSettingsPanel;
     private javax.swing.JCheckBox existingCostumerCheckBox;
     private javax.swing.JTextField findCostumerField;
-    private javax.swing.JCheckBox findCustomerEdibleCheckBox;
+    private javax.swing.JCheckBox findCustomerEditableCheckBox;
     private javax.swing.JButton findCustomerSaveInfoButton;
     private javax.swing.JPanel finishedCasesPanel;
     private javax.swing.JScrollPane finishedCasesScrollPane;
