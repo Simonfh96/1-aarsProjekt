@@ -6,6 +6,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Component;
 import model.Employee;
 
 /**
@@ -34,6 +35,12 @@ public class EmployeePanel extends javax.swing.JPanel {
     public boolean isSelected() {
         return selected;
     }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+    
+    
 
     
     /**
@@ -88,6 +95,13 @@ public class EmployeePanel extends javax.swing.JPanel {
             selected = false;
             setBackground(normal);
         } else {
+            for (Component employeePanel : getParent().getComponents()) {
+                EmployeePanel ep = (EmployeePanel) employeePanel;
+                if (ep.isSelected()) {
+                    ep.setSelected(false);
+                    ep.setBackground(normal);
+                }
+            }
             selected = true;
             setBackground(Color.BLUE);
         }
