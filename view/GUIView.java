@@ -1231,15 +1231,23 @@ public class GUIView extends javax.swing.JFrame {
 
         jLabel14.setText("Kode");
 
+        dbUserField.setEditable(false);
         dbUserField.setPreferredSize(new java.awt.Dimension(10, 24));
 
+        dbPasswordField.setEditable(false);
         dbPasswordField.setPreferredSize(new java.awt.Dimension(10, 24));
 
         jLabel15.setText("URL");
 
+        dbUrlField.setEditable(false);
         dbUrlField.setPreferredSize(new java.awt.Dimension(10, 24));
 
         dbInfoCheckBox.setText("Ja, jeg ved, at jeg ændrer i databasens oplysninger");
+        dbInfoCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dbInfoCheckBoxActionPerformed(evt);
+            }
+        });
 
         changeDbButton.setText("Ændre Databasen");
         changeDbButton.addActionListener(new java.awt.event.ActionListener() {
@@ -2369,6 +2377,18 @@ public class GUIView extends javax.swing.JFrame {
     private void articleDescriptionEditFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_articleDescriptionEditFieldMousePressed
         DescriptionBox dBox = new DescriptionBox(editCasePanel, articleDescriptionEditField);
     }//GEN-LAST:event_articleDescriptionEditFieldMousePressed
+
+    private void dbInfoCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dbInfoCheckBoxActionPerformed
+        if (dbInfoCheckBox.isSelected()) {
+            dbUserField.setEditable(true);
+            dbPasswordField.setEditable(true);
+            dbUrlField.setEditable(true);
+        } else {
+            dbUserField.setEditable(false);
+            dbPasswordField.setEditable(false);
+            dbUrlField.setEditable(false);
+        }
+    }//GEN-LAST:event_dbInfoCheckBoxActionPerformed
 
     /**
      * @param args the command line arguments
