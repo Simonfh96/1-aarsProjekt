@@ -192,7 +192,7 @@ public class GUIView extends javax.swing.JFrame {
     public JList getEditArticleTaskList() {
         return editArticleTaskList;
     }
-    
+
     public CardLayout getCl() {
         return cl;
     }
@@ -1541,6 +1541,11 @@ public class GUIView extends javax.swing.JFrame {
         editTaskStatusBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Vælg status", "Ikke startet", "Igang", "Færdig" }));
 
         jButton2.setText("Opdater");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel24.setText("Sags ansvarlige");
 
@@ -2049,7 +2054,7 @@ public class GUIView extends javax.swing.JFrame {
                 ap.setSelected(false);
             }
         }
-        
+
     }//GEN-LAST:event_selectAllArticlesBoxActionPerformed
 
     private void createNewEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createNewEmployeeButtonActionPerformed
@@ -2334,8 +2339,16 @@ public class GUIView extends javax.swing.JFrame {
     }//GEN-LAST:event_findCustomerSaveInfoButtonActionPerformed
 
     private void editArticleTaskListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_editArticleTaskListValueChanged
-        editTaskStatusBox.setSelectedItem(((Task)editArticleTaskList.getSelectedValue()).getStatus());
+        editTaskStatusBox.setSelectedItem(((Task) editArticleTaskList.getSelectedValue()).getStatus());
     }//GEN-LAST:event_editArticleTaskListValueChanged
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if (((String) editTaskStatusBox.getSelectedItem()).equalsIgnoreCase("Vælg status")) {
+            JOptionPane.showMessageDialog(this, "Vælg en status, før du opdaterer opgaven.");
+        } else {
+            ((Task) editArticleTaskList.getSelectedValue()).setStatus((String) editTaskStatusBox.getSelectedItem());
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
