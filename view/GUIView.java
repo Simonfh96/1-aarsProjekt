@@ -400,7 +400,7 @@ public class GUIView extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel23 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
+        editTaskStatusBox = new javax.swing.JComboBox();
         jButton2 = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel24 = new javax.swing.JLabel();
@@ -1513,6 +1513,11 @@ public class GUIView extends javax.swing.JFrame {
 
         editArticleTaskList.setModel(new DefaultListModel());
         editArticleTaskList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        editArticleTaskList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                editArticleTaskListValueChanged(evt);
+            }
+        });
         jScrollPane2.setViewportView(editArticleTaskList);
 
         jButton1.setText("Gem");
@@ -1533,7 +1538,7 @@ public class GUIView extends javax.swing.JFrame {
 
         jLabel23.setText("Status");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Vælg status", "Ikke startet", "igang", "færdig" }));
+        editTaskStatusBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Vælg status", "Ikke startet", "Igang", "Færdig" }));
 
         jButton2.setText("Opdater");
 
@@ -1697,7 +1702,7 @@ public class GUIView extends javax.swing.JFrame {
                                                             .addComponent(jButton1))
                                                         .addGap(18, 18, 18)
                                                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(editTaskStatusBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                             .addComponent(jButton2)
                                                             .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                 .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1874,7 +1879,7 @@ public class GUIView extends javax.swing.JFrame {
                                             .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(editTaskStatusBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jButton5))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jButton2)))
@@ -2328,6 +2333,10 @@ public class GUIView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_findCustomerSaveInfoButtonActionPerformed
 
+    private void editArticleTaskListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_editArticleTaskListValueChanged
+        editTaskStatusBox.setSelectedItem(((Task)editArticleTaskList.getSelectedValue()).getStatus());
+    }//GEN-LAST:event_editArticleTaskListValueChanged
+
     /**
      * @param args the command line arguments
      */
@@ -2433,6 +2442,7 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JTextField editEmailField;
     private javax.swing.JButton editPanelBackButton;
     private javax.swing.JTextField editPhoneField;
+    private javax.swing.JComboBox editTaskStatusBox;
     private javax.swing.JLabel emailCostumerLabel;
     private javax.swing.JTextField employeeLastUpdateField;
     private javax.swing.JPanel employeeListPanel;
@@ -2450,7 +2460,6 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
     private javax.swing.JComboBox jComboBox4;
     private javax.swing.JLabel jLabel1;
