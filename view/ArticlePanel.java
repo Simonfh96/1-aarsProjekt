@@ -20,6 +20,7 @@ public class ArticlePanel extends javax.swing.JPanel {
     private Article a;
     private final Color normal;
     private JList taskList;
+    private boolean selected;
     /**
      * Creates new form ArticlePanel
      * @param a
@@ -28,9 +29,18 @@ public class ArticlePanel extends javax.swing.JPanel {
         initComponents();
         this.a = a;
         this.taskList = taskList;
+        selected = false;
         normal = this.getBackground();
         articleNameLabel.setText(a.getName());
         konsNmbLabel.setText(""+a.getKonsNmb());
+    }
+
+    public Article getA() {
+        return a;
+    }
+    
+    public boolean isSelected() {
+        return selected;
     }
     
     public void setSelected(boolean selected) {
@@ -111,14 +121,19 @@ public class ArticlePanel extends javax.swing.JPanel {
     private void articlePanelCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_articlePanelCheckBoxActionPerformed
         if (articlePanelCheckBox.isSelected() == true) {
             setBackground(Color.BLUE);
+            selected = true;
+            ((DefaultListModel)taskList.getModel()).clear();
+            if (a.getTasks().size() > 0) {
             for (Task t : a.getTasks()) {
                 System.out.println(t.toString());
                 ((DefaultListModel)taskList.getModel()).addElement(t);
                 taskList.repaint();
                 taskList.revalidate();
             }
+            }
         } else {
             setBackground(normal);
+            selected = false;
         }
         
     }//GEN-LAST:event_articlePanelCheckBoxActionPerformed

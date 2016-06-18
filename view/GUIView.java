@@ -394,14 +394,14 @@ public class GUIView extends javax.swing.JFrame {
         articleDisplayPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         editArticleTaskList = new javax.swing.JList();
-        jButton1 = new javax.swing.JButton();
+        editAddTaskButton = new javax.swing.JButton();
         selectAllArticlesBox = new javax.swing.JCheckBox();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel23 = new javax.swing.JLabel();
         editTaskStatusBox = new javax.swing.JComboBox();
-        jButton2 = new javax.swing.JButton();
+        editTaskRefreshButton = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel24 = new javax.swing.JLabel();
         allEmployeesAddButton = new javax.swing.JButton();
@@ -1520,7 +1520,12 @@ public class GUIView extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(editArticleTaskList);
 
-        jButton1.setText("Gem");
+        editAddTaskButton.setText("Tilføj opgave");
+        editAddTaskButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editAddTaskButtonActionPerformed(evt);
+            }
+        });
 
         selectAllArticlesBox.setText("Marker alle");
         selectAllArticlesBox.addActionListener(new java.awt.event.ActionListener() {
@@ -1540,10 +1545,10 @@ public class GUIView extends javax.swing.JFrame {
 
         editTaskStatusBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Vælg status", "Ikke startet", "Igang", "Færdig" }));
 
-        jButton2.setText("Opdater");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        editTaskRefreshButton.setText("Opdater");
+        editTaskRefreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                editTaskRefreshButtonActionPerformed(evt);
             }
         });
 
@@ -1704,11 +1709,11 @@ public class GUIView extends javax.swing.JFrame {
                                                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                             .addComponent(jLabel22)
-                                                            .addComponent(jButton1))
+                                                            .addComponent(editAddTaskButton))
                                                         .addGap(18, 18, 18)
                                                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                             .addComponent(editTaskStatusBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(jButton2)
+                                                            .addComponent(editTaskRefreshButton)
                                                             .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                 .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addComponent(jLabel23)))
@@ -1887,9 +1892,9 @@ public class GUIView extends javax.swing.JFrame {
                                             .addComponent(editTaskStatusBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jButton5))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton2)))
+                                        .addComponent(editTaskRefreshButton)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1)))
+                                .addComponent(editAddTaskButton)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2121,7 +2126,7 @@ public class GUIView extends javax.swing.JFrame {
     private void createCaseAddTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseAddTaskButtonActionPerformed
         String taskName = (String) createCaseTaskBox.getSelectedItem();
         if (!(taskName.equalsIgnoreCase("Opgaver"))) {
-            Task task = new Task("Endnu ikke påbegyndt", taskName, taskDescriptionArea.getText(), ((Article) newCaseArticles.get(newCaseArticles.size() - 1)).getArticleID());
+            Task task = new Task("Ikke startet", taskName, taskDescriptionArea.getText(), ((Article) newCaseArticles.get(newCaseArticles.size() - 1)).getArticleID());
             ((Article) newCaseArticles.get(newCaseArticles.size() - 1)).addTask(task);
         }
     }//GEN-LAST:event_createCaseAddTaskButtonActionPerformed
@@ -2342,13 +2347,31 @@ public class GUIView extends javax.swing.JFrame {
         editTaskStatusBox.setSelectedItem(((Task) editArticleTaskList.getSelectedValue()).getStatus());
     }//GEN-LAST:event_editArticleTaskListValueChanged
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void editTaskRefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editTaskRefreshButtonActionPerformed
         if (((String) editTaskStatusBox.getSelectedItem()).equalsIgnoreCase("Vælg status")) {
             JOptionPane.showMessageDialog(this, "Vælg en status, før du opdaterer opgaven.");
         } else {
             ((Task) editArticleTaskList.getSelectedValue()).setStatus((String) editTaskStatusBox.getSelectedItem());
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_editTaskRefreshButtonActionPerformed
+
+    private void editAddTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editAddTaskButtonActionPerformed
+        Article selectedArticle = null;
+        for (Component articlePanel : articleDisplayPanel.getComponents()) {
+            ArticlePanel ap = (ArticlePanel) articlePanel;
+            if (ap.isSelected()) {
+                selectedArticle = ap.getA();
+            }
+        }
+        if (selectedArticle != null) {
+        String taskName = JOptionPane.showInputDialog("Angiv navn på opgaven: ");
+        String description = JOptionPane.showInputDialog("Angiv beskrivelse af opgaven: ");
+        Task task = new Task("Ikke startet", taskName, description, selectedArticle.getArticleID());
+        selectedArticle.addTask(task);
+        ((DefaultListModel)editArticleTaskList.getModel()).addElement(task);
+        editArticleTaskList.repaint();
+        }
+    }//GEN-LAST:event_editAddTaskButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2448,6 +2471,7 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JTextField dbUrlField;
     private javax.swing.JTextField dbUserField;
     private javax.swing.JButton deactiveEmployee;
+    private javax.swing.JButton editAddTaskButton;
     private javax.swing.JList editArticleTaskList;
     private javax.swing.JButton editCaseLogButton;
     private javax.swing.JTextField editCaseOfferNmbField;
@@ -2455,6 +2479,7 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JTextField editEmailField;
     private javax.swing.JButton editPanelBackButton;
     private javax.swing.JTextField editPhoneField;
+    private javax.swing.JButton editTaskRefreshButton;
     private javax.swing.JComboBox editTaskStatusBox;
     private javax.swing.JLabel emailCostumerLabel;
     private javax.swing.JTextField employeeLastUpdateField;
@@ -2467,8 +2492,6 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JPanel finishedCasesPanel;
     private javax.swing.JScrollPane finishedCasesScrollPane;
     private javax.swing.JPanel finishedCasesTab;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox3;
