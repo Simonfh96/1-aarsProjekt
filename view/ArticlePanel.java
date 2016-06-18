@@ -7,6 +7,7 @@ package view;
 
 
 import java.awt.Color;
+import java.awt.Component;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import model.Article;
@@ -43,13 +44,10 @@ public class ArticlePanel extends javax.swing.JPanel {
         return selected;
     }
     
+    
+
     public void setSelected(boolean selected) {
-        articlePanelCheckBox.setSelected(selected);
-        if (selected == true) {
-            this.setBackground(Color.BLUE);
-        } else {
-            this.setBackground(normal);
-        }
+        this.selected = selected;
     }
 
     /**
@@ -64,14 +62,16 @@ public class ArticlePanel extends javax.swing.JPanel {
         articleNameLabel = new javax.swing.JLabel();
         konsNmbLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        articlePanelCheckBox = new javax.swing.JCheckBox();
 
         addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                formMouseEntered(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 formMouseExited(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                formMouseEntered(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
             }
         });
 
@@ -81,29 +81,17 @@ public class ArticlePanel extends javax.swing.JPanel {
 
         jLabel1.setText("Kons nr:");
 
-        articlePanelCheckBox.setText("Markér");
-        articlePanelCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                articlePanelCheckBoxActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(articleNameLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(konsNmbLabel))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(articlePanelCheckBox)))
+                .addComponent(articleNameLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(konsNmbLabel)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -113,13 +101,29 @@ public class ArticlePanel extends javax.swing.JPanel {
                     .addComponent(articleNameLabel)
                     .addComponent(konsNmbLabel)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(articlePanelCheckBox))
+                .addGap(25, 25, 25))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void articlePanelCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_articlePanelCheckBoxActionPerformed
-        if (articlePanelCheckBox.isSelected() == true) {
+    private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
+        setBackground(Color.BLUE);
+    }//GEN-LAST:event_formMouseEntered
+
+    private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
+        if (selected == false) {
+            setBackground(normal);
+        }
+    }//GEN-LAST:event_formMouseExited
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+         if (selected == false) {
+            for (Component articlePanel : getParent().getComponents()) {
+                ArticlePanel ap = (ArticlePanel) articlePanel;
+                if (ap.isSelected()) {
+                    ap.setSelected(false);
+                    ap.setBackground(normal);
+                }
+            }
             setBackground(Color.BLUE);
             selected = true;
             ((DefaultListModel)taskList.getModel()).clear();
@@ -135,23 +139,11 @@ public class ArticlePanel extends javax.swing.JPanel {
             setBackground(normal);
             selected = false;
         }
-        
-    }//GEN-LAST:event_articlePanelCheckBoxActionPerformed
-
-    private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
-        setBackground(Color.BLUE);
-    }//GEN-LAST:event_formMouseEntered
-
-    private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
-        if (articlePanelCheckBox.isSelected() == false) {
-            setBackground(normal);
-        }
-    }//GEN-LAST:event_formMouseExited
+    }//GEN-LAST:event_formMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel articleNameLabel;
-    private javax.swing.JCheckBox articlePanelCheckBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel konsNmbLabel;
     // End of variables declaration//GEN-END:variables

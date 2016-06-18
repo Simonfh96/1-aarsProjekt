@@ -395,7 +395,6 @@ public class GUIView extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         editArticleTaskList = new javax.swing.JList();
         editAddTaskButton = new javax.swing.JButton();
-        selectAllArticlesBox = new javax.swing.JCheckBox();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
@@ -1529,13 +1528,6 @@ public class GUIView extends javax.swing.JFrame {
             }
         });
 
-        selectAllArticlesBox.setText("Marker alle");
-        selectAllArticlesBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectAllArticlesBoxActionPerformed(evt);
-            }
-        });
-
         jLabel21.setFont(new java.awt.Font("LiSong Pro", 0, 24)); // NOI18N
         jLabel21.setText("Genstandsliste");
 
@@ -1714,7 +1706,6 @@ public class GUIView extends javax.swing.JFrame {
                                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(editCasePanelLayout.createSequentialGroup()
                                                 .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(selectAllArticlesBox)
                                                     .addGroup(editCasePanelLayout.createSequentialGroup()
                                                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1840,7 +1831,6 @@ public class GUIView extends javax.swing.JFrame {
                 .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(editCasePanelLayout.createSequentialGroup()
                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(selectAllArticlesBox)
                             .addComponent(jLabel27)
                             .addComponent(caseDescriptionEditPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2054,23 +2044,6 @@ public class GUIView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Kunne ikke ændre kodeord og/eller brugernavn");
         }
     }//GEN-LAST:event_saveLoginInfoButtonActionPerformed
-
-    private void selectAllArticlesBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAllArticlesBoxActionPerformed
-        if (selectAllArticlesBox.isSelected() == true) {
-
-            //Løb alle article panels igennem og sæt deres marker til selected
-            for (int i = 0; i < articleDisplayPanel.getComponents().length; i++) {
-                ArticlePanel ap = (ArticlePanel) articleDisplayPanel.getComponent(i);
-                ap.setSelected(true);
-            }
-        } else {
-            for (int i = 0; i < articleDisplayPanel.getComponents().length; i++) {
-                ArticlePanel ap = (ArticlePanel) articleDisplayPanel.getComponent(i);
-                ap.setSelected(false);
-            }
-        }
-
-    }//GEN-LAST:event_selectAllArticlesBoxActionPerformed
 
     private void createNewEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createNewEmployeeButtonActionPerformed
         try {
@@ -2666,7 +2639,6 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JButton saveLoginInfoButton;
     private javax.swing.JButton savePersonalInfoButton;
     private javax.swing.JTextField searchOfferNmbField;
-    private javax.swing.JCheckBox selectAllArticlesBox;
     private javax.swing.JButton selectCostumerButton;
     private javax.swing.JPanel showAllCustomerPanel;
     private javax.swing.JTabbedPane tabbedPane;
