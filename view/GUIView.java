@@ -1634,6 +1634,8 @@ public class GUIView extends javax.swing.JFrame {
 
         jLabel39.setText("Sag nr.");
 
+        caseNmbEditPanel.setEditable(false);
+
         jLabel40.setText("Sag Navn");
 
         jLabel41.setText("af");
