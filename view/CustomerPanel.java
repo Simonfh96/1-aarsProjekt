@@ -6,6 +6,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Component;
 import javax.swing.JTextField;
 import model.Costumer;
 
@@ -43,8 +44,10 @@ public class CustomerPanel extends javax.swing.JPanel {
     public boolean isSelected() {
         return selected;
     }
-    
-    
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -88,6 +91,13 @@ public class CustomerPanel extends javax.swing.JPanel {
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         if (selected == false) {
+        for (Component customerPanel : getParent().getComponents()) {
+                CustomerPanel cp = (CustomerPanel) customerPanel;
+                if (cp.isSelected()) {
+                    cp.setSelected(false);
+                    cp.setBackground(Color.white);
+                }
+            }
         setBackground(Color.BLUE);
         selected = true;
         for (int i = 0; i < textFields.length; i++) {
