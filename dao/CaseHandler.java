@@ -214,7 +214,7 @@ public class CaseHandler {
                         }
                     }
                     if (match) {
-                            System.out.println(aCase.getCaseName() + "Does not match");
+                            System.out.println(aCase.getCaseName() + "Does match");
                             newCases.add(aCase);
                         }
                 }

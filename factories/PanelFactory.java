@@ -60,7 +60,7 @@ public class PanelFactory {
             case "CasePanel":
                 for (int i = 0; i < panels.size(); i++) {
                     CasePanel cp = new CasePanel((Case) panels.get(i), gui);
-                    cp.setBounds(0, 52 * i, displayPanel.getWidth() - 3, 50);
+                    cp.setBounds(0, 52 * i, displayPanel.getWidth() - 7, 50);
                     cp.setBorder(BorderFactory.createLineBorder(Color.black));
                     displayPanel.add(cp);
                     displayPanel.repaint();
