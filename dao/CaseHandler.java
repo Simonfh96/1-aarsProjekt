@@ -140,7 +140,7 @@ public class CaseHandler {
                 }
             } else {
                 failed = true;
-                errorMessage += "Sagsnr. må ikke indeholde negative værdier.\n";
+                errorMessage += "Sagsnr. må ikke indeholde negative værdier eller bogstaver.\n";
             }
         }
 
@@ -158,7 +158,7 @@ public class CaseHandler {
                 }
             } else {
                 failed = true;
-                errorMessage += "Konsnr. må ikke indeholde negative værdier.\n";
+                errorMessage += "Konsnr. må ikke indeholde negative værdier eller bogstaver.\n";
             }
         }
 
@@ -172,7 +172,7 @@ public class CaseHandler {
                 }
             } else {
                 failed = true;
-                errorMessage += "Tilbuds nr. må ikke indeholde negative værdier.\n";
+                errorMessage += "Tilbuds nr. må ikke indeholde negative værdier eller bogstaver.\n";
             }
         }
 
