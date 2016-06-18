@@ -2437,15 +2437,12 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JList" name="jList2">
+                <Component class="javax.swing.JList" name="editArticleTaskList">
                   <Properties>
-                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                      <StringArray count="3">
-                        <StringItem index="0" value="Ark&#xe6;ologi skal ha en masse jobs"/>
-                        <StringItem index="1" value="Alle andre skal kun ha konservering til r&#xe5;dighed (muligvis selvvalgt)"/>
-                        <StringItem index="2" value=" "/>
-                      </StringArray>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="new DefaultListModel()" type="code"/>
                     </Property>
+                    <Property name="selectionMode" type="int" value="0"/>
                   </Properties>
                 </Component>
               </SubComponents>

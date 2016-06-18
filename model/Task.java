@@ -21,6 +21,11 @@ public class Task {
         this.description = description;
         this.articleID = articleID;
     }
+    
+    @Override
+    public String toString() {
+        return name;
+    }
 
     public String getStatus() {
         return status;

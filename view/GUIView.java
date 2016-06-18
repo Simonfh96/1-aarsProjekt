@@ -189,6 +189,10 @@ public class GUIView extends javax.swing.JFrame {
         editCaseOfferNmbField.setText("" + c.getOfferNmb());
     }
 
+    public JList getEditArticleTaskList() {
+        return editArticleTaskList;
+    }
+    
     public CardLayout getCl() {
         return cl;
     }
@@ -389,7 +393,7 @@ public class GUIView extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         articleDisplayPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList();
+        editArticleTaskList = new javax.swing.JList();
         jButton1 = new javax.swing.JButton();
         selectAllArticlesBox = new javax.swing.JCheckBox();
         jLabel21 = new javax.swing.JLabel();
@@ -1507,12 +1511,9 @@ public class GUIView extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(articleDisplayPanel);
 
-        jList2.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Arkæologi skal ha en masse jobs", "Alle andre skal kun ha konservering til rådighed (muligvis selvvalgt)", " " };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(jList2);
+        editArticleTaskList.setModel(new DefaultListModel());
+        editArticleTaskList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane2.setViewportView(editArticleTaskList);
 
         jButton1.setText("Gem");
 
@@ -2043,6 +2044,7 @@ public class GUIView extends javax.swing.JFrame {
                 ap.setSelected(false);
             }
         }
+        
     }//GEN-LAST:event_selectAllArticlesBoxActionPerformed
 
     private void createNewEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createNewEmployeeButtonActionPerformed
@@ -2424,6 +2426,7 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JTextField dbUrlField;
     private javax.swing.JTextField dbUserField;
     private javax.swing.JButton deactiveEmployee;
+    private javax.swing.JList editArticleTaskList;
     private javax.swing.JButton editCaseLogButton;
     private javax.swing.JTextField editCaseOfferNmbField;
     private javax.swing.JPanel editCasePanel;
@@ -2535,7 +2538,6 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel97;
     private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
-    private javax.swing.JList jList2;
     private javax.swing.JList jList5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

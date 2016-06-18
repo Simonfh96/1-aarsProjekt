@@ -7,7 +7,10 @@ package view;
 
 
 import java.awt.Color;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import model.Article;
+import model.Task;
 
 /**
  *
@@ -16,13 +19,15 @@ import model.Article;
 public class ArticlePanel extends javax.swing.JPanel {
     private Article a;
     private final Color normal;
+    private JList taskList;
     /**
      * Creates new form ArticlePanel
      * @param a
      */
-    public ArticlePanel(Article a) {
+    public ArticlePanel(Article a, JList taskList) {
         initComponents();
         this.a = a;
+        this.taskList = taskList;
         normal = this.getBackground();
         articleNameLabel.setText(a.getName());
         konsNmbLabel.setText(""+a.getKonsNmb());
@@ -106,9 +111,16 @@ public class ArticlePanel extends javax.swing.JPanel {
     private void articlePanelCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_articlePanelCheckBoxActionPerformed
         if (articlePanelCheckBox.isSelected() == true) {
             setBackground(Color.BLUE);
+            for (Task t : a.getTasks()) {
+                System.out.println(t.toString());
+                ((DefaultListModel)taskList.getModel()).addElement(t);
+                taskList.repaint();
+                taskList.revalidate();
+            }
         } else {
             setBackground(normal);
         }
+        
     }//GEN-LAST:event_articlePanelCheckBoxActionPerformed
 
     private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
