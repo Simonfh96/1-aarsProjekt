@@ -404,7 +404,7 @@ public class GUIView extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jLabel24 = new javax.swing.JLabel();
         allEmployeesAddButton = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        articleDescriptionEditField = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox();
@@ -1555,6 +1555,12 @@ public class GUIView extends javax.swing.JFrame {
             }
         });
 
+        articleDescriptionEditField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                articleDescriptionEditFieldMousePressed(evt);
+            }
+        });
+
         jLabel25.setText("Genstandsbeskrivelse");
 
         jLabel26.setText("Sags tilbud");
@@ -1686,7 +1692,7 @@ public class GUIView extends javax.swing.JFrame {
                                     .addGroup(editCasePanelLayout.createSequentialGroup()
                                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel25)
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(articleDescriptionEditField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addContainerGap())
                                     .addGroup(editCasePanelLayout.createSequentialGroup()
                                         .addGap(491, 491, 491)
@@ -1902,7 +1908,7 @@ public class GUIView extends javax.swing.JFrame {
                                 .addGap(21, 21, 21)
                                 .addComponent(jLabel25)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(articleDescriptionEditField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(12, 12, 12)
@@ -2360,6 +2366,10 @@ public class GUIView extends javax.swing.JFrame {
         DescriptionBox dBox = new DescriptionBox(editCasePanel, caseDescriptionEditPanel);
     }//GEN-LAST:event_caseDescriptionEditPanelMousePressed
 
+    private void articleDescriptionEditFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_articleDescriptionEditFieldMousePressed
+        DescriptionBox dBox = new DescriptionBox(editCasePanel, articleDescriptionEditField);
+    }//GEN-LAST:event_articleDescriptionEditFieldMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -2414,6 +2424,7 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JButton allEmployeesAddButton;
     private javax.swing.JScrollPane allEmployeesScrollPane;
     private javax.swing.JTextField articleAmountField;
+    private javax.swing.JTextField articleDescriptionEditField;
     private javax.swing.JPanel articleDisplayPanel;
     private javax.swing.JTextField articleTypeSField;
     private javax.swing.JPanel cardPanel;
@@ -2596,7 +2607,6 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField konsNmbField;
     private javax.swing.JTextField lastUpdatedField;
     private javax.swing.JPanel myCasesPanel;
