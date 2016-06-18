@@ -136,11 +136,11 @@ public class CaseHandler {
                     statement += "case_id = " + caseIDParam + " AND ";
                 } else {
                     failed = true;
-                    errorMessage += "Sagsnr. kan ikke være nul.\n";
+                    errorMessage += "Sags nr. kan ikke være nul.\n";
                 }
             } else {
                 failed = true;
-                errorMessage += "Sagsnr. må ikke indeholde negative værdier eller bogstaver.\n";
+                errorMessage += "Sags nr. må ikke indeholde negative værdier eller bogstaver.\n";
             }
         }
 
@@ -154,11 +154,11 @@ public class CaseHandler {
                     statement += "konsNr = " + konsNmbParam + " AND ";
                 } else {
                     failed = true;
-                    errorMessage += "Konsnr. kan ikke være nul.\n";
+                    errorMessage += "Kons nr. kan ikke være nul.\n";
                 }
             } else {
                 failed = true;
-                errorMessage += "Konsnr. må ikke indeholde negative værdier eller bogstaver.\n";
+                errorMessage += "Kons nr. må ikke indeholde negative værdier eller bogstaver.\n";
             }
         }
 
