@@ -1498,6 +1498,8 @@ public class GUIView extends javax.swing.JFrame {
 
         cardPanel.add(tabbedPane, "card2");
 
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
         javax.swing.GroupLayout articleDisplayPanelLayout = new javax.swing.GroupLayout(articleDisplayPanel);
         articleDisplayPanel.setLayout(articleDisplayPanelLayout);
         articleDisplayPanelLayout.setHorizontalGroup(
