@@ -474,6 +474,10 @@ public class GUIView extends javax.swing.JFrame {
 
         jLabel4.setText("Genstandstype");
 
+        myCasesTab.setPreferredSize(new java.awt.Dimension(740, 630));
+
+        myCasesScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
         myCasesPanel.setName("myCasesP"); // NOI18N
 
         javax.swing.GroupLayout myCasesPanelLayout = new javax.swing.GroupLayout(myCasesPanel);
@@ -497,13 +501,14 @@ public class GUIView extends javax.swing.JFrame {
         );
         myCasesTabLayout.setVerticalGroup(
             myCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(myCasesScrollPane)
+            .addComponent(myCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
         );
 
         caseDisplayPane.addTab("Mine sager", myCasesTab);
 
         NewestCasesTab.setPreferredSize(new java.awt.Dimension(740, 675));
 
+        newestCasesScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         newestCasesScrollPane.setHorizontalScrollBar(null);
 
         newestCasesPanel.setName("newestCasesP"); // NOI18N
@@ -530,10 +535,12 @@ public class GUIView extends javax.swing.JFrame {
         );
         NewestCasesTabLayout.setVerticalGroup(
             NewestCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(newestCasesScrollPane)
+            .addComponent(newestCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
         );
 
         caseDisplayPane.addTab("Nye sager", NewestCasesTab);
+
+        finishedCasesScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         finishedCasesPanel.setName("finishedCasesP"); // NOI18N
 
@@ -558,7 +565,7 @@ public class GUIView extends javax.swing.JFrame {
         );
         finishedCasesTabLayout.setVerticalGroup(
             finishedCasesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(finishedCasesScrollPane)
+            .addComponent(finishedCasesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
         );
 
         caseDisplayPane.addTab("Afsluttede sager", finishedCasesTab);
@@ -600,7 +607,6 @@ public class GUIView extends javax.swing.JFrame {
             .addGroup(caseHandlingPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(caseDisplayPane)
                     .addGroup(caseHandlingPanelLayout.createSequentialGroup()
                         .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(caseNmbSField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -626,9 +632,9 @@ public class GUIView extends javax.swing.JFrame {
                             .addComponent(searchOfferNmbField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel83))
                         .addGap(18, 18, 18)
-                        .addComponent(caseSearchButton)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(caseSearchButton))
+                    .addComponent(caseDisplayPane, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Sagsliste", caseHandlingPanel);
