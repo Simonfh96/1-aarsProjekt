@@ -221,8 +221,6 @@ public class GUIView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         caseNameSField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        ownerSField = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         caseSearchButton = new javax.swing.JButton();
         articleTypeSField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -467,8 +465,6 @@ public class GUIView extends javax.swing.JFrame {
 
         jLabel2.setText("Sagsnavn");
 
-        jLabel3.setText("Ejer");
-
         caseSearchButton.setText("Søg");
         caseSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -591,18 +587,16 @@ public class GUIView extends javax.swing.JFrame {
                             .addComponent(searchOfferNmbField, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(konsNmbField, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(articleTypeSField, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                            .addComponent(ownerSField)
                             .addComponent(caseNameSField)
                             .addComponent(caseNmbSField))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel3)
                             .addComponent(jLabel4)
                             .addComponent(jLabel60)
                             .addComponent(jLabel83))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 493, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 494, Short.MAX_VALUE)
                 .addComponent(caseDisplayPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -621,21 +615,17 @@ public class GUIView extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ownerSField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(articleTypeSField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(konsNmbField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel60))
-                        .addGap(5, 5, 5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(caseHandlingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(searchOfferNmbField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel83))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(caseSearchButton))
                     .addComponent(caseDisplayPane, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(110, Short.MAX_VALUE))
@@ -2596,7 +2586,6 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
@@ -2720,7 +2709,6 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JTextField newUsernameField;
     private javax.swing.JPanel newestCasesPanel;
     private javax.swing.JScrollPane newestCasesScrollPane;
-    private javax.swing.JTextField ownerSField;
     private javax.swing.JLabel passwordMatchLabel;
     private javax.swing.JLabel phoneCostumerLabel;
     private javax.swing.JButton resetPasswordButton;
