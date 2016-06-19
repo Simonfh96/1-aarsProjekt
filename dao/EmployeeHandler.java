@@ -92,7 +92,12 @@ public class EmployeeHandler {
         return employees;
     }
 
-    public void changePasswordAndUsername(String username, String password, Employee e) throws SQLException {
+    public boolean changePasswordAndUsername(String username, String password, String password2, Employee e) throws SQLException {
+        boolean passwordsMatch = false;
+        if (password.equals(password2)) {
+            passwordsMatch = true;
+        }
+        if (passwordsMatch) {
         PreparedStatement ps = null;
         int employeeID = e.getEmployeeID();
         String updateLoginInfo = "UPDATE employee SET userName = ?, "
@@ -101,7 +106,8 @@ public class EmployeeHandler {
         ps.setString(1, username);
         ps.setString(2, password);
         ps.executeUpdate();
-
+        }
+        return passwordsMatch;
     }
 
     public void resetPassword(Employee e) throws SQLException {

@@ -349,6 +349,7 @@ public class GUIView extends javax.swing.JFrame {
         jLabel50 = new javax.swing.JLabel();
         editPhoneField = new javax.swing.JTextField();
         savePersonalInfoButton = new javax.swing.JButton();
+        passwordMatchLabel = new javax.swing.JLabel();
         adminPanel = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
@@ -1147,6 +1148,10 @@ public class GUIView extends javax.swing.JFrame {
             }
         });
 
+        passwordMatchLabel.setForeground(new java.awt.Color(255, 0, 0));
+        passwordMatchLabel.setText("Adgangskoder er ikke ens");
+        passwordMatchLabel.setVisible(false);
+
         javax.swing.GroupLayout employeeSettingsPanelLayout = new javax.swing.GroupLayout(employeeSettingsPanel);
         employeeSettingsPanel.setLayout(employeeSettingsPanelLayout);
         employeeSettingsPanelLayout.setHorizontalGroup(
@@ -1160,16 +1165,16 @@ public class GUIView extends javax.swing.JFrame {
                             .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(employeeSettingsPanelLayout.createSequentialGroup()
                         .addGap(34, 34, 34)
-                        .addGroup(employeeSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(employeeSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel47)
-                                .addComponent(jLabel45)
-                                .addComponent(jLabel44)
-                                .addComponent(newUsernameField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel46)
-                                .addComponent(newPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(newPasswordField2, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
-                            .addComponent(saveLoginInfoButton))
+                        .addGroup(employeeSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel47)
+                            .addComponent(jLabel45)
+                            .addComponent(jLabel44)
+                            .addComponent(newUsernameField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel46)
+                            .addComponent(newPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(newPasswordField2, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                            .addComponent(saveLoginInfoButton)
+                            .addComponent(passwordMatchLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(36, 36, 36)
                         .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -1180,7 +1185,7 @@ public class GUIView extends javax.swing.JFrame {
                             .addComponent(editEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(editPhoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(savePersonalInfoButton))))
-                .addContainerGap(885, Short.MAX_VALUE))
+                .addContainerGap(886, Short.MAX_VALUE))
         );
         employeeSettingsPanelLayout.setVerticalGroup(
             employeeSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1211,7 +1216,9 @@ public class GUIView extends javax.swing.JFrame {
                                 .addComponent(newPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(saveLoginInfoButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(passwordMatchLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE))
                             .addGroup(employeeSettingsPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel49)
                                 .addGap(18, 18, 18)
@@ -2063,7 +2070,12 @@ public class GUIView extends javax.swing.JFrame {
 
     private void saveLoginInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveLoginInfoButtonActionPerformed
         try {
-            EmployeeHandler.getInstance().changePasswordAndUsername(newUsernameField.getText(), newPasswordField2.getText(), employee);
+            boolean passwordsMatch = EmployeeHandler.getInstance().changePasswordAndUsername(newUsernameField.getText(), newPasswordField1.getText(), newPasswordField2.getText(), employee);
+            if (!passwordsMatch) {
+               passwordMatchLabel.setVisible(true);
+            } else {
+               passwordMatchLabel.setVisible(false); 
+            }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Kunne ikke ændre kodeord og/eller brugernavn");
         }
@@ -2689,6 +2701,7 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JPanel newestCasesPanel;
     private javax.swing.JScrollPane newestCasesScrollPane;
     private javax.swing.JTextField ownerSField;
+    private javax.swing.JLabel passwordMatchLabel;
     private javax.swing.JLabel phoneCostumerLabel;
     private javax.swing.JButton resetPasswordButton;
     private javax.swing.JButton saveChangesEditCaseButton;
