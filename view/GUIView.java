@@ -890,7 +890,7 @@ public class GUIView extends javax.swing.JFrame {
             }
         });
         newCasePanel.add(createCasebutton);
-        createCasebutton.setBounds(1120, 440, 90, 23);
+        createCasebutton.setBounds(1240, 640, 90, 23);
 
         jLabel105.setText("Genstands navn");
         newCasePanel.add(jLabel105);
