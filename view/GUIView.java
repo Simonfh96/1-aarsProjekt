@@ -2162,6 +2162,21 @@ public class GUIView extends javax.swing.JFrame {
                 addContactPhoneField.setText("");
                 addContactEmailField.setText("");
                 costumerTypeBox.setSelectedItem("Kundetype");
+                ((DefaultListModel)newContactList.getModel()).clear();
+                caseCreationNameField.setText("");
+                newCaseDescription.setText("");
+                newCaseOfferNmbField.setText("");
+                newArticleTypeBox.setSelectedItem("Genstands type");
+                createCaseLocationBox.setSelectedItem("Placering");
+                articleAmountField.setText("1");
+                //Skulle kons nr ikke selv tælles op?
+                createArticleConsNmbField.setText("");
+                newArticleMuseumsNmbField.setText("");
+                newArticleNameField.setText("");
+                createCaseArticleDescriptionArea.setText("");
+                createCaseTaskBox.setSelectedItem("Opgaver");
+                taskDescriptionArea.setText("");
+                ((DefaultListModel)createCaseTaskList.getModel()).clear();
             }
         } catch (NumberFormatException ex) {
           JOptionPane.showMessageDialog(this, "Tilbuds nr. må kun indeholde gyldige tal.");
