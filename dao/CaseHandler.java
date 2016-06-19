@@ -245,13 +245,15 @@ public class CaseHandler {
 //        DBHandler.getInstance().conn.createStatement().executeUpdate(stmt3);
     }
 
+    //Fejltjekning skal ske inden oprettelsen af case objektet, 
+    //da det ikke kan oprettes med en ugyldig værdi
     public void saveCase(Case c, Employee e, boolean existingCostumer) throws SQLException {
         String errorMessage = "";
         boolean succeeded = true;
         int caseID = getCaseID();
-
+        
         String offerNmb = String.valueOf(c.getOfferNmb());
-        if (offerNmb.isEmpty() /*!(offerNmb.matches("[0-9]")) Integer.parseInt(offerNmb) < 0*/) {
+        if (offerNmb.isEmpty() | !(offerNmb.matches("[0-9]+")) | Integer.parseInt(offerNmb) <= 0) {
             succeeded = false;
             errorMessage = errorMessage + "Tilbuds nr. skal indeholde et gyldigt tal.\n";
         }
@@ -261,7 +263,7 @@ public class CaseHandler {
             succeeded = false;
             errorMessage = errorMessage + "Sagsnavn må kun indeholde bogstaver.\n";
         }
-
+        
         java.util.Date utilDateConvert = c.getLastUpdated();
         java.sql.Date sqlLastUpdate = new java.sql.Date(utilDateConvert.getTime());
         utilDateConvert = c.getCreatedAt();
@@ -293,11 +295,8 @@ public class CaseHandler {
             ps.setInt(11, caseID);
             ps.execute();
 
-        } else {
-            //JOptionPane.showConfirmDialog(parentComponent, errorMessage);
-            //Returner int -1, og kald optionpane i gui?   
-            System.out.println(errorMessage);
         }
+        
     }
 
     public int getCaseID() throws SQLException {

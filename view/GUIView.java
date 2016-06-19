@@ -2182,9 +2182,16 @@ public class GUIView extends javax.swing.JFrame {
                 Article a = (Article) article;
                 a.setCaseKonsNmb(konsNmb);
             }
-            Case newCase = new Case(0, konsNmb, Integer.parseInt(newCaseOfferNmbField.getText()), caseCreationNameField.getText(), newCaseDescription.getText(),
+            String offerNmb = newCaseOfferNmbField.getText();
+            if (Integer.parseInt(offerNmb) <= 0) {
+                offerNmb = null;
+            }
+            Case newCase = new Case(0, konsNmb, Integer.parseInt(offerNmb), caseCreationNameField.getText(), newCaseDescription.getText(),
                     newCaseArticles, false, cal.getTime(), cal.getTime(), customer, logs, null);
             CaseHandler.getInstance().saveCase(newCase, employee, existingCostumerCheckBox.isSelected());
+            
+        } catch (NumberFormatException ex) {
+          JOptionPane.showMessageDialog(this, "Tilbuds nr. må kun indeholde gyldige tal.");
         } catch (SQLException ex) {
             System.out.println(ex.getLocalizedMessage());
         }
