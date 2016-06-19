@@ -316,8 +316,6 @@ public class GUIView extends javax.swing.JFrame {
         customerListPhoneField = new javax.swing.JTextField();
         jLabel69 = new javax.swing.JLabel();
         customerListEmailField = new javax.swing.JTextField();
-        jLabel70 = new javax.swing.JLabel();
-        customerListZipCodeField = new javax.swing.JTextField();
         jLabel71 = new javax.swing.JLabel();
         customerListAddressField = new javax.swing.JTextField();
         findCustomerEditableCheckBox = new javax.swing.JCheckBox();
@@ -946,10 +944,6 @@ public class GUIView extends javax.swing.JFrame {
         customerListEmailField.setEditable(false);
         customerListEmailField.setPreferredSize(new java.awt.Dimension(10, 24));
 
-        jLabel70.setText("Postnummer");
-
-        customerListZipCodeField.setPreferredSize(new java.awt.Dimension(10, 24));
-
         jLabel71.setText("Adresse");
 
         customerListAddressField.setEditable(false);
@@ -1024,12 +1018,10 @@ public class GUIView extends javax.swing.JFrame {
                                 .addComponent(customerListPhoneField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel69)
                                 .addComponent(customerListEmailField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel70)
-                                .addComponent(customerListZipCodeField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel71)
                                 .addComponent(customerListAddressField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(findCustomerEditableCheckBox)
-                            .addComponent(findCustomerSaveInfoButton))
+                            .addComponent(findCustomerSaveInfoButton)
+                            .addComponent(jLabel71))
                         .addGap(121, 121, 121)
                         .addComponent(jSeparator13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel73))
@@ -1074,16 +1066,12 @@ public class GUIView extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(customerListEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel70)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(customerListZipCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
                                 .addComponent(jLabel71)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(customerListAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(findCustomerEditableCheckBox)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(findCustomerSaveInfoButton))))
                     .addGroup(customerListPanelLayout.createSequentialGroup()
                         .addGap(40, 40, 40)
@@ -2531,7 +2519,6 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JPanel customerListPanel;
     private javax.swing.JTextField customerListPhoneField;
     private javax.swing.JScrollPane customerListScrollPane;
-    private javax.swing.JTextField customerListZipCodeField;
     private javax.swing.JCheckBox dbInfoCheckBox;
     private javax.swing.JTextField dbPasswordField;
     private javax.swing.JTextField dbUrlField;
@@ -2624,7 +2611,6 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
-    private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel73;

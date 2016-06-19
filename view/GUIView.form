@@ -1062,13 +1062,11 @@
                                           <Component id="customerListPhoneField" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jLabel69" min="-2" max="-2" attributes="0"/>
                                           <Component id="customerListEmailField" max="32767" attributes="0"/>
-                                          <Component id="jLabel70" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="customerListZipCodeField" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jLabel71" min="-2" max="-2" attributes="0"/>
                                           <Component id="customerListAddressField" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                       <Component id="findCustomerEditableCheckBox" min="-2" max="-2" attributes="0"/>
                                       <Component id="findCustomerSaveInfoButton" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel71" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
                                   <Component id="jSeparator13" min="-2" max="-2" attributes="0"/>
@@ -1122,16 +1120,12 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="customerListEmailField" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jLabel70" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="customerListZipCodeField" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="jLabel71" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="customerListAddressField" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="findCustomerEditableCheckBox" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="findCustomerSaveInfoButton" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -1231,18 +1225,6 @@
                 <Component class="javax.swing.JTextField" name="customerListEmailField">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[10, 24]"/>
-                    </Property>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel70">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Postnummer"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="customerListZipCodeField">
-                  <Properties>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[10, 24]"/>
                     </Property>
