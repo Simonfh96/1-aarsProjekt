@@ -2070,7 +2070,11 @@ public class GUIView extends javax.swing.JFrame {
 
     private void saveLoginInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveLoginInfoButtonActionPerformed
         try {
-            boolean passwordsMatch = EmployeeHandler.getInstance().changePasswordAndUsername(newUsernameField.getText(), newPasswordField1.getText(), newPasswordField2.getText(), employee);
+            String username = newUsernameField.getText();
+            if (username.isEmpty()) {
+                username = employee.getUsername();
+            } 
+            boolean passwordsMatch = EmployeeHandler.getInstance().changePasswordAndUsername(username, newPasswordField1.getText(), newPasswordField2.getText(), employee);
             if (!passwordsMatch) {
                passwordMatchLabel.setVisible(true);
             } else {
