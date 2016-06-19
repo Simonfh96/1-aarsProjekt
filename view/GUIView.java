@@ -2259,6 +2259,7 @@ public class GUIView extends javax.swing.JFrame {
 
     private void findCostumerFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_findCostumerFieldKeyReleased
         String search = findCostumerField.getText();
+        if (!(evt.getKeyCode() == KeyEvent.VK_BACK_SPACE)) {
         if (!(search.equals(""))) {
             costScrollSearch.setVisible(true);
             list.setVisible(true);
@@ -2290,6 +2291,7 @@ public class GUIView extends javax.swing.JFrame {
         } else {
             costScrollSearch.setVisible(false);
             list.setVisible(false);
+        }
         }
     }//GEN-LAST:event_findCostumerFieldKeyReleased
 
