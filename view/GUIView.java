@@ -2148,8 +2148,21 @@ public class GUIView extends javax.swing.JFrame {
             }
             Case newCase = new Case(0, konsNmb, Integer.parseInt(offerNmb), caseCreationNameField.getText(), newCaseDescription.getText(),
                     newCaseArticles, false, cal.getTime(), cal.getTime(), customer, logs, null);
-            CaseHandler.getInstance().saveCase(newCase, employee, existingCostumerCheckBox.isSelected());
-            
+            boolean caseCreated = CaseHandler.getInstance().saveCase(newCase, employee, existingCostumerCheckBox.isSelected());
+            if (caseCreated) {
+                JOptionPane.showMessageDialog(this, "Sag oprettet.");
+                newCaseNameField.setText("");
+                newCaseContactField.setText("");
+                newCasePhoneField.setText("");
+                newCaseEmailField.setText("");
+                newCaseAddressField.setText("");
+                newCaseMuseumNmbField.setText("");
+                newCaseAcroField.setText("");
+                addContactNameField.setText("");
+                addContactPhoneField.setText("");
+                addContactEmailField.setText("");
+                costumerTypeBox.setSelectedItem("Kundetype");
+            }
         } catch (NumberFormatException ex) {
           JOptionPane.showMessageDialog(this, "Tilbuds nr. må kun indeholde gyldige tal.");
         } catch (SQLException ex) {

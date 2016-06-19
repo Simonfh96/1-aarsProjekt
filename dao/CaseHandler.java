@@ -247,7 +247,7 @@ public class CaseHandler {
 
     //Fejltjekning skal ske inden oprettelsen af case objektet, 
     //da det ikke kan oprettes med en ugyldig værdi
-    public void saveCase(Case c, Employee e, boolean existingCostumer) throws SQLException {
+    public boolean saveCase(Case c, Employee e, boolean existingCostumer) throws SQLException {
         String errorMessage = "";
         boolean succeeded = true;
         int caseID = getCaseID();
@@ -296,7 +296,7 @@ public class CaseHandler {
             ps.execute();
 
         }
-        
+        return succeeded;
     }
 
     public int getCaseID() throws SQLException {
