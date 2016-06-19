@@ -2336,8 +2336,17 @@ public class GUIView extends javax.swing.JFrame {
     }//GEN-LAST:event_costumerTypeBoxActionPerformed
 
     private void savePersonalInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savePersonalInfoButtonActionPerformed
-        employee.setEmail(editEmailField.getText());
-        employee.setPhone(Integer.parseInt(editPhoneField.getText()));
+        String email = editEmailField.getText();
+        if (email.isEmpty()) {
+            email = employee.getEmail();
+        }
+        employee.setEmail(email);
+        String phone = editPhoneField.getText();
+        if (phone.matches("[0-9]+") && phone.length() == 8 && !(phone.isEmpty())) {
+           employee.setPhone(Integer.parseInt(phone));
+        } else {
+            JOptionPane.showMessageDialog(this, "Telefon nr. må kun indeholde tal og 8 cifre");
+        }
         try {
             EmployeeHandler.getInstance().changePersonalInfo(employee);
         } catch (SQLException ex) {

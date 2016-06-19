@@ -131,7 +131,7 @@ public class CaseHandler {
         }
 
         if (!(caseIDParam.isEmpty())) {
-            if (caseIDParam.matches("[0-9]")) {
+            if (caseIDParam.matches("[0-9]+")) {
                 if (Integer.parseInt(caseIDParam) > 0) {
                     statement += "case_id = " + caseIDParam + " AND ";
                 } else {
@@ -149,7 +149,7 @@ public class CaseHandler {
         }
 
         if (!(konsNmbParam.isEmpty())) {
-            if (konsNmbParam.matches("[0-9]")) {
+            if (konsNmbParam.matches("[0-9]+")) {
                 if (Integer.parseInt(konsNmbParam) > 0) {
                     statement += "konsNr = " + konsNmbParam + " AND ";
                 } else {
@@ -163,7 +163,7 @@ public class CaseHandler {
         }
 
         if (!(offerNmbParam.isEmpty())) {
-            if (offerNmbParam.matches("[0-9]")) {
+            if (offerNmbParam.matches("[0-9]+")) {
                 if (Integer.parseInt(offerNmbParam) > 0) {
                     statement += "offerNmb = " + offerNmbParam + " AND ";
                 } else {
