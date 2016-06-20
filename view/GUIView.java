@@ -697,8 +697,10 @@ public class GUIView extends javax.swing.JFrame {
         jLabel86.setText("Navn");
         newCasePanel.add(jLabel86);
         jLabel86.setBounds(20, 80, 150, 14);
+
+        newCaseNameField.setPreferredSize(new java.awt.Dimension(6, 25));
         newCasePanel.add(newCaseNameField);
-        newCaseNameField.setBounds(20, 100, 150, 20);
+        newCaseNameField.setBounds(20, 100, 150, 25);
 
         jLabel87.setText("Kontaktperson");
         newCasePanel.add(jLabel87);
