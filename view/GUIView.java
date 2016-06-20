@@ -2404,6 +2404,7 @@ public class GUIView extends javax.swing.JFrame {
     }//GEN-LAST:event_savePersonalInfoButtonActionPerformed
 
     private void findCustomerSaveInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findCustomerSaveInfoButtonActionPerformed
+        String error = "Kunne ikke ændre kundeoplyninger.";
         Costumer customerToEdit = null;
         for (Component customerPanel : showAllCustomerPanel.getComponents()) {
             CustomerPanel cp = (CustomerPanel) customerPanel;
@@ -2423,6 +2424,7 @@ public class GUIView extends javax.swing.JFrame {
                 customerToEdit.setPhone(Integer.parseInt(phone));
             } else {
                 succeed = false;
+                error = error + "\nTjek at tlf. indeholder et gyldigt nummer";
             }
             }
             String email = customerListEmailField.getText();
@@ -2437,10 +2439,10 @@ public class GUIView extends javax.swing.JFrame {
             try {
                 CostumerHandler.getInstance().editCustomer(customerToEdit);
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this, "Kunne ikke ændre kundeoplyninger.");
+                JOptionPane.showMessageDialog(this, error);
             }
             } else {
-                JOptionPane.showMessageDialog(this, "Kunne ikke ændre kundeoplyninger.");
+                JOptionPane.showMessageDialog(this, error);
             }
         }
     }//GEN-LAST:event_findCustomerSaveInfoButtonActionPerformed
