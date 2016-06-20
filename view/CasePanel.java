@@ -43,6 +43,12 @@ public class CasePanel extends javax.swing.JPanel {
         
     }
     
+    public void update() {
+        caseNameLabel.setText(c.getCaseName());
+        ownerLabel.setText(c.getCustomer().getCostumerName() + "");
+        lastUpdateLabel.setText("Sidst opdateret: "+dateFormat.format(c.getLastUpdated()));
+    }
+    
     
 
     /**

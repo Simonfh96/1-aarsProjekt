@@ -146,9 +146,16 @@ public class GUIView extends javax.swing.JFrame {
     }
     
     public void update() {
-//        for (int i = 0; i < customer.getAccounts().size(); i++) {
-//            accountFields.get(i).setText(customer.getAccounts().get(i).toString());   
-//        }
+        for (CasePanel cp : (CasePanel[])myCasesPanel.getComponents()) {
+            cp.update();
+        }
+        for (CasePanel cp : (CasePanel[])newestCasesPanel.getComponents()) {
+            cp.update();
+        }
+        for (CasePanel cp : (CasePanel[])finishedCasesPanel.getComponents()) {
+            cp.update();
+        }
+
     }
 
     public void setUserControl(Control control, Employee employee) {

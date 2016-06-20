@@ -36,6 +36,11 @@ public class ArticlePanel extends javax.swing.JPanel {
         konsNmbLabel.setText(""+a.getKonsNmb());
     }
 
+    public void update() {
+        articleNameLabel.setText(a.getName());
+        konsNmbLabel.setText(""+a.getKonsNmb());
+    }
+            
     public Article getA() {
         return a;
     }
