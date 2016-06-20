@@ -334,14 +334,12 @@ public class GUIView extends javax.swing.JFrame {
         jLabel100 = new javax.swing.JLabel();
         jLabel101 = new javax.swing.JLabel();
         jLabel102 = new javax.swing.JLabel();
-        articleAmountField = new javax.swing.JTextField();
+        articleLocationField = new javax.swing.JTextField();
         createArticleConsNmbField = new javax.swing.JTextField();
         newArticleMuseumsNmbField = new javax.swing.JTextField();
         jLabel103 = new javax.swing.JLabel();
         jScrollPane14 = new javax.swing.JScrollPane();
         createCaseArticleDescriptionArea = new javax.swing.JTextArea();
-        createCaseLocationBox = new javax.swing.JComboBox<>();
-        newLocationButton = new javax.swing.JButton();
         createTaskNameButton = new javax.swing.JButton();
         createCaseTaskBox = new javax.swing.JComboBox<>();
         jLabel104 = new javax.swing.JLabel();
@@ -354,6 +352,9 @@ public class GUIView extends javax.swing.JFrame {
         jLabel105 = new javax.swing.JLabel();
         newArticleNameField = new javax.swing.JTextField();
         costScrollSearch = new javax.swing.JScrollPane();
+        jLabel3 = new javax.swing.JLabel();
+        articleAmountField = new javax.swing.JTextField();
+        moreArticlesCheckBox = new javax.swing.JCheckBox();
         customerListPanel = new javax.swing.JPanel();
         customerListScrollPane = new javax.swing.JScrollPane();
         showAllCustomerPanel = new javax.swing.JPanel();
@@ -849,7 +850,7 @@ public class GUIView extends javax.swing.JFrame {
 
         jLabel100.setText("Antal genstande");
         newCasePanel.add(jLabel100);
-        jLabel100.setBounds(300, 290, 100, 14);
+        jLabel100.setBounds(300, 260, 100, 14);
 
         jLabel101.setText("Kons nr.");
         newCasePanel.add(jLabel101);
@@ -858,10 +859,8 @@ public class GUIView extends javax.swing.JFrame {
         jLabel102.setText("Museums nr.");
         newCasePanel.add(jLabel102);
         jLabel102.setBounds(300, 350, 100, 14);
-
-        articleAmountField.setText("1");
-        newCasePanel.add(articleAmountField);
-        articleAmountField.setBounds(420, 290, 120, 20);
+        newCasePanel.add(articleLocationField);
+        articleLocationField.setBounds(420, 290, 120, 20);
         newCasePanel.add(createArticleConsNmbField);
         createArticleConsNmbField.setBounds(420, 320, 120, 20);
         newCasePanel.add(newArticleMuseumsNmbField);
@@ -877,19 +876,6 @@ public class GUIView extends javax.swing.JFrame {
 
         newCasePanel.add(jScrollPane14);
         jScrollPane14.setBounds(300, 450, 220, 96);
-
-        createCaseLocationBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Placering" }));
-        newCasePanel.add(createCaseLocationBox);
-        createCaseLocationBox.setBounds(420, 241, 140, 20);
-
-        newLocationButton.setText("Ny Placering");
-        newLocationButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newLocationButtonActionPerformed(evt);
-            }
-        });
-        newCasePanel.add(newLocationButton);
-        newLocationButton.setBounds(290, 240, 120, 23);
 
         createTaskNameButton.setText("Ny opgave");
         createTaskNameButton.addActionListener(new java.awt.event.ActionListener() {
@@ -950,6 +936,24 @@ public class GUIView extends javax.swing.JFrame {
         newArticleNameField.setBounds(420, 380, 120, 20);
         newCasePanel.add(costScrollSearch);
         costScrollSearch.setBounds(20, 250, 160, 40);
+
+        jLabel3.setText("Placering");
+        newCasePanel.add(jLabel3);
+        jLabel3.setBounds(300, 290, 80, 14);
+
+        articleAmountField.setEditable(false);
+        articleAmountField.setText("1");
+        newCasePanel.add(articleAmountField);
+        articleAmountField.setBounds(420, 260, 120, 20);
+
+        moreArticlesCheckBox.setText("Opret flere genstande");
+        moreArticlesCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                moreArticlesCheckBoxActionPerformed(evt);
+            }
+        });
+        newCasePanel.add(moreArticlesCheckBox);
+        moreArticlesCheckBox.setBounds(300, 230, 240, 23);
 
         tabbedPane.addTab("Opret sag", newCasePanel);
 
@@ -1738,11 +1742,6 @@ public class GUIView extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(editCasePanelLayout.createSequentialGroup()
-                                        .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel25)
-                                            .addComponent(articleDescriptionEditField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addContainerGap())
-                                    .addGroup(editCasePanelLayout.createSequentialGroup()
                                         .addGap(491, 491, 491)
                                         .addComponent(jLabel42)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1760,88 +1759,94 @@ public class GUIView extends javax.swing.JFrame {
                                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(editCasePanelLayout.createSequentialGroup()
                                                 .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(editCasePanelLayout.createSequentialGroup()
-                                                        .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(jLabel22)
-                                                            .addComponent(editAddTaskButton))
-                                                        .addGap(18, 18, 18)
-                                                        .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(editTaskStatusBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(editTaskRefreshButton)
-                                                            .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(jLabel23)))
-                                                        .addGap(18, 18, 18)
-                                                        .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(jButton5)
-                                                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(jLabel28)
-                                                            .addComponent(jCheckBox1)
-                                                            .addComponent(jLabel29)
-                                                            .addComponent(jCheckBox3)))
-                                                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGroup(editCasePanelLayout.createSequentialGroup()
-                                                        .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(jLabel5)
-                                                            .addComponent(allEmployeesAddButton)
-                                                            .addComponent(allEmployeesScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGap(18, 18, 18)
-                                                        .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(jLabel24)
-                                                            .addComponent(caseResponsibleScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(caseResponsibleRemoveButton))))
+                                                    .addComponent(jLabel25)
+                                                    .addComponent(articleDescriptionEditField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(0, 0, Short.MAX_VALUE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editCasePanelLayout.createSequentialGroup()
-                                                .addGap(0, 0, Short.MAX_VALUE)
-                                                .addComponent(jLabel82)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(editCaseOfferNmbField, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(32, 32, 32)
-                                                .addComponent(jLabel39)))
-                                        .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(editCasePanelLayout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(caseNmbEditPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel40)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(caseNameEditField, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addGroup(editCasePanelLayout.createSequentialGroup()
-                                                        .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                            .addComponent(jLabel27)
-                                                            .addComponent(jLabel26))
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                            .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                            .addComponent(caseDescriptionEditPanel)))
-                                                    .addComponent(jSeparator5)
-                                                    .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(editCasePanelLayout.createSequentialGroup()
                                                         .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(jLabel32)
-                                                            .addComponent(jLabel33)
-                                                            .addComponent(jLabel31)
-                                                            .addComponent(jLabel34)
-                                                            .addComponent(jLabel35))
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                            .addComponent(costumerNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                            .addComponent(contactPersonCostumerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
-                                                            .addComponent(phoneCostumerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                            .addComponent(emailCostumerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                            .addComponent(adressCostumerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                                    .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.TRAILING))
-                                                .addContainerGap())
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editCasePanelLayout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel37)
+                                                            .addGroup(editCasePanelLayout.createSequentialGroup()
+                                                                .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                    .addComponent(jLabel22)
+                                                                    .addComponent(editAddTaskButton))
+                                                                .addGap(18, 18, 18)
+                                                                .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                    .addComponent(editTaskStatusBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                    .addComponent(editTaskRefreshButton)
+                                                                    .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(jLabel23)))
+                                                                .addGap(18, 18, 18)
+                                                                .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                    .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                    .addComponent(jButton5)
+                                                                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                    .addComponent(jLabel28)
+                                                                    .addComponent(jCheckBox1)
+                                                                    .addComponent(jLabel29)
+                                                                    .addComponent(jCheckBox3)))
+                                                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addGroup(editCasePanelLayout.createSequentialGroup()
+                                                                .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                    .addComponent(jLabel5)
+                                                                    .addComponent(allEmployeesAddButton)
+                                                                    .addComponent(allEmployeesScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addGap(18, 18, 18)
+                                                                .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                    .addComponent(jLabel24)
+                                                                    .addComponent(caseResponsibleScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                    .addComponent(caseResponsibleRemoveButton))))
+                                                        .addGap(0, 0, Short.MAX_VALUE))
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editCasePanelLayout.createSequentialGroup()
+                                                        .addGap(0, 0, Short.MAX_VALUE)
+                                                        .addComponent(jLabel82)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addComponent(editCaseOfferNmbField, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(32, 32, 32)
+                                                        .addComponent(jLabel39)))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(caseBeginDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addContainerGap())))))
+                                                .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(editCasePanelLayout.createSequentialGroup()
+                                                        .addComponent(caseNmbEditPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(jLabel40)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(caseNameEditField, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                            .addGroup(editCasePanelLayout.createSequentialGroup()
+                                                                .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                    .addComponent(jLabel27)
+                                                                    .addComponent(jLabel26))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                    .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                    .addComponent(caseDescriptionEditPanel)))
+                                                            .addComponent(jSeparator5)
+                                                            .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addGroup(editCasePanelLayout.createSequentialGroup()
+                                                                .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                    .addComponent(jLabel32)
+                                                                    .addComponent(jLabel33)
+                                                                    .addComponent(jLabel31)
+                                                                    .addComponent(jLabel34)
+                                                                    .addComponent(jLabel35))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                    .addComponent(costumerNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                    .addComponent(contactPersonCostumerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                                                                    .addComponent(phoneCostumerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                    .addComponent(emailCostumerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                    .addComponent(adressCostumerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                                            .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editCasePanelLayout.createSequentialGroup()
+                                                        .addGap(0, 0, Short.MAX_VALUE)
+                                                        .addComponent(jLabel37)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(caseBeginDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addContainerGap())))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editCasePanelLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(editCasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2219,8 +2224,8 @@ public class GUIView extends javax.swing.JFrame {
                 newCaseDescription.setText("");
                 newCaseOfferNmbField.setText("");
                 newArticleTypeBox.setSelectedItem("Genstands type");
-                createCaseLocationBox.setSelectedItem("Placering");
-                articleAmountField.setText("1");
+                articleAmountField.setText("");
+                articleLocationField.setText("");
                 //Skulle kons nr ikke selv tælles op?
                 createArticleConsNmbField.setText("");
                 newArticleMuseumsNmbField.setText("");
@@ -2293,11 +2298,6 @@ public class GUIView extends javax.swing.JFrame {
             newCaseArticles.add(article);
         }
     }//GEN-LAST:event_newArticleButtonActionPerformed
-
-    private void newLocationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newLocationButtonActionPerformed
-        // JDialog der kommer op og spørger om navnet på placering, hvorefter den gemmer i databasen
-
-    }//GEN-LAST:event_newLocationButtonActionPerformed
 
     private void createTaskNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createTaskNameButtonActionPerformed
         String newTaskName = JOptionPane.showInputDialog(this, "Angiv et navn til den nye opgave");
@@ -2513,6 +2513,14 @@ public class GUIView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_findCustomerEditableCheckBoxActionPerformed
 
+    private void moreArticlesCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moreArticlesCheckBoxActionPerformed
+       if (moreArticlesCheckBox.isSelected()) {
+           articleAmountField.setEditable(true);
+       } else {
+           articleAmountField.setEditable(false);
+       }
+    }//GEN-LAST:event_moreArticlesCheckBoxActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2569,6 +2577,7 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JTextField articleAmountField;
     private javax.swing.JTextField articleDescriptionEditField;
     private javax.swing.JPanel articleDisplayPanel;
+    private javax.swing.JTextField articleLocationField;
     private javax.swing.JTextField articleTypeSField;
     private javax.swing.JPanel cardPanel;
     private javax.swing.JLabel caseBeginDateLabel;
@@ -2593,7 +2602,6 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JTextField createArticleConsNmbField;
     private javax.swing.JButton createCaseAddTaskButton;
     private javax.swing.JTextArea createCaseArticleDescriptionArea;
-    private javax.swing.JComboBox<String> createCaseLocationBox;
     private javax.swing.JComboBox<String> createCaseTaskBox;
     private javax.swing.JList<String> createCaseTaskList;
     private javax.swing.JButton createCasebutton;
@@ -2660,6 +2668,7 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
@@ -2748,6 +2757,7 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField konsNmbField;
     private javax.swing.JTextField lastUpdatedField;
+    private javax.swing.JCheckBox moreArticlesCheckBox;
     private javax.swing.JPanel myCasesPanel;
     private javax.swing.JScrollPane myCasesScrollPane;
     private javax.swing.JPanel myCasesTab;
@@ -2775,7 +2785,6 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JTextField newEmployeePhoneField;
     private javax.swing.JComboBox newEmployeeTypeBox;
     private javax.swing.JTextField newEmployeeUsernameField;
-    private javax.swing.JButton newLocationButton;
     private javax.swing.JTextField newPasswordField1;
     private javax.swing.JTextField newPasswordField2;
     private javax.swing.JTextField newUsernameField;
