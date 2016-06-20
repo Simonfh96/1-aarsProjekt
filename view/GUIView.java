@@ -2219,10 +2219,12 @@ public class GUIView extends javax.swing.JFrame {
     }//GEN-LAST:event_editCaseLogButtonActionPerformed
 
     private void createCaseAddTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseAddTaskButtonActionPerformed
+        //Fejl her? array index out of bounds
         String taskName = (String) createCaseTaskBox.getSelectedItem();
         if (!(taskName.equalsIgnoreCase("Opgaver"))) {
             Task task = new Task("Ikke startet", taskName, taskDescriptionArea.getText(), ((Article) newCaseArticles.get(newCaseArticles.size() - 1)).getArticleID());
             ((Article) newCaseArticles.get(newCaseArticles.size() - 1)).addTask(task);
+            ((DefaultListModel)createCaseTaskList.getModel()).addElement(task);
         }
     }//GEN-LAST:event_createCaseAddTaskButtonActionPerformed
 
