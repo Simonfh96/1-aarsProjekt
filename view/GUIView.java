@@ -330,7 +330,6 @@ public class GUIView extends javax.swing.JFrame {
         newCaseOfferNmbField = new javax.swing.JTextField();
         jSeparator17 = new javax.swing.JSeparator();
         newArticleButton = new javax.swing.JButton();
-        newArticleTypeBox = new javax.swing.JComboBox<>();
         jLabel100 = new javax.swing.JLabel();
         jLabel101 = new javax.swing.JLabel();
         jLabel102 = new javax.swing.JLabel();
@@ -705,8 +704,10 @@ public class GUIView extends javax.swing.JFrame {
         jLabel87.setText("Kontaktperson");
         newCasePanel.add(jLabel87);
         jLabel87.setBounds(20, 140, 150, 14);
+
+        newCaseContactField.setPreferredSize(new java.awt.Dimension(6, 25));
         newCasePanel.add(newCaseContactField);
-        newCaseContactField.setBounds(20, 160, 150, 20);
+        newCaseContactField.setBounds(20, 160, 150, 25);
 
         jLabel88.setText("Tlf. nummer");
         newCasePanel.add(jLabel88);
@@ -715,10 +716,14 @@ public class GUIView extends javax.swing.JFrame {
         newCasePhoneField.setPreferredSize(new java.awt.Dimension(6, 25));
         newCasePanel.add(newCasePhoneField);
         newCasePhoneField.setBounds(200, 100, 150, 25);
+
+        newCaseEmailField.setPreferredSize(new java.awt.Dimension(6, 25));
         newCasePanel.add(newCaseEmailField);
-        newCaseEmailField.setBounds(200, 160, 150, 20);
+        newCaseEmailField.setBounds(200, 160, 150, 25);
+
+        newCaseAddressField.setPreferredSize(new java.awt.Dimension(6, 25));
         newCasePanel.add(newCaseAddressField);
-        newCaseAddressField.setBounds(380, 100, 150, 20);
+        newCaseAddressField.setBounds(380, 100, 150, 25);
 
         jLabel89.setText("Email");
         newCasePanel.add(jLabel89);
@@ -731,14 +736,18 @@ public class GUIView extends javax.swing.JFrame {
         jLabel91.setText("Museums nr.");
         newCasePanel.add(jLabel91);
         jLabel91.setBounds(380, 140, 80, 14);
+
+        newCaseMuseumNmbField.setPreferredSize(new java.awt.Dimension(6, 25));
         newCasePanel.add(newCaseMuseumNmbField);
-        newCaseMuseumNmbField.setBounds(380, 160, 80, 20);
+        newCaseMuseumNmbField.setBounds(380, 160, 80, 25);
 
         jLabel92.setText("Akronym");
         newCasePanel.add(jLabel92);
         jLabel92.setBounds(480, 140, 70, 14);
+
+        newCaseAcroField.setPreferredSize(new java.awt.Dimension(6, 25));
         newCasePanel.add(newCaseAcroField);
-        newCaseAcroField.setBounds(480, 160, 70, 20);
+        newCaseAcroField.setBounds(480, 160, 70, 25);
 
         costumerTypeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kundetype", "Privat", "Kvote" }));
         costumerTypeBox.addActionListener(new java.awt.event.ActionListener() {
@@ -763,20 +772,26 @@ public class GUIView extends javax.swing.JFrame {
         jLabel94.setText("Navn");
         newCasePanel.add(jLabel94);
         jLabel94.setBounds(630, 80, 100, 14);
+
+        addContactNameField.setPreferredSize(new java.awt.Dimension(6, 25));
         newCasePanel.add(addContactNameField);
-        addContactNameField.setBounds(630, 100, 100, 20);
+        addContactNameField.setBounds(630, 100, 100, 25);
 
         jLabel95.setText("Tlf. nummer");
         newCasePanel.add(jLabel95);
         jLabel95.setBounds(630, 140, 100, 14);
+
+        addContactPhoneField.setPreferredSize(new java.awt.Dimension(6, 25));
         newCasePanel.add(addContactPhoneField);
-        addContactPhoneField.setBounds(630, 160, 100, 20);
+        addContactPhoneField.setBounds(630, 160, 100, 25);
 
         jLabel96.setText("Email");
         newCasePanel.add(jLabel96);
         jLabel96.setBounds(750, 140, 160, 14);
+
+        addContactEmailField.setPreferredSize(new java.awt.Dimension(6, 25));
         newCasePanel.add(addContactEmailField);
-        addContactEmailField.setBounds(750, 160, 160, 20);
+        addContactEmailField.setBounds(750, 160, 160, 25);
 
         jScrollPane12.setViewportView(newContactList);
 
@@ -816,26 +831,31 @@ public class GUIView extends javax.swing.JFrame {
         jLabel97.setText("Sagsnavn");
         newCasePanel.add(jLabel97);
         jLabel97.setBounds(20, 310, 160, 14);
+
+        caseCreationNameField.setPreferredSize(new java.awt.Dimension(6, 25));
         newCasePanel.add(caseCreationNameField);
-        caseCreationNameField.setBounds(20, 330, 160, 20);
+        caseCreationNameField.setBounds(20, 330, 160, 25);
 
         jLabel98.setText("Sags beskrivelse");
         newCasePanel.add(jLabel98);
         jLabel98.setBounds(20, 370, 160, 14);
 
+        newCaseDescription.setPreferredSize(new java.awt.Dimension(6, 2));
         newCaseDescription.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 newCaseDescriptionMousePressed(evt);
             }
         });
         newCasePanel.add(newCaseDescription);
-        newCaseDescription.setBounds(20, 390, 160, 20);
+        newCaseDescription.setBounds(20, 390, 160, 2);
 
         jLabel99.setText("Tilbuds nr.");
         newCasePanel.add(jLabel99);
         jLabel99.setBounds(20, 430, 160, 14);
+
+        newCaseOfferNmbField.setPreferredSize(new java.awt.Dimension(6, 2));
         newCasePanel.add(newCaseOfferNmbField);
-        newCaseOfferNmbField.setBounds(20, 450, 160, 20);
+        newCaseOfferNmbField.setBounds(20, 450, 160, 2);
 
         jSeparator17.setOrientation(javax.swing.SwingConstants.VERTICAL);
         newCasePanel.add(jSeparator17);
@@ -848,11 +868,7 @@ public class GUIView extends javax.swing.JFrame {
             }
         });
         newCasePanel.add(newArticleButton);
-        newArticleButton.setBounds(290, 200, 120, 23);
-
-        newArticleTypeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Genstands type" }));
-        newCasePanel.add(newArticleTypeBox);
-        newArticleTypeBox.setBounds(420, 201, 140, 20);
+        newArticleButton.setBounds(300, 580, 120, 23);
 
         jLabel100.setText("Antal genstande");
         newCasePanel.add(jLabel100);
@@ -2240,7 +2256,6 @@ public class GUIView extends javax.swing.JFrame {
                 caseCreationNameField.setText("");
                 newCaseDescription.setText("");
                 newCaseOfferNmbField.setText("");
-                newArticleTypeBox.setSelectedItem("Genstands type");
                 articleAmountField.setText("");
                 articleLocationField.setText("");
                 //Skulle kons nr ikke selv tælles op?
@@ -2303,17 +2318,17 @@ public class GUIView extends javax.swing.JFrame {
         //Og kører ArrayList'en igennem og lægger iterator til sagens kons nr
         //Tasks skal sættes efter oprettelse af den Article, som de skal knyttes til
         //Det gøres ved at tage den sidste index fra ArrayList'en, så man har den sidst oprettede Article
-        ArrayList<Task> tasks = new ArrayList<>();
-        Article article = null;
-        try {
-            article = new Article(ArticleHandler.getInstance().generateArticleID(), newArticleNameField.getText(), 0,
-                    (String) newArticleTypeBox.getSelectedItem(), Integer.parseInt(newArticleMuseumsNmbField.getText()), 0, tasks);
-        } catch (SQLException ex) {
-            System.out.println(ex.getLocalizedMessage());
-        }
-        if (article != null) {
-            newCaseArticles.add(article);
-        }
+//        ArrayList<Task> tasks = new ArrayList<>();
+//        Article article = null;
+//        try {
+//            article = new Article(ArticleHandler.getInstance().generateArticleID(), newArticleNameField.getText(), 0,
+//                    (String) newArticleTypeBox.getSelectedItem(), Integer.parseInt(newArticleMuseumsNmbField.getText()), 0, tasks);
+//        } catch (SQLException ex) {
+//            System.out.println(ex.getLocalizedMessage());
+//        }
+//        if (article != null) {
+//            newCaseArticles.add(article);
+//        }
     }//GEN-LAST:event_newArticleButtonActionPerformed
 
     private void createTaskNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createTaskNameButtonActionPerformed
@@ -2782,7 +2797,6 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JButton newArticleButton;
     private javax.swing.JTextField newArticleMuseumsNmbField;
     private javax.swing.JTextField newArticleNameField;
-    private javax.swing.JComboBox<String> newArticleTypeBox;
     private javax.swing.JTextField newArticleTypeField;
     private javax.swing.JTextField newCaseAcroField;
     private javax.swing.JTextField newCaseAddressField;
