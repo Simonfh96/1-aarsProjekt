@@ -355,6 +355,8 @@ public class GUIView extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         articleAmountField = new javax.swing.JTextField();
         moreArticlesCheckBox = new javax.swing.JCheckBox();
+        newArticleTypeField = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         customerListPanel = new javax.swing.JPanel();
         customerListScrollPane = new javax.swing.JScrollPane();
         showAllCustomerPanel = new javax.swing.JPanel();
@@ -868,14 +870,16 @@ public class GUIView extends javax.swing.JFrame {
 
         jLabel103.setText("Genstands beskrivelse");
         newCasePanel.add(jLabel103);
-        jLabel103.setBounds(300, 420, 220, 14);
+        jLabel103.setBounds(300, 450, 220, 14);
+
+        jScrollPane14.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         createCaseArticleDescriptionArea.setColumns(20);
         createCaseArticleDescriptionArea.setRows(5);
         jScrollPane14.setViewportView(createCaseArticleDescriptionArea);
 
         newCasePanel.add(jScrollPane14);
-        jScrollPane14.setBounds(300, 450, 220, 96);
+        jScrollPane14.setBounds(300, 470, 220, 96);
 
         createTaskNameButton.setText("Ny opgave");
         createTaskNameButton.addActionListener(new java.awt.event.ActionListener() {
@@ -898,6 +902,9 @@ public class GUIView extends javax.swing.JFrame {
         jLabel104.setText("Opgave beskrivelse");
         newCasePanel.add(jLabel104);
         jLabel104.setBounds(630, 250, 230, 14);
+
+        jScrollPane15.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane15.setToolTipText("");
 
         taskDescriptionArea.setColumns(20);
         taskDescriptionArea.setRows(5);
@@ -954,6 +961,12 @@ public class GUIView extends javax.swing.JFrame {
         });
         newCasePanel.add(moreArticlesCheckBox);
         moreArticlesCheckBox.setBounds(300, 230, 240, 23);
+        newCasePanel.add(newArticleTypeField);
+        newArticleTypeField.setBounds(420, 410, 120, 20);
+
+        jLabel6.setText("Genstands type");
+        newCasePanel.add(jLabel6);
+        jLabel6.setBounds(300, 410, 110, 14);
 
         tabbedPane.addTab("Opret sag", newCasePanel);
 
@@ -2700,6 +2713,7 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
@@ -2765,6 +2779,7 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JTextField newArticleMuseumsNmbField;
     private javax.swing.JTextField newArticleNameField;
     private javax.swing.JComboBox<String> newArticleTypeBox;
+    private javax.swing.JTextField newArticleTypeField;
     private javax.swing.JTextField newCaseAcroField;
     private javax.swing.JTextField newCaseAddressField;
     private javax.swing.JTextField newCaseContactField;
