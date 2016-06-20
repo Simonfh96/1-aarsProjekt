@@ -2411,18 +2411,38 @@ public class GUIView extends javax.swing.JFrame {
                 customerToEdit = cp.getCustomer();
             }
         }
-        customerToEdit.setCostumerName("ændret");
-//        if (customerToEdit != null) {
-//            customerToEdit.setCostumerName(customerListNameField.getText());
-//            customerToEdit.setPhone(Integer.parseInt(customerListPhoneField.getText()));
-//            customerToEdit.setEmail(customerListEmailField.getText());
-//            customerToEdit.setAddress(customerListAddressField.getText());
-//            try {
-//                CostumerHandler.getInstance().editCustomer(customerToEdit);
-//            } catch (SQLException ex) {
-//                JOptionPane.showMessageDialog(this, "Kunne ikke redigere i kundens oplysninger");
-//            }
-//        }
+        if (customerToEdit != null) {
+            boolean succeed = true;
+            String customerName = customerListNameField.getText();
+            if (!customerName.isEmpty()) {
+                customerToEdit.setCostumerName(customerName);
+            }
+            String phone = customerListPhoneField.getText();
+            if (!phone.isEmpty()) {
+            if (phone.matches("[0-9]+") && phone.length() == 8) {
+                customerToEdit.setPhone(Integer.parseInt(phone));
+            } else {
+                succeed = false;
+            }
+            }
+            String email = customerListEmailField.getText();
+            if (!email.isEmpty()) {
+            customerToEdit.setEmail(email);
+            }
+            String address = customerListAddressField.getText();
+            if (!address.isEmpty()) {
+            customerToEdit.setAddress(address);    
+            }
+            if (succeed) {
+            try {
+                CostumerHandler.getInstance().editCustomer(customerToEdit);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Kunne ikke ændre kundeoplyninger.");
+            }
+            } else {
+                JOptionPane.showMessageDialog(this, "Kunne ikke ændre kundeoplyninger.");
+            }
+        }
     }//GEN-LAST:event_findCustomerSaveInfoButtonActionPerformed
 
     private void editArticleTaskListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_editArticleTaskListValueChanged
