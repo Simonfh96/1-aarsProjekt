@@ -711,8 +711,10 @@ public class GUIView extends javax.swing.JFrame {
         jLabel88.setText("Tlf. nummer");
         newCasePanel.add(jLabel88);
         jLabel88.setBounds(200, 80, 150, 14);
+
+        newCasePhoneField.setPreferredSize(new java.awt.Dimension(6, 25));
         newCasePanel.add(newCasePhoneField);
-        newCasePhoneField.setBounds(200, 100, 150, 20);
+        newCasePhoneField.setBounds(200, 100, 150, 25);
         newCasePanel.add(newCaseEmailField);
         newCaseEmailField.setBounds(200, 160, 150, 20);
         newCasePanel.add(newCaseAddressField);
