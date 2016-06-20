@@ -143,31 +143,48 @@ public class GUIView extends javax.swing.JFrame {
             update();
             }
         });
+        updateTimer.start();
     }
     
     public void update() {
-        for (CasePanel cp : (CasePanel[])myCasesPanel.getComponents()) {
+        if (myCasesPanel.getComponents() != null) {
+        for (Component casePanel : myCasesPanel.getComponents()) {
+            CasePanel cp = (CasePanel) casePanel;
             cp.update();
         }
-        for (CasePanel cp : (CasePanel[])newestCasesPanel.getComponents()) {
+        }
+        if (newestCasesPanel.getComponents() != null) {
+        for (Component casePanel : newestCasesPanel.getComponents()) {
+            CasePanel cp = (CasePanel) casePanel;
             cp.update();
         }
-        for (CasePanel cp : (CasePanel[])finishedCasesPanel.getComponents()) {
+        }
+        if (finishedCasesPanel.getComponents() != null) {
+        for (Component casePanel : finishedCasesPanel.getComponents()) {
+            CasePanel cp = (CasePanel) casePanel;
             cp.update();
         }
-        
-        for (CustomerPanel cp : (CustomerPanel[])showAllCustomerPanel.getComponents()) {
+        }
+        if (showAllCustomerPanel.getComponents() != null) {
+        for (Component customerPanel : showAllCustomerPanel.getComponents()) {
+            CustomerPanel cp = (CustomerPanel) customerPanel;
             cp.update();
         }
-        
-        for (EmployeePanel  ep : (EmployeePanel[]) employeeListPanel.getComponents()) {
+        }
+        if (employeeListPanel.getComponents() != null) {
+        for (Component employeePanel : employeeListPanel.getComponents()) {
+            EmployeePanel ep = (EmployeePanel) employeePanel;
             ep.update();
         }
-        
-        for (ArticlePanel ap : (ArticlePanel[])articleDisplayPanel.getComponents()) {
+        }
+        if (articleDisplayPanel.getComponents() != null) {
+        for (Component articlePanel : articleDisplayPanel.getComponents()) {
+            ArticlePanel ap = (ArticlePanel) articlePanel;
             ap.update();
         }
-
+        }
+        repaint();
+        revalidate();
     }
 
     public void setUserControl(Control control, Employee employee) {
@@ -2053,6 +2070,7 @@ public class GUIView extends javax.swing.JFrame {
                     System.out.println(ex.getLocalizedMessage());
                 }
             }
+//            cl.previous(cardPanel);
         } else {
             try {
                 CaseHandler.getInstance().cancelLastAction();
@@ -2393,17 +2411,18 @@ public class GUIView extends javax.swing.JFrame {
                 customerToEdit = cp.getCustomer();
             }
         }
-        if (customerToEdit != null) {
-            customerToEdit.setCostumerName(customerListNameField.getText());
-            customerToEdit.setPhone(Integer.parseInt(customerListPhoneField.getText()));
-            customerToEdit.setEmail(customerListEmailField.getText());
-            customerToEdit.setAddress(customerListAddressField.getText());
-            try {
-                CostumerHandler.getInstance().editCustomer(customerToEdit);
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this, "Kunne ikke redigere i kundens oplysninger");
-            }
-        }
+        customerToEdit.setCostumerName("ændret");
+//        if (customerToEdit != null) {
+//            customerToEdit.setCostumerName(customerListNameField.getText());
+//            customerToEdit.setPhone(Integer.parseInt(customerListPhoneField.getText()));
+//            customerToEdit.setEmail(customerListEmailField.getText());
+//            customerToEdit.setAddress(customerListAddressField.getText());
+//            try {
+//                CostumerHandler.getInstance().editCustomer(customerToEdit);
+//            } catch (SQLException ex) {
+//                JOptionPane.showMessageDialog(this, "Kunne ikke redigere i kundens oplysninger");
+//            }
+//        }
     }//GEN-LAST:event_findCustomerSaveInfoButtonActionPerformed
 
     private void editArticleTaskListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_editArticleTaskListValueChanged
