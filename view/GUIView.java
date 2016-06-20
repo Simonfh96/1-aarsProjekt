@@ -682,6 +682,7 @@ public class GUIView extends javax.swing.JFrame {
 
         tabbedPane.addTab("Sagsliste", caseHandlingPanel);
 
+        newCasePanel.setPreferredSize(new java.awt.Dimension(6, 25));
         newCasePanel.setLayout(null);
 
         jLabel84.setFont(new java.awt.Font("Sylfaen", 0, 24)); // NOI18N
@@ -840,22 +841,22 @@ public class GUIView extends javax.swing.JFrame {
         newCasePanel.add(jLabel98);
         jLabel98.setBounds(20, 370, 160, 14);
 
-        newCaseDescription.setPreferredSize(new java.awt.Dimension(6, 2));
+        newCaseDescription.setPreferredSize(new java.awt.Dimension(6, 25));
         newCaseDescription.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 newCaseDescriptionMousePressed(evt);
             }
         });
         newCasePanel.add(newCaseDescription);
-        newCaseDescription.setBounds(20, 390, 160, 2);
+        newCaseDescription.setBounds(20, 390, 160, 25);
 
         jLabel99.setText("Tilbuds nr.");
         newCasePanel.add(jLabel99);
         jLabel99.setBounds(20, 430, 160, 14);
 
-        newCaseOfferNmbField.setPreferredSize(new java.awt.Dimension(6, 2));
+        newCaseOfferNmbField.setPreferredSize(new java.awt.Dimension(6, 25));
         newCasePanel.add(newCaseOfferNmbField);
-        newCaseOfferNmbField.setBounds(20, 450, 160, 2);
+        newCaseOfferNmbField.setBounds(20, 450, 160, 25);
 
         jSeparator17.setOrientation(javax.swing.SwingConstants.VERTICAL);
         newCasePanel.add(jSeparator17);
@@ -868,29 +869,35 @@ public class GUIView extends javax.swing.JFrame {
             }
         });
         newCasePanel.add(newArticleButton);
-        newArticleButton.setBounds(300, 580, 120, 23);
+        newArticleButton.setBounds(300, 550, 120, 23);
 
         jLabel100.setText("Antal genstande");
         newCasePanel.add(jLabel100);
-        jLabel100.setBounds(300, 260, 100, 14);
+        jLabel100.setBounds(300, 230, 100, 14);
 
         jLabel101.setText("Kons nr.");
         newCasePanel.add(jLabel101);
-        jLabel101.setBounds(300, 320, 100, 14);
+        jLabel101.setBounds(300, 290, 100, 14);
 
         jLabel102.setText("Museums nr.");
         newCasePanel.add(jLabel102);
-        jLabel102.setBounds(300, 350, 100, 14);
+        jLabel102.setBounds(300, 320, 100, 14);
+
+        articleLocationField.setPreferredSize(new java.awt.Dimension(6, 25));
         newCasePanel.add(articleLocationField);
-        articleLocationField.setBounds(420, 290, 120, 20);
+        articleLocationField.setBounds(420, 260, 120, 25);
+
+        createArticleConsNmbField.setPreferredSize(new java.awt.Dimension(6, 25));
         newCasePanel.add(createArticleConsNmbField);
-        createArticleConsNmbField.setBounds(420, 320, 120, 20);
+        createArticleConsNmbField.setBounds(420, 290, 120, 25);
+
+        newArticleMuseumsNmbField.setPreferredSize(new java.awt.Dimension(6, 25));
         newCasePanel.add(newArticleMuseumsNmbField);
-        newArticleMuseumsNmbField.setBounds(420, 350, 120, 20);
+        newArticleMuseumsNmbField.setBounds(420, 320, 120, 25);
 
         jLabel103.setText("Genstands beskrivelse");
         newCasePanel.add(jLabel103);
-        jLabel103.setBounds(300, 450, 220, 14);
+        jLabel103.setBounds(300, 410, 220, 14);
 
         jScrollPane14.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -899,7 +906,7 @@ public class GUIView extends javax.swing.JFrame {
         jScrollPane14.setViewportView(createCaseArticleDescriptionArea);
 
         newCasePanel.add(jScrollPane14);
-        jScrollPane14.setBounds(300, 470, 220, 96);
+        jScrollPane14.setBounds(300, 440, 220, 96);
 
         createTaskNameButton.setText("Ny opgave");
         createTaskNameButton.addActionListener(new java.awt.event.ActionListener() {
@@ -958,20 +965,23 @@ public class GUIView extends javax.swing.JFrame {
 
         jLabel105.setText("Genstands navn");
         newCasePanel.add(jLabel105);
-        jLabel105.setBounds(300, 380, 110, 14);
+        jLabel105.setBounds(300, 350, 110, 14);
+
+        newArticleNameField.setPreferredSize(new java.awt.Dimension(6, 25));
         newCasePanel.add(newArticleNameField);
-        newArticleNameField.setBounds(420, 380, 120, 20);
+        newArticleNameField.setBounds(420, 350, 120, 25);
         newCasePanel.add(costScrollSearch);
         costScrollSearch.setBounds(20, 250, 160, 40);
 
         jLabel3.setText("Placering");
         newCasePanel.add(jLabel3);
-        jLabel3.setBounds(300, 290, 80, 14);
+        jLabel3.setBounds(300, 260, 80, 14);
 
         articleAmountField.setEditable(false);
         articleAmountField.setText("1");
+        articleAmountField.setPreferredSize(new java.awt.Dimension(12, 25));
         newCasePanel.add(articleAmountField);
-        articleAmountField.setBounds(420, 260, 120, 20);
+        articleAmountField.setBounds(420, 230, 120, 25);
 
         moreArticlesCheckBox.setText("Opret flere genstande");
         moreArticlesCheckBox.addActionListener(new java.awt.event.ActionListener() {
@@ -980,13 +990,15 @@ public class GUIView extends javax.swing.JFrame {
             }
         });
         newCasePanel.add(moreArticlesCheckBox);
-        moreArticlesCheckBox.setBounds(300, 230, 240, 23);
+        moreArticlesCheckBox.setBounds(300, 200, 240, 23);
+
+        newArticleTypeField.setPreferredSize(new java.awt.Dimension(6, 25));
         newCasePanel.add(newArticleTypeField);
-        newArticleTypeField.setBounds(420, 410, 120, 20);
+        newArticleTypeField.setBounds(420, 380, 120, 25);
 
         jLabel6.setText("Genstands type");
         newCasePanel.add(jLabel6);
-        jLabel6.setBounds(300, 410, 110, 14);
+        jLabel6.setBounds(300, 380, 110, 14);
 
         tabbedPane.addTab("Opret sag", newCasePanel);
 
