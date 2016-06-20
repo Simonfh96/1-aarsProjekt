@@ -19,6 +19,11 @@ public class Contact {
         this.conPhone = conPhone;
         this.conEmail = conEmail;
     }
+    
+    @Override
+    public String toString() {
+        return conName;
+    }
 
     public String getConName() {
         return conName;

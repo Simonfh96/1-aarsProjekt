@@ -802,6 +802,11 @@ public class GUIView extends javax.swing.JFrame {
         jScrollPane12.setBounds(1020, 30, 120, 150);
 
         addContactButton.setText("Tilføj");
+        addContactButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addContactButtonActionPerformed(evt);
+            }
+        });
         newCasePanel.add(addContactButton);
         addContactButton.setBounds(930, 159, 80, 23);
 
@@ -2569,6 +2574,14 @@ public class GUIView extends javax.swing.JFrame {
            articleAmountField.setEditable(false);
        }
     }//GEN-LAST:event_moreArticlesCheckBoxActionPerformed
+
+    private void addContactButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addContactButtonActionPerformed
+       Contact newContact = new Contact(addContactNameField.getText(), Integer.parseInt(addContactPhoneField.getText()), addContactEmailField.getText());
+       ((DefaultListModel)newContactList.getModel()).addElement(newContact);
+       addContactNameField.setText("");
+       addContactPhoneField.setText("");
+       addContactEmailField.setText("");
+    }//GEN-LAST:event_addContactButtonActionPerformed
 
     /**
      * @param args the command line arguments
