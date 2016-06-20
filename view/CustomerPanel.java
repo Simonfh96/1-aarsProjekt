@@ -36,6 +36,10 @@ public class CustomerPanel extends javax.swing.JPanel {
         customerNameLabel.setText(c.getCostumerName());
 
     }
+    
+    public void update() {
+        customerNameLabel.setText(c.getCostumerName());
+    }
 
     public Costumer getCustomer() {
         return c;

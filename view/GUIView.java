@@ -155,6 +155,10 @@ public class GUIView extends javax.swing.JFrame {
         for (CasePanel cp : (CasePanel[])finishedCasesPanel.getComponents()) {
             cp.update();
         }
+        
+        for (CustomerPanel cp : (CustomerPanel[])showAllCustomerPanel.getComponents()) {
+            cp.update();
+        }
 
     }
 
