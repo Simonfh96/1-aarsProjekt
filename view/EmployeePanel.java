@@ -27,6 +27,10 @@ public class EmployeePanel extends javax.swing.JPanel {
         selected = false;
         employeeNameLabel.setText(e.getFullName());
     }
+    
+    public void update() {
+       employeeNameLabel.setText(e.getFullName());
+    }
 
     public Employee getEmployee() {
         return e;
