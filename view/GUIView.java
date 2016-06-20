@@ -16,6 +16,8 @@ import factories.PanelFactory;
 import interfaces.PanelInterface;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -28,6 +30,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 import listeners.SearchListListener;
 import model.Article;
 import model.Case;
@@ -42,7 +45,7 @@ import model.Task;
  * @author Simon
  */
 public class GUIView extends javax.swing.JFrame {
-
+    
     private ArrayList<PanelInterface> newCaseArticles = new ArrayList<>();
     private ArrayList<Contact> newCaseContacts = new ArrayList<>();
     private ArrayList<PanelInterface> cases;
@@ -62,6 +65,7 @@ public class GUIView extends javax.swing.JFrame {
     private JList caseResponsibleList;
     private JList allEmployeesList;
     private boolean loggedIn = false;
+    private final Timer updateTimer;
     private LoginView lw;
     private JTextField[] customerFields;
 
@@ -87,7 +91,6 @@ public class GUIView extends javax.swing.JFrame {
 
             }
         }
-        System.out.println("now");
         JTextField[] textFields = {customerListNameField, customerListContactfield, customerListPhoneField, customerListEmailField, customerListAddressField};
         customerFields = textFields;
         int adminTab = tabbedPane.indexOfTab("Admin");
@@ -134,6 +137,18 @@ public class GUIView extends javax.swing.JFrame {
             JOptionPane.showConfirmDialog(this, "Kunne ikke hente opgave listen.");
         }
         costScrollSearch.setDoubleBuffered(false);
+        updateTimer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+            update();
+            }
+        });
+    }
+    
+    public void update() {
+//        for (int i = 0; i < customer.getAccounts().size(); i++) {
+//            accountFields.get(i).setText(customer.getAccounts().get(i).toString());   
+//        }
     }
 
     public void setUserControl(Control control, Employee employee) {
