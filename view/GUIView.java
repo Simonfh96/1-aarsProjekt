@@ -2283,8 +2283,14 @@ public class GUIView extends javax.swing.JFrame {
             Log log = new Log(employee, CaseHandler.getInstance().getCaseID(), "oprettede ", caseCreationNameField.getText(), "", "", new java.sql.Date(cal.getTimeInMillis()));
             System.out.println(employee.getFullName());
             logs.add(log);
-            Article[] articleArray = (Article[]) articleModel.toArray();
-            ArrayList<PanelInterface> articles = new ArrayList<>(Arrays.asList(articleArray));
+//            ArrayList<PanelInterface> articles = new ArrayList<>(Arrays.asList(articleArray));
+            ArrayList<PanelInterface> articles = new ArrayList<>();
+            Object[] articleArray = articleModel.toArray();
+            for (Object object : articleArray) {
+                Article a = (Article) object;
+                articles.add(a);
+            }
+            
             for (PanelInterface article : articles) {
                 Article a = (Article) article;
                 a.setCaseKonsNmb(konsNmb);

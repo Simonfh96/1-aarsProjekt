@@ -1,4 +1,4 @@
-    /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -58,7 +58,7 @@ public class CostumerHandler {
         rs.close();
         return costumer;
     }
-    
+
     public ArrayList<PanelInterface> selectAllCostumer() throws SQLException {
         ArrayList<PanelInterface> costumers = new ArrayList<>();
         String statement;
@@ -67,7 +67,7 @@ public class CostumerHandler {
         while (rs.next()) {
             Costumer costumer = new Costumer(rs.getInt("costumer_id"), rs.getString("costumerName"), rs.getString("acronym"),
                     rs.getInt("museumNmb"), rs.getInt("phone"), rs.getString("email"),
-                    rs.getString("address"),  null);
+                    rs.getString("address"), null);
             costumers.add(costumer);
 
         }
@@ -79,7 +79,7 @@ public class CostumerHandler {
         rs.close();
         return costumers;
     }
-    
+
     public void editCustomer(Costumer c) throws SQLException {
         PreparedStatement ps = null;
         String setActive = "UPDATE costumer SET costumerName = ?, phone = ?, email = ?, address = ? WHERE costumer_id = " + c.getCostumerID();
@@ -93,21 +93,24 @@ public class CostumerHandler {
 
     public void saveCostumer(Costumer c, boolean existingCostumer) throws SQLException {
         if (!existingCostumer) {
-        String saveCostumer;
-        saveCostumer = "INSERT INTO costumer (costumerName, acronym, museumNmb, phone, email, address, contact_id)"
-                + " values (?, ?, ?, ?, ?, ?, ?)";
-        PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(saveCostumer);
-        ps.setString(1, c.getCostumerName());
-        ps.setString(2, c.getmAcro());
-        ps.setInt(3, c.getmNumb());
-        ps.setInt(4, c.getPhone());
-        ps.setString(5, c.getEmail());
-        ps.setString(6, c.getAddress());
-        ps.setInt(7, c.getCostumerID());
-        ps.execute();
+            String saveCostumer;
+            saveCostumer = "INSERT INTO costumer (costumerName, acronym, museumNmb, phone, email, address, contact_id)"
+                    + " values (?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(saveCostumer);
+            ps.setString(1, c.getCostumerName());
+            ps.setString(2, c.getmAcro());
+            ps.setInt(3, c.getmNumb());
+            ps.setInt(4, c.getPhone());
+            ps.setString(5, c.getEmail());
+            ps.setString(6, c.getAddress());
+            ps.setInt(7, c.getCostumerID());
+            ps.execute();
+            if (c.getContacts().size() > 0) {
+                ContactHandler.getInstance().getContacts(c);
+            }
         }
     }
-    
+
     public int generateCostumerID() throws SQLException {
         int costumerID = 0;
         String statement;
