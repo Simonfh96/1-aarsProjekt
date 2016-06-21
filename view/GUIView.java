@@ -2240,6 +2240,7 @@ public class GUIView extends javax.swing.JFrame {
         if (selectedArticle != null) {
         if (!(taskName.equalsIgnoreCase("Opgaver"))) {
             Task task = new Task("Ikke startet", taskName, taskDescriptionArea.getText(), selectedArticle.getArticleID());
+            selectedArticle.addTask(task);
             ((DefaultListModel) createCaseTaskList.getModel()).addElement(task);
         } else {
             JOptionPane.showMessageDialog(this, "Der er ikke valgt en opgave");
