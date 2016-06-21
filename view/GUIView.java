@@ -2364,12 +2364,6 @@ public class GUIView extends javax.swing.JFrame {
     }//GEN-LAST:event_selectCostumerButtonActionPerformed
 
     private void newArticleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newArticleButtonActionPerformed
-        //Articles kan ikke få adgang til casens kons nr før, derfor bruges nul som startværdi,
-        //Der derefter bruger en setter til at hente sagens kons nr, når der trykkes på opret sag
-        //Det samme gøres med selve Article objekts kons nr, der genereres ved at tage sagens kons nr
-        //Og kører ArrayList'en igennem og lægger iterator til sagens kons nr
-        //Tasks skal sættes efter oprettelse af den Article, som de skal knyttes til
-        //Det gøres ved at tage den sidste index fra ArrayList'en, så man har den sidst oprettede Article
         ArrayList<Task> tasks = null;
         Article article = null;
         int articleID = 0;
@@ -2384,7 +2378,7 @@ public class GUIView extends javax.swing.JFrame {
                 tasks = new ArrayList<>();
             if (articleID != 0) {
                 article = new Article((articleID + i), newArticleNameField.getText(), 0,
-                        newArticleTypeField.getText(), Integer.parseInt(newArticleMuseumsNmbField.getText()), 0, tasks);
+                        newArticleTypeField.getText(), articleLocationField.getText(), Integer.parseInt(newArticleMuseumsNmbField.getText()), 0, tasks);
                 if (article != null) {
                     ((DefaultListModel) newCaseArticleList.getModel()).addElement(article);
                 }
@@ -2396,7 +2390,7 @@ public class GUIView extends javax.swing.JFrame {
             tasks = new ArrayList<>();
             if (articleID != 0) {
                 article = new Article(articleID, newArticleNameField.getText(), 0,
-                        newArticleTypeField.getText(), Integer.parseInt(newArticleMuseumsNmbField.getText()), 0, tasks);
+                        newArticleTypeField.getText(), articleLocationField.getText(), Integer.parseInt(newArticleMuseumsNmbField.getText()), 0, tasks);
                 if (article != null) {
                     ((DefaultListModel) newCaseArticleList.getModel()).addElement(article);
                 }

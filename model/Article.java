@@ -17,15 +17,17 @@ public class Article implements PanelInterface {
     private String name;
     private int caseKonsNmb;
     private String objectType;
+    private String location;
     private int museumsNmb;
     private int konsNmb;
     private ArrayList<Task> tasks;
 
-    public Article(int articleID, String name, int caseKonsNmb, String objectType, int museumsNmb, int konsNmb, ArrayList<Task> tasks) {
+    public Article(int articleID, String name, int caseKonsNmb, String objectType, String location, int museumsNmb, int konsNmb, ArrayList<Task> tasks) {
         this.articleID = articleID;
         this.name = name;
         this.caseKonsNmb = caseKonsNmb;
         this.objectType = objectType;
+        this.location = location;
         this.museumsNmb = museumsNmb;
         this.konsNmb = konsNmb;
         this.tasks = tasks;
@@ -83,6 +85,14 @@ public class Article implements PanelInterface {
 
     public void setMuseumsNmb(int museumsNmb) {
         this.museumsNmb = museumsNmb;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     
