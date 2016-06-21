@@ -2305,7 +2305,9 @@ public class GUIView extends javax.swing.JFrame {
                 addContactPhoneField.setText("");
                 addContactEmailField.setText("");
                 costumerTypeBox.setSelectedItem("Kundetype");
-                ((DefaultListModel) newContactList.getModel()).clear();
+                articleModel.clear();
+                contactModel.clear();
+                costSearchSelected = null;
                 caseCreationNameField.setText("");
                 newCaseDescription.setText("");
                 newCaseOfferNmbField.setText("");
@@ -2325,9 +2327,6 @@ public class GUIView extends javax.swing.JFrame {
         } catch (SQLException ex) {
             System.out.println(ex.getLocalizedMessage());
         }
-        costSearchSelected = null;
-        articleModel.clear();
-        contactModel.clear();
     }//GEN-LAST:event_createCasebuttonActionPerformed
 
     private void existingCostumerCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_existingCostumerCheckBoxActionPerformed
