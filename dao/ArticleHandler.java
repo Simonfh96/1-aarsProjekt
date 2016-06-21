@@ -32,8 +32,8 @@ public class ArticleHandler {
         ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
         while (rs.next()) {
             ArrayList<Task> tasks = TaskHandler.getInstance().getTasks(rs.getInt("objects_id"));
-            Article article = new Article(rs.getInt("objects_id"), rs.getString("objectName"), c.getKonsNmb(), rs.getString("objectType"), 
-                    rs.getString("location"), rs.getInt("museumsNmb"), rs.getInt("konsNr"), tasks);
+            Article article = new Article(rs.getInt("objects_id"), rs.getString("objectName"), c.getKonsNmb(), rs.getString("description"),
+                    rs.getString("objectType"), rs.getString("location"), rs.getInt("museumsNmb"), rs.getInt("konsNr"), tasks);
             articles.add(article);
         }
         rs.close();
@@ -42,15 +42,16 @@ public class ArticleHandler {
       
     public void saveArticle(Article a, Case c) throws SQLException {
              String saveArticles;
-             saveArticles = "INSERT INTO objects (caseKonsNmb, objectName, objectType, location, museumsNmb, konsNr)"
-                + " values (?, ?, ?, ?, ?, ?)";
+             saveArticles = "INSERT INTO objects (caseKonsNmb, objectName, description, objectType, location, museumsNmb, konsNr)"
+                + " values (?, ?, ?, ?, ?, ?, ?)";
              PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(saveArticles);
              ps.setInt(1, c.getKonsNmb());
              ps.setString(2, a.getName());
-             ps.setString(3, a.getObjectType());
-             ps.setString(4, a.getLocation());
-             ps.setInt(5, a.getMuseumsNmb());
-             ps.setInt(6, a.getKonsNmb());
+             ps.setString(3, a.getDescription());
+             ps.setString(4, a.getObjectType());
+             ps.setString(5, a.getLocation());
+             ps.setInt(6, a.getMuseumsNmb());
+             ps.setInt(7, a.getKonsNmb());
              ps.execute(); 
              if (a.getTasks().size() > 0) {
                  for (Task t : a.getTasks()) {

@@ -244,6 +244,10 @@ public class GUIView extends javax.swing.JFrame {
     public JList getEditArticleTaskList() {
         return editArticleTaskList;
     }
+    
+    public JTextField getArticleDescription() {
+        return articleDescriptionEditField;
+    }
 
     public CardLayout getCl() {
         return cl;
@@ -2378,7 +2382,7 @@ public class GUIView extends javax.swing.JFrame {
             for (int i = 0; i < amount; i++) {
                 tasks = new ArrayList<>();
             if (articleID != 0) {
-                article = new Article((articleID + i), newArticleNameField.getText(), 0,
+                article = new Article((articleID + i), newArticleNameField.getText(), 0, createCaseArticleDescriptionArea.getText(),
                         newArticleTypeField.getText(), articleLocationField.getText(), Integer.parseInt(newArticleMuseumsNmbField.getText()), 0, tasks);
                 if (article != null) {
                     ((DefaultListModel) newCaseArticleList.getModel()).addElement(article);
@@ -2390,7 +2394,7 @@ public class GUIView extends javax.swing.JFrame {
         } else {
             tasks = new ArrayList<>();
             if (articleID != 0) {
-                article = new Article(articleID, newArticleNameField.getText(), 0,
+                article = new Article(articleID, newArticleNameField.getText(), 0, createCaseArticleDescriptionArea.getText(),
                         newArticleTypeField.getText(), articleLocationField.getText(), Integer.parseInt(newArticleMuseumsNmbField.getText()), 0, tasks);
                 if (article != null) {
                     ((DefaultListModel) newCaseArticleList.getModel()).addElement(article);

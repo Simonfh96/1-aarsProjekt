@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Component;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.JTextField;
 import model.Article;
 import model.Task;
 
@@ -22,23 +23,28 @@ public class ArticlePanel extends javax.swing.JPanel {
     private final Color normal;
     private JList taskList;
     private boolean selected;
+    private JTextField articleDescription;
     /**
      * Creates new form ArticlePanel
      * @param a
      */
-    public ArticlePanel(Article a, JList taskList) {
+    public ArticlePanel(Article a, JList taskList, JTextField articleDescription) {
         initComponents();
         this.a = a;
         this.taskList = taskList;
+        this.articleDescription = articleDescription;
         selected = false;
         normal = this.getBackground();
         articleNameLabel.setText(a.getName());
         konsNmbLabel.setText(""+a.getKonsNmb());
+        locationLabel.setText(a.getLocation());
+       
     }
 
     public void update() {
         articleNameLabel.setText(a.getName());
         konsNmbLabel.setText(""+a.getKonsNmb());
+        locationLabel.setText(a.getLocation());
     }
             
     public Article getA() {
@@ -67,6 +73,7 @@ public class ArticlePanel extends javax.swing.JPanel {
         articleNameLabel = new javax.swing.JLabel();
         konsNmbLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        locationLabel = new javax.swing.JLabel();
 
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -86,17 +93,24 @@ public class ArticlePanel extends javax.swing.JPanel {
 
         jLabel1.setText("Kons nr:");
 
+        locationLabel.setText("Location");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(articleNameLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(konsNmbLabel)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(articleNameLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(konsNmbLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(locationLabel)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -106,7 +120,9 @@ public class ArticlePanel extends javax.swing.JPanel {
                     .addComponent(articleNameLabel)
                     .addComponent(konsNmbLabel)
                     .addComponent(jLabel1))
-                .addGap(25, 25, 25))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(locationLabel)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -131,6 +147,7 @@ public class ArticlePanel extends javax.swing.JPanel {
             }
             setBackground(Color.BLUE);
             selected = true;
+            articleDescription.setText(a.getDescription());
             ((DefaultListModel)taskList.getModel()).clear();
             if (a.getTasks().size() > 0) {
             for (Task t : a.getTasks()) {
@@ -151,5 +168,6 @@ public class ArticlePanel extends javax.swing.JPanel {
     private javax.swing.JLabel articleNameLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel konsNmbLabel;
+    private javax.swing.JLabel locationLabel;
     // End of variables declaration//GEN-END:variables
 }

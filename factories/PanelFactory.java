@@ -72,7 +72,7 @@ public class PanelFactory {
             case "ArticlePanel":
                 displayPanel.removeAll();
                 for (int i = 0; i < panels.size(); i++) {
-                    ArticlePanel ap = new ArticlePanel((Article) panels.get(i), gui.getEditArticleTaskList());
+                    ArticlePanel ap = new ArticlePanel((Article) panels.get(i), gui.getEditArticleTaskList(), gui.getArticleDescription());
                     ap.setBounds(0, 52 * i, displayPanel.getWidth() - 14, 50);
                     ap.setBorder(BorderFactory.createLineBorder(Color.black));
                     displayPanel.add(ap);
