@@ -33,7 +33,7 @@ public class Article implements PanelInterface {
     
     @Override
     public String toString() {
-        return name + " -" + "  KonsNr: " + konsNmb;
+        return name;
     }
     
 

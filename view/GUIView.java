@@ -30,6 +30,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.ListModel;
 import javax.swing.Timer;
 import listeners.SearchListListener;
 import model.Article;
@@ -45,7 +46,7 @@ import model.Task;
  * @author Simon
  */
 public class GUIView extends javax.swing.JFrame {
-    
+
     private ArrayList<PanelInterface> newCaseArticles = new ArrayList<>();
     private ArrayList<Contact> newCaseContacts = new ArrayList<>();
     private ArrayList<PanelInterface> cases;
@@ -140,48 +141,48 @@ public class GUIView extends javax.swing.JFrame {
         updateTimer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-            update();
+                update();
             }
         });
         updateTimer.start();
     }
-    
+
     public void update() {
         if (myCasesPanel.getComponents() != null) {
-        for (Component casePanel : myCasesPanel.getComponents()) {
-            CasePanel cp = (CasePanel) casePanel;
-            cp.update();
-        }
+            for (Component casePanel : myCasesPanel.getComponents()) {
+                CasePanel cp = (CasePanel) casePanel;
+                cp.update();
+            }
         }
         if (newestCasesPanel.getComponents() != null) {
-        for (Component casePanel : newestCasesPanel.getComponents()) {
-            CasePanel cp = (CasePanel) casePanel;
-            cp.update();
-        }
+            for (Component casePanel : newestCasesPanel.getComponents()) {
+                CasePanel cp = (CasePanel) casePanel;
+                cp.update();
+            }
         }
         if (finishedCasesPanel.getComponents() != null) {
-        for (Component casePanel : finishedCasesPanel.getComponents()) {
-            CasePanel cp = (CasePanel) casePanel;
-            cp.update();
-        }
+            for (Component casePanel : finishedCasesPanel.getComponents()) {
+                CasePanel cp = (CasePanel) casePanel;
+                cp.update();
+            }
         }
         if (showAllCustomerPanel.getComponents() != null) {
-        for (Component customerPanel : showAllCustomerPanel.getComponents()) {
-            CustomerPanel cp = (CustomerPanel) customerPanel;
-            cp.update();
-        }
+            for (Component customerPanel : showAllCustomerPanel.getComponents()) {
+                CustomerPanel cp = (CustomerPanel) customerPanel;
+                cp.update();
+            }
         }
         if (employeeListPanel.getComponents() != null) {
-        for (Component employeePanel : employeeListPanel.getComponents()) {
-            EmployeePanel ep = (EmployeePanel) employeePanel;
-            ep.update();
-        }
+            for (Component employeePanel : employeeListPanel.getComponents()) {
+                EmployeePanel ep = (EmployeePanel) employeePanel;
+                ep.update();
+            }
         }
         if (articleDisplayPanel.getComponents() != null) {
-        for (Component articlePanel : articleDisplayPanel.getComponents()) {
-            ArticlePanel ap = (ArticlePanel) articlePanel;
-            ap.update();
-        }
+            for (Component articlePanel : articleDisplayPanel.getComponents()) {
+                ArticlePanel ap = (ArticlePanel) articlePanel;
+                ap.update();
+            }
         }
         repaint();
         revalidate();
@@ -356,6 +357,8 @@ public class GUIView extends javax.swing.JFrame {
         moreArticlesCheckBox = new javax.swing.JCheckBox();
         newArticleTypeField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        newCaseArticleList = new javax.swing.JList<>();
         customerListPanel = new javax.swing.JPanel();
         customerListScrollPane = new javax.swing.JScrollPane();
         showAllCustomerPanel = new javax.swing.JPanel();
@@ -922,7 +925,7 @@ public class GUIView extends javax.swing.JFrame {
             }
         });
         newCasePanel.add(createTaskNameButton);
-        createTaskNameButton.setBounds(630, 200, 110, 23);
+        createTaskNameButton.setBounds(780, 200, 110, 23);
 
         createCaseTaskBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Opgaver" }));
         createCaseTaskBox.addActionListener(new java.awt.event.ActionListener() {
@@ -931,11 +934,11 @@ public class GUIView extends javax.swing.JFrame {
             }
         });
         newCasePanel.add(createCaseTaskBox);
-        createCaseTaskBox.setBounds(750, 201, 110, 20);
+        createCaseTaskBox.setBounds(900, 201, 110, 20);
 
         jLabel104.setText("Opgave beskrivelse");
         newCasePanel.add(jLabel104);
-        jLabel104.setBounds(630, 250, 230, 14);
+        jLabel104.setBounds(780, 250, 230, 14);
 
         jScrollPane15.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane15.setToolTipText("");
@@ -945,7 +948,7 @@ public class GUIView extends javax.swing.JFrame {
         jScrollPane15.setViewportView(taskDescriptionArea);
 
         newCasePanel.add(jScrollPane15);
-        jScrollPane15.setBounds(630, 270, 230, 100);
+        jScrollPane15.setBounds(780, 270, 230, 100);
 
         createCaseAddTaskButton.setText("Tilføj");
         createCaseAddTaskButton.addActionListener(new java.awt.event.ActionListener() {
@@ -962,7 +965,7 @@ public class GUIView extends javax.swing.JFrame {
         jScrollPane16.setViewportView(createCaseTaskList);
 
         newCasePanel.add(jScrollPane16);
-        jScrollPane16.setBounds(910, 200, 100, 210);
+        jScrollPane16.setBounds(1020, 200, 100, 210);
 
         createCasebutton.setText("Opret sag");
         createCasebutton.addActionListener(new java.awt.event.ActionListener() {
@@ -1009,6 +1012,18 @@ public class GUIView extends javax.swing.JFrame {
         jLabel6.setText("Genstands type");
         newCasePanel.add(jLabel6);
         jLabel6.setBounds(300, 380, 110, 14);
+
+        newCaseArticleList.setModel(new DefaultListModel());
+        newCaseArticleList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        newCaseArticleList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                newCaseArticleListValueChanged(evt);
+            }
+        });
+        jScrollPane3.setViewportView(newCaseArticleList);
+
+        newCasePanel.add(jScrollPane3);
+        jScrollPane3.setBounds(560, 230, 190, 180);
 
         tabbedPane.addTab("Opret sag", newCasePanel);
 
@@ -2145,12 +2160,12 @@ public class GUIView extends javax.swing.JFrame {
             String username = newUsernameField.getText();
             if (username.isEmpty()) {
                 username = employee.getUsername();
-            } 
+            }
             boolean passwordsMatch = EmployeeHandler.getInstance().changePasswordAndUsername(username, newPasswordField1.getText(), newPasswordField2.getText(), employee);
             if (!passwordsMatch) {
-               passwordMatchLabel.setVisible(true);
+                passwordMatchLabel.setVisible(true);
             } else {
-               passwordMatchLabel.setVisible(false); 
+                passwordMatchLabel.setVisible(false);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Kunne ikke ændre kodeord og/eller brugernavn");
@@ -2224,7 +2239,7 @@ public class GUIView extends javax.swing.JFrame {
         if (!(taskName.equalsIgnoreCase("Opgaver"))) {
             Task task = new Task("Ikke startet", taskName, taskDescriptionArea.getText(), ((Article) newCaseArticles.get(newCaseArticles.size() - 1)).getArticleID());
             ((Article) newCaseArticles.get(newCaseArticles.size() - 1)).addTask(task);
-            ((DefaultListModel)createCaseTaskList.getModel()).addElement(task);
+            ((DefaultListModel) createCaseTaskList.getModel()).addElement(task);
         }
     }//GEN-LAST:event_createCaseAddTaskButtonActionPerformed
 
@@ -2276,7 +2291,7 @@ public class GUIView extends javax.swing.JFrame {
                 addContactPhoneField.setText("");
                 addContactEmailField.setText("");
                 costumerTypeBox.setSelectedItem("Kundetype");
-                ((DefaultListModel)newContactList.getModel()).clear();
+                ((DefaultListModel) newContactList.getModel()).clear();
                 caseCreationNameField.setText("");
                 newCaseDescription.setText("");
                 newCaseOfferNmbField.setText("");
@@ -2289,10 +2304,10 @@ public class GUIView extends javax.swing.JFrame {
                 createCaseArticleDescriptionArea.setText("");
                 createCaseTaskBox.setSelectedItem("Opgaver");
                 taskDescriptionArea.setText("");
-                ((DefaultListModel)createCaseTaskList.getModel()).clear();
+                ((DefaultListModel) createCaseTaskList.getModel()).clear();
             }
         } catch (NumberFormatException ex) {
-          JOptionPane.showMessageDialog(this, "Tilbuds nr. må kun indeholde gyldige tal.");
+            JOptionPane.showMessageDialog(this, "Tilbuds nr. må kun indeholde gyldige tal.");
         } catch (SQLException ex) {
             System.out.println(ex.getLocalizedMessage());
         }
@@ -2342,17 +2357,18 @@ public class GUIView extends javax.swing.JFrame {
         //Og kører ArrayList'en igennem og lægger iterator til sagens kons nr
         //Tasks skal sættes efter oprettelse af den Article, som de skal knyttes til
         //Det gøres ved at tage den sidste index fra ArrayList'en, så man har den sidst oprettede Article
-//        ArrayList<Task> tasks = new ArrayList<>();
-//        Article article = null;
-//        try {
-//            article = new Article(ArticleHandler.getInstance().generateArticleID(), newArticleNameField.getText(), 0,
-//                    (String) newArticleTypeBox.getSelectedItem(), Integer.parseInt(newArticleMuseumsNmbField.getText()), 0, tasks);
-//        } catch (SQLException ex) {
-//            System.out.println(ex.getLocalizedMessage());
-//        }
-//        if (article != null) {
-//            newCaseArticles.add(article);
-//        }
+        ArrayList<Task> tasks = new ArrayList<>();
+        Article article = null;
+        try {
+            article = new Article(ArticleHandler.getInstance().generateArticleID(), newArticleNameField.getText(), 0,
+                    newArticleTypeField.getText(), Integer.parseInt(newArticleMuseumsNmbField.getText()), 0, tasks);
+        } catch (SQLException ex) {
+            System.out.println(ex.getLocalizedMessage());
+        }
+        if (article != null) {
+            newCaseArticles.add(article);
+            ((DefaultListModel) newCaseArticleList.getModel()).addElement(article);
+        }
     }//GEN-LAST:event_newArticleButtonActionPerformed
 
     private void createTaskNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createTaskNameButtonActionPerformed
@@ -2368,38 +2384,38 @@ public class GUIView extends javax.swing.JFrame {
     private void findCostumerFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_findCostumerFieldKeyReleased
         String search = findCostumerField.getText();
         if (!(evt.getKeyCode() == KeyEvent.VK_BACK_SPACE)) {
-        if (!(search.equals(""))) {
-            costScrollSearch.setVisible(true);
-            list.setVisible(true);
-            if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
-                SearchListListener sl = new SearchListListener(findCostumerField, list);
-            } else {
-                try {
-                    listModel.clear();
-                    ArrayList<Costumer> costumers = CostumerHandler.getInstance().searchCostumerName(search);
-                    if (costumers.size() > 0) {
-                        findCostumerField.setText(search + costumers.get(0).getCostumerName().substring(search.length()));
-                        findCostumerField.setSelectionStart(search.length());
+            if (!(search.equals(""))) {
+                costScrollSearch.setVisible(true);
+                list.setVisible(true);
+                if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
+                    SearchListListener sl = new SearchListListener(findCostumerField, list);
+                } else {
+                    try {
+                        listModel.clear();
+                        ArrayList<Costumer> costumers = CostumerHandler.getInstance().searchCostumerName(search);
+                        if (costumers.size() > 0) {
+                            findCostumerField.setText(search + costumers.get(0).getCostumerName().substring(search.length()));
+                            findCostumerField.setSelectionStart(search.length());
+                        }
+                        for (Costumer costumer : costumers) {
+                            listModel.addElement(costumer);
+                        }
+                        listModel.trimToSize();
+                        costScrollSearch.setBounds(20, 250, 160, costumers.size() * 25);
+                        costScrollSearch.setViewportView(list);
+                        costScrollSearch.setVisible(true);
+                        list.setVisible(true);
+                        list.revalidate();
+                        list.repaint();
+                        list.ensureIndexIsVisible(0);
+                    } catch (SQLException ex) {
+                        System.out.println(ex.getLocalizedMessage());
                     }
-                    for (Costumer costumer : costumers) {
-                        listModel.addElement(costumer);
-                    }
-                    listModel.trimToSize();
-                    costScrollSearch.setBounds(20, 250, 160, costumers.size() * 25);
-                    costScrollSearch.setViewportView(list);
-                    costScrollSearch.setVisible(true);
-                    list.setVisible(true);
-                    list.revalidate();
-                    list.repaint();
-                    list.ensureIndexIsVisible(0);
-                } catch (SQLException ex) {
-                    System.out.println(ex.getLocalizedMessage());
                 }
+            } else {
+                costScrollSearch.setVisible(false);
+                list.setVisible(false);
             }
-        } else {
-            costScrollSearch.setVisible(false);
-            list.setVisible(false);
-        }
         }
     }//GEN-LAST:event_findCostumerFieldKeyReleased
 
@@ -2448,7 +2464,7 @@ public class GUIView extends javax.swing.JFrame {
         employee.setEmail(email);
         String phone = editPhoneField.getText();
         if (phone.matches("[0-9]+") && phone.length() == 8 && !(phone.isEmpty())) {
-           employee.setPhone(Integer.parseInt(phone));
+            employee.setPhone(Integer.parseInt(phone));
         } else {
             JOptionPane.showMessageDialog(this, "Telefon nr. må kun indeholde tal og 8 cifre");
         }
@@ -2476,27 +2492,27 @@ public class GUIView extends javax.swing.JFrame {
             }
             String phone = customerListPhoneField.getText();
             if (!phone.isEmpty()) {
-            if (phone.matches("[0-9]+") && phone.length() == 8) {
-                customerToEdit.setPhone(Integer.parseInt(phone));
-            } else {
-                succeed = false;
-                error = error + "\nTjek at tlf. indeholder et gyldigt nummer";
-            }
+                if (phone.matches("[0-9]+") && phone.length() == 8) {
+                    customerToEdit.setPhone(Integer.parseInt(phone));
+                } else {
+                    succeed = false;
+                    error = error + "\nTjek at tlf. indeholder et gyldigt nummer";
+                }
             }
             String email = customerListEmailField.getText();
             if (!email.isEmpty()) {
-            customerToEdit.setEmail(email);
+                customerToEdit.setEmail(email);
             }
             String address = customerListAddressField.getText();
             if (!address.isEmpty()) {
-            customerToEdit.setAddress(address);    
+                customerToEdit.setAddress(address);
             }
             if (succeed) {
-            try {
-                CostumerHandler.getInstance().editCustomer(customerToEdit);
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this, error);
-            }
+                try {
+                    CostumerHandler.getInstance().editCustomer(customerToEdit);
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, error);
+                }
             } else {
                 JOptionPane.showMessageDialog(this, error);
             }
@@ -2524,12 +2540,12 @@ public class GUIView extends javax.swing.JFrame {
             }
         }
         if (selectedArticle != null) {
-        String taskName = JOptionPane.showInputDialog("Angiv navn på opgaven: ");
-        String description = JOptionPane.showInputDialog("Angiv beskrivelse af opgaven: ");
-        Task task = new Task("Ikke startet", taskName, description, selectedArticle.getArticleID());
-        selectedArticle.addTask(task);
-        ((DefaultListModel)editArticleTaskList.getModel()).addElement(task);
-        editArticleTaskList.repaint();
+            String taskName = JOptionPane.showInputDialog("Angiv navn på opgaven: ");
+            String description = JOptionPane.showInputDialog("Angiv beskrivelse af opgaven: ");
+            Task task = new Task("Ikke startet", taskName, description, selectedArticle.getArticleID());
+            selectedArticle.addTask(task);
+            ((DefaultListModel) editArticleTaskList.getModel()).addElement(task);
+            editArticleTaskList.repaint();
         }
     }//GEN-LAST:event_editAddTaskButtonActionPerformed
 
@@ -2570,20 +2586,32 @@ public class GUIView extends javax.swing.JFrame {
     }//GEN-LAST:event_findCustomerEditableCheckBoxActionPerformed
 
     private void moreArticlesCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moreArticlesCheckBoxActionPerformed
-       if (moreArticlesCheckBox.isSelected()) {
-           articleAmountField.setEditable(true);
-       } else {
-           articleAmountField.setEditable(false);
-       }
+        if (moreArticlesCheckBox.isSelected()) {
+            articleAmountField.setEditable(true);
+        } else {
+            articleAmountField.setEditable(false);
+        }
     }//GEN-LAST:event_moreArticlesCheckBoxActionPerformed
 
     private void addContactButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addContactButtonActionPerformed
-       Contact newContact = new Contact(addContactNameField.getText(), Integer.parseInt(addContactPhoneField.getText()), addContactEmailField.getText());
-       ((DefaultListModel)newContactList.getModel()).addElement(newContact);
-       addContactNameField.setText("");
-       addContactPhoneField.setText("");
-       addContactEmailField.setText("");
+        Contact newContact = new Contact(addContactNameField.getText(), Integer.parseInt(addContactPhoneField.getText()), addContactEmailField.getText());
+        ((DefaultListModel) newContactList.getModel()).addElement(newContact);
+        addContactNameField.setText("");
+        addContactPhoneField.setText("");
+        addContactEmailField.setText("");
     }//GEN-LAST:event_addContactButtonActionPerformed
+
+    private void newCaseArticleListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_newCaseArticleListValueChanged
+        DefaultListModel taskModel = (DefaultListModel) createCaseTaskList.getModel();
+        taskModel.clear();
+        DefaultListModel articleModel = ((DefaultListModel) newCaseArticleList.getModel());
+        Article selectedArticle = (Article) articleModel.getElementAt(newCaseArticleList.getSelectedIndex());
+        if (selectedArticle.getTasks().size() > 0) {
+            for (Task t : selectedArticle.getTasks()) {
+                taskModel.addElement(t);
+            }
+        }
+    }//GEN-LAST:event_newCaseArticleListValueChanged
 
     /**
      * @param args the command line arguments
@@ -2803,6 +2831,7 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator10;
@@ -2832,6 +2861,7 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JTextField newArticleTypeField;
     private javax.swing.JTextField newCaseAcroField;
     private javax.swing.JTextField newCaseAddressField;
+    private javax.swing.JList<String> newCaseArticleList;
     private javax.swing.JTextField newCaseContactField;
     private javax.swing.JTextField newCaseDescription;
     private javax.swing.JTextField newCaseEmailField;
