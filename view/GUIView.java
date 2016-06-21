@@ -2119,6 +2119,7 @@ public class GUIView extends javax.swing.JFrame {
                 EmployeeHandler.getInstance().saveCaseResponsibles(eCRs, c);
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Kunne ikke gemme ændringer for sags ansvarlige.");
+                System.out.println(ex.getLocalizedMessage());
             }
             c.setCaseName(caseNameEditField.getText());
             c.setDescription(caseDescriptionEditPanel.getText());
@@ -2132,21 +2133,25 @@ public class GUIView extends javax.swing.JFrame {
                 try {
                 if (employee.checkAddedMyCases(c) == false) {
                 CaseHandler.getInstance().addToMyCases(employee, c);
+                } 
                 CaseHandler.getInstance().editCase(employee, c);
                 CaseHandler.getInstance().completeTransaction();
-                }
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(this, "Kunne ikke gemme foretagede ændringer.");
+                    System.out.println(ex.getLocalizedMessage());
                 }
             } else {
                 try {
-                if (employee.checkAddedMyCases(c)) {
-                CaseHandler.getInstance().deleteMyCase(c.getKonsNmb(), employee.getEmployeeID());
+                if (employee.checkAddedMyCases(c) == true) {
+                    System.out.println(employee.getEmployeeID());
+                CaseHandler.getInstance().deleteMyCase(employee.getEmployeeID(), c.getCaseID());
+                }
                 CaseHandler.getInstance().editCase(employee, c);
                 CaseHandler.getInstance().completeTransaction();
-                }
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(this, "Kunne ikke gemme foretagede ændringer.");
+                    System.out.println(ex.getLocalizedMessage());
+                    System.out.println("3");
                 }
             }
             employeeLastUpdateField.setText(employee.getFullName());
@@ -2319,6 +2324,7 @@ public class GUIView extends javax.swing.JFrame {
                 addContactPhoneField.setText("");
                 addContactEmailField.setText("");
                 costumerTypeBox.setSelectedItem("Kundetype");
+                newArticleTypeField.setText("");
                 articleModel.clear();
                 contactModel.clear();
                 costSearchSelected = null;

@@ -231,16 +231,18 @@ public class CaseHandler {
     //Virker i teorien men skal tilpasses rollback
 
     public void editCase(Employee e, Case c) throws SQLException {
-        String stmt = "SET autocommit = 0;";
-        String stmt1 = "begin ";
-        String stmt2 = "update cases set caseName = '" + c.getCaseName() + "', descripiton = '" + c.getDescription() + "', lastUpdated = '"
-                + dateFormat.format(cal.getTime()) + "', updateBy = '" + e.getFullName() + "' WHERE case_id = " + c.getCaseID() + "; ";
-        String stmt3 = "end;";
-        System.out.println(stmt1 + "\n" + stmt2 + "\n");
-        DBHandler.getInstance().conn.createStatement().executeUpdate(stmt);
+        int finished = 0;
+        if (c.isFinished()) {
+            finished = 1;
+        }
+        String stmt1 = "begin;";
+        String stmt2 = "update cases set caseName = '" + c.getCaseName() + "', description = '" + c.getDescription() + "', lastUpdated = '"
+                + dateFormat.format(cal.getTime()) + "', updateBy = '" + e.getFullName() + "', finished = '" + finished + "' WHERE case_id = " + c.getCaseID() + ";";
+        String stmt3 = "commit;";
+        System.out.println(stmt2);
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt1);
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt2);
-//        DBHandler.getInstance().conn.createStatement().executeUpdate(stmt3);
+        DBHandler.getInstance().conn.createStatement().executeUpdate(stmt3);
     }
 
     //Fejltjekning skal ske inden oprettelsen af case objektet, 
@@ -311,7 +313,7 @@ public class CaseHandler {
                 + " values (?, ?)";
         PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(addCase);
         ps.setInt(1, e.getEmployeeID());
-        ps.setInt(1, c.getCaseID());
+        ps.setInt(2, c.getCaseID());
         ps.execute();
 
     }
@@ -321,7 +323,7 @@ public class CaseHandler {
      *
      */
     public void deleteMyCase(int employeeID, int caseID) throws SQLException {
-        String stmt1 = "DELETE FROM mycases WHERE employee_id = " + employeeID + " AND cases_id = " + caseID + ";";
+        String stmt1 = "DELETE FROM myCases WHERE employee_id = " + employeeID + " AND cases_id = " + caseID + ";";
         DBHandler.getInstance().conn.createStatement().executeUpdate(stmt1);
         //Sikre at den ikke prøver at slette noget, som ikke er der
     }
