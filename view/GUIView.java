@@ -2234,12 +2234,18 @@ public class GUIView extends javax.swing.JFrame {
     }//GEN-LAST:event_editCaseLogButtonActionPerformed
 
     private void createCaseAddTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCaseAddTaskButtonActionPerformed
-        //Fejl her? array index out of bounds
         String taskName = (String) createCaseTaskBox.getSelectedItem();
+        DefaultListModel articleModel = ((DefaultListModel) newCaseArticleList.getModel());
+        Article selectedArticle = (Article) articleModel.getElementAt(newCaseArticleList.getSelectedIndex());
+        if (selectedArticle != null) {
         if (!(taskName.equalsIgnoreCase("Opgaver"))) {
-            Task task = new Task("Ikke startet", taskName, taskDescriptionArea.getText(), ((Article) newCaseArticles.get(newCaseArticles.size() - 1)).getArticleID());
-            ((Article) newCaseArticles.get(newCaseArticles.size() - 1)).addTask(task);
+            Task task = new Task("Ikke startet", taskName, taskDescriptionArea.getText(), selectedArticle.getArticleID());
             ((DefaultListModel) createCaseTaskList.getModel()).addElement(task);
+        } else {
+            JOptionPane.showMessageDialog(this, "Der er ikke valgt en opgave");
+        }
+        } else {
+            JOptionPane.showMessageDialog(this, "Der er ikke valgt en genstand at tilføje opgaven til.");
         }
     }//GEN-LAST:event_createCaseAddTaskButtonActionPerformed
 
