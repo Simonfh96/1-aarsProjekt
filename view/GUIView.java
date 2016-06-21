@@ -23,7 +23,9 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JList;
@@ -46,9 +48,6 @@ import model.Task;
  * @author Simon
  */
 public class GUIView extends javax.swing.JFrame {
-
-    private ArrayList<PanelInterface> newCaseArticles = new ArrayList<>();
-    private ArrayList<Contact> newCaseContacts = new ArrayList<>();
     private ArrayList<PanelInterface> cases;
     private ArrayList<CasePanel> casePanels;
     private Case c;
@@ -2263,8 +2262,11 @@ public class GUIView extends javax.swing.JFrame {
                     customerAcro = newCaseAcroField.getText();
                     museumsNmb = Integer.parseInt(newCaseMuseumNmbField.getText());
                 }
+                DefaultListModel contactModel = (DefaultListModel) newContactList.getModel();
+                Contact[] contactArray = (Contact[]) contactModel.toArray();
+                ArrayList<Contact> contacts = new ArrayList<>(Arrays.asList(contactArray));
                 customer = new Costumer(CostumerHandler.getInstance().generateCostumerID(), newCaseNameField.getText(), customerAcro, museumsNmb, Integer.parseInt(newCasePhoneField.getText()),
-                        newCaseEmailField.getText(), newCaseAddressField.getText(), newCaseContacts);
+                        newCaseEmailField.getText(), newCaseAddressField.getText(), contacts);
             } catch (SQLException ex) {
                 System.out.println(ex.getLocalizedMessage());
             }
@@ -2274,7 +2276,10 @@ public class GUIView extends javax.swing.JFrame {
             Log log = new Log(employee, CaseHandler.getInstance().getCaseID(), "oprettede ", caseCreationNameField.getText(), "", "", new java.sql.Date(cal.getTimeInMillis()));
             System.out.println(employee.getFullName());
             logs.add(log);
-            for (PanelInterface article : newCaseArticles) {
+            DefaultListModel articleModel = (DefaultListModel) newCaseArticleList.getModel();
+            Article[] articleArray = (Article[]) articleModel.toArray();
+            ArrayList<PanelInterface> articles = new ArrayList<>(Arrays.asList(articleArray));
+            for (PanelInterface article : articles) {
                 Article a = (Article) article;
                 a.setCaseKonsNmb(konsNmb);
             }
@@ -2283,7 +2288,7 @@ public class GUIView extends javax.swing.JFrame {
                 offerNmb = null;
             }
             Case newCase = new Case(0, konsNmb, Integer.parseInt(offerNmb), caseCreationNameField.getText(), newCaseDescription.getText(),
-                    newCaseArticles, false, cal.getTime(), cal.getTime(), customer, logs, null);
+                    articles, false, cal.getTime(), cal.getTime(), customer, logs, null);
             boolean caseCreated = CaseHandler.getInstance().saveCase(newCase, employee, existingCostumerCheckBox.isSelected());
             if (caseCreated) {
                 JOptionPane.showMessageDialog(this, "Sag oprettet.");
@@ -2318,8 +2323,6 @@ public class GUIView extends javax.swing.JFrame {
         } catch (SQLException ex) {
             System.out.println(ex.getLocalizedMessage());
         }
-        newCaseArticles.clear();
-        newCaseContacts.clear();
         costSearchSelected = null;
     }//GEN-LAST:event_createCasebuttonActionPerformed
 
@@ -2373,7 +2376,6 @@ public class GUIView extends javax.swing.JFrame {
             System.out.println(ex.getLocalizedMessage());
         }
         if (article != null) {
-            newCaseArticles.add(article);
             ((DefaultListModel) newCaseArticleList.getModel()).addElement(article);
         }
     }//GEN-LAST:event_newArticleButtonActionPerformed
