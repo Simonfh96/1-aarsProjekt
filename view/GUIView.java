@@ -2265,13 +2265,13 @@ public class GUIView extends javax.swing.JFrame {
             try {
                 String customerAcro = "";
                 int museumsNmb = 0;
+                ArrayList<Contact> contacts = null;
                 if (costumerTypeBox.getSelectedItem().equals("Kvote")) {
                     customerAcro = newCaseAcroField.getText();
                     museumsNmb = Integer.parseInt(newCaseMuseumNmbField.getText());
+                    Contact[] contactArray = (Contact[]) contactModel.toArray();
+                    contacts = new ArrayList<>(Arrays.asList(contactArray));
                 }
-                
-                Contact[] contactArray = (Contact[]) contactModel.toArray();
-                ArrayList<Contact> contacts = new ArrayList<>(Arrays.asList(contactArray));
                 customer = new Costumer(CostumerHandler.getInstance().generateCostumerID(), newCaseNameField.getText(), customerAcro, museumsNmb, Integer.parseInt(newCasePhoneField.getText()),
                         newCaseEmailField.getText(), newCaseAddressField.getText(), contacts);
             } catch (SQLException ex) {
@@ -2317,7 +2317,6 @@ public class GUIView extends javax.swing.JFrame {
                 newCaseOfferNmbField.setText("");
                 articleAmountField.setText("");
                 articleLocationField.setText("");
-                //Skulle kons nr ikke selv tælles op?
                 createArticleConsNmbField.setText("");
                 newArticleMuseumsNmbField.setText("");
                 newArticleNameField.setText("");

@@ -248,22 +248,8 @@ public class CaseHandler {
     //Fejltjekning skal ske inden oprettelsen af case objektet, 
     //da det ikke kan oprettes med en ugyldig værdi
     public boolean saveCase(Case c, Employee e, boolean existingCostumer) throws SQLException {
-        String errorMessage = "";
         boolean succeeded = true;
         int caseID = getCaseID();
-        
-        String offerNmb = String.valueOf(c.getOfferNmb());
-        if (offerNmb.isEmpty() | !(offerNmb.matches("[0-9]+")) | Integer.parseInt(offerNmb) <= 0) {
-            succeeded = false;
-            errorMessage = errorMessage + "Tilbuds nr. skal indeholde et gyldigt tal.\n";
-        }
-
-        String caseName = c.getCaseName();
-        if (!(caseName.matches("[a-zA-Z]+")) || caseName.isEmpty()) {
-            succeeded = false;
-            errorMessage = errorMessage + "Sagsnavn må kun indeholde bogstaver.\n";
-        }
-        
         java.util.Date utilDateConvert = c.getLastUpdated();
         java.sql.Date sqlLastUpdate = new java.sql.Date(utilDateConvert.getTime());
         utilDateConvert = c.getCreatedAt();
@@ -283,8 +269,8 @@ public class CaseHandler {
                     + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = DBHandler.getInstance().conn.prepareStatement(saveCase);
             ps.setInt(1, c.getKonsNmb());
-            ps.setInt(2, Integer.parseInt(offerNmb));
-            ps.setString(3, caseName);
+            ps.setInt(2, c.getOfferNmb());
+            ps.setString(3, c.getCaseName());
             ps.setString(4, c.getDescription());
             ps.setInt(5, caseID);
             ps.setBoolean(6, c.isFinished());
