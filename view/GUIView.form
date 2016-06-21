@@ -720,6 +720,9 @@
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JTextField" name="findCostumerField">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
                   <Events>
                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="findCostumerFieldKeyReleased"/>
                   </Events>
@@ -732,6 +735,7 @@
                 <Component class="javax.swing.JButton" name="selectCostumerButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="V&#xe6;lg"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectCostumerButtonActionPerformed"/>

@@ -831,6 +831,7 @@ public class GUIView extends javax.swing.JFrame {
         newCasePanel.add(existingCostumerCheckBox);
         existingCostumerCheckBox.setBounds(20, 200, 250, 23);
 
+        findCostumerField.setEditable(false);
         findCostumerField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 findCostumerFieldKeyReleased(evt);
@@ -840,6 +841,7 @@ public class GUIView extends javax.swing.JFrame {
         findCostumerField.setBounds(20, 230, 160, 24);
 
         selectCostumerButton.setText("Vælg");
+        selectCostumerButton.setEnabled(false);
         selectCostumerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectCostumerButtonActionPerformed(evt);
@@ -2360,6 +2362,8 @@ public class GUIView extends javax.swing.JFrame {
             addContactEmailField.setEnabled(false);
             addContactButton.setEnabled(false);
             costumerTypeBox.setEnabled(false);
+            findCostumerField.setEditable(true);
+            selectCostumerButton.setEnabled(true);
         } else {
             newCaseNameField.setEnabled(true);
             newCaseContactField.setEnabled(true);
@@ -2373,6 +2377,8 @@ public class GUIView extends javax.swing.JFrame {
             addContactEmailField.setEnabled(true);
             addContactButton.setEnabled(true);
             costumerTypeBox.setEnabled(true);
+            findCostumerField.setEditable(false);
+            selectCostumerButton.setEnabled(false);
         }
     }//GEN-LAST:event_existingCostumerCheckBoxActionPerformed
 
