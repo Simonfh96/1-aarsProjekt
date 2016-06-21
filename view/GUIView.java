@@ -2223,19 +2223,19 @@ public class GUIView extends javax.swing.JFrame {
     }//GEN-LAST:event_resetPasswordButtonActionPerformed
 
     private void deactiveEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deactiveEmployeeActionPerformed
-        Employee employeePReset = null;
+        Employee employeeToDeactivate = null;
         for (Component comp : employeeListPanel.getComponents()) {
             EmployeePanel ep = (EmployeePanel) comp;
             if (ep.isSelected()) {
-                employeePReset = ep.getEmployee();
+                employeeToDeactivate = ep.getEmployee();
             }
         }
-        if (employeePReset != null) {
-            employeePReset.setActive(false);
+        if (employeeToDeactivate != null) {
+            employeeToDeactivate.setActive(false);
             try {
-                EmployeeHandler.getInstance().deactivateEmployee(employeePReset);
+                EmployeeHandler.getInstance().deactivateEmployee(employeeToDeactivate);
             } catch (SQLException ex) {
-                System.out.println(ex.getLocalizedMessage());
+                JOptionPane.showMessageDialog(this, "Kunne ikke deaktivere medarbejderen.");
             }
         }
     }//GEN-LAST:event_deactiveEmployeeActionPerformed
