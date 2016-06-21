@@ -2270,12 +2270,16 @@ public class GUIView extends javax.swing.JFrame {
             try {
                 String customerAcro = "";
                 int museumsNmb = 0;
-                ArrayList<Contact> contacts = null;
+                ArrayList<Contact> contacts = new ArrayList<>();
                 if (costumerTypeBox.getSelectedItem().equals("Kvote")) {
                     customerAcro = newCaseAcroField.getText();
                     museumsNmb = Integer.parseInt(newCaseMuseumNmbField.getText());
-                    Contact[] contactArray = (Contact[]) contactModel.toArray();
-                    contacts = new ArrayList<>(Arrays.asList(contactArray));
+                    Object[] contactArray =  contactModel.toArray();
+                    for (Object object : contactArray) {
+                        Contact contact = (Contact) object;
+                        contacts.add(contact);
+                 }   
+                
                 }
                 customer = new Costumer(CostumerHandler.getInstance().generateCostumerID(), newCaseNameField.getText(), customerAcro, museumsNmb, Integer.parseInt(newCasePhoneField.getText()),
                         newCaseEmailField.getText(), newCaseAddressField.getText(), contacts);
@@ -2288,7 +2292,6 @@ public class GUIView extends javax.swing.JFrame {
             Log log = new Log(employee, CaseHandler.getInstance().getCaseID(), "oprettede ", caseCreationNameField.getText(), "", "", new java.sql.Date(cal.getTimeInMillis()));
             System.out.println(employee.getFullName());
             logs.add(log);
-//            ArrayList<PanelInterface> articles = new ArrayList<>(Arrays.asList(articleArray));
             ArrayList<PanelInterface> articles = new ArrayList<>();
             Object[] articleArray = articleModel.toArray();
             for (Object object : articleArray) {
@@ -2404,6 +2407,14 @@ public class GUIView extends javax.swing.JFrame {
         } else {
             tasks = new ArrayList<>();
             if (articleID != 0) {
+            DefaultListModel articleModel = (DefaultListModel) newCaseArticleList.getModel();
+            Object[] articleArray = articleModel.toArray();
+            if (articleArray.length > 0) {
+            for (Object object : articleArray) {
+                Article a = (Article) object;
+                articleID = a.getArticleID() + 1;
+            }
+            }
                 article = new Article(articleID, newArticleNameField.getText(), 0, createCaseArticleDescriptionArea.getText(),
                         newArticleTypeField.getText(), articleLocationField.getText(), Integer.parseInt(newArticleMuseumsNmbField.getText()), 0, tasks);
                 if (article != null) {
@@ -2653,11 +2664,13 @@ public class GUIView extends javax.swing.JFrame {
         DefaultListModel taskModel = (DefaultListModel) createCaseTaskList.getModel();
         taskModel.clear();
         DefaultListModel articleModel = ((DefaultListModel) newCaseArticleList.getModel());
+        if (!articleModel.isEmpty()) {
         Article selectedArticle = (Article) articleModel.getElementAt(newCaseArticleList.getSelectedIndex());
         if (selectedArticle.getTasks().size() > 0) {
             for (Task t : selectedArticle.getTasks()) {
                 taskModel.addElement(t);
             }
+        }
         }
     }//GEN-LAST:event_newCaseArticleListValueChanged
 
