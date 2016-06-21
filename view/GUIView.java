@@ -2252,6 +2252,8 @@ public class GUIView extends javax.swing.JFrame {
 
     private void createCasebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCasebuttonActionPerformed
         ArrayList<Log> logs = new ArrayList<>();
+        DefaultListModel articleModel = (DefaultListModel) newCaseArticleList.getModel();
+        DefaultListModel contactModel = (DefaultListModel) newContactList.getModel();
         Costumer customer = null;
         if (existingCostumerCheckBox.isSelected()) {
             customer = costSearchSelected;
@@ -2263,7 +2265,7 @@ public class GUIView extends javax.swing.JFrame {
                     customerAcro = newCaseAcroField.getText();
                     museumsNmb = Integer.parseInt(newCaseMuseumNmbField.getText());
                 }
-                DefaultListModel contactModel = (DefaultListModel) newContactList.getModel();
+                
                 Contact[] contactArray = (Contact[]) contactModel.toArray();
                 ArrayList<Contact> contacts = new ArrayList<>(Arrays.asList(contactArray));
                 customer = new Costumer(CostumerHandler.getInstance().generateCostumerID(), newCaseNameField.getText(), customerAcro, museumsNmb, Integer.parseInt(newCasePhoneField.getText()),
@@ -2277,7 +2279,6 @@ public class GUIView extends javax.swing.JFrame {
             Log log = new Log(employee, CaseHandler.getInstance().getCaseID(), "oprettede ", caseCreationNameField.getText(), "", "", new java.sql.Date(cal.getTimeInMillis()));
             System.out.println(employee.getFullName());
             logs.add(log);
-            DefaultListModel articleModel = (DefaultListModel) newCaseArticleList.getModel();
             Article[] articleArray = (Article[]) articleModel.toArray();
             ArrayList<PanelInterface> articles = new ArrayList<>(Arrays.asList(articleArray));
             for (PanelInterface article : articles) {
@@ -2325,6 +2326,8 @@ public class GUIView extends javax.swing.JFrame {
             System.out.println(ex.getLocalizedMessage());
         }
         costSearchSelected = null;
+        articleModel.clear();
+        contactModel.clear();
     }//GEN-LAST:event_createCasebuttonActionPerformed
 
     private void existingCostumerCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_existingCostumerCheckBoxActionPerformed
