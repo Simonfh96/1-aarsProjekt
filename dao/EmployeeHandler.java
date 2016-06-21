@@ -155,12 +155,14 @@ public class EmployeeHandler {
 
     public void saveCaseResponsibles(Object[] eCRs, Case c) throws SQLException {
         CallableStatement cs = null;
+        if (eCRs.length > 0) {
         for (Object eCR : eCRs) {
             Employee e = (Employee) eCR;
             cs = DBHandler.getInstance().conn.prepareCall("{CALL AddCaseResponsibles(?, ?)}");
             cs.setInt(1, c.getCaseID());
             cs.setInt(2, e.getEmployeeID());
             cs.execute();
+        }
         }
     }
 

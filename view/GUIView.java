@@ -1789,6 +1789,8 @@ public class GUIView extends javax.swing.JFrame {
 
         addToMyCasesCheckBox.setText("Tilføj til mine sager");
 
+        editCaseOfferNmbField.setEditable(false);
+
         jLabel82.setText("Tilbuds nr.");
 
         editCaseLogButton.setText("Log");
@@ -2110,53 +2112,46 @@ public class GUIView extends javax.swing.JFrame {
     }//GEN-LAST:event_editPanelBackButtonActionPerformed
 
     private void saveChangesEditCaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveChangesEditCaseButtonActionPerformed
-        /*Fyld felterne med info, hvorefter den tjekker, om de er ændret i forhold til dem i databasen
-         og ud fra det logger, hvilken felter der er ændret om af hvem
-         -Overvej om der skal laves en Log/LogEntry klasse, eller om det blot skal være en ArrayList af Strings
-         Eksempel på en log entry:
-         Grete Hansen Ændrede i sagsnavn - 15/5/2016 20:54:10
-         employee.getName() + "\t" + tingen de foretager sig + komponentet/erne, som de foretager ændriger på
-         + tidspunket ændringerne er foretaget
-         */
-        //Undo "setters" til objektets oprindelige tilstand - Command --
-        //Ændringerne skal gemmes, inden man trykker okay
         int choice = JOptionPane.showConfirmDialog(this, "Er du sikker på, at du vil gemme?", "Gem ændringer", 2);
         if (choice == JOptionPane.OK_OPTION) {
             Object[] eCRs = caseResponsibleListModel.toArray();
             try {
                 EmployeeHandler.getInstance().saveCaseResponsibles(eCRs, c);
             } catch (SQLException ex) {
-                System.out.println(ex.getLocalizedMessage());
+                JOptionPane.showMessageDialog(this, "Kunne ikke gemme ændringer for sags ansvarlige.");
             }
-            //Problem i CaseHandler eller check my cases 
+            c.setCaseName(caseNameEditField.getText());
+            c.setDescription(caseDescriptionEditPanel.getText());
+            c.setLastUpdated(new java.sql.Date(cal.getTimeInMillis()));
+            if (caseFinishedCheckBox.isSelected()) {
+                c.setFinished(true);
+            } else {
+                c.setFinished(false);
+            }
             if (addToMyCasesCheckBox.isSelected()) {
                 try {
-//                if (employee.checkAddedMyCases(c) == false) {
-//                CaseHandler.getInstance().addToMyCases(employee, c);
-                    c.setCaseName(caseNameEditField.getText());
-//                CaseHandler.getInstance().editCase(c);
-                    CaseHandler.getInstance().completeTransaction();
-                    employeeLastUpdateField.setText(employee.getFullName());
-                    lastUpdatedField.setText("" + dateFormat.format(cal.getTime()));
-//                }
+                if (employee.checkAddedMyCases(c) == false) {
+                CaseHandler.getInstance().addToMyCases(employee, c);
+                CaseHandler.getInstance().editCase(employee, c);
+                CaseHandler.getInstance().completeTransaction();
+                }
                 } catch (SQLException ex) {
-                    System.out.println(ex.getLocalizedMessage());
+                    JOptionPane.showMessageDialog(this, "Kunne ikke gemme foretagede ændringer.");
                 }
             } else {
                 try {
-//                if (employee.checkAddedMyCases(c)) {
-//                CaseHandler.getInstance().deleteMyCase(c.getKonsNmb(), employee.getEmployeeID());
-                    c.setCaseName(caseNameEditField.getText());
-//                CaseHandler.getInstance().editCase(c);
-                    CaseHandler.getInstance().completeTransaction();
-                    employeeLastUpdateField.setText(employee.getFullName());
-                    lastUpdatedField.setText("" + dateFormat.format(cal.getTime()));
-//                }
+                if (employee.checkAddedMyCases(c)) {
+                CaseHandler.getInstance().deleteMyCase(c.getKonsNmb(), employee.getEmployeeID());
+                CaseHandler.getInstance().editCase(employee, c);
+                CaseHandler.getInstance().completeTransaction();
+                }
                 } catch (SQLException ex) {
-                    System.out.println(ex.getLocalizedMessage());
+                    JOptionPane.showMessageDialog(this, "Kunne ikke gemme foretagede ændringer.");
                 }
             }
-//            cl.previous(cardPanel);
+            employeeLastUpdateField.setText(employee.getFullName());
+            lastUpdatedField.setText("" + dateFormat.format(cal.getTime()));
+            cl.previous(cardPanel);
         } else {
             try {
                 CaseHandler.getInstance().cancelLastAction();

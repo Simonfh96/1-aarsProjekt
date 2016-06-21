@@ -132,6 +132,10 @@ public class Case implements PanelInterface, Comparable{
         this.caseResponsible = caseResponsible;
     }
 
+    public void setLastUpdated(Date lastUpdated) {
+        this.lastUpdated = lastUpdated;
+    }
+
     
     
     
