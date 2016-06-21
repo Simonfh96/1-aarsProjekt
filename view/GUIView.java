@@ -2373,6 +2373,7 @@ public class GUIView extends javax.swing.JFrame {
             System.out.println(ex.getLocalizedMessage());
         }
         int amount = Integer.parseInt(articleAmountField.getText());
+        if (amount > 0) {
         if (amount > 1) {
             for (int i = 0; i < amount; i++) {
                 tasks = new ArrayList<>();
@@ -2397,6 +2398,9 @@ public class GUIView extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Kunne ikke oprette genstand.");
             }
+        }
+        } else {
+            JOptionPane.showMessageDialog(this, "Antal genstande må ikke indeholde ugyldige værdier.");
         }
 
     }//GEN-LAST:event_newArticleButtonActionPerformed
