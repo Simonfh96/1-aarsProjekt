@@ -48,6 +48,7 @@ import model.Task;
  * @author Simon
  */
 public class GUIView extends javax.swing.JFrame {
+
     private ArrayList<PanelInterface> cases;
     private ArrayList<CasePanel> casePanels;
     private Case c;
@@ -2237,13 +2238,13 @@ public class GUIView extends javax.swing.JFrame {
         DefaultListModel articleModel = ((DefaultListModel) newCaseArticleList.getModel());
         Article selectedArticle = (Article) articleModel.getElementAt(newCaseArticleList.getSelectedIndex());
         if (selectedArticle != null) {
-        if (!(taskName.equalsIgnoreCase("Opgaver"))) {
-            Task task = new Task("Ikke startet", taskName, taskDescriptionArea.getText(), selectedArticle.getArticleID());
-            selectedArticle.addTask(task);
-            ((DefaultListModel) createCaseTaskList.getModel()).addElement(task);
-        } else {
-            JOptionPane.showMessageDialog(this, "Der er ikke valgt en opgave");
-        }
+            if (!(taskName.equalsIgnoreCase("Opgaver"))) {
+                Task task = new Task("Ikke startet", taskName, taskDescriptionArea.getText(), selectedArticle.getArticleID());
+                selectedArticle.addTask(task);
+                ((DefaultListModel) createCaseTaskList.getModel()).addElement(task);
+            } else {
+                JOptionPane.showMessageDialog(this, "Der er ikke valgt en opgave");
+            }
         } else {
             JOptionPane.showMessageDialog(this, "Der er ikke valgt en genstand at tilføje opgaven til.");
         }
@@ -2367,17 +2368,41 @@ public class GUIView extends javax.swing.JFrame {
         //Og kører ArrayList'en igennem og lægger iterator til sagens kons nr
         //Tasks skal sættes efter oprettelse af den Article, som de skal knyttes til
         //Det gøres ved at tage den sidste index fra ArrayList'en, så man har den sidst oprettede Article
-        ArrayList<Task> tasks = new ArrayList<>();
+        ArrayList<Task> tasks = null;
         Article article = null;
+        int articleID = 0;
         try {
-            article = new Article(ArticleHandler.getInstance().generateArticleID(), newArticleNameField.getText(), 0,
-                    newArticleTypeField.getText(), Integer.parseInt(newArticleMuseumsNmbField.getText()), 0, tasks);
+            articleID = ArticleHandler.getInstance().generateArticleID();
         } catch (SQLException ex) {
             System.out.println(ex.getLocalizedMessage());
         }
-        if (article != null) {
-            ((DefaultListModel) newCaseArticleList.getModel()).addElement(article);
+        int amount = Integer.parseInt(articleAmountField.getText());
+        if (amount > 1) {
+            for (int i = 0; i < amount; i++) {
+                tasks = new ArrayList<>();
+            if (articleID != 0) {
+                article = new Article((articleID + i), newArticleNameField.getText(), 0,
+                        newArticleTypeField.getText(), Integer.parseInt(newArticleMuseumsNmbField.getText()), 0, tasks);
+                if (article != null) {
+                    ((DefaultListModel) newCaseArticleList.getModel()).addElement(article);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Kunne ikke oprette genstande.");
+            }
+            }
+        } else {
+            tasks = new ArrayList<>();
+            if (articleID != 0) {
+                article = new Article(articleID, newArticleNameField.getText(), 0,
+                        newArticleTypeField.getText(), Integer.parseInt(newArticleMuseumsNmbField.getText()), 0, tasks);
+                if (article != null) {
+                    ((DefaultListModel) newCaseArticleList.getModel()).addElement(article);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Kunne ikke oprette genstand.");
+            }
         }
+
     }//GEN-LAST:event_newArticleButtonActionPerformed
 
     private void createTaskNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createTaskNameButtonActionPerformed
