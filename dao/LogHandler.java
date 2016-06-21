@@ -31,7 +31,6 @@ public class LogHandler implements Runnable {
 
     public ArrayList<Log> getCaseLogs(int logID) throws SQLException {
         ArrayList<Log> logs = new ArrayList<>();
-        System.out.println(logID);
         PreparedStatement ps = null;
         String getLogs = "SELECT * FROM log WHERE case_id = ?";
         ps = DBHandler.getInstance().getConn().prepareStatement(getLogs);

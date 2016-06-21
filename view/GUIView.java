@@ -2292,7 +2292,6 @@ public class GUIView extends javax.swing.JFrame {
         try {
             int konsNmb = CaseHandler.getInstance().generateKonsNmb();
             Log log = new Log(employee, CaseHandler.getInstance().getCaseID(), "oprettede ", caseCreationNameField.getText(), "", "", new java.sql.Date(cal.getTimeInMillis()));
-            System.out.println(employee.getFullName());
             logs.add(log);
             ArrayList<PanelInterface> articles = new ArrayList<>();
             Object[] articleArray = articleModel.toArray();

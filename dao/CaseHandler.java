@@ -185,7 +185,6 @@ public class CaseHandler {
 
         System.out.println(statement);
         if (!failed) {
-            System.out.println("not failed");
             ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
             while (rs.next()) {
                 Case c = new Case(rs.getInt("case_id"), rs.getInt("konsNr"), rs.getInt("offerNmb"), rs.getString("caseName"), rs.getString("description"),
@@ -214,7 +213,6 @@ public class CaseHandler {
                         }
                     }
                     if (match) {
-                            System.out.println(aCase.getCaseName() + "Does match");
                             newCases.add(aCase);
                         }
                 }
@@ -256,7 +254,6 @@ public class CaseHandler {
         java.sql.Date sqlCreatedAt = new java.sql.Date(utilDateConvert.getTime());
         if (succeeded) {
             CostumerHandler.getInstance().saveCostumer(c.getCustomer(), existingCostumer);
-            System.out.println("costumer suceeded");
             if (c.getArticles().size() > 0) {
                 for (PanelInterface article : c.getArticles()) {
                     Article a = (Article) article;

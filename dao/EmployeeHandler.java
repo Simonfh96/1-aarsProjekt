@@ -36,7 +36,7 @@ public class EmployeeHandler {
         ResultSet rs = stm.executeQuery(sql);
         if (rs.next()) {
             check = rs.getInt("employee_id");
-            System.out.println("works");
+            
         }
         if (check < 0) {
             System.out.println(username + " " + password);
@@ -190,9 +190,8 @@ public class EmployeeHandler {
             Employee eCR = (Employee) empCR;
             if (e.compareTo(eCR) == 0) {
                 result = 0;
-                System.out.println("same");
             }
-            System.out.println("not");
+            
         }
         return result;
     }
